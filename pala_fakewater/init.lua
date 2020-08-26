@@ -1,7 +1,7 @@
-if minetest.get_modpath("mcl_bucket") then
+if minetest.get_modpath("mcl_buckets") then
 
 	minetest.register_node("pala_fakewater:fakewater_source", {
-		description = S("Water Source"),
+		description = ("Water Source"),
 		drawtype = "liquid",
 		waving = 3,
 		tiles = {
@@ -42,11 +42,11 @@ if minetest.get_modpath("mcl_bucket") then
 		post_effect_color = {a = 103, r = 30, g = 60, b = 90},
 		damage_per_second = 4,
 		groups = {water = 3, liquid = 3, cools_lava = 1},
-		sounds = default.node_sound_water_defaults(),
+		sounds = mcl_sounds.node_sound_water_defaults(),
 	})
 
 minetest.register_node("pala_fakewater:fakewater_flowing", {
-	description = S("Flowing Water"),
+	description = ("Flowing Water"),
 	drawtype = "flowingliquid",
 	waving = 3,
 	tiles = {"default_water.png"},
@@ -90,19 +90,19 @@ minetest.register_node("pala_fakewater:fakewater_flowing", {
 	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
 	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1,
 		cools_lava = 1},
-	sounds = default.node_sound_water_defaults(),
+	sounds = mcl_sounds.node_sound_water_defaults(),
 })
 
 
 	mcl_buckets.register_liquid(
 		"pala_fakewater:fakewater_source",
 		{"pala_fakewater:fakewater_source"},
-		"mcl_buckets:bucket_fakewater",
-		"bucket_water.png^pala_fakewater_overlay",
-		S("Sulfuric Water Bucket"),
-		S("A bucket can be used to collect and release liquids. This one is filled with water."),
-		S("Place it to empty the bucket and create a fakewater source."),
-		S("Places a fakewater source"),
+		"pala_fakewater:bucket_fakewater",
+		"bucket_water.png^pala_fakewater_overlay.png",
+		("Sulfuric Water Bucket"),
+		("A bucket can be used to collect and release liquids. This one is filled with water."),
+		("Place it to empty the bucket and create a fakewater source."),
+		("Places a fakewater source"),
 		function(pos, placer)
 			-- Check protection
 			local placer_name = ""
@@ -115,13 +115,12 @@ minetest.register_node("pala_fakewater:fakewater_flowing", {
 			end
 			local nn = minetest.get_node(pos).name
 			-- Evaporate water if used in Nether (except on cauldron)
-			if
-				local dim = mcl_worlds.pos_to_dimension(pos)
-				if dim == "nether" then
-					minetest.sound_play("fire_extinguish_flame", {pos = pos, gain = 0.25, max_hear_distance = 16}, true)
-					return false
-				end
+			local dim = mcl_worlds.pos_to_dimension(pos)
+			if dim == "nether" then
+				minetest.sound_play("fire_extinguish_flame", {pos = pos, gain = 0.25, max_hear_distance = 16}, true)
+				return false
 			end
 		end,
 		{ fakewater_bucket = 1 }
 	)
+end
