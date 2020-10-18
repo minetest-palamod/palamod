@@ -1,57 +1,56 @@
 --Amethyst
-minetest.register_node("pala_paladium:stone_with_amethyst", {
-	description = ("Amethyst Ore"),
-	_doc_items_longdesc = ("Amethyst ore is rare and can be found in clusters near the bottom of the world."),
-	tiles = {"default_stone.png^pala_paladium_mineral_amethyst.png"},
-	is_ground_content = true,
-	stack_max = 64,
-	groups = {pickaxey=4, building_block=1, material_stone=1},
-	sounds = mcl_sounds.node_sound_stone_defaults(),
-	_mcl_blast_resistance = 3,
-	_mcl_hardness = 3,
+-- Common spawn
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mcl_core:stone_with_amethyst",
+	wherein         = stonelike,
+	clust_scarcity = 10000,
+	clust_num_ores = 4,
+	clust_size     = 3,
+	y_min          = mcl_vars.mg_overworld_min,
+	y_max          = mcl_worlds.layer_to_y(16),
+})
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mcl_core:stone_with_amethyst",
+	wherein         = stonelike,
+	clust_scarcity = 5000,
+	clust_num_ores = 2,
+	clust_size     = 2,
+	y_min          = mcl_vars.mg_overworld_min,
+	y_max          = mcl_worlds.layer_to_y(16),
+})
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mcl_core:stone_with_amethyst",
+	wherein         = stonelike,
+	clust_scarcity = 10000,
+	clust_num_ores = 8,
+	clust_size     = 3,
+	y_min          = mcl_vars.mg_overworld_min,
+	y_max          = mcl_worlds.layer_to_y(16),
 })
 
-minetest.register_craftitem("pala_paladium:amethyst_ingot", {
-	description = ("Amethyst Ingot"),
-	_doc_items_longdesc = ("Molten Amethyst. It is used to craft armor, tools, and whatnot."),
-	inventory_image = "default_steel_ingot.png^[colorize:#944dc7:150",
-	stack_max = 64,
-	groups = { craftitem=1 },
+-- Rare spawn
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mcl_core:stone_with_amethyst",
+	wherein         = stonelike,
+	clust_scarcity = 20000,
+	clust_num_ores = 1,
+	clust_size     = 1,
+	y_min          = mcl_worlds.layer_to_y(13),
+	y_max          = mcl_worlds.layer_to_y(16),
 })
-
-minetest.register_node("pala_paladium:amethystblock", {
-	description = ("Block of Amethyst"),
-	_doc_items_longdesc = ("A block of Amethyst is mostly a shiny decorative block but also useful as a compact storage of diamonds."),
-	tiles = {"pala_paladium_amethyst_block.png"},
-	is_ground_content = false,
-	stack_max = 64,
-	groups = {pickaxey=4, building_block=1},
-	sounds = mcl_sounds.node_sound_stone_defaults(),
-	_mcl_blast_resistance = 6,
-	_mcl_hardness = 5,
-})
-
-minetest.register_craft({
-	output = "pala_paladium:amethystblock",
-	recipe = {
-		{'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot'},
-		{'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot'},
-		{'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot'},
-	}
-})
-
-minetest.register_craft({
-	output = 'pala_paladium:amethyst_ingot 9',
-	recipe = {
-		{'pala_paladium:amethystblock'},
-	}
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "pala_paladium:amethyst_ingot",
-	recipe = "pala_paladium:stone_with_amethyst",
-	cooktime = 5
+minetest.register_ore({
+	ore_type       = "scatter",
+	ore            = "mcl_core:stone_with_amethyst",
+	wherein         = stonelike,
+	clust_scarcity = 20000,
+	clust_num_ores = 2,
+	clust_size     = 2,
+	y_min          = mcl_worlds.layer_to_y(13),
+	y_max          = mcl_worlds.layer_to_y(16),
 })
 
 --Titanium
