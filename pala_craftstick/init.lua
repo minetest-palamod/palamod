@@ -95,3 +95,18 @@ minetest.register_craftitem("pala_craftstick:compressed_amethyst", {
 	_doc_items_longdesc = ("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
+
+--Wither Skull Fragment
+minetest.register_craftitem("pala_craftstick:wither_skull_fragment", {
+	description = "Wither Skull Fragment",
+	_doc_items_longdesc = ("Useful in many crafts"),
+	inventory_image = "pala_craftstick_wither_skull_fragment.png"
+})
+
+if minetest.get_modpath("mcl_heads") then
+	minetest.register_craft({
+		type = "shapeless",
+		output = "pala_craftstick:wither_skull_fragment 9",
+		recipe = {"mcl_heads:wither_skeleton"}
+	})
+end

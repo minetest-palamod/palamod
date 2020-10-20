@@ -144,18 +144,18 @@ minetest.register_node("pala_paladium:paladiumblock", {
 })
 
 minetest.register_craft({
-	output = "pala_paladium:titaniumblock",
+	output = "pala_paladium:paladiumblock",
 	recipe = {
-		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
-		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
-		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
+		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
+		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
+		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
 	}
 })
 
 minetest.register_craft({
-	output = 'pala_paladium:titanium_ingot 9',
+	output = 'pala_paladium:paladium_ingot 9',
 	recipe = {
-		{'pala_paladium:titaniumblock'},
+		{'pala_paladium:paladiumblock'},
 	}
 })
 

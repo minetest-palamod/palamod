@@ -361,10 +361,7 @@ end
 
 -- minetest.register_tool("pala_tools:voidstone", {
 	-- description = "Infernal Knocker",
-	-- _doc_items_longdesc = sword_longdesc,
-	-- _doc_items_hidden = false,
 	-- inventory_image = "pala_tools_infernalknocker.png",
-	-- wield_scale = wield_scale,
 	-- groups = {},
 	-- sound = { breaks = "default_tool_breaks" },
 	-- on_use = function(pos, node, player, itemstack, pointed_thing)
@@ -378,3 +375,12 @@ end
 		-- )
 	-- ,
 -- })
+
+minetest.register_craftitem("pala_tools:voidstone", {
+	description = "Snowball",
+	_doc_items_longdesc = "Snowballs can be thrown or launched from a dispenser for fun. Hitting something with a snowball does nothing.",
+	inventory_image = "mcl_throwing_snowball.png",
+	stack_max = 16,
+	groups = {},
+	--on_use = player_throw_function("mcl_throwing:snowball_entity"),
+})
