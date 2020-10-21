@@ -32,24 +32,56 @@ pala_luckyblock_positive = {
 	{"Analyste", 150, "default_stone.png", test_send_chat},
 	{"Expala-osion", 150, "default_stone.png", test_send_chat},
 	{"Fake TNT", 100, "default_stone.png", test_send_chat},
+	{"Hook hook jab", 150, "default_stone.png", test_send_chat},
+	{"Pyrobarbare", 150, "default_stone.png", test_send_chat},
+	{"Caballo de la muerte", 200, "default_stone.png", test_send_chat},
+	{"Diamond Beacon", 200, "default_stone.png", test_send_chat},
+	{"Princesse", 200, "default_stone.png", test_send_chat},
+	{"Amethyste Beacon", 400, "default_stone.png", test_send_chat},
+	{"Endium Beacon", 400, "default_stone.png", test_send_chat},
+	{"Fast Learner", 500, "default_stone.png", test_send_chat},
+	{"Titane Beacon", 800, "default_stone.png", test_send_chat},
+	{"Explosif", 900, "default_stone.png", explosif},
+	{"T’es chanceux wesh", 900, "default_stone.png", test_send_chat},
+	{"Base déco", 1000, "default_stone.png", test_send_chat},
+	{"Deviens sourd", 1000, "default_stone.png", test_send_chat},
+	{"Legendary Stone", 1000, "default_stone.png", test_send_chat},
+	{"Rodshild", 1000, "default_stone.png", test_send_chat},
+	{"Camouflage", 1200, "default_stone.png", test_send_chat},
+	{"Paladium Beacon", 1200, "default_stone.png", test_send_chat},
+	{"Mega Fast Learner", 2400, "default_stone.png", test_send_chat},
+	{"Téthanos", 5000, "default_stone.png", test_send_chat},
+	{"Endium Grade", 10000, "default_stone.png", test_send_chat},
+	{"Méga-Thétanos", 42500, "default_stone.png", test_send_chat},
+
 }
 
+pala_luckyblock_positive_somme = 0
+for k, v in pairs(pala_luckyblock_positive) do
+	local inverse = 1/v[2]
+	pala_luckyblock_positive_somme = pala_luckyblock_positive_somme + inverse
+	v[2] = inverse
+end
 
 local function get_random_positive()
-	local rnd = randomFloat(0,1)
-	minetest.chat_send_all(tostring(rnd))
+	local rnd = randomFloat(0, pala_luckyblock_positive_somme)
+	--minetest.chat_send_all(tostring(rnd))
 	local somme = 0
+	local hit = nil
 	for k, v in pairs(pala_luckyblock_positive) do
-		local inverse = 1/v[2]
-		--local somme += inverse
+		somme = somme + v[2]
+		--minetest.chat_send_all(tostring(somme))
+		hit = k
+		if rnd < somme then
+			break
+		end 
 	end
-	for k, v in pairs(pala_luckyblock_positive) do
-		local inverse = 1/v[2]
-		--local cumul = 
-		minetest.chat_send_all("test @0", tostring(v[1]))
-		local d = tostring(v[1])
-	end
-	return pala_luckyblock_positive[1]
+	--minetest.chat_send_all("***********************************")
+	--minetest.chat_send_all(tostring(hit))
+	--minetest.chat_send_all(tostring(rnd))
+	--minetest.chat_send_all(tostring(pala_luckyblock_positive_somme))
+	--sleep(30)
+	return pala_luckyblock_positive[hit]
 end
 
 local function get_random_img()

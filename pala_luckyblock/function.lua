@@ -34,16 +34,17 @@ function well(pos, player)
 		"mcl_core:gold_ingot",
 		"mcl_core:steel_ingot"
 	}
-	if not minetest.is_protected(pos, player:get_player_name()) then
-		minetest.set_node(pos, {name="mcl_core:obsidian"})
-	end
-	if minetest.get_modpath("lightning") then
-		lightning.strike(pos)
-	end
+	minetest.set_node(pos, {name="mcl_core:obsidian"})
+	lightning.strike(pos)
 	for i = 1, 10, 1 do
 		local rnd = math.random(1, 5)
 		minetest.add_item(pos, itemlist[rnd])
 	end
+end
+
+function explosif(pos, player)
+	minetest.set_node(pos, {name="mcl_core:obsidian"})
+	minetest.add_item(pos, "mcl_core:stone")
 end
 
 function body_guard(pos, player)

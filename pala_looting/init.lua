@@ -1,3 +1,13 @@
+function table.containsplayer(table, element)
+  for _, value in pairs(table) do
+	local name = value:get_player_name()
+    if name == element then
+      return true
+    end
+  end
+  return false
+end
+
 minetest.register_node("pala_looting:caveblock", {
 	description = ("Cave Block"),
 	_doc_items_longdesc = ("Cave Block allow players to see through the blocks."),
@@ -65,34 +75,83 @@ minetest.register_on_joinplayer(function(player)
 	minetest.chat_send_all("Give a warm welcome to "..player:get_player_name().."!")
 end)
 
-minetest.register_node("pala_looting:online_detector", {
+minetest.register_node("pala_looting:online_detector_off", {
 	description = ("Online Detector"),
 	_doc_items_longdesc = ("Allows you to know if a player is connected."),
 	drawtype = "normal",
 	tiles = {"default_stone.png"},
-	groups = {pickaxey=2, building_block=1, material_stone=1},
+	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1},
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		local default = meta:get_string("name")
+		local form = table.concat({
+			"formspec_version[3]",
+			"size[5,3]",
+			"field[1,1;3,0.75;name;Player Name;default]"})
+		meta:set_string("formspec", form)
+	end,
 	on_receive_fields = function(pos, formname, fields, sender)
-		if formname == "pala_looting:configure_playerdetector" or not minetest.is_player(sender) then
+		if field == name then
 			local meta = minetest.get_meta(pos)
-			meta:set_string("ptarget", fields.ptarget)
+			meta:set_string("name", fields.name)
 		end
 	end,
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
-		minetest.show_formspec(player:get_player_name(), "pala_looting:configure_playerdetector",
-			table.concat({
-			"size[3,4]",
-			"field[0.25,2;3,1;ptarget;Player;",tostring(ptarget),"]",
-			"tooltip[ptarget;Player name ",
-			"button_exit[0,3.5;3,1;;Done]"
-			},'')
-		)
+		local meta = minetest.get_meta(pos)
+		local default = meta:get_string("name")
+		local form = table.concat({
+			"formspec_version[3]",
+			"size[5,3]",
+			"field[1,1;3,0.75;name;Player Name;"..default.."]"})
+		meta:set_string("formspec", form)
 	end,
-	on_punch = function(pos, node, player, pointed_thing)
-		for _,testplayer in ipairs(minetest.get_connected_players()) do
-			local name = testplayer:get_player_name()
-			if name == ptarget then
-				minetest.chat_send_player(name, "co")
-			end
-		end
-	end
 })
+
+minetest.register_node("pala_looting:online_detector_on", {
+	description = ("Online Detector"),
+	_doc_items_longdesc = ("Allows you to know if a player is connected."),
+	drawtype = "normal",
+	tiles = {"pala_paladium_paladiumblock.png"},
+	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1, not_in_creative_inventory=1},
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		local default = meta:get_string("name")
+		local form = table.concat({
+			"formspec_version[3]",
+			"size[5,3]",
+			"field[1,1;3,0.75;name;Player Name;default]"})
+		meta:set_string("formspec", form)
+	end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		if field == name then
+			local meta = minetest.get_meta(pos)
+			meta:set_string("name", fields.name)
+		end
+	end,
+	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
+		local meta = minetest.get_meta(pos)
+		local default = meta:get_string("name")
+		local form = table.concat({
+			"formspec_version[3]",
+			"size[5,3]",
+			"field[1,1;3,0.75;name;Player Name;"..default.."]"})
+		meta:set_string("formspec", form)
+	end,
+})
+
+minetest.register_abm{
+        label = "online_detector",
+	nodenames = {"group:pala_online_detector"},
+	interval = 20,
+	action = function(pos)
+		local meta = minetest.get_meta(pos)
+		if table.containsplayer(minetest.get_connected_players(), meta) then
+			minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
+			minetest.chat_send_all("connecte")
+		else
+			minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
+		end
+
+			--minetest.set_node(pos, {name = "default:cobblestone"})
+	end,
+}
