@@ -34,10 +34,11 @@ end
 function mineral_shower(pos, player)
 	local name = player:get_player_name()
 	local drop_pos = {x=pos.x, y=pos.y+3, z=pos.z}
-	minetest.set_node(drop_pos, {name="pala_paladium:paladiumblock"})
+	minetest.set_node(pos, {name="pala_paladium:paladiumblock"})
 	for i = 0, 8, 1 do
 		local rnd = math.random(1, 5)
-		local drop_pos = {x=pos.x+rnd, y=pos.y+3+rnd, z=pos.z+rnd}
+		local rndpos = math.random(1, 2)
+		local drop_pos = {x=pos.x+rndpos, y=pos.y+3+rndpos, z=pos.z+rndpos}
 		minetest.add_item(drop_pos, itemlist[rnd])
 	end
 end
