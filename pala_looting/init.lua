@@ -96,6 +96,22 @@ minetest.register_node("pala_looting:online_detector_off", {
 			meta:set_string("name", fields.name)
 		end
 	end,
+	-- on_timer = function(pos)
+		-- local meta = minetest.get_meta(pos)
+		-- for _,player in ipairs(minetest.get_connected_players()) do
+			-- if player == meta.name then
+				-- minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
+			-- end
+			-- local name = player:get_player_name()
+			-- minetest.chat_send_player(name, "Hello " .. name)
+		-- end
+		-- -- if table.containsplayer(minetest.get_connected_players(), meta.name) then
+			-- -- minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
+			-- -- minetest.chat_send_all("connecte")
+		-- -- end
+        -- return false
+    -- end,
+	--on_step = function()
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
@@ -111,7 +127,7 @@ minetest.register_node("pala_looting:online_detector_on", {
 	description = ("Online Detector"),
 	_doc_items_longdesc = ("Allows you to know if a player is connected."),
 	drawtype = "normal",
-	tiles = {"pala_paladium_paladiumblock.png"},
+	tiles = {"pala_paladium_paladium_block.png"},
 	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1, not_in_creative_inventory=1},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -139,19 +155,36 @@ minetest.register_node("pala_looting:online_detector_on", {
 	end,
 })
 
-minetest.register_abm{
-        label = "online_detector",
-	nodenames = {"group:pala_online_detector"},
-	interval = 20,
+minetest.register_abm({
+	label = "online_detector",
+	nodenames = {"pala_looting:online_detector_off"},
+	interval = 2,
+	chance = 1,
 	action = function(pos)
 		local meta = minetest.get_meta(pos)
-		if table.containsplayer(minetest.get_connected_players(), meta) then
-			minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
-			minetest.chat_send_all("connecte")
-		else
-			minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
+		for _,player in ipairs(minetest.get_connected_players()) do
+			local name = player:get_player_name()
+			if name == meta:get_string("name") then
+				minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
+			end
 		end
-
-			--minetest.set_node(pos, {name = "default:cobblestone"})
 	end,
-}
+})
+
+minetest.register_abm({
+	label = "online_detector",
+	nodenames = {"pala_looting:online_detector_on"},
+	interval = 2,
+	chance = 1,
+	action = function(pos)
+		local meta = minetest.get_meta(pos)
+		for _,player in ipairs(minetest.get_connected_players()) do
+			local name = player:get_player_name()
+			if name == meta:get_string("name") then
+				--minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
+			else
+				minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
+			end
+		end
+	end,
+})
