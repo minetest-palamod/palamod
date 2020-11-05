@@ -38,7 +38,7 @@ if minetest.get_modpath("pala_paladium") then
 		mcl_stairs.register_stair("amethyst", "pala_paladium:amethystblock", {pickaxey=4, building_block=1}, {"pala_paladium_amethyst_block.png"}, ("Amethyst Stairs"), mcl_sounds.node_sound_stone_defaults(), 5, 5, "woodlike")
 		
 		--Findium
-		mcl_stairs.register_slab("findium", "pala_paladium:findiumblock", {pickaxey=4, building_block=1}, {"pala_paladium_findium_block.png"}, ("Findium Slab"), mcl_sounds.node_sound_stone_defaults(), 5, 5, ("Double Findium Slab"))
-		mcl_stairs.register_stair("findium", "pala_paladium:findiumblock", {pickaxey=4, building_block=1}, {"pala_paladium_findium_block.png"}, ("Findium Stairs"), mcl_sounds.node_sound_stone_defaults(), 5, 5, "woodlike")
+		mcl_stairs.register_slab("findium", "pala_paladium:findiumblock", {pickaxey=4, building_block=1}, {"pala_paladium_findiumblock.png"}, ("Findium Slab"), mcl_sounds.node_sound_stone_defaults(), 5, 5, ("Double Findium Slab"))
+		mcl_stairs.register_stair("findium", "pala_paladium:findiumblock", {pickaxey=4, building_block=1}, {"pala_paladium_findiumblock.png"}, ("Findium Stairs"), mcl_sounds.node_sound_stone_defaults(), 5, 5, "woodlike")
 	end
 end

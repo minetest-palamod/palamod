@@ -14,6 +14,7 @@ else
     end
 end
 
+--38
 pala_luckyblock_positive = {
 	{"Body Guard", 10, "pala_luckyblock_body_guard.png", body_guard},
 	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", test_send_chat},
@@ -26,11 +27,11 @@ pala_luckyblock_positive = {
 	{"Nose", 50, "default_stone.png", test_send_chat},
 	{"SuperMan", 50, "default_stone.png", test_send_chat},
 	{"Walk in Music", 50, "default_stone.png", test_send_chat},
-	{"Wow Bg", 50, "default_stone.png", test_send_chat},
+	{"Wow Bg", 50, "pala_luckyblock_wow_bg.png", place_endium_piramid},
 	{"Spawner", 100, "default_stone.png", test_send_chat},
 	{"20 000 lieux", 150, "default_stone.png", test_send_chat},
 	{"Analyste", 150, "default_stone.png", test_send_chat},
-	{"Expala-osion", 150, "default_stone.png", test_send_chat},
+	{"Expala-osion", 150, "default_tnt_side.png^pala_paladium_paladium_ingot.png", expala_osion},
 	{"Fake TNT", 100, "default_stone.png", test_send_chat},
 	{"Hook hook jab", 150, "default_stone.png", test_send_chat},
 	{"Pyrobarbare", 150, "default_stone.png", test_send_chat},
@@ -48,17 +49,18 @@ pala_luckyblock_positive = {
 	{"Legendary Stone", 1000, "default_stone.png", test_send_chat},
 	{"Rodshild", 1000, "default_stone.png", test_send_chat},
 	{"Camouflage", 1200, "default_stone.png", test_send_chat},
-	{"Paladium Beacon", 1200, "default_stone.png", test_send_chat},
+	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", pala_beacon},
 	{"Mega Fast Learner", 2400, "default_stone.png", test_send_chat},
 	{"Téthanos", 5000, "default_stone.png", test_send_chat},
 	{"Endium Grade", 10000, "default_stone.png", test_send_chat},
 	{"Méga-Thétanos", 42500, "default_stone.png", test_send_chat},
 }
 
+--46
 pala_luckyblock_negative = {
 	{"BOOM", 20, "default_stone.png", test_send_chat},
 	{"Enfermé", 20, "default_stone.png", test_send_chat},
-	{"Geyser", 20, "default_stone.png", test_send_chat},
+	{"Geyser", 20, "pala_luckyblock_geyser.png", geyser},
 	{"StarFish", 20, "pala_luckyblock_starfish.png", silverfish},
 	{"Un peu de silence ne fait pas de mal", 20, "default_stone.png", test_send_chat},
 	{"Boom", 30, "pala_luckyblock_boom.png", boom},
@@ -68,18 +70,18 @@ pala_luckyblock_negative = {
 	{"Ruée vers les minerais", 30, "default_stone.png", test_send_chat},
 	{"0 + 0 = La tête à Toto", 40, "default_stone.png", test_send_chat},
 	{"Allumer le feu", 40, "default_stone.png", test_send_chat},
-	{"Instant break up", 40, "default_stone.png", test_send_chat},
+	{"Instant break up", 40, "pala_tools_paladiumsword.png", instant_break},
 	{"Sur la Lune", 40, "default_stone.png", test_send_chat},
 	{"Zombie Hero", 40, "default_stone.png", test_send_chat},
-	{"Batman nerveux", 50, "default_stone.png", test_send_chat},
+	{"Batman nerveux", 50, "pala_luckyblock_batman_nerveux.png", batman_nerveux},
 	{"Ghast dans l’âme", 50, "default_stone.png", test_send_chat},
-	{"Gros relou", 50, "default_stone.png", test_send_chat},
+	{"Gros relou", 50, "pala_luckyblock_gros_relou.png", return_none},
 	{"Ne pas casser", 50, "default_stone.png", test_send_chat},
-	{"Spam TP", 50, "default_stone.png", test_send_chat},
+	{"Spam TP", 50, "mcl_throwing_ender_pearl.png", spam_tp},
 	{"Tout feu tout flamme", 50, "default_stone.png", test_send_chat},
 	{"Victime", 50, "default_stone.png", test_send_chat},
 	{"MEGABOOM", 70, "pala_luckyblock_megaboom.png", megaboom},
-	{"ArachnoTrap", 80, "default_stone.png", test_send_chat},
+	{"ArachnoTrap", 80, "pala_luckyblock_arachnotrap.png", arachnotrap},
 	{"ObsiTrap", 80, "default_stone.png", test_send_chat},
 	{"On voit pas le fond du bol", 80, "default_stone.png", test_send_chat},
 	{"Badaboum", 100, "default_stone.png", test_send_chat},
@@ -94,7 +96,7 @@ pala_luckyblock_negative = {
 	{"Hasta la vista", 200, "default_stone.png", test_send_chat},
 	{"Reflexe", 200, "default_stone.png", test_send_chat},
 	{"La mort ou…", 500, "default_stone.png", test_send_chat},
-	{"Paladin", 500, "default_stone.png", test_send_chat},
+	{"Paladin", 500, "pala_tools_paladiumsword.png", test_send_chat},
 	{"La dirt, c’est bien", 1000, "default_stone.png", test_send_chat},
 	{"T ki ?", 1000, "default_stone.png", test_send_chat},
 	{"Triforce", 1000, "default_stone.png", test_send_chat},
@@ -217,11 +219,11 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 			"image[5,2;1.9,1.9;"..get_random_img(nimg).."]",
 			"image[9,2;1.9,1.9;"..get_random_img(nimg).."]"})
             minetest.show_formspec(player:get_player_name(), "palaluckyblock_confirm", form2)
-			minetest.set_node(pos, {name="air"})
-			sleep(3)
-			local func = randoma[4]
-			func(pos, player)
-			return
+			minetest.after(2, function()
+				minetest.set_node(pos, {name="air"})
+				local func = randoma[4]
+				func(pos, player)
+			end)
         end
 
         print(fields.x)
@@ -280,10 +282,11 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
 			"image[5,2;1.9,1.9;"..get_random_img(nimg).."]",
 			"image[9,2;1.9,1.9;"..get_random_img(nimg).."]"})
             minetest.show_formspec(player:get_player_name(), "palaluckyblock_confirm", form2)
-			sleep(3)
-			local func = randomp[4]
-			func(pos, player)
-			return
+			minetest.after(2, function()
+				minetest.set_node(pos, {name="air"})
+				local func = randomp[4]
+				func(pos, player)
+			end)
         end
 
         print(fields.x)

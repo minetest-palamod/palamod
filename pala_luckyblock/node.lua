@@ -103,3 +103,67 @@ minetest.register_tool("pala_luckyblock:blaze_flint_and_steel", {
 	end,
 	sound = { breaks = "default_tool_breaks" },
 })
+
+minetest.register_node("pala_luckyblock:faketnt", {
+	tiles = {"default_tnt_top.png", "default_tnt_bottom.png",
+			"default_tnt_side.png", "default_tnt_side.png",
+			"default_tnt_side.png", "default_tnt_side.png"},
+	is_ground_content = false,
+	stack_max = 64,
+	description = "Fake TNT",
+	paramtype = "light",
+	sunlight_propagates = true,
+	_tt_help = "Ignited by tools, explosions, fire, lava, redstone power",
+	--_doc_items_longdesc = longdesc,
+	_doc_items_usagehelp = "Place the TNT and ignite it with one of the methods above. Quickly get in safe distance. The TNT will start to be affected by gravity and explodes in 4 seconds.",
+	groups = { dig_immediate = 3, tnt = 1, enderman_takable=1, flammable=-1},
+	mesecons = tnt_mesecons,
+	on_blast = function(pos)
+	    minetest.add_particle({
+			pos = {x=pos.x,y=pos.y+0.5,z=pos.z},
+			velocity = vector.new(math.random() * 0.2 - 0.1, 1.0 + math.random(), math.random() * 0.2 - 0.1),
+			acceleration = vector.new(0, -0.1, 0),
+			expirationtime = 0.15 + math.random() * 0.25,
+			size = 1.0 + math.random(),
+			collisiondetection = false,
+			texture = "mcl_particles_smoke.png"
+		})
+	end,
+	_on_ignite = function(player, pointed_thing)
+		minetest.add_particle({
+			pos = {x=pointed_thing.above.x,y=pointed_thing.above.y+0.5,z=pointed_thing.above.z},
+			velocity = vector.new(math.random() * 0.2 - 0.1, 1.0 + math.random(), math.random() * 0.2 - 0.1),
+			acceleration = vector.new(0, -0.1, 0),
+			expirationtime = 0.15 + math.random() * 0.25,
+			size = 1.0 + math.random(),
+			collisiondetection = false,
+			texture = "mcl_particles_smoke.png"
+		})
+		minetest.remove_node(pos)
+	end,
+	_on_burn = function(pos)
+		minetest.add_particle({
+			pos = {x=pos.x,y=pos.y+0.5,z=pos.z},
+			velocity = vector.new(math.random() * 0.2 - 0.1, 1.0 + math.random(), math.random() * 0.2 - 0.1),
+			acceleration = vector.new(0, -0.1, 0),
+			expirationtime = 0.15 + math.random() * 0.25,
+			size = 1.0 + math.random(),
+			collisiondetection = false,
+			texture = "mcl_particles_smoke.png"
+		})
+		minetest.remove_node(pos)
+	end,
+	_on_dispense = function(stack, pos, droppos, dropnode, dropdir)
+		minetest.add_particle({
+			pos = {x=pos.x,y=pos.y+0.5,z=pos.z},
+			velocity = vector.new(math.random() * 0.2 - 0.1, 1.0 + math.random(), math.random() * 0.2 - 0.1),
+			acceleration = vector.new(0, -0.1, 0),
+			expirationtime = 0.15 + math.random() * 0.25,
+			size = 1.0 + math.random(),
+			collisiondetection = false,
+			texture = "mcl_particles_smoke.png"
+		})
+		minetest.remove_node(pos)
+	end,
+	sounds = sounds,
+})

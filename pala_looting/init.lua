@@ -94,24 +94,14 @@ minetest.register_node("pala_looting:online_detector_off", {
 		if field == name then
 			local meta = minetest.get_meta(pos)
 			meta:set_string("name", fields.name)
+			for _,player in ipairs(minetest.get_connected_players()) do
+			local name = player:get_player_name()
+			if name == meta:get_string("name") then
+				minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
+			end
+		end
 		end
 	end,
-	-- on_timer = function(pos)
-		-- local meta = minetest.get_meta(pos)
-		-- for _,player in ipairs(minetest.get_connected_players()) do
-			-- if player == meta.name then
-				-- minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
-			-- end
-			-- local name = player:get_player_name()
-			-- minetest.chat_send_player(name, "Hello " .. name)
-		-- end
-		-- -- if table.containsplayer(minetest.get_connected_players(), meta.name) then
-			-- -- minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
-			-- -- minetest.chat_send_all("connecte")
-		-- -- end
-        -- return false
-    -- end,
-	--on_step = function()
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
@@ -158,7 +148,7 @@ minetest.register_node("pala_looting:online_detector_on", {
 minetest.register_abm({
 	label = "online_detector",
 	nodenames = {"pala_looting:online_detector_off"},
-	interval = 2,
+	interval = 30,
 	chance = 1,
 	action = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -174,7 +164,7 @@ minetest.register_abm({
 minetest.register_abm({
 	label = "online_detector",
 	nodenames = {"pala_looting:online_detector_on"},
-	interval = 2,
+	interval = 30,
 	chance = 1,
 	action = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -185,6 +175,33 @@ minetest.register_abm({
 			else
 				minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
 			end
+		end
+	end,
+})
+
+
+--Chest Explorer
+minetest.register_tool("pala_looting:chest_explorer", {
+    description = "Chest Explorer",
+    inventory_image = "default_stick.png",
+    tool_capabilities = {
+        max_drop_level=3,
+        groupcaps= {
+            cracky={times={[1]=4.00, [2]=1.50, [3]=1.00}, uses=70, maxlevel=1}
+        }
+    },
+	on_use = function(itemstack, player, pointed_thing)
+		if pointed_thing.type == "node" then
+			--local meta = minetest.get_meta(pointed_thing.under)
+			local inv = minetest.get_inventory({ type="node", pos=pointed_thing.under })
+		    local size = inv:get_size("main")
+			local list = inv:get_list("main")
+			local form = table.concat({
+				"formspec_version[3]",
+				"size[17,11]",
+				"list[list;main_chest_exp;1,1;1,1]"
+			})
+			minetest.show_formspec(player:get_player_name(), "chest_explorer", form)
 		end
 	end,
 })
