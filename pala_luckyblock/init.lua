@@ -46,7 +46,7 @@ pala_luckyblock_positive = {
 	{"T’es chanceux wesh", 900, "default_stone.png", test_send_chat},
 	{"Base déco", 1000, "default_stone.png", test_send_chat},
 	{"Deviens sourd", 1000, "default_stone.png", test_send_chat},
-	{"Legendary Stone", 1000, "default_stone.png", test_send_chat},
+	{"Legendary Stone", 1000, "default_stone.png", get_legendary_stone},
 	{"Rodshild", 1000, "default_stone.png", test_send_chat},
 	{"Camouflage", 1200, "default_stone.png", test_send_chat},
 	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", pala_beacon},
@@ -68,7 +68,7 @@ pala_luckyblock_negative = {
 	{"Piggy Rodéo", 30, "default_stone.png", test_send_chat},
 	{"Pssssssss", 30, "pala_luckyblock_psss.png", psss},
 	{"Ruée vers les minerais", 30, "default_stone.png", test_send_chat},
-	{"0 + 0 = La tête à Toto", 40, "default_stone.png", test_send_chat},
+	{"0 + 0 = La tête à Toto", 40, "default_stone.png", return_none},
 	{"Allumer le feu", 40, "default_stone.png", test_send_chat},
 	{"Instant break up", 40, "pala_tools_paladiumsword.png", instant_break},
 	{"Sur la Lune", 40, "default_stone.png", test_send_chat},
@@ -76,7 +76,7 @@ pala_luckyblock_negative = {
 	{"Batman nerveux", 50, "pala_luckyblock_batman_nerveux.png", batman_nerveux},
 	{"Ghast dans l’âme", 50, "default_stone.png", test_send_chat},
 	{"Gros relou", 50, "pala_luckyblock_gros_relou.png", return_none},
-	{"Ne pas casser", 50, "default_stone.png", test_send_chat},
+	{"Ne pas casser", 50, "pala_luckyblock_do_not_break.png", do_not_break},
 	{"Spam TP", 50, "mcl_throwing_ender_pearl.png", spam_tp},
 	{"Tout feu tout flamme", 50, "default_stone.png", test_send_chat},
 	{"Victime", 50, "default_stone.png", test_send_chat},
@@ -93,7 +93,7 @@ pala_luckyblock_negative = {
 	{"Titanesque", 100, "default_stone.png", test_send_chat},
 	{"Carte au trésor", 200, "default_stone.png", test_send_chat},
 	{"Carte au trésor “2”", 200, "default_stone.png", test_send_chat},
-	{"Hasta la vista", 200, "default_stone.png", test_send_chat},
+	{"Hasta la vista", 200, "default_stone.png", hasta_la_vista},
 	{"Reflexe", 200, "default_stone.png", test_send_chat},
 	{"La mort ou…", 500, "default_stone.png", test_send_chat},
 	{"Paladin", 500, "pala_tools_paladiumsword.png", test_send_chat},
@@ -155,7 +155,7 @@ local function get_random_all()
 		end 
 	end
 	--WARNING
-	return pala_luckyblock_all[hit]
+	return pala_luckyblock_all[38+46-10]
 end
 
 local function get_random_img(nb)

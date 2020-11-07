@@ -85,7 +85,7 @@ end
 
 function expala_osion(pos, player)
 	minetest.after(2, function()
-		for i = 1, 20, 1 do
+		for i = 1, 64*2, 1 do
 			local rnd = math.random(-5, 5)
 			local rnd2 = math.random(-5, 5)
 			local pos2 = {x=pos.x+rnd,y=pos.y+3,z=pos.z+rnd2}
@@ -97,13 +97,16 @@ end
 
 function consolation(pos, player)
 	minetest.after(1, function()
-		for i = 1, 15, 1 do
+		for i = 1, 27, 1 do
 			minetest.add_item(pos, {"pala_paladium:paladium_ingot"})
 		end
 	end
 	)
 end
 
+function get_legendary_stone(pos, player)
+	minetest.add_item(pos, "pala_legendary:legendary_random")
+end
 
 --Explode
 function explosif(pos, player)
@@ -165,6 +168,17 @@ function spam_tp(pos, player)
 	end)
 end
 
+function hasta_la_vista(pos, player)
+	local name = player:get_player_name()
+	minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Malheureusement nous allons nous quitter d'ici 5 secondes"))
+	minetest.after(1, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Content d'avoir passé du temp avec toi"))end)
+	minetest.after(2, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 3 secondes :("))end)
+	minetest.after(3, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 2 secondes :("))end)
+	minetest.after(4, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "T'es encore là ?"))end)
+	minetest.after(5, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Bye bye..."))end)
+	minetest.after(6, function() minetest.kick_player(name,"Crash")end)
+end
+
 --Test
 function return_none(pos)
 	return 0
@@ -199,4 +213,11 @@ function arachnotrap(pos, player)
 	for i = 1, 6, 1 do
 		minetest.add_entity(playerpos, "mobs_mc:cave_spider")
 	end
+end
+
+function do_not_break(pos, player)
+	local playerpos = player:get_pos()
+	local pos2 = {x=playerpos.x-5,y=playerpos.y-1,z=playerpos.z-5}
+	local path = minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_ne_pas_casser.mts"
+	minetest.place_schematic(pos2, path, 0, nil, true)
 end

@@ -79,15 +79,16 @@ minetest.register_node("pala_looting:online_detector_off", {
 	description = ("Online Detector"),
 	_doc_items_longdesc = ("Allows you to know if a player is connected."),
 	drawtype = "normal",
-	tiles = {"default_stone.png"},
+	tiles = {"pala_looting_online_detector_off.png"},
 	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
 		local form = table.concat({
 			"formspec_version[3]",
-			"size[5,3]",
-			"field[1,1;3,0.75;name;Player Name;default]"})
+			"size[8,3]",
+			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
+			"label[1.5,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
@@ -95,11 +96,12 @@ minetest.register_node("pala_looting:online_detector_off", {
 			local meta = minetest.get_meta(pos)
 			meta:set_string("name", fields.name)
 			for _,player in ipairs(minetest.get_connected_players()) do
-			local name = player:get_player_name()
-			if name == meta:get_string("name") then
-				minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
+				local name = player:get_player_name()
+				if name == meta:get_string("name") then
+					minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
+					break
+				end
 			end
-		end
 		end
 	end,
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
@@ -107,8 +109,9 @@ minetest.register_node("pala_looting:online_detector_off", {
 		local default = meta:get_string("name")
 		local form = table.concat({
 			"formspec_version[3]",
-			"size[5,3]",
-			"field[1,1;3,0.75;name;Player Name;"..default.."]"})
+			"size[8,3]",
+			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
+			"label[1.5,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
 })
@@ -117,21 +120,29 @@ minetest.register_node("pala_looting:online_detector_on", {
 	description = ("Online Detector"),
 	_doc_items_longdesc = ("Allows you to know if a player is connected."),
 	drawtype = "normal",
-	tiles = {"pala_paladium_paladium_block.png"},
+	tiles = {"pala_looting_online_detector_on.png"},
 	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1, not_in_creative_inventory=1},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
 		local form = table.concat({
 			"formspec_version[3]",
-			"size[5,3]",
-			"field[1,1;3,0.75;name;Player Name;default]"})
+			"size[8,3]",
+			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
+			"label[1.5,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
 		if field == name then
 			local meta = minetest.get_meta(pos)
 			meta:set_string("name", fields.name)
+			for _,player in ipairs(minetest.get_connected_players()) do
+				local name = player:get_player_name()
+				if name ~= meta:get_string("name") then
+					minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
+					break
+				end
+			end
 		end
 	end,
 	on_rightclick = function(pos, node, player, itemstack, pointed_thing)
@@ -139,8 +150,9 @@ minetest.register_node("pala_looting:online_detector_on", {
 		local default = meta:get_string("name")
 		local form = table.concat({
 			"formspec_version[3]",
-			"size[5,3]",
-			"field[1,1;3,0.75;name;Player Name;"..default.."]"})
+			"size[8,3]",
+			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
+			"label[1.5,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
 })
