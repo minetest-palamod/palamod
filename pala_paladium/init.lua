@@ -236,7 +236,7 @@ minetest.register_node("pala_paladium:stone_with_findium", {
 })
 
 minetest.register_craftitem("pala_paladium:findium_gem", {
-	description = ("Findium Ingot"),
+	description = ("Findium Gem"),
 	_doc_items_longdesc = ("Findium Gem. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_findium_gem.png",
 	stack_max = 64,

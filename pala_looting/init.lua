@@ -200,7 +200,7 @@ minetest.register_abm({
 --Chest Explorer
 minetest.register_tool("pala_looting:chest_explorer", {
     description = "Chest Explorer",
-    inventory_image = "default_stick.png",
+    inventory_image = "pala_looting_chest_explorer.png",
     tool_capabilities = {
         max_drop_level=3,
         groupcaps= {
@@ -222,3 +222,14 @@ minetest.register_tool("pala_looting:chest_explorer", {
 		end
 	end,
 })
+
+if minetest.get_modpath("pala_paladium") and minetest.get_modpath("pala_craftstick") then
+	minetest.register_craft({
+		output = "pala_looting:chest_explorer",
+		recipe = {
+			{'pala_paladium:findium_gem', 'pala_paladium:paladium_ingot', 'pala_paladium:findium_gem'},
+			{'pala_paladium:findium_gem', 'pala_craftstick:compressed_paladium', 'pala_paladium:findium_gem'},
+			{'pala_paladium:findium_gem', 'pala_paladium:paladium_ingot', 'pala_paladium:findium_gem'},
+		}
+	})
+end
