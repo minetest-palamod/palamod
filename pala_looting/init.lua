@@ -122,6 +122,10 @@ minetest.register_node("pala_looting:online_detector_on", {
 	drawtype = "normal",
 	tiles = {"pala_looting_online_detector_on.png"},
 	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1, not_in_creative_inventory=1},
+	mesecons = {receptor = {
+		state = mesecon.state.on,
+		rules = mesecon.rules.alldirs,
+	}},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
