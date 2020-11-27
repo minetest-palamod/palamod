@@ -17,7 +17,7 @@ end
 --38
 pala_luckyblock_positive = {
 	{"Body Guard", 10, "pala_luckyblock_body_guard.png", body_guard},
-	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", test_send_chat},
+	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", placefakepala},
 	{"Pala-Pillone", 10, "pala_luckyblock_pala_pillone.png", pala_pillone},
 	{"Fish and Chips", 20, "default_stone.png", test_send_chat},
 	{"Well", 30, "default_stone.png", well},
@@ -155,7 +155,7 @@ local function get_random_all()
 		end 
 	end
 	--WARNING
-	return pala_luckyblock_all[38+46-10]
+	return pala_luckyblock_all[2]
 end
 
 local function get_random_img(nb)

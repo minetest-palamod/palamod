@@ -12,7 +12,7 @@ minetest.register_node("pala_luckyblock:fakepaladiumblock", {
 	_mcl_blast_resistance = 6,
 	_mcl_hardness = 5,
 })
-
+--Because no check of protection (reduce lag)
 minetest.register_node("pala_luckyblock:luckyblockfakepaladium", {
 	description = ("Fake Paladium LuckyBlock"),
 	_doc_items_longdesc = ("Fake Paladium LuckyBlock : use fur visuals"),

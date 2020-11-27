@@ -42,3 +42,24 @@ if minetest.get_modpath("pala_paladium") then
 		mcl_stairs.register_stair("findium", "pala_paladium:findiumblock", {pickaxey=4, building_block=1}, {"pala_paladium_findiumblock.png"}, ("Findium Stairs"), mcl_sounds.node_sound_stone_defaults(), 5, 5, "woodlike")
 	end
 end
+
+
+minetest.register_node("pala_decoblock:colored_lamp", {
+	description = "Colored Lamp",
+	tiles = {
+		{
+			image = "default_furnace_front_active.png",
+			backface_culling = false,
+			animation = {
+				type = "vertical_frames",
+				aspect_w = 16,
+				aspect_h = 16,
+				length = 1.5
+			},
+		}
+	},
+	light_source = 14,
+	groups = {cracky=2},
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	on_timer = furnace_node_timer,
+})

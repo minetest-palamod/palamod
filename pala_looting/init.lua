@@ -88,7 +88,7 @@ minetest.register_node("pala_looting:online_detector_off", {
 			"formspec_version[3]",
 			"size[8,3]",
 			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
-			"label[1.5,2.25;Detecting: "..default.."]"})
+			"label[0.25,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
@@ -111,7 +111,7 @@ minetest.register_node("pala_looting:online_detector_off", {
 			"formspec_version[3]",
 			"size[8,3]",
 			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
-			"label[1.5,2.25;Detecting: "..default.."]"})
+			"label[0.25,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
 })
@@ -134,7 +134,7 @@ minetest.register_node("pala_looting:online_detector_on", {
 			"formspec_version[3]",
 			"size[8,3]",
 			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
-			"label[1.5,2.25;Detecting: "..default.."]"})
+			"label[0.25,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
@@ -157,7 +157,7 @@ minetest.register_node("pala_looting:online_detector_on", {
 			"formspec_version[3]",
 			"size[8,3]",
 			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
-			"label[1.5,2.25;Detecting: "..default.."]"})
+			"label[0.25,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
 })
@@ -210,6 +210,7 @@ minetest.register_tool("pala_looting:chest_explorer", {
 	on_use = function(itemstack, player, pointed_thing)
 		if pointed_thing.type == "node" then
 			--local meta = minetest.get_meta(pointed_thing.under)
+			--item_image[<X>,<Y>;<W>,<H>;<item name>]
 			local inv = minetest.get_inventory({ type="node", pos=pointed_thing.under })
 		    local size = inv:get_size("main")
 			local list = inv:get_list("main")
