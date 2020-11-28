@@ -8,7 +8,7 @@ minetest.register_node("pala_obsidian:two_life_obsidian", {
 	is_ground_content = true,
 	stack_max = 64,
 	sounds = mcl_sounds.node_sound_stone_defaults(),
-	--groups = {cracky = 1, level = 2},
+	groups = {cracky = 1, level = 2},
 	_mcl_blast_resistance = 1200,
 	_mcl_hardness = 50,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
@@ -16,22 +16,6 @@ minetest.register_node("pala_obsidian:two_life_obsidian", {
 	end,
 })
 
-if minetest.get_modpath("pala_fakewater") then
-	minetest.register_node("pala_obsidian:fake_obsidian", {
-		description = ("Fake Obsidian"),
-		_doc_items_longdesc = ("Fake Obsidian is an extremely hard mineral with an enourmous blast-resistance. Place an fake water source on its break"),
-		tiles = {"default_obsidian.png^[colorize:#5e99f7:100"},
-		is_ground_content = true,
-		stack_max = 64,
-		--groups = {pickaxey=5, cracky = 1, level = 2},
-		sounds = mcl_sounds.node_sound_stone_defaults(),
-		_mcl_blast_resistance = 1200,
-		_mcl_hardness = 50,
-		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			minetest.set_node(pos, {name="pala_fakewater:fakewater_source"})
-		end,
-	})
-end
 
 if minetest.get_modpath("mcl_explosions") then
 	minetest.register_node("pala_obsidian:explode_obsidian", {
@@ -91,8 +75,153 @@ end
 		-- "Protected Door",
 		-- "default_stone.png",
 		-- {pickaxey=5, building_block=1, material_stone=1},
-		
+		-- sounds = mcl_sounds.node_sound_stone_defaults(),
+		-- _mcl_blast_resistance = 1200,
+		-- _mcl_hardness = 50,
+	-- })
 -- end
---[[sounds = mcl_sounds.node_sound_stone_defaults(),
+
+--V7--------------------------------------------------
+--Lava Obsidian
+minetest.register_node("pala_obsidian:lava_obsidian", {
+	description = ("Lava Obsidian"),
+	_doc_items_longdesc = ("Obsidian is an extremely hard mineral with an enourmous blast-resistance. Place an lava sourcesn on its break"),
+	tiles = {"pala_obsidian_lava_obsidian.png"},
+	is_ground_content = true,
+	stack_max = 64,
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	--groups = {cracky = 1, level = 2, miner_level = 7},
 	_mcl_blast_resistance = 1200,
-	_mcl_hardness = 50,]]--
+	_mcl_hardness = 50,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		minetest.set_node(pos, {name="mcl_core:lava_source"})
+	end,
+})
+
+if minetest.get_modpath("mcl_core") and minetest.get_modpath("mcl_buckets") then
+	minetest.register_craft({
+		output = 'pala_obsidian:lava_obsidian',
+		recipe = {
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+			{"pala_fakewater:bucket_fakewater", "pala_fakewater:bucket_fakewater", "pala_fakewater:bucket_fakewater"},
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+		}
+	})
+end
+
+--Big Obsidian
+minetest.register_node("pala_obsidian:big_obsidian", {
+	description = ("Big Obsidian"),
+	_doc_items_longdesc = ("Obsidian is an extremely hard mineral with an enourmous blast-resistance. Place an lava sourcesn on its break"),
+	tiles = {"default_obsidian.png^pala_obsidian_big_obsidian.png"},
+	is_ground_content = true,
+	stack_max = 64,
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	--groups = {cracky = 1, level = 2, miner_level = 7},
+	_mcl_blast_resistance = 1200,
+	_mcl_hardness = 50,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		minetest.set_node(pos, {name="mcl_core:obsidian"})
+	end,
+})
+
+--TODO:fix paladium core missing
+if minetest.get_modpath("mcl_core") and minetest.get_modpath("pala_craftstick") then
+	minetest.register_craft({
+		output = 'pala_obsidian:big_obsidian',
+		recipe = {
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+			{"mcl_core:obsidian", "", "mcl_core:obsidian"},
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+		}
+	})
+end
+
+
+--Fake Obsidian
+if minetest.get_modpath("pala_fakewater") then
+	minetest.register_node("pala_obsidian:fake_obsidian", {
+		description = ("Fake Obsidian"),
+		_doc_items_longdesc = ("Fake Obsidian is an extremely hard mineral with an enourmous blast-resistance. Place an fake water source on its break"),
+		tiles = {"pala_obsidian_fake_obsidian.png"},
+		is_ground_content = true,
+		stack_max = 64,
+		--groups = {pickaxey=5, cracky = 1, level = 2},
+		sounds = mcl_sounds.node_sound_stone_defaults(),
+		_mcl_blast_resistance = 1200,
+		_mcl_hardness = 50,
+		after_dig_node = function(pos, oldnode, oldmetadata, digger)
+			minetest.set_node(pos, {name="pala_fakewater:fakewater_source"})
+		end,
+	})
+end
+
+if minetest.get_modpath("mcl_core") and minetest.get_modpath("pala_craftstick") then
+	minetest.register_craft({
+		output = 'pala_obsidian:fake_obsidian',
+		recipe = {
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+			{"mcl_core:obsidian", "", "mcl_core:obsidian"},
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+		}
+	})
+end
+
+--Poison Obsidian
+minetest.register_node("pala_obsidian:poison_obsidian", {
+	description = ("Poison Obsidian"),
+	_doc_items_longdesc = ("Obsidian is an extremely hard mineral with an enourmous blast-resistance. Give a poison effect to players"),
+	tiles = {"default_obsidian.png^[colorize:#1c6222:100"},
+	is_ground_content = true,
+	stack_max = 64,
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	--groups = {cracky = 1, level = 2, miner_level = 12},
+	_mcl_blast_resistance = 1200,
+	_mcl_hardness = 50,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		minetest.set_node(pos, {name="mcl_core:obsidian"})
+	end,
+})
+
+if minetest.get_modpath("mcl_core") and minetest.get_modpath("mcl_potions") then
+	minetest.register_craft({
+		output = 'pala_obsidian:poison_obsidian',
+		recipe = {
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+			{"mcl_potions:poison_2_splash", "mcl_core:obsidian", "mcl_potions:poison_2_splash"},
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+		}
+	})
+end
+
+--Wither Obsidian
+minetest.register_node("pala_obsidian:wither_obsidian", {
+	description = ("Wither Obsidian"),
+	_doc_items_longdesc = ("Obsidian is an extremely hard mineral with an enourmous blast-resistance."),
+	tiles = {"default_obsidian.png^pala_obsidian_wither_obsidian.png"},
+	is_ground_content = true,
+	stack_max = 64,
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	--groups = {cracky = 1, level = 2, miner_level = 12},
+	_mcl_blast_resistance = 1200,
+	_mcl_hardness = 50,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		--TODO: Check if digger is Wither
+		local playerpos = digger:get_pos()
+		local pos2 = {x=playerpos.x-3,y=playerpos.y-1,z=playerpos.z-3}
+		local path = minetest.get_modpath("pala_obsidian") .. "/schematics/pala_obsidian_cage.mts"
+		minetest.place_schematic(pos2, path, 0, nil, true)
+	end,
+})
+
+--TODO:fix diamond chest missing
+if minetest.get_modpath("mcl_core") and minetest.get_modpath("mcl_potions") then
+	minetest.register_craft({
+		output = 'pala_obsidian:wither_obsidian',
+		recipe = {
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+			{"", "mcl_core:obsidian", ""},
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+		}
+	})
+end
