@@ -394,6 +394,7 @@ pala_tools.void_form = table.concat({
 	"list[current_player;main;0.5,2;9,4;0]",
 	"label[0.5,0.5;Voidstone]",
 	"list[detached:voidstone_trash;main;5.5,0.5;1,1;0]",
+	"listring[]",
 })
 minetest.register_craftitem("pala_tools:voidstone", {
 	description = "Voidstone",
