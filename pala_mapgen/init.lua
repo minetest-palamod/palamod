@@ -1,3 +1,4 @@
+local stonelike = "mcl_core:stone"
 --Amethyst
 -- Common spawn
 minetest.register_ore({
