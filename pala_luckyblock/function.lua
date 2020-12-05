@@ -49,18 +49,17 @@ function instant_break(pos, player)
 end
 
 function placefakepala(pos, player)
-	while ok ~= true do
-		local x = math.random(pos.x-10,pos.x+10)
-		local z = math.random(pos.z-10,pos.z+10)
-		local y = minetest.get_spawn_level(x, z)
-		local pos2 = {x = x, y = y,z = z}
-		--local pos3 = {x = x, y = pos.y + 5,z = z}
-		if minetest.is_protected(pos2, name) then
-			minetest.set_node(pos2, {name="pala_luckyblock:fakepaladiumblock"})
-			local meta = minetest.get_meta(pos2)
-			meta:set_string("number", 1)
-			ok = true
-		end
+	local x = math.random(pos.x-10,pos.x+10)
+	local z = math.random(pos.z-10,pos.z+10)
+	local y = minetest.get_spawn_level(x, z)
+	local pos2 = {x = x, y = y,z = z}
+	--local pos3 = {x = x, y = pos.y + 5,z = z}
+	if not minetest.is_protected(pos2, name) then
+		minetest.set_node(pos2, {name="pala_luckyblock:fakepaladiumblock"})
+		local meta = minetest.get_meta(pos2)
+		meta:set_string("number", 1)
+		ok = true
+	end
 		-- if minetest.get_node(pos2).name == "air" then
 			-- if minetest.get_node(pos3).name == "air" then
 				-- minetest.set_node(pos2, {name="pala_luckyblock:fakepaladiumblock"})
@@ -71,7 +70,7 @@ function placefakepala(pos, player)
 				-- ok = true
 			-- end
 		-- end
-	end
+	--end
 	--minetest.chat_send_all(x..pos.y..z)
 	--minetest.chat_send_all(minetest.get_node({x, pos.y, z}).name)
 end

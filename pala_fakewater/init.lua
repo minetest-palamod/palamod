@@ -255,3 +255,9 @@ mcl_buckets.register_liquid(
 	end,
 	{ angelicwater_bucket = 1 }
 )
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "pala_fakewater:bucket_angelicwater",
+	recipe = {"mcl_potions:regeneration", "mcl_buckets:bucket_water"},
+})

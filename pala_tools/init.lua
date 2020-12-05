@@ -44,7 +44,7 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 	wield_scale = wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=2, },
 	tool_capabilities = {
-		full_punch_interval = 0.250,
+		full_punch_interval = 0.15,
 		max_drop_level=1,
 		groupcaps={
 			swordy_dig = {times=5, uses=60, maxlevel=0},
@@ -65,7 +65,7 @@ minetest.register_tool("pala_tools:broadsword_paladium", {
 	wield_scale = wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=2, },
 	tool_capabilities = {
-		full_punch_interval = 1,
+		full_punch_interval = 2,
 		max_drop_level=1,
 		groupcaps={
 			swordy_dig = {times=5, uses=60, maxlevel=0},
