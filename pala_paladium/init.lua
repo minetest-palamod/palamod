@@ -54,6 +54,10 @@ minetest.register_craft({
 	cooktime = 5
 })
 
+minetest.register_alias("pala_paladium:stone_with_amethyst", "468")
+minetest.register_alias("pala_paladium:amethyst_ingot", "4468")
+minetest.register_alias("pala_paladium:amethystblock", "249")
+
 --Titanium
 minetest.register_node("pala_paladium:stone_with_titanium", {
 	description = ("Titanium Ore"),
@@ -109,6 +113,10 @@ minetest.register_craft({
 	recipe = "pala_paladium:stone_with_titanium",
 	cooktime = 5
 })
+
+minetest.register_alias("pala_paladium:stone_with_titanium", "469")
+minetest.register_alias("pala_paladium:titanium_ingot", "4469")
+minetest.register_alias("pala_paladium:titaniumblock", "248")
 
 --Paladium
 minetest.register_node("pala_paladium:stone_with_paladium", {
@@ -172,6 +180,10 @@ minetest.register_craft({
 	cooktime = 5
 })
 
+minetest.register_alias("pala_paladium:stone_with_paladium", "470")
+minetest.register_alias("pala_paladium:paladium_ingot", "4470")
+minetest.register_alias("pala_paladium:paladiumblock", "247")
+
 --Green Paladium
 minetest.register_node("pala_paladium:stone_with_gpaladium", {
 	description = ("Green Paladium Ore"),
@@ -228,6 +240,10 @@ minetest.register_craft({
 	cooktime = 5
 })
 
+minetest.register_alias("pala_paladium:stone_with_gpaladium", "471")
+minetest.register_alias("pala_paladium:gpaladium_ingot", "4471")
+minetest.register_alias("pala_paladium:gpaladiumblock", "250")
+
 --Findium
 minetest.register_node("pala_paladium:stone_with_findium", {
 	description = ("Findium Ore"),
@@ -282,6 +298,10 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_alias("pala_paladium:stone_with_findium", "472")
+minetest.register_alias("pala_paladium:findium_ingot", "4474")
+minetest.register_alias("pala_paladium:findiumblock", "246")
+
 --Endium
 minetest.register_craftitem("pala_paladium:endium_ingot", {
 	description = ("Endium Ingot"),
@@ -305,3 +325,6 @@ minetest.register_craft({
 		{'pala_paladium:endium_nugget 9'},
 	}
 })
+
+minetest.register_alias("pala_paladium:endium_nugget", "4475")
+minetest.register_alias("pala_paladium:endium_ingot", "4472")
