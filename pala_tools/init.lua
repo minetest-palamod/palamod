@@ -11,7 +11,7 @@ minetest.register_tool("pala_tools:sword_paladium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, },
+	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
@@ -42,7 +42,7 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumfastsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, },
+	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.15,
 		max_drop_level=1,
@@ -63,7 +63,7 @@ minetest.register_tool("pala_tools:broadsword_paladium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumbroadsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, },
+	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 2,
 		max_drop_level=1,
@@ -84,7 +84,7 @@ minetest.register_tool("pala_tools:pick_paladium", {
 	_doc_items_longdesc = pickaxe_longdesc,
 	inventory_image = "pala_tools_paladiumpick.png",
 	wield_scale = wield_scale,
-	groups = { tool=1, pickaxe=1, dig_speed_class=5},
+	groups = { tool=1, pickaxe=1, dig_speed_class=5, enchantability=22},
 	tool_capabilities = {
 		-- 1/1.2
 		full_punch_interval = 0.83333333,
@@ -116,7 +116,7 @@ minetest.register_tool("pala_tools:sword_gpaladium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_gpaladiumsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, },
+	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
@@ -138,7 +138,7 @@ minetest.register_tool("pala_tools:sword_endium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_endiumsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, },
+	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
@@ -162,7 +162,7 @@ minetest.register_tool("pala_tools:infernal_knocker", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_infernalknocker.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, },
+	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
