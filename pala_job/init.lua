@@ -82,14 +82,14 @@ function pala_job.show_win_level(player, job, level, loot)
 	local loot2 = loot[level][2] or "mcl_core:stone"
 	local loot3 = loot[level][3] or "mcl_core:stone"
 	local form = table.concat({
-		"size[6.81,4.02]",
-		"label[3,-0.15;"..string.upper(job).."]",
-		"label[2.6,1.15;You pass level "..level.."]",
-		"label[2.6,2.45;You receive :]",
-		"item_image[0.5,3.14;1.0,1.0;"..loot1.."]",
-		"item_image[2.9,3.14;1.0,1.0;"..loot2.."]",
-		"item_image[5.3,3.14;1.0,1.0;"..loot3.."]",
-		"image[-0.3,1.63;9.0,1.0;pala_job_level_up_border.png]"
+		"size[9,5.5]",
+		"label[3.5,0.5;"..string.upper(job).."]",
+		"label[3,2;You pass level "..level.."]",
+		"label[3,3.5;You receive :]",
+		"item_image[1,4;1,1;1.0,1.0;"..loot1.."]",
+		"item_image[4,4;1,1;1.0,1.0;"..loot2.."]",
+		"item_image[7,4;1,1;1.0,1.0;"..loot3.."]",
+		"image[0,2.25;9,1;9.0,1.0;pala_job_level_up_border.png]"
 	})
 	minetest.show_formspec(player:get_player_name(), "pala_job:level_up", form)
 end

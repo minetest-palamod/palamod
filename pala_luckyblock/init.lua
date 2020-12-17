@@ -155,7 +155,7 @@ local function get_random_all()
 		end 
 	end
 	--WARNING
-	return pala_luckyblock_all[2]
+	return pala_luckyblock_all[hit]
 end
 
 local function get_random_img(nb)
