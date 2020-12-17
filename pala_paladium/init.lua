@@ -121,6 +121,12 @@ minetest.register_node("pala_paladium:stone_with_paladium", {
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 3,
 	_mcl_hardness = 3,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		--TEMP:need mineclone change
+		if digger:is_player() then
+			pala_job.earn_xp(digger, "miner", {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 54, 48, 42, 36, 30, 24, 18, 12, 6})
+		end
+	end,
 })
 
 minetest.register_craftitem("pala_paladium:paladium_ingot", {
@@ -233,6 +239,11 @@ minetest.register_node("pala_paladium:stone_with_findium", {
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 3,
 	_mcl_hardness = 3,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		if digger:is_player() then
+			pala_job.earn_xp(digger, "miner", {65, 58.5, 52, 45.5, 39, 0, 0, 0, 0, 0, 65, 58.5, 52, 45.5, 39, 32.5, 26, 19.5, 13, 6.5})
+		end
+	end,
 })
 
 minetest.register_craftitem("pala_paladium:findium_gem", {
