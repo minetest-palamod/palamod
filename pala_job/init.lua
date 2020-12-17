@@ -83,9 +83,9 @@ function pala_job.show_win_level(player, job, level, loot)
 	local loot3 = loot[level][3] or "mcl_core:stone"
 	local form = table.concat({
 		"size[6.81,4.02]",
-		"label[2.5,-0.15;"..string.upper(job).."]",
-		"label[2.1,1.15;You pass level "..level.."]",
-		"label[2.1,2.45;You receive :]",
+		"label[3,-0.15;"..string.upper(job).."]",
+		"label[2.6,1.15;You pass level "..level.."]",
+		"label[2.6,2.45;You receive :]",
 		"item_image[0.5,3.14;1.0,1.0;"..loot1.."]",
 		"item_image[2.9,3.14;1.0,1.0;"..loot2.."]",
 		"item_image[5.3,3.14;1.0,1.0;"..loot3.."]",
