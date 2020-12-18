@@ -45,21 +45,25 @@ end
 
 function instant_break(pos, player)
 	local inv = player:get_inventory()
+	local stackname = inv:get_stack("main", 1):get_name()
 	inv:remove_item("main", 1)
+	minetest.chat_send_player(player:get_player_name(), "It seems to me you had a "..minetest.colorize("#44c8fc", stackname))
 end
 
 function placefakepala(pos, player)
 	local x = math.random(pos.x-10,pos.x+10)
 	local z = math.random(pos.z-10,pos.z+10)
 	local y = minetest.get_spawn_level(x, z)
-	local pos2 = {x = x, y = y,z = z}
+	if minetest.get_spawn_level(x, z) then
+	--minetest.chat_send_all(tostring(y))
+		local pos2 = {x = x, y = y,z = z}
+	--minetest.chat_send_all(tostring(pos2))
 	--local pos3 = {x = x, y = pos.y + 5,z = z}
-	if not minetest.is_protected(pos2, name) then
-		minetest.set_node(pos2, {name="pala_luckyblock:fakepaladiumblock"})
-		local meta = minetest.get_meta(pos2)
-		meta:set_string("number", 1)
-		ok = true
-	end
+		if not minetest.is_protected(pos2, name) then
+			minetest.set_node(pos2, {name="pala_luckyblock:fakepaladiumblock"})
+			local meta = minetest.get_meta(pos2)
+			meta:set_string("number", 1)
+		end
 		-- if minetest.get_node(pos2).name == "air" then
 			-- if minetest.get_node(pos3).name == "air" then
 				-- minetest.set_node(pos2, {name="pala_luckyblock:fakepaladiumblock"})
@@ -70,7 +74,7 @@ function placefakepala(pos, player)
 				-- ok = true
 			-- end
 		-- end
-	--end
+	end
 	--minetest.chat_send_all(x..pos.y..z)
 	--minetest.chat_send_all(minetest.get_node({x, pos.y, z}).name)
 end
@@ -133,7 +137,10 @@ end
 --Spawn
 function body_guard(pos, player)
 	for i = 1, 3, 1 do
-		minetest.add_entity(pos, "mobs_mc:iron_golem")
+		local idx = minetest.add_entity(pos, "mobs_mc:iron_golem")
+		if idx then
+			
+		end
 	end
 end
 
