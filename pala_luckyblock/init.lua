@@ -76,7 +76,7 @@ pala_luckyblock_positive = {
 	{"Endium Grade", 10000, "default_stone.png", test_send_chat},
 	{"Wuzzyyyy/AFCMMMMMMMMMMMM", 10000, "default_stone.png", test_send_chat},
 	--{"Méga-Thétanos", 42500, "default_stone.png", test_send_chat},
-	{"Big Inevitable", 12500, "default_stone.png", test_send_chat},
+	{"Big Inevitable", 12500, "pala_luckyblock_mega_ineluctable.png", test_send_chat},
 }
 
 --46

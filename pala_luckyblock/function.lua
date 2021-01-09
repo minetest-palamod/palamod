@@ -123,6 +123,15 @@ function explosif(pos, player)
 	minetest.add_item(pos, "mcl_core:stone")
 end
 
+function big_inevitable(pos, player)
+	if player:get_inventory():add_item("main", {name="pala_legendary:endium_gauntlet", count=1}) then
+		return
+ 	else 
+		minetest.add_item(pos, "pala_legendary:endium_gauntlet")
+		return
+	end
+end
+
 
 function megaboom(pos, player)
 	mcl_explosions.explode(pos, 10, { drop_chance = 1.0 }, player)
