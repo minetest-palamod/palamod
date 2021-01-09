@@ -1,8 +1,8 @@
 minetest.register_node("pala_tools:fertilised_dirt", {
-	tiles = {"mcl_farming_farmland_dry.png", "default_dirt.png"},
-	description = ("Farmland"),
-	_tt_help = ("Surface for crops").."\n"..("Can become wet"),
-	_doc_items_longdesc = ("Farmland is used for farming, a necessary surface to plant crops. It is created when a hoe is used on dirt or a similar block. Plants are able to grow on farmland, but slowly. Farmland will become hydrated farmland (on which plants grow faster) when it rains or a water source is nearby. This block will turn back to dirt when a solid block appears above it or a piston arm extends above it."),
+	tiles = {"pala_tools_fertilised_dirt.png", "default_dirt.png^[colorize:#332521:200"},
+	description = ("Fertilised Dirt"),
+	_tt_help = ("Surface for crops"),
+	_doc_items_longdesc = ("Fertilised Dirt is used for farming, a necessary surface to plant crops. It is created when a hoe is used on dirt or a similar block. Plants are able to grow on farmland, but slowly. This block will turn back to dirt when a solid block appears above it or a piston arm extends above it."),
 	drop = "mcl_core:dirt",
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -17,7 +17,7 @@ minetest.register_node("pala_tools:fertilised_dirt", {
 		local meta = minetest.get_meta(pos)
 		meta:set_int("wet", 0)
 	end,
-	groups = {handy=1,shovely=1, dirtifies_below_solid=1, dirtifier=1, soil=2, soil_sapling=1, deco_block=1 },
+	groups = {handy=1,shovely=1, dirtifies_below_solid=1, dirtifier=1, soil=4, soil_sapling=1, deco_block=1 },
 	sounds = mcl_sounds.node_sound_dirt_defaults(),
 	_mcl_blast_resistance = 0.5,
 	_mcl_hardness = 0.6,

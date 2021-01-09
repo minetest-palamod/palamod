@@ -119,3 +119,4 @@ pala_legendary.register_legendary("random", "Basic legendary stone, it is the on
 		-- return itemstack
 	-- end,
 -- })
+dofile(minetest.get_modpath("pala_legendary").."/endium_gauntlet.lua")
