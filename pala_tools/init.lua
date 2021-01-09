@@ -190,3 +190,4 @@ end
 
 dofile(pala_tools.path.."/hammer.lua")
 dofile(pala_tools.path.."/voidstone.lua")
+dofile(pala_tools.path.."/hoe_overide.lua")
