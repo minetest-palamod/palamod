@@ -36,6 +36,7 @@ function pala_legendary.register_legendary(name, longdesc, inventory_image, func
 				minetest.chat_send_player(player:get_player_name(), "last use is now set to : "..itemstack:get_meta():get_string("pala_last_use"))
 				func(itemstack, player, pointed_thing)
 				pala_legendary.spawn_particle(player:get_pos())
+				return itemstack
 			end
 		end,
 	})
@@ -48,8 +49,8 @@ function pala_legendary.spawn_particle(pos)
         time = 1,
         minpos = {x=pos.x-3, y=pos.y-1, z=pos.z-3},
         maxpos = {x=pos.x+3, y=pos.y+1, z=pos.z+3},
-        minvel = {x=-2, y=-2, z=-2},
-        maxvel = {x=2, y=2, z=2},
+        minvel = {x=-1, y=-1, z=-1},
+        maxvel = {x=1, y=1, z=1},
         --minacc = {x=0, y=0, z=0},
         --maxacc = {x=0, y=0, z=0},
         minexptime = 1,
@@ -95,8 +96,8 @@ local function random_stone(itemstack, player, pointed_thing)
 end
 
 --Fortune
-pala_legendary.register_legendary("fortune", "Gives a random number of a random ore (this can be coal such as palladium).", "mcl_core_stone.png", fortune)
-pala_legendary.register_legendary("random", "Basic legendary stone, it is the one that then gives one of the six stones.", "mcl_core_stone.png", random_stone)
+pala_legendary.register_legendary("fortune", "Gives a random number of a random ore (this can be coal such as palladium).", "default_stone.png", fortune)
+pala_legendary.register_legendary("random", "Basic legendary stone, it is the one that then gives one of the six stones.", "default_stone.png", random_stone)
 -- minetest.register_craftitem("pala_legendary:legendary_fortune", {
 	-- description = ("Legendary Stone Fortune"),
 	-- _doc_items_longdesc = ("Marinated Ham is obtained by hunting and is a food item which can be eaten safely. Cooking it improves its nutritional value."),
