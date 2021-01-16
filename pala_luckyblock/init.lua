@@ -251,7 +251,7 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 
         print(fields.x)
     end,
-	_mcl_blast_resistance = 6,
+	_mcl_blast_resistance = 1200,
 	_mcl_hardness = 5,
 })
 
@@ -314,6 +314,6 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
 
         print(fields.x)
     end,
-	_mcl_blast_resistance = 6,
+	_mcl_blast_resistance = 1200,
 	_mcl_hardness = 5,
 })
