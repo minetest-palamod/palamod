@@ -91,7 +91,7 @@ pala_luckyblock_negative = {
 	{"Piggy Rodéo", 30, "default_stone.png", test_send_chat},
 	{"Pssssssss", 30, "pala_luckyblock_psss.png", psss},
 	{"Ruée vers les minerais", 30, "default_stone.png", test_send_chat},
-	{"0 + 0 = La tête à Toto", 40, "default_stone.png", return_none},
+	{"0 + 0 = La tête à Toto", 40, "default_stone.png", zero_zero},
 	{"Allumer le feu", 40, "default_stone.png", test_send_chat},
 	{"Instant break up", 40, "pala_luckyblock_instant_break_up.png", instant_break},
 	{"Sur la Lune", 40, "default_stone.png", test_send_chat},

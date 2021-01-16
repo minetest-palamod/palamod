@@ -104,6 +104,10 @@ function expala_osion(pos, player)
 	)
 end
 
+function zero_zero(pos, player)
+	mcl_experience.set_player_xp_level(player, 0)
+end
+
 function consolation(pos, player)
 	minetest.after(1, function()
 		for i = 1, 27, 1 do
