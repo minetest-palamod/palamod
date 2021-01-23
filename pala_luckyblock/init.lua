@@ -16,7 +16,15 @@ dofile(pala_luckyblock.modpath.."/node.lua")
 pala_luckyblock.event_positive = {
 	{"Body Guard", 10, "pala_luckyblock_body_guard.png", body_guard},
 	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", placefakepala},
-	{"Pala-Pillone", 10, "pala_luckyblock_pala_pillone.png", pala_pillone},
+	{"Pala-Pillone", 10, "pala_luckyblock_pala_pillone.png", function pala_pillone(pos, player)
+		local name = player:get_player_name()
+		for i = 0, 8, 1 do
+			local bpos = {x = pos.x, y = pos.y + i, z = pos.z}
+			if not minetest.is_protected(bpos, name) then
+				local test = minetest.set_node(bpos, {name="pala_paladium:paladiumblock"})
+			end
+		end
+	end},
 	{"Fish and Chips", 20, "default_stone.png", test_send_chat},
 	{"Bow in armor", 20, "default_stone.png", test_send_chat},
 	{"Colorful Lamp", 20, "default_stone.png", test_send_chat},
@@ -228,14 +236,14 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 	on_receive_fields = function(pos, formname, fields, player)
         if fields.open then
 			local nimg = 82
-			local randoma = pala_luckyblock.get_random_all()
+			local target_all = pala_luckyblock.get_random_all()
 			local form2 = table.concat({
 			"formspec_version[3]",
 			"size[17,11]",
-			"image_button[1,4;1.9,1.9;"..randoma[3]..";img1;;false;true;]",
-			"image_button[5,4;1.9,1.9;"..randoma[3]..";img2;;false;true;]",
-			"image_button[9,4;1.9,1.9;"..randoma[3]..";;;false;true;]",
-			"button[1,9;10,1.5;event;"..randoma[1].."]",
+			"image_button[1,4;1.9,1.9;"..target_all[3]..";img1;;false;true;]",
+			"image_button[5,4;1.9,1.9;"..target_all[3]..";img2;;false;true;]",
+			"image_button[9,4;1.9,1.9;"..target_all[3]..";;;false;true;]",
+			"button[1,9;10,1.5;event;"..target_all[1].."]",
 			"label[6,1;Lucky Block]",
 			"image[13,3;3,3;pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png]",
 			"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(nimg).."]",
@@ -247,11 +255,10 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
             minetest.show_formspec(player:get_player_name(), "palaluckyblock_confirm", form2)
 			minetest.after(2, function()
 				minetest.set_node(pos, {name="air"})
-				local func
-				randoma[4](pos, player)
+				target_all[4](pos, player)
 			end)
         end
-        print(fields.x)
+        --print(fields.x)
     end,
 	_mcl_blast_resistance = 1200,
 	_mcl_hardness = 5,
@@ -290,14 +297,14 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
 	on_receive_fields = function(pos, formname, fields, player)
         if fields.open then
 			local nimg = 43
-			local randomp = get_random_positive()
+			local target_positive = get_random_positive()
 			local form2 = table.concat({
 			"formspec_version[3]",
 			"size[17,11]",
-			"image_button[1,4;1.9,1.9;"..randomp[3]..";img1;;false;true;]",
-			"image_button[5,4;1.9,1.9;"..randomp[3]..";img2;;false;true;]",
-			"image_button[9,4;1.9,1.9;"..randomp[3]..";;;false;true;]",
-			"button[1,9;10,1.5;event;"..randomp[1].."]",
+			"image_button[1,4;1.9,1.9;"..target_positive[3]..";img1;;false;true;]",
+			"image_button[5,4;1.9,1.9;"..target_positive[3]..";img2;;false;true;]",
+			"image_button[9,4;1.9,1.9;"..target_positive[3]..";;;false;true;]",
+			"button[1,9;10,1.5;event;"..target_positive[1].."]",
 			"label[6,1;Lucky Block]",
 			"image[13,3;3,3;pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png]",
 			"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(nimg).."]",
@@ -309,12 +316,11 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
             minetest.show_formspec(player:get_player_name(), "palaluckyblock_confirm", form2)
 			minetest.after(2, function()
 				minetest.set_node(pos, {name="air"})
-				local func = randomp[4]
-				func(pos, player)
+				target_positive[4](pos, player)
 			end)
         end
 
-        print(fields.x)
+        --print(fields.x)
     end,
 	_mcl_blast_resistance = 1200,
 	_mcl_hardness = 5,
