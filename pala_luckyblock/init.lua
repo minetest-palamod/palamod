@@ -12,11 +12,30 @@ pala_luckyblock.modpath = minetest.get_modpath("pala_luckyblock")
 dofile(pala_luckyblock.modpath.."/function.lua")
 dofile(pala_luckyblock.modpath.."/node.lua")
 
+function pala_luckyblock.wip_event(pos, player)
+	minetest.chat_send_player(player:get_player_name(), minetest.colorize("#fc4b4b", "This event is WIP"))
+end
+
+pala_luckyblock.minerallist = {
+	"pala_paladium:paladium_ingot",
+	"pala_paladium:titanium_ingot",
+	"pala_paladium:ametyst_ingot",
+	"mcl_core:gold_ingot",
+	"mcl_core:steel_ingot"
+}
 --60
 pala_luckyblock.event_positive = {
-	{"Body Guard", 10, "pala_luckyblock_body_guard.png", body_guard},
+	{"Body Guard", 10, "pala_luckyblock_body_guard.png", function(pos, player)
+		local name = player:get_player_name()
+		for i = 1, 3, 1 do
+			local idx = minetest.add_entity(pos, "mobs_mc:iron_golem")
+			if idx then
+				idx:set_nametag_attributes({text = name.."'s BodyGuard"})
+			end
+		end
+	end},
 	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", placefakepala},
-	{"Pala-Pillone", 10, "pala_luckyblock_pala_pillone.png", function pala_pillone(pos, player)
+	{"Pala-Pillone", 10, "pala_luckyblock_pala_pillone.png", function(pos, player)
 		local name = player:get_player_name()
 		for i = 0, 8, 1 do
 			local bpos = {x = pos.x, y = pos.y + i, z = pos.z}
@@ -25,118 +44,140 @@ pala_luckyblock.event_positive = {
 			end
 		end
 	end},
-	{"Fish and Chips", 20, "default_stone.png", test_send_chat},
-	{"Bow in armor", 20, "default_stone.png", test_send_chat},
-	{"Colorful Lamp", 20, "default_stone.png", test_send_chat},
-	{"Hunter Plant", 20, "default_stone.png", test_send_chat},
-	{"Picasso", 20, "default_stone.png", test_send_chat},
+	{"Fish and Chips", 20, "default_stone.png", pala_luckyblock.wip_event},
+	{"Bow in armor", 20, "default_stone.png", pala_luckyblock.wip_event},
+	{"Colorful Lamp", 20, "default_stone.png", pala_luckyblock.wip_event},
+	{"Hunter Plant", 20, "default_stone.png", pala_luckyblock.wip_event},
+	{"Picasso", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Well", 30, "default_stone.png", function(pos, player)
-		minetest.add_item(pos, "pala_legendary:legendary_random")
+		minetest.after(3, function()
+			minetest.set_node(pos, {name="mcl_core:obsidian"})
+			lightning.strike(pos)
+			for i = 1, 10, 1 do
+				local rnd = math.random(1, 5)
+				minetest.add_item(pos, pala_luckyblock.minerallist[rnd])
+			end
+		end)
 	end},
-	{"To infinity and beyond", 30, "default_stone.png", test_send_chat},
-	{"Ruée vers les minerais", 30, "default_stone.png", test_send_chat},
-	{"Jimmy Hendyx", 50, "default_stone.png", test_send_chat},
+	{"To infinity and beyond", 30, "default_stone.png", pala_luckyblock.wip_event},
+	{"Ruée vers les minerais", 30, "default_stone.png", pala_luckyblock.wip_event},
+	{"Jimmy Hendyx", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Mineral Shower", 50, "pala_luckyblock_mineral_shower.png", mineral_shower},
-	{"Nose", 50, "default_stone.png", test_send_chat},
-	{"SuperMan", 50, "default_stone.png", test_send_chat},
-	{"Walk in Music", 50, "default_stone.png", test_send_chat},
-	{"What a madness !", 50, "default_stone.png", test_send_chat},
-	{"Pretty TNT", 50, "default_stone.png", test_send_chat},
+	{"Nose", 50, "default_stone.png", pala_luckyblock.wip_event},
+	{"SuperMan", 50, "default_stone.png", pala_luckyblock.wip_event},
+	{"Walk in Music", 50, "default_stone.png", pala_luckyblock.wip_event},
+	{"What a madness !", 50, "default_stone.png", pala_luckyblock.wip_event},
+	{"Pretty TNT", 50, "default_stone.png", pala_luckyblock.wip_event},
 	--{"Wow Bg", 50, "pala_luckyblock_wow_bg.png", place_endium_piramid},
-	{"Spawner", 100, "default_stone.png", test_send_chat},
-	{"Consolation", 100, "default_stone.png", test_send_chat},
-	{"Wither Head", 100, "default_stone.png", test_send_chat},
-	{"20 000 lieux", 150, "default_stone.png", test_send_chat},
-	{"Analyste", 150, "pala_luckyblock_analyste.png", test_send_chat},
+	{"Spawner", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"Consolation", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"Wither Head", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"20 000 lieux", 150, "default_stone.png", pala_luckyblock.wip_event},
+	{"Analyste", 150, "pala_luckyblock_analyste.png", pala_luckyblock.wip_event},
 	{"Expala-osion", 150, "default_tnt_side.png^pala_paladium_paladium_ingot.png", expala_osion},
-	{"Fake TNT", 100, "default_stone.png", test_send_chat},
-	{"Hook hook jab", 150, "default_stone.png", test_send_chat},
-	{"Lasso", 150, "default_stone.png", test_send_chat},
-	{"Roller", 150, "default_stone.png", test_send_chat},
-	{"Fly me", 150, "default_stone.png", test_send_chat},
-	{"Magical Potion", 150, "default_stone.png", test_send_chat},
-	{"Wi-Fi", 150, "default_stone.png", test_send_chat},
-	{"Pyrobarbare", 150, "default_stone.png", test_send_chat},
-	{"Caballo de la muerte", 200, "default_stone.png", caballo_de_la_muerte},
-	{"Diamond Beacon", 200, "default_stone.png", test_send_chat},
-	{"Princesse", 200, "default_stone.png", test_send_chat},
-	{"Coloring", 200, "default_stone.png", test_send_chat},
-	{"Palachat", 300, "default_stone.png", test_send_chat},
-	{"Biome Painter", 300, "default_stone.png", test_send_chat},
-	{"Amethyste Beacon", 400, "default_stone.png", test_send_chat},
-	{"Endium Beacon", 400, "default_stone.png", test_send_chat},
-	{"Fast Learner", 500, "default_stone.png", test_send_chat},
-	{"Titane Beacon", 800, "default_stone.png", test_send_chat},
-	{"Explosif", 900, "default_stone.png", explosif},
-	{"T’es chanceux wesh", 900, "default_stone.png", test_send_chat},
-	{"Base déco", 1000, "default_stone.png", test_send_chat},
-	{"Less pretty TNT", 1000, "default_stone.png", test_send_chat},
-	{"Be deaf", 1000, "default_stone.png", test_send_chat},
-	{"Deviens sourd", 1000, "default_stone.png", test_send_chat},
+	{"Fake TNT", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"Hook hook jab", 150, "default_stone.png", pala_luckyblock.wip_event},
+	{"Lasso", 150, "default_stone.png", pala_luckyblock.wip_event},
+	{"Roller", 150, "default_stone.png", pala_luckyblock.wip_event},
+	{"Fly me", 150, "default_stone.png", pala_luckyblock.wip_event},
+	{"Magical Potion", 150, "default_stone.png", pala_luckyblock.wip_event},
+	{"Wi-Fi", 150, "default_stone.png", pala_luckyblock.wip_event},
+	{"Pyrobarbare", 150, "default_stone.png", pala_luckyblock.wip_event},
+	{"Caballo de la muerte", 200, "default_stone.png", function(pos, player)
+		minetest.add_entity(pos, "mobs_mc:skeleton_horse")
+	end},
+	{"Diamond Beacon", 200, "default_stone.png", pala_luckyblock.wip_event},
+	{"Princesse", 200, "default_stone.png", pala_luckyblock.wip_event},
+	{"Coloring", 200, "default_stone.png", pala_luckyblock.wip_event},
+	{"Palachat", 300, "default_stone.png", pala_luckyblock.wip_event},
+	{"Biome Painter", 300, "default_stone.png", pala_luckyblock.wip_event},
+	{"Amethyste Beacon", 400, "default_stone.png", pala_luckyblock.wip_event},
+	{"Endium Beacon", 400, "default_stone.png", pala_luckyblock.wip_event},
+	{"Fast Learner", 500, "default_stone.png", pala_luckyblock.wip_event},
+	{"Titane Beacon", 800, "default_stone.png", pala_luckyblock.wip_event},
+	{"Explosif", 900, "default_stone.png", function(pos, player)
+		minetest.set_node(pos, {name="mcl_core:obsidian"})
+		minetest.add_item(pos, "mcl_core:stone") --TODO:replace stone by endium dyna
+	end},
+	{"T’es chanceux wesh", 900, "default_stone.png", pala_luckyblock.wip_event},
+	{"Base déco", 1000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Less pretty TNT", 1000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Be deaf", 1000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Deviens sourd", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Legendary StF", 1000, "default_stone.png", function(pos, player)
 		minetest.add_item(pos, "pala_legendary:legendary_random")
 	end},
-	{"Rodshild", 1000, "default_stone.png", test_send_chat},
-	{"Camouflage", 1200, "default_stone.png", test_send_chat},
+	{"Rodshild", 1000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Camouflage", 1200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", pala_beacon},
-	{"Mega Fast Learner", 2400, "default_stone.png", test_send_chat},
-	{"Inevitable", 5000, "default_stone.png", test_send_chat},
-	{"+ Money", 5000, "default_stone.png", test_send_chat},
-	--{"Téthanos", 5000, "default_stone.png", test_send_chat},
-	{"Endium Grade", 10000, "default_stone.png", test_send_chat},
-	{"Wuzzyyyy/AFCMMMMMMMMMMMMS", 10000, "default_stone.png", test_send_chat},
-	--{"Méga-Thétanos", 42500, "default_stone.png", test_send_chat},
-	{"Big Inevitable", 12500, "pala_luckyblock_mega_ineluctable.png", big_inevitable},
+	{"Mega Fast Learner", 2400, "default_stone.png", pala_luckyblock.wip_event},
+	{"Inevitable", 5000, "default_stone.png", pala_luckyblock.wip_event},
+	{"+ Money", 5000, "default_stone.png", pala_luckyblock.wip_event},
+	--{"Téthanos", 5000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Endium Grade", 10000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Wuzzyyyy/AFCMMMMMMMMMMMMS", 10000, "default_stone.png", pala_luckyblock.wip_event},
+	--{"Méga-Thétanos", 42500, "default_stone.png", pala_luckyblock.wip_event},
+	{"Big Inevitable", 12500, "pala_luckyblock_mega_ineluctable.png", function(pos, player)
+		if player:get_inventory():add_item("main", {name="pala_legendary:endium_gauntlet", count=1}) then
+			return
+		else 
+			minetest.add_item(pos, "pala_legendary:endium_gauntlet")
+			return
+		end
+	end},
 }
 
 --46
 pala_luckyblock.event_negative = {
-	{"BOOM", 20, "default_stone.png", test_send_chat},
-	{"Enfermé", 20, "default_stone.png", test_send_chat},
+	{"BOOM", 20, "default_stone.png", function(pos, player)
+		mcl_explosions.explode(pos, 3, { drop_chance = 1.0 }, player)
+		minetest.set_node(pos, {name="air"})
+	end},
+	{"Enfermé", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Geyser", 20, "pala_luckyblock_geyser.png", geyser},
 	{"StarFish", 20, "pala_luckyblock_starfish.png", silverfish},
-	{"Un peu de silence ne fait pas de mal", 20, "default_stone.png", test_send_chat},
+	{"Un peu de silence ne fait pas de mal", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Boom", 30, "pala_luckyblock_boom.png", boom},
-	{"C’est un traquenard !", 30, "default_stone.png", test_send_chat},
-	{"Piggy Rodéo", 30, "default_stone.png", test_send_chat},
+	{"C’est un traquenard !", 30, "default_stone.png", pala_luckyblock.wip_event},
+	{"Piggy Rodéo", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Pssssssss", 30, "pala_luckyblock_psss.png", psss},
-	{"Ruée vers les minerais", 30, "default_stone.png", test_send_chat},
+	{"Ruée vers les minerais", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"0 + 0 = La tête à Toto", 40, "default_stone.png", function(pos, player)
 		mcl_experience.set_player_xp_level(player, 0)
 	end},
-	{"Allumer le feu", 40, "default_stone.png", test_send_chat},
+	{"Allumer le feu", 40, "default_stone.png", pala_luckyblock.wip_event},
 	{"Instant break up", 40, "pala_luckyblock_instant_break_up.png", instant_break},
-	{"Sur la Lune", 40, "default_stone.png", test_send_chat},
-	{"Zombie Hero", 40, "default_stone.png", test_send_chat},
+	{"Sur la Lune", 40, "default_stone.png", pala_luckyblock.wip_event},
+	{"Zombie Hero", 40, "default_stone.png", pala_luckyblock.wip_event},
 	{"Batman nerveux", 50, "pala_luckyblock_batman_nerveux.png", batman_nerveux},
-	{"Ghast dans l’âme", 50, "default_stone.png", test_send_chat},
+	{"Ghast dans l’âme", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Gros relou", 50, "pala_luckyblock_gros_relou.png", return_none},
 	{"Ne pas casser", 50, "pala_luckyblock_do_not_break.png", do_not_break},
 	{"Spam TP", 50, "mcl_throwing_ender_pearl.png", spam_tp},
-	{"Tout feu tout flamme", 50, "default_stone.png", test_send_chat},
-	{"Victime", 50, "default_stone.png", test_send_chat},
+	{"Tout feu tout flamme", 50, "default_stone.png", pala_luckyblock.wip_event},
+	{"Victime", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"MEGABOOM", 70, "pala_luckyblock_megaboom.png", megaboom},
 	{"ArachnoTrap", 80, "pala_luckyblock_arachnotrap.png", arachnotrap},
-	{"ObsiTrap", 80, "default_stone.png", test_send_chat},
-	{"On voit pas le fond du bol", 80, "default_stone.png", test_send_chat},
-	{"Badaboum", 100, "default_stone.png", test_send_chat},
-	{"Boom les mobs", 100, "default_stone.png", test_send_chat},
-	{"High attitude", 100, "default_stone.png", test_send_chat},
-	{"J’ai glissé chef", 100, "default_stone.png", test_send_chat},
-	{"Nether activé !", 100, "default_stone.png", test_send_chat},
-	{"One Shot", 100, "default_stone.png", test_send_chat},
-	{"Titanesque", 100, "default_stone.png", test_send_chat},
-	{"Carte au trésor", 200, "default_stone.png", test_send_chat},
-	{"Carte au trésor “2”", 200, "default_stone.png", test_send_chat},
+	{"ObsiTrap", 80, "default_stone.png", pala_luckyblock.wip_event},
+	{"On voit pas le fond du bol", 80, "default_stone.png", pala_luckyblock.wip_event},
+	{"Badaboum", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"Boom les mobs", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"High attitude", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"J’ai glissé chef", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"Nether activé !", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"One Shot", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"Titanesque", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"Carte au trésor", 200, "default_stone.png", pala_luckyblock.wip_event},
+	{"Carte au trésor “2”", 200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Hasta la vista", 200, "default_stone.png", hasta_la_vista},
-	{"Reflexe", 200, "default_stone.png", test_send_chat},
-	{"La mort ou…", 500, "default_stone.png", test_send_chat},
-	{"Paladin", 500, "pala_tools_paladiumsword.png", test_send_chat},
-	{"La dirt, c’est bien", 1000, "default_stone.png", test_send_chat},
-	{"T ki ?", 1000, "default_stone.png", test_send_chat},
-	{"Triforce", 1000, "default_stone.png", test_send_chat},
-	{"Good Bye have a great time!", 2000, "default_stone.png", test_send_chat},
-	{"Silence, ça tourne", 2000, "default_stone.png", test_send_chat},
+	{"Reflexe", 200, "default_stone.png", pala_luckyblock.wip_event},
+	{"La mort ou…", 500, "default_stone.png", pala_luckyblock.wip_event},
+	{"Paladin", 500, "pala_tools_paladiumsword.png", pala_luckyblock.wip_event},
+	{"La dirt, c’est bien", 1000, "default_stone.png", pala_luckyblock.wip_event},
+	{"T ki ?", 1000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Triforce", 1000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Good Bye have a great time!", 2000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Silence, ça tourne", 2000, "default_stone.png", pala_luckyblock.wip_event},
 
 }
 

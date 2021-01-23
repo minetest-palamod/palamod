@@ -1,19 +1,6 @@
-function sleep(s)
-  local ntime = os.time() + s
-  repeat until os.time() > ntime
-end
-
 function randomFloat(lower, greater)
     return lower + math.random()  * (greater - lower);
 end
-
-local itemlist = {
-	"pala_paladium:paladium_ingot",
-	"pala_paladium:titanium_ingot",
-	"pala_paladium:ametyst_ingot",
-	"mcl_core:gold_ingot",
-	"mcl_core:steel_ingot"
-}
 
 function mineral_shower(pos, player)
 	local name = player:get_player_name()
@@ -64,18 +51,6 @@ function placefakepala(pos, player)
 end
 
 
-function well(pos, player)
-	minetest.after(3, function()
-		minetest.set_node(pos, {name="mcl_core:obsidian"})
-		lightning.strike(pos)
-		for i = 1, 10, 1 do
-			local rnd = math.random(1, 5)
-			minetest.add_item(pos, itemlist[rnd])
-		end
-	end
-	)
-end
-
 function expala_osion(pos, player)
 	minetest.after(2, function()
 		for i = 1, 64*2, 1 do
@@ -98,19 +73,7 @@ function consolation(pos, player)
 end
 
 --Explode
-function explosif(pos, player)
-	minetest.set_node(pos, {name="mcl_core:obsidian"})
-	minetest.add_item(pos, "mcl_core:stone")
-end
 
-function big_inevitable(pos, player)
-	if player:get_inventory():add_item("main", {name="pala_legendary:endium_gauntlet", count=1}) then
-		return
- 	else 
-		minetest.add_item(pos, "pala_legendary:endium_gauntlet")
-		return
-	end
-end
 
 
 function megaboom(pos, player)
@@ -118,29 +81,13 @@ function megaboom(pos, player)
 	minetest.set_node(pos, {name="air"})
 end
 
-function boom(pos, player)
-	mcl_explosions.explode(pos, 3, { drop_chance = 1.0 }, player)
-	minetest.set_node(pos, {name="air"})
-end
-
 --Spawn
-function body_guard(pos, player)
-	for i = 1, 3, 1 do
-		local idx = minetest.add_entity(pos, "mobs_mc:iron_golem")
-		if idx then
-			
-		end
-	end
-end
+
 
 function psss(pos, player)
 	for i = 1, 4, 1 do
 		minetest.add_entity(pos, "mobs_mc:creeper")
 	end
-end
-
-function caballo_de_la_muerte(pos, player)
-	minetest.add_entity(pos, "mobs_mc:skeleton_horse")
 end
 
 function batman_nerveux(pos, player)
