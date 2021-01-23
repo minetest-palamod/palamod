@@ -9,7 +9,7 @@ end
 
 pala_luckyblock = {}
 pala_luckyblock.modpath = minetest.get_modpath("pala_luckyblock")
-dofile(pala_luckyblock.modpath.."/function.lua")
+
 dofile(pala_luckyblock.modpath.."/node.lua")
 
 function pala_luckyblock.wip_event(pos, player)
@@ -27,14 +27,17 @@ pala_luckyblock.minerallist = {
 pala_luckyblock.event_positive = {
 	{"Body Guard", 10, "pala_luckyblock_body_guard.png", function(pos, player)
 		local name = player:get_player_name()
-		for i = 1, 3, 1 do
+		for i = 1, 2, 1 do
 			local idx = minetest.add_entity(pos, "mobs_mc:iron_golem")
 			if idx then
 				idx:set_nametag_attributes({text = name.."'s BodyGuard"})
 			end
+			minetest.chat_send_player(name, minetest.colorize("#13ced8", "To serve you !"))
 		end
 	end},
-	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", placefakepala},
+	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", function(pos, player)
+		minetest.set_node(player:get_pos(), "pala_luckyblock:fakepaladiumblock")
+	end},
 	{"Pala-Pillone", 10, "pala_luckyblock_pala_pillone.png", function(pos, player)
 		local name = player:get_player_name()
 		for i = 0, 8, 1 do
@@ -62,19 +65,42 @@ pala_luckyblock.event_positive = {
 	{"To infinity and beyond", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Ruée vers les minerais", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Jimmy Hendyx", 50, "default_stone.png", pala_luckyblock.wip_event},
-	{"Mineral Shower", 50, "pala_luckyblock_mineral_shower.png", mineral_shower},
+	{"Mineral Shower", 50, "pala_luckyblock_mineral_shower.png", function(pos, player)
+		local drop_pos = {x=pos.x, y=pos.y+3, z=pos.z}
+		minetest.set_node(pos, {name="pala_paladium:paladiumblock"})
+		for i = 0, 8, 1 do
+			local rndpos = math.random(1, 2)
+			local drop_pos = {x=pos.x+rndpos, y=pos.y+3+rndpos, z=pos.z+rndpos}
+			minetest.add_item(drop_pos, itemlist[math.random(1, 5)])
+		end
+	end},
 	{"Nose", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"SuperMan", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Walk in Music", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"What a madness !", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Pretty TNT", 50, "default_stone.png", pala_luckyblock.wip_event},
-	--{"Wow Bg", 50, "pala_luckyblock_wow_bg.png", place_endium_piramid},
+	--[[{"Wow Bg", 50, "pala_luckyblock_wow_bg.png", function(pos, player)
+		minetest.place_schematic({x=pos.x-2,y=pos.y,z=pos.z-2}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_endium_piramid.mts", 0, nil, true)
+	end},]]
 	{"Spawner", 100, "default_stone.png", pala_luckyblock.wip_event},
-	{"Consolation", 100, "default_stone.png", pala_luckyblock.wip_event},
+	{"Consolation", 100, "default_stone.png", function(pos, player)
+		minetest.after(1, function()
+			for i = 1,  math.floor(64 * math.random(0.5, 2)), 1 do
+				minetest.add_item(pos, {"pala_paladium:paladium_ingot"})
+			end
+		end)
+	end},
 	{"Wither Head", 100, "default_stone.png", pala_luckyblock.wip_event},
 	{"20 000 lieux", 150, "default_stone.png", pala_luckyblock.wip_event},
 	{"Analyste", 150, "pala_luckyblock_analyste.png", pala_luckyblock.wip_event},
-	{"Expala-osion", 150, "default_tnt_side.png^pala_paladium_paladium_ingot.png", expala_osion},
+	{"Expala-osion", 150, "default_tnt_side.png^pala_paladium_paladium_ingot.png", function(pos, player)
+		minetest.after(2, function()
+			for i = 1, 64*2, 1 do
+				local pos2 = {x=pos.x+math.random(-5, 5),y=pos.y+3,z=pos.z+math.random(-5, 5)}
+				minetest.add_item(pos2, {"pala_paladium:paladium_ingot"})
+			end
+		end)
+	end},
 	{"Fake TNT", 100, "default_stone.png", pala_luckyblock.wip_event},
 	{"Hook hook jab", 150, "default_stone.png", pala_luckyblock.wip_event},
 	{"Lasso", 150, "default_stone.png", pala_luckyblock.wip_event},
@@ -109,7 +135,10 @@ pala_luckyblock.event_positive = {
 	end},
 	{"Rodshild", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Camouflage", 1200, "default_stone.png", pala_luckyblock.wip_event},
-	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", pala_beacon},
+	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", function(pos, player)
+		--TODO:add beacon
+		minetest.place_schematic({x=pos.x-3,y=pos.y,z=pos.z-3}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
+	end},
 	{"Mega Fast Learner", 2400, "default_stone.png", pala_luckyblock.wip_event},
 	{"Inevitable", 5000, "default_stone.png", pala_luckyblock.wip_event},
 	{"+ Money", 5000, "default_stone.png", pala_luckyblock.wip_event},
@@ -134,30 +163,66 @@ pala_luckyblock.event_negative = {
 		minetest.set_node(pos, {name="air"})
 	end},
 	{"Enfermé", 20, "default_stone.png", pala_luckyblock.wip_event},
-	{"Geyser", 20, "pala_luckyblock_geyser.png", geyser},
-	{"StarFish", 20, "pala_luckyblock_starfish.png", silverfish},
+	{"Geyser", 20, "pala_luckyblock_geyser.png", function(pos, player)
+		--TODO: water particules
+		player:add_player_velocity({x=0,y=30,z=0})
+	end},
+	{"StarFish", 20, "pala_luckyblock_starfish.png", function(pos, player)
+		for i = 1, 3, 1 do
+			minetest.add_entity(pos, "mobs_mc:silverfish")
+		end
+	end},
 	{"Un peu de silence ne fait pas de mal", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Boom", 30, "pala_luckyblock_boom.png", boom},
 	{"C’est un traquenard !", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Piggy Rodéo", 30, "default_stone.png", pala_luckyblock.wip_event},
-	{"Pssssssss", 30, "pala_luckyblock_psss.png", psss},
+	{"Pssssssss", 30, "pala_luckyblock_psss.png", function(pos, player)
+		for i = 1, 4, 1 do
+			minetest.add_entity(pos, "mobs_mc:creeper") --TODO:custom creeper
+		end
+	end},
 	{"Ruée vers les minerais", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"0 + 0 = La tête à Toto", 40, "default_stone.png", function(pos, player)
 		mcl_experience.set_player_xp_level(player, 0)
 	end},
 	{"Allumer le feu", 40, "default_stone.png", pala_luckyblock.wip_event},
-	{"Instant break up", 40, "pala_luckyblock_instant_break_up.png", instant_break},
+	{"Instant break up", 40, "pala_luckyblock_instant_break_up.png", function(pos, player)
+		local inv = player:get_inventory()
+		local stackname = inv:get_stack("main", 1):get_name()
+		inv:remove_item("main", 1)
+		minetest.chat_send_player(player:get_player_name(), "It seems to me you had a "..minetest.colorize("#44c8fc", stackname)) --TODO:make it work
+	end},
 	{"Sur la Lune", 40, "default_stone.png", pala_luckyblock.wip_event},
 	{"Zombie Hero", 40, "default_stone.png", pala_luckyblock.wip_event},
-	{"Batman nerveux", 50, "pala_luckyblock_batman_nerveux.png", batman_nerveux},
+	{"Batman nerveux", 50, "pala_luckyblock_batman_nerveux.png", function(pos, player)
+		for i = 1, 20, 1 do
+			minetest.add_entity(pos, "mobs_mc:bat")
+		end
+	end},
 	{"Ghast dans l’âme", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Gros relou", 50, "pala_luckyblock_gros_relou.png", return_none},
-	{"Ne pas casser", 50, "pala_luckyblock_do_not_break.png", do_not_break},
-	{"Spam TP", 50, "mcl_throwing_ender_pearl.png", spam_tp},
+	{"Ne pas casser", 50, "pala_luckyblock_do_not_break.png", function(pos, player)
+		local playerpos = player:get_pos()
+		minetest.place_schematic({x=playerpos.x-5,y=playerpos.y-1,z=playerpos.z-5}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_ne_pas_casser.mts", 0, nil, true)
+	end},
+	{"Spam TP", 50, "mcl_throwing_ender_pearl.png", function(pos, player)
+		local playerpos = player:get_pos()
+		minetest.after(10, function()
+			player:set_pos({x=playerpos.x,y=playerpos.y+200,z=playerpos.z})
+		end)
+	end},
 	{"Tout feu tout flamme", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Victime", 50, "default_stone.png", pala_luckyblock.wip_event},
-	{"MEGABOOM", 70, "pala_luckyblock_megaboom.png", megaboom},
-	{"ArachnoTrap", 80, "pala_luckyblock_arachnotrap.png", arachnotrap},
+	{"MEGABOOM", 70, "pala_luckyblock_megaboom.png", function(pos, player)
+		mcl_explosions.explode(pos, 10, { drop_chance = 1.0 }, player)
+	end},
+	{"ArachnoTrap", 80, "pala_luckyblock_arachnotrap.png", function(pos, player)
+		local playerpos = player:get_pos()
+		minetest.place_schematic({x=playerpos.x-1,y=playerpos.y-6,z=playerpos.z-1}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_arachnotrap.mts", 0, nil, true)
+		for i = 1, 6, 1 do
+			minetest.add_entity(playerpos, "mobs_mc:cave_spider")
+		end
+	end},
 	{"ObsiTrap", 80, "default_stone.png", pala_luckyblock.wip_event},
 	{"On voit pas le fond du bol", 80, "default_stone.png", pala_luckyblock.wip_event},
 	{"Badaboum", 100, "default_stone.png", pala_luckyblock.wip_event},
@@ -169,7 +234,16 @@ pala_luckyblock.event_negative = {
 	{"Titanesque", 100, "default_stone.png", pala_luckyblock.wip_event},
 	{"Carte au trésor", 200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Carte au trésor “2”", 200, "default_stone.png", pala_luckyblock.wip_event},
-	{"Hasta la vista", 200, "default_stone.png", hasta_la_vista},
+	{"Hasta la vista", 200, "default_stone.png", function(pos, player)
+		local name = player:get_player_name()
+		minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Malheureusement nous allons nous quitter d'ici 5 secondes"))
+		minetest.after(1, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Content d'avoir passé du temp avec toi"))end)
+		minetest.after(2, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 3 secondes :("))end)
+		minetest.after(3, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 2 secondes :("))end)
+		minetest.after(4, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "T'es encore là ?"))end)
+		minetest.after(5, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Bye bye..."))end)
+		minetest.after(6, function() minetest.kick_player(name,"Crash")end)
+	end},
 	{"Reflexe", 200, "default_stone.png", pala_luckyblock.wip_event},
 	{"La mort ou…", 500, "default_stone.png", pala_luckyblock.wip_event},
 	{"Paladin", 500, "pala_tools_paladiumsword.png", pala_luckyblock.wip_event},
