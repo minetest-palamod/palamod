@@ -295,7 +295,7 @@ function pala_luckyblock.get_random_positive()
 			break
 		end 
 	end
-	return pala_luckyblock.event_positive[hit]
+	return hit
 end
 
 function pala_luckyblock.get_random_all()
@@ -310,7 +310,7 @@ function pala_luckyblock.get_random_all()
 		end 
 	end
 	--WARNING
-	return pala_luckyblock.event_all[hit]
+	return hit
 end
 
 function pala_luckyblock.get_random_img(nb)
@@ -328,7 +328,7 @@ function pala_luckyblock.show_paladium(pos, node, player, itemstack, pointed_thi
 		"button[1,9;10,1.5;event;Event]",
 		"label[6,1;Lucky Block]",
 		"image[13,3;3,3;pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png]",
-		"button[13,7;3,1;open;Open]",
+		"button_exit[13,7;3,1;open;Open]",
 		"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
 		"image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
 		"image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
@@ -340,15 +340,16 @@ function pala_luckyblock.show_paladium(pos, node, player, itemstack, pointed_thi
 end
 
 function pala_luckyblock.open_paladium(pos, player)
+	minetest.chat_send_all("pala_open")
 	local target = pala_luckyblock.get_random_all()
-	player:get_meta():set_string("pala_luckyblock:palatarget", minetest.serialize(target))
+	player:get_meta():set_int("pala_luckyblock:palatarget", target)
 	minetest.show_formspec(player:get_player_name(), "pala_luckyblock:paladium_open", table.concat({
 		"formspec_version[3]",
 		"size[17,11]",
-		"image_button[1,4;1.9,1.9;"..target[3]..";img1;;false;true;]",
-		"image_button[5,4;1.9,1.9;"..target[3]..";img2;;false;true;]",
-		"image_button[9,4;1.9,1.9;"..target[3]..";;;false;true;]",
-		"button[1,9;10,1.5;event;"..target[1].."]",
+		"image_button[1,4;1.9,1.9;"..pala_luckyblock.event_all[target][3]..";img1;;false;true;]",
+		"image_button[5,4;1.9,1.9;"..pala_luckyblock.event_all[target][3]..";img2;;false;true;]",
+		"image_button[9,4;1.9,1.9;"..pala_luckyblock.event_all[target][3]..";;;false;true;]",
+		"button_exit[1,9;10,1.5;event;"..pala_luckyblock.event_all[target][1].."]",
 		"label[6,1;Lucky Block]",
 		"image[13,3;3,3;pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png]",
 		"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
@@ -361,19 +362,19 @@ function pala_luckyblock.open_paladium(pos, player)
 end
 
 minetest.register_on_player_receive_fields(function(player, formname, fields)
-	if formname == "pala_luckyblock:paladium_show" and fields.open == "true" then
+	if formname == "pala_luckyblock:paladium_show" and fields.quit == "true" then
 		local pos = minetest.deserialize(player:get_meta():get_string("pala_luckyblock:palapos"))
-		minetest.chat_send_all("lucky")
-		if minetest.get_node_or_nil(pos).name == "pala_luckyblock:luckyblockpaladium" then
-			pala_luckyblock.open_paladium(player, pos)
-		end
-	elseif formname == "pala_luckyblock:paladium_open" and (fields.quit == true or fields.key_enter == true) then
-		if minetest.get_node_or_nil(pos) == "pala_luckyblock:luckyblockpaladium" then
-			local palapos = minetest.deserialize(meta:get_string("pala_luckyblock:palapos"))
-			minetest.set_node(palapos, {name="air"})
-			local meta = player:get_meta()
-			minetest.deserialize(meta:get_string("pala_luckyblock:palatarget"))[4](palapos, player)
-		end
+		minetest.chat_send_all(tostring(pos))
+		--if minetest.get_node_or_nil(pos).name == "pala_luckyblock:luckyblockpaladium" then
+		pala_luckyblock.open_paladium(pos, player)
+		--end
+	elseif formname == "pala_luckyblock:paladium_open" and (fields.quit == "true" or fields.key_enter == "true") then
+		--if minetest.get_node_or_nil(pos) == "pala_luckyblock:luckyblockpaladium" then
+		local meta = player:get_meta()
+		local palapos = minetest.deserialize(meta:get_string("pala_luckyblock:palapos"))
+		minetest.set_node(palapos, {name="air"})
+		pala_luckyblock.event_all[meta:get_int("pala_luckyblock:palatarget")][4](palapos, player)
+		--end
 	end
 end)
 
