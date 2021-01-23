@@ -73,7 +73,9 @@ pala_luckyblock.event_positive = {
 	{"Less pretty TNT", 1000, "default_stone.png", test_send_chat},
 	{"Be deaf", 1000, "default_stone.png", test_send_chat},
 	{"Deviens sourd", 1000, "default_stone.png", test_send_chat},
-	{"Legendary StF", 1000, "default_stone.png", get_legendary_stone},
+	{"Legendary StF", 1000, "default_stone.png", function(pos, player)
+		minetest.add_item(pos, "pala_legendary:legendary_random")
+	end},
 	{"Rodshild", 1000, "default_stone.png", test_send_chat},
 	{"Camouflage", 1200, "default_stone.png", test_send_chat},
 	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", pala_beacon},

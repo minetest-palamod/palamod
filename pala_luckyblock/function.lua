@@ -15,22 +15,6 @@ local itemlist = {
 	"mcl_core:steel_ingot"
 }
 
-function pala_pillone(pos, player)
-	local name = player:get_player_name()
-	--minetest.chat_send_all("nnnn")
-	for i = 0, 8, 1 do
-		minetest.chat_send_all(tostring(i))
-		local bpos = {x = pos.x, y = pos.y + i, z = pos.z}
-		--if not minetest.is_protected(bpos, name) then
-		minetest.chat_send_all(tostring(bpos.x))
-		local test = minetest.set_node(bpos, {name="pala_paladium:paladiumblock"})
-		minetest.chat_send_all(tostring(test))
-		--end
-	end
-	--minetest.set_node(pos, {name="mcl_core:obsidian"})
-	--minetest.add_item(pos, "mcl_core:stone")
-end
-
 function mineral_shower(pos, player)
 	local name = player:get_player_name()
 	local drop_pos = {x=pos.x, y=pos.y+3, z=pos.z}
@@ -104,10 +88,6 @@ function expala_osion(pos, player)
 	)
 end
 
-function zero_zero(pos, player)
-	mcl_experience.set_player_xp_level(player, 0)
-end
-
 function consolation(pos, player)
 	minetest.after(1, function()
 		for i = 1, 27, 1 do
@@ -115,10 +95,6 @@ function consolation(pos, player)
 		end
 	end
 	)
-end
-
-function get_legendary_stone(pos, player)
-	minetest.add_item(pos, "pala_legendary:legendary_random")
 end
 
 --Explode
