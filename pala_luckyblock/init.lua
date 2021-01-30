@@ -170,6 +170,30 @@ pala_luckyblock.event_negative = {
 	{"Enfermé", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Geyser", 20, "pala_luckyblock_geyser.png", function(pos, player)
 		--TODO: water particules
+		minetest.add_particlespawner({
+			amount = 50,
+			time = 2,
+			minpos = {x=pos.x-3, y=pos.y, z=pos.z-3},
+			maxpos = {x=pos.x+3, y=pos.y+30, z=pos.z+3},
+			minvel = {x=-0.5, y=5, z=-0.5},
+			maxvel = {x=0.5, y=10, z=0.5},
+			--minacc = {x=0, y=0, z=0},
+			--maxacc = {x=0, y=0, z=0},
+			minexptime = 1,
+			maxexptime = 3,
+			minsize = 1,
+			maxsize = 1,
+			collisiondetection = true,
+			collision_removal = false,
+			object_collision = false,
+			--attached = ObjectRef,
+			--vertical = false,
+			texture = mcl_weather.rain.get_texture(),
+			-- playername = "singleplayer",
+			--animation = {Tile Animation definition},
+			--node = {name = "ignore", param2 = 0},
+			--node_tile = 0,
+		})
 		player:add_player_velocity({x=0,y=30,z=0})
 	end},
 	{"StarFish", 20, "pala_luckyblock_starfish.png", function(pos, player)
@@ -178,7 +202,9 @@ pala_luckyblock.event_negative = {
 		end
 	end},
 	{"Un peu de silence ne fait pas de mal", 20, "default_stone.png", pala_luckyblock.wip_event},
-	{"Boom", 30, "pala_luckyblock_boom.png", boom},
+	{"Boom", 30, "pala_luckyblock_boom.png", function(pos, player)
+		mcl_explosions.explode(pos, 5, { drop_chance = 1.0 }, player)
+	end},
 	{"C’est un traquenard !", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Piggy Rodéo", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Pssssssss", 30, "pala_luckyblock_psss.png", function(pos, player)
