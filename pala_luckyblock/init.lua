@@ -205,7 +205,7 @@ pala_luckyblock.event_negative = {
 		end
 	end},
 	{"Ghast dans l’âme", 50, "default_stone.png", pala_luckyblock.wip_event},
-	{"Gros relou", 50, "pala_luckyblock_gros_relou.png", return_none},
+	{"Gros relou", 50, "pala_luckyblock_gros_relou.png", pala_luckyblock.wip_event},
 	{"Ne pas casser", 50, "pala_luckyblock_do_not_break.png", function(pos, player)
 		local playerpos = player:get_pos()
 		minetest.place_schematic({x=playerpos.x-5,y=playerpos.y-1,z=playerpos.z-5}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_ne_pas_casser.mts", 0, nil, true)

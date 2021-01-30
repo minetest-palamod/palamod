@@ -1,4 +1,4 @@
-
+local has_mcl_core = minetest.get_modpath("mcl_core")
 palafake_color = "#5e99f7"
 
 minetest.register_node("pala_obsidian:two_life_obsidian", {
@@ -82,6 +82,47 @@ end
 -- end
 
 --V7--------------------------------------------------
+--Hardened Obsidian
+minetest.register_node("pala_obsidian:hardened_obsidian", {
+	description = ("Hardened Obsidian"),
+	_doc_items_longdesc = ("Hardened Obsidian is an extremely hard mineral with an enourmous blast-resistance. Breaks with a magical tool."),
+	tiles = {"default_obsidian.png"},
+	is_ground_content = true,
+	stack_max = 64,
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	groups = {magical_tool=1, building_block=1, material_stone=1,},
+	_mcl_blast_resistance = 1200,
+	_mcl_hardness = 50,
+})
+
+if has_mcl_core then
+	minetest.register_craft({
+		output = 'pala_obsidian:hardened_obsidian 4',
+		recipe = {
+			{"mcl_core:obsidian", "mcl_core:obsidian", ""},
+			{"mcl_core:obsidian", "mcl_core:obsidian", ""},
+			{"", "", ""},
+		}
+	})
+end
+
+minetest.register_tool("pala_obsidian:magical_tool", {
+    description = "My Tool",
+    inventory_image = "default_stone.png",
+    tool_capabilities = {
+        full_punch_interval = 1.5,
+        max_drop_level = 1,
+        groupcaps = {
+            magical_tool = {
+                maxlevel = 2,
+                uses = 2000,
+                times = { [1]=0.05}
+            },
+        },
+        damage_groups = {fleshy=2},
+    },
+})
+
 --Lava Obsidian
 minetest.register_node("pala_obsidian:lava_obsidian", {
 	description = ("Lava Obsidian"),
@@ -90,7 +131,7 @@ minetest.register_node("pala_obsidian:lava_obsidian", {
 	is_ground_content = true,
 	stack_max = 64,
 	sounds = mcl_sounds.node_sound_stone_defaults(),
-	--groups = {cracky = 1, level = 2, miner_level = 7},
+	groups = {pickaxey=5, building_block=1, material_stone=1, miner_level = 7},
 	_mcl_blast_resistance = 1200,
 	_mcl_hardness = 50,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
@@ -98,7 +139,7 @@ minetest.register_node("pala_obsidian:lava_obsidian", {
 	end,
 })
 
-if minetest.get_modpath("mcl_core") and minetest.get_modpath("mcl_buckets") then
+if has_mcl_core and minetest.get_modpath("mcl_buckets") then
 	minetest.register_craft({
 		output = 'pala_obsidian:lava_obsidian',
 		recipe = {
@@ -117,7 +158,7 @@ minetest.register_node("pala_obsidian:big_obsidian", {
 	is_ground_content = true,
 	stack_max = 64,
 	sounds = mcl_sounds.node_sound_stone_defaults(),
-	--groups = {cracky = 1, level = 2, miner_level = 7},
+	groups = {pickaxey=5, building_block=1, material_stone=1, miner_level = 7},
 	_mcl_blast_resistance = 1200,
 	_mcl_hardness = 50,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
@@ -126,7 +167,7 @@ minetest.register_node("pala_obsidian:big_obsidian", {
 })
 
 --TODO:fix paladium core missing
-if minetest.get_modpath("mcl_core") and minetest.get_modpath("pala_craftstick") then
+if has_mcl_core and minetest.get_modpath("pala_craftstick") then
 	minetest.register_craft({
 		output = 'pala_obsidian:big_obsidian',
 		recipe = {
@@ -146,7 +187,7 @@ if minetest.get_modpath("pala_fakewater") then
 		tiles = {"pala_obsidian_fake_obsidian.png"},
 		is_ground_content = true,
 		stack_max = 64,
-		--groups = {pickaxey=5, cracky = 1, level = 2},
+		groups = {pickaxey=5, building_block=1, material_stone=1, miner_level = 8},
 		sounds = mcl_sounds.node_sound_stone_defaults(),
 		_mcl_blast_resistance = 1200,
 		_mcl_hardness = 50,
@@ -156,7 +197,7 @@ if minetest.get_modpath("pala_fakewater") then
 	})
 end
 
-if minetest.get_modpath("mcl_core") and minetest.get_modpath("pala_craftstick") then
+if has_mcl_core and minetest.get_modpath("pala_craftstick") then
 	minetest.register_craft({
 		output = 'pala_obsidian:fake_obsidian',
 		recipe = {
@@ -167,7 +208,42 @@ if minetest.get_modpath("mcl_core") and minetest.get_modpath("pala_craftstick") 
 	})
 end
 
+--Boom obsidian
+minetest.register_node("pala_obsidian:boom_obsidian", {
+	description = ("Boom Obsidian"),
+	_doc_items_longdesc = ("Obsidian is an extremely hard mineral with an enourmous blast-resistance. Give a poison effect to players"),
+	tiles = {"default_obsidian.png^pala_obsidian_boom_obsidian.png"},
+	is_ground_content = true,
+	stack_max = 64,
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	groups = {pickaxey=5, building_block=1, material_stone=1, miner_level = 4},
+	_mcl_blast_resistance = 1200,
+	_mcl_hardness = 50,
+	after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		mcl_explosions.explode(pos, 8, {griefing=false}, digger)
+	end,
+})
+
+if has_mcl_core and minetest.get_modpath("pala_dynamite") then
+	minetest.register_craft({
+		output = 'pala_obsidian:boom_obsidian',
+		recipe = {
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+			{"", "", ""},
+			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+			--TODO:big dynamite
+		}
+	})
+end
+
 --Poison Obsidian
+local function poison_apply(pos)
+	for _,obj in ipairs(minetest.get_objects_inside_radius(pos, 7)) do
+		if obj:is_player() then
+			mcl_potions.poison_func(obj, 6, 5)
+		end
+	end
+end
 minetest.register_node("pala_obsidian:poison_obsidian", {
 	description = ("Poison Obsidian"),
 	_doc_items_longdesc = ("Obsidian is an extremely hard mineral with an enourmous blast-resistance. Give a poison effect to players"),
@@ -178,12 +254,12 @@ minetest.register_node("pala_obsidian:poison_obsidian", {
 	--groups = {cracky = 1, level = 2, miner_level = 12},
 	_mcl_blast_resistance = 1200,
 	_mcl_hardness = 50,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		minetest.set_node(pos, {name="mcl_core:obsidian"})
+	after_destruct = function(pos, oldnode)
+		poison_apply(pos)
 	end,
 })
 
-if minetest.get_modpath("mcl_core") and minetest.get_modpath("mcl_potions") then
+if has_mcl_core and minetest.get_modpath("mcl_potions") then
 	minetest.register_craft({
 		output = 'pala_obsidian:poison_obsidian',
 		recipe = {
@@ -215,7 +291,7 @@ minetest.register_node("pala_obsidian:wither_obsidian", {
 })
 
 --TODO:fix diamond chest missing
-if minetest.get_modpath("mcl_core") and minetest.get_modpath("mcl_potions") then
+if has_mcl_core and minetest.get_modpath("mcl_potions") then
 	minetest.register_craft({
 		output = 'pala_obsidian:wither_obsidian',
 		recipe = {
