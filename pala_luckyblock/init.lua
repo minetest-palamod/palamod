@@ -285,7 +285,7 @@ pala_luckyblock.event_negative = {
 	{"Silence, ça tourne", 2000, "default_stone.png", pala_luckyblock.wip_event},
 
 }
-local number_images_pala = #pala_luckyblock.event_all
+
 pala_luckyblock.positive_somme = 0
 for k, v in ipairs(pala_luckyblock.event_positive) do
 	local inverse = 1/v[2]
