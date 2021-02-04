@@ -256,7 +256,7 @@ local function furnace_node_timer(pos, elapsed)
 	if srclist[1]:get_name() ~= src_item then
 		-- Reset cooking progress in this case
 		src_time = 0
-		src_item = srclist[1]:get_name()
+		--src_item = srclist[1]:get_name()
 	end
 
 	local update = true
@@ -405,7 +405,12 @@ minetest.register_node("pala_furnace:furnace", {
 	_tt_help = S("Uses fuel to smelt or cook items"),
 	_doc_items_longdesc = S("Furnaces cook or smelt several items, using a furnace fuel, into something else."),
 	_doc_items_usagehelp =
-			S("Use the furnace to open the furnace menu. Place a furnace fuel in the lower slot and the source material in the upper slot. The furnace will slowly use its fuel to smelt the item. The result will be placed into the output slot at the right side.").."\n"..
+			S([[
+			Use the furnace to open the furnace menu.
+			Place a furnace fuel in the lower slot and the source material in the upper slot.
+			The furnace will slowly use its fuel to smelt the item.
+			The result will be placed into the output slot at the right side.
+			]]).."\n"..
 			S("Use the recipe book to see what you can smelt, what you can use as fuel and how long it will burn."),
 	_doc_items_hidden = false,
 	tiles = {
