@@ -1,9 +1,7 @@
-local palafake_color = "#5e99f7"
-
 minetest.register_node("pala_obsidian:two_life_obsidian", {
 	description = ("Two Life Obsidian"),
 	_doc_items_longdesc = ([[
-		Two Life Obsidian is an extremely hard mineral with an enourmous blast-resistance. 
+		Two Life Obsidian is an extremely hard mineral with an enourmous blast-resistance.
 		Place an obsidian on its break
 		]]),
 	tiles = {"default_obsidian.png"},
@@ -23,7 +21,7 @@ if minetest.get_modpath("mcl_explosions") then
 	minetest.register_node("pala_obsidian:explode_obsidian", {
 		description = ("Explode Obsidian"),
 		_doc_items_longdesc = ([[
-			Explode Obsidian is an extremely hard mineral with an enourmous blast-resistance. 
+			Explode Obsidian is an extremely hard mineral with an enourmous blast-resistance.
 			Explode on its break
 			]]),
 		tiles = {"default_obsidian.png^[colorize:#fc4141:100"},
@@ -47,9 +45,9 @@ if minetest.get_modpath("mcl_stairs") then
 		("Double Obsidian Slab"))
 	--[[mcl_stairs.register_stair(subname, recipeitem, 
 		groups,
-		images, 
-		description, 
-		sounds, blast-resistance, hardness, 
+		images,
+		description,
+		sounds, blast-resistance, hardness,
 		corner_stair_texture_override)
 	]]
 	mcl_stairs.register_stair("obsidian", "mcl_core:obsidian", 
@@ -106,7 +104,7 @@ end
 minetest.register_node("pala_obsidian:lava_obsidian", {
 	description = ("Lava Obsidian"),
 	_doc_items_longdesc = ([[
-		Obsidian is an extremely hard mineral with an enourmous blast-resistance. 
+		Obsidian is an extremely hard mineral with an enourmous blast-resistance.
 		Place an lava source on its break
 		]]),
 	tiles = {"pala_obsidian_lava_obsidian.png"},
@@ -136,7 +134,7 @@ end
 minetest.register_node("pala_obsidian:big_obsidian", {
 	description = ("Big Obsidian"),
 	_doc_items_longdesc = ([[
-		Obsidian is an extremely hard mineral with an enourmous blast-resistance. 
+		Obsidian is an extremely hard mineral with an enourmous blast-resistance.
 		Place an lava sourcesn on its break
 		]]),
 	tiles = {"default_obsidian.png^pala_obsidian_big_obsidian.png"},
@@ -169,7 +167,7 @@ if minetest.get_modpath("pala_fakewater") then
 	minetest.register_node("pala_obsidian:fake_obsidian", {
 		description = ("Fake Obsidian"),
 		_doc_items_longdesc = ([[
-			Fake Obsidian is an extremely hard mineral with an enourmous blast-resistance. 
+			Fake Obsidian is an extremely hard mineral with an enourmous blast-resistance.
 			Place an fake water source on its break
 			]]),
 		tiles = {"pala_obsidian_fake_obsidian.png"},
@@ -200,7 +198,7 @@ end
 minetest.register_node("pala_obsidian:poison_obsidian", {
 	description = ("Poison Obsidian"),
 	_doc_items_longdesc = ([[
-		Obsidian is an extremely hard mineral with an enourmous blast-resistance. 
+		Obsidian is an extremely hard mineral with an enourmous blast-resistance.
 		Give a poison effect to players
 		]]),
 	tiles = {"default_obsidian.png^[colorize:#1c6222:100"},
