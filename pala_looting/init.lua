@@ -38,12 +38,12 @@ end
 
 minetest.register_tool("pala_looting:unclaimfinder_green", {
   description = "Green Unclaimfinder",
-  wield_image = "ham_radio_receiver_handheld.png",
-  inventory_image = "ham_radio_receiver_handheld.png",
+  wield_image = "default_stone.png",
+  inventory_image = "default_stone.png",
   groups = { disable_repair = 1 },
   on_use = function(itemstack, user, pointed_thing)
     --local keys = user:get_player_control()
-    -local meta = itemstack:get_meta()
+    local meta = itemstack:get_meta()
   end
 })
 
