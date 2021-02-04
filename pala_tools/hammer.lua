@@ -3,11 +3,6 @@
 minetest.register_tool("pala_tools:hammer_amethyst", {
     description = "Paladium Hammer",
     inventory_image = "default_stick.png",
-	on_use = function(itemstack, user, pointed_thing)
-		if pointed_thing.type == "node" then
-			hammer_dig(pointed_thing, user)
-		end
-	end,
     tool_capabilities = {
         groupcaps= {
             pickaxey={times={[1]=4.00, [2]=1.50, [3]=1.00}, uses=1999, maxlevel=1}
