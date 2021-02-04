@@ -10,7 +10,13 @@ local trash = minetest.create_detached_inventory("voidstone_trash", {
 })
 trash:set_size("main", 1)
 
---formspec_version[3]size[12,7]list[current_player;main;0.5,2;9,4;0]label[0.5,0.5;Voidstone]label[0.5,12.5;Inventory]list[current_player;main;5.5,0.5;1,1;0]
+--[[formspec_version[3]
+	size[12,7]
+	list[current_player;main;0.5,2;9,4;0]
+	label[0.5,0.5;Voidstone]
+	label[0.5,12.5;Inventory]
+	list[current_player;main;5.5,0.5;1,1;0]
+]]
 -- pala_tools.void_form = table.concat({
 	-- "formspec_version[3]",
 	-- "size[12,7]",
