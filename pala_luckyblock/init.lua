@@ -17,7 +17,7 @@ pala_luckyblock.modpath = minetest.get_modpath(minetest.get_current_modname())
 dofile(pala_luckyblock.modpath.."/node.lua")
 
 function pala_luckyblock.wip_event(pos, player)
-	minetest.chat_send_player(player:get_player_name(), minetest.colorize("#fc4b4b", "This event is WIP"))
+	minetest.chat_send_player(player:get_player_name(), minetest.colorize("#fc4b4b", S("This event is WIP")))
 end
 pala_luckyblock.number_images_pala = 82
 pala_luckyblock.number_images_endium = 43 --TODO:calculate
@@ -48,7 +48,7 @@ pala_luckyblock.event_positive = {
 		for i = 0, 8, 1 do
 			local bpos = {x = pos.x, y = pos.y + i, z = pos.z}
 			if not minetest.is_protected(bpos, name) then
-				local test = minetest.set_node(bpos, {name="pala_paladium:paladiumblock"})
+				minetest.set_node(bpos, {name="pala_paladium:paladiumblock"})
 			end
 		end
 	end},
@@ -71,7 +71,6 @@ pala_luckyblock.event_positive = {
 	{"Ruée vers les minerais", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Jimmy Hendyx", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Mineral Shower", 50, "pala_luckyblock_mineral_shower.png", function(pos, player)
-		local drop_pos = {x=pos.x, y=pos.y+3, z=pos.z}
 		minetest.set_node(pos, {name="pala_paladium:paladiumblock"})
 		for i = 0, 8, 1 do
 			local rndpos = math.random(1, 2)
@@ -85,7 +84,8 @@ pala_luckyblock.event_positive = {
 	{"What a madness !", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Pretty TNT", 50, "default_stone.png", pala_luckyblock.wip_event},
 	--[[{"Wow Bg", 50, "pala_luckyblock_wow_bg.png", function(pos, player)
-		minetest.place_schematic({x=pos.x-2,y=pos.y,z=pos.z-2}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_endium_piramid.mts", 0, nil, true)
+		minetest.place_schematic({x=pos.x-2,y=pos.y,z=pos.z-2},
+			pala_luckyblock.modpath .. "/schematics/pala_luckyblock_endium_piramid.mts", 0, nil, true)
 	end},]]
 	{"Spawner", 100, "default_stone.png", pala_luckyblock.wip_event},
 	{"Consolation", 100, "default_stone.png", function(pos, player)
@@ -142,7 +142,7 @@ pala_luckyblock.event_positive = {
 	{"Camouflage", 1200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", function(pos, player)
 		--TODO:add beacon
-		minetest.place_schematic({x=pos.x-3,y=pos.y,z=pos.z-3}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
+		minetest.place_schematic({x=pos.x-3,y=pos.y,z=pos.z-3}, pala_luckyblock.modpath .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
 	end},
 	{"Mega Fast Learner", 2400, "default_stone.png", pala_luckyblock.wip_event},
 	{"Inevitable", 5000, "default_stone.png", pala_luckyblock.wip_event},
@@ -154,7 +154,7 @@ pala_luckyblock.event_positive = {
 	{"Big Inevitable", 12500, "pala_luckyblock_mega_ineluctable.png", function(pos, player)
 		if player:get_inventory():add_item("main", {name="pala_legendary:endium_gauntlet", count=1}) then
 			return
-		else 
+		else
 			minetest.add_item(pos, "pala_legendary:endium_gauntlet")
 			return
 		end
@@ -178,7 +178,7 @@ pala_luckyblock.event_negative = {
 		end
 	end},
 	{"Un peu de silence ne fait pas de mal", 20, "default_stone.png", pala_luckyblock.wip_event},
-	{"Boom", 30, "pala_luckyblock_boom.png", boom},
+	{"Boom", 30, "pala_luckyblock_boom.png", pala_luckyblock.wip_event},
 	{"C’est un traquenard !", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Piggy Rodéo", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Pssssssss", 30, "pala_luckyblock_psss.png", function(pos, player)
@@ -195,7 +195,8 @@ pala_luckyblock.event_negative = {
 		local inv = player:get_inventory()
 		local stackname = inv:get_stack("main", 1):get_name()
 		inv:remove_item("main", 1)
-		minetest.chat_send_player(player:get_player_name(), "It seems to me you had a "..minetest.colorize("#44c8fc", stackname)) --TODO:make it work
+		minetest.chat_send_player(player:get_player_name(),
+			"It seems to me you had a "..minetest.colorize("#44c8fc", stackname)) --TODO:make it work
 	end},
 	{"Sur la Lune", 40, "default_stone.png", pala_luckyblock.wip_event},
 	{"Zombie Hero", 40, "default_stone.png", pala_luckyblock.wip_event},
@@ -205,10 +206,11 @@ pala_luckyblock.event_negative = {
 		end
 	end},
 	{"Ghast dans l’âme", 50, "default_stone.png", pala_luckyblock.wip_event},
-	{"Gros relou", 50, "pala_luckyblock_gros_relou.png", return_none},
+	{"Gros relou", 50, "pala_luckyblock_gros_relou.png", pala_luckyblock.wip_event},
 	{"Ne pas casser", 50, "pala_luckyblock_do_not_break.png", function(pos, player)
 		local playerpos = player:get_pos()
-		minetest.place_schematic({x=playerpos.x-5,y=playerpos.y-1,z=playerpos.z-5}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_ne_pas_casser.mts", 0, nil, true)
+		minetest.place_schematic({x=playerpos.x-5,y=playerpos.y-1,z=playerpos.z-5},
+			pala_luckyblock.modpath .. "/schematics/pala_luckyblock_ne_pas_casser.mts", 0, nil, true)
 	end},
 	{"Spam TP", 50, "mcl_throwing_ender_pearl.png", function(pos, player)
 		local playerpos = player:get_pos()
@@ -223,7 +225,8 @@ pala_luckyblock.event_negative = {
 	end},
 	{"ArachnoTrap", 80, "pala_luckyblock_arachnotrap.png", function(pos, player)
 		local playerpos = player:get_pos()
-		minetest.place_schematic({x=playerpos.x-1,y=playerpos.y-6,z=playerpos.z-1}, minetest.get_modpath("pala_luckyblock") .. "/schematics/pala_luckyblock_arachnotrap.mts", 0, nil, true)
+		minetest.place_schematic({x=playerpos.x-1,y=playerpos.y-6,z=playerpos.z-1},
+			pala_luckyblock.modpath .. "/schematics/pala_luckyblock_arachnotrap.mts", 0, nil, true)
 		for i = 1, 6, 1 do
 			minetest.add_entity(playerpos, "mobs_mc:cave_spider")
 		end
@@ -241,12 +244,18 @@ pala_luckyblock.event_negative = {
 	{"Carte au trésor “2”", 200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Hasta la vista", 200, "default_stone.png", function(pos, player)
 		local name = player:get_player_name()
-		minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Malheureusement nous allons nous quitter d'ici 5 secondes"))
-		minetest.after(1, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Content d'avoir passé du temp avec toi"))end)
-		minetest.after(2, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 3 secondes :("))end)
-		minetest.after(3, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 2 secondes :("))end)
-		minetest.after(4, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "T'es encore là ?"))end)
-		minetest.after(5, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f", "[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Bye bye..."))end)
+		minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
+				"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Malheureusement nous allons nous quitter d'ici 5 secondes"))
+		minetest.after(1, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
+						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Content d'avoir passé du temp avec toi"))end)
+		minetest.after(2, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
+						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 3 secondes :("))end)
+		minetest.after(3, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
+						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 2 secondes :("))end)
+		minetest.after(4, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
+						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "T'es encore là ?"))end)
+		minetest.after(5, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
+						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Bye bye..."))end)
 		minetest.after(6, function() minetest.kick_player(name,"Crash")end)
 	end},
 	{"Reflexe", 200, "default_stone.png", pala_luckyblock.wip_event},
@@ -293,7 +302,7 @@ function pala_luckyblock.get_random_positive()
 		hit = k
 		if rnd < somme then
 			break
-		end 
+		end
 	end
 	return hit
 end
@@ -307,7 +316,7 @@ function pala_luckyblock.get_random_all()
 		hit = k
 		if rnd < somme then
 			break
-		end 
+		end
 	end
 	--WARNING
 	return hit
@@ -319,22 +328,23 @@ function pala_luckyblock.get_random_img(nb)
 end
 
 function pala_luckyblock.show_paladium(pos, node, player, itemstack, pointed_thing)
+	local nbpala = pala_luckyblock.number_images_pala
 	minetest.show_formspec(player:get_player_name(), "pala_luckyblock:paladium_show", table.concat({
 		"formspec_version[3]",
 		"size[17,11]",
-		"image_button[1,4;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala)..";img1;;false;true;]",
-		"image_button[5,4;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala)..";img2;;false;true;]",
-		"image_button[9,4;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala)..";img3;;false;true;]",
+		"image_button[1,4;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala)..";img1;;false;true;]",
+		"image_button[5,4;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala)..";img2;;false;true;]",
+		"image_button[9,4;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala)..";img3;;false;true;]",
 		"button[1,9;10,1.5;event;Event]",
 		"label[6,1;Lucky Block]",
 		"image[13,3;3,3;pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png]",
 		"button_exit[13,7;3,1;open;Open]",
-		"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-		"image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-		"image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-		"image[1,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-		"image[5,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-		"image[9,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]"})
+		"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala).."]",
+		"image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala).."]",
+		"image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala).."]",
+		"image[1,2;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala).."]",
+		"image[5,2;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala).."]",
+		"image[9,2;1.9,1.9;"..pala_luckyblock.get_random_img(nbpala).."]"})
 	)
 	player:get_meta():set_string("pala_luckyblock:palapos", minetest.serialize(pos))
 end
