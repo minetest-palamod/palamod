@@ -98,10 +98,10 @@ local function random_stone(itemstack, player, pointed_thing)
 end
 
 --Fortune
-pala_legendary.register_legendary("fortune", 
+pala_legendary.register_legendary("fortune",
 	"Gives a random number of a random ore (this can be coal such as palladium).",
 	"default_stone.png", fortune)
-pala_legendary.register_legendary("random", 
+pala_legendary.register_legendary("random",
 	"Basic legendary stone, it is the one that then gives one of the six stones.",
 	"default_stone.png", random_stone)
 
