@@ -2,11 +2,11 @@ pala_tools = {}
 pala_tools.path = minetest.get_modpath(minetest.get_current_modname())
 
 local sword_longdesc = [[
-	Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles. 
+	Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles.
 	Swords can also be used to cut down a few particular blocks, such as cobwebs.
 	]]
 local pickaxe_longdesc = [[
-	Pickaxes are mining tools to mine hard blocks, such as stone. 
+	Pickaxes are mining tools to mine hard blocks, such as stone.
 	A pickaxe can also be used as weapon, but it is rather inefficient.
 	]]
 local wield_scale = 1
