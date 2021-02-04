@@ -2,10 +2,12 @@ minetest.register_node("pala_tools:fertilised_dirt", {
 	tiles = {"pala_tools_fertilised_dirt.png", "default_dirt.png^[colorize:#332521:200"},
 	description = ("Fertilised Dirt"),
 	_tt_help = ("Surface for crops"),
-	_doc_items_longdesc = ([[Fertilised Dirt is used for farming, a necessary surface to plant crops.
+	_doc_items_longdesc = ([[
+		Fertilised Dirt is used for farming, a necessary surface to plant crops.
 		It is created when a hoe is used on dirt or a similar block. 
 		Plants are able to grow on farmland, but slowly. 
-		This block will turn back to dirt when a solid block appears above it or a piston arm extends above it.]]),
+		This block will turn back to dirt when a solid block appears above it or a piston arm extends above it.
+		]]),
 	drop = "mcl_core:dirt",
 	drawtype = "nodebox",
 	paramtype = "light",
