@@ -16,7 +16,7 @@ minetest.register_on_dignode(
     if digger == nil or digger:get_wielded_item():get_name()  ~= "pala_tools:hammer_amethyst" then
       return
     end
-    
+
     local playerName = digger:get_player_name()
     if(playerName == ""  or steelHammerDigs[playerName]) then
       return
