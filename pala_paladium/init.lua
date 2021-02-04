@@ -21,7 +21,7 @@ minetest.register_craftitem("pala_paladium:amethyst_ingot", {
 
 minetest.register_node("pala_paladium:amethystblock", {
 	description = ("Block of Amethyst"),
-	_doc_items_longdesc = ("A block of Amethyst is mostly a shiny decorative block but also useful as a compact storage of diamonds."),
+	_doc_items_longdesc = ("A block of Amethyst is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_amethyst_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -81,7 +81,7 @@ minetest.register_craftitem("pala_paladium:titanium_ingot", {
 
 minetest.register_node("pala_paladium:titaniumblock", {
 	description = ("Block of Titanium"),
-	_doc_items_longdesc = ("A block of Titanium is mostly a shiny decorative block but also useful as a compact storage of diamonds."),
+	_doc_items_longdesc = ("A block of Titanium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_titanium_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -147,7 +147,7 @@ minetest.register_craftitem("pala_paladium:paladium_ingot", {
 
 minetest.register_node("pala_paladium:paladiumblock", {
 	description = ("Block of Paladium"),
-	_doc_items_longdesc = ("A block of Paladium is mostly a shiny decorative block but also useful as a compact storage of diamonds."),
+	_doc_items_longdesc = ("A block of Paladium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_paladium_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -207,7 +207,7 @@ minetest.register_craftitem("pala_paladium:gpaladium_ingot", {
 
 minetest.register_node("pala_paladium:gpaladiumblock", {
 	description = ("Block of Green Paladium"),
-	_doc_items_longdesc = ("A block of Green Paladium is mostly a shiny decorative block but also useful as a compact storage of diamonds."),
+	_doc_items_longdesc = ("A block of Green Paladium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_gpaladium_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -272,7 +272,7 @@ minetest.register_craftitem("pala_paladium:findium_gem", {
 
 minetest.register_node("pala_paladium:findiumblock", {
 	description = ("Block of Findium"),
-	_doc_items_longdesc = ("A block of Findium is mostly a shiny decorative block but also useful as a compact storage of diamonds."),
+	_doc_items_longdesc = ("A block of Findium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_findiumblock.png"},
 	is_ground_content = false,
 	stack_max = 64,
