@@ -19,19 +19,20 @@ function pala_legendary.register_legendary(name, longdesc, inventory_image, func
 		stack_max = 1,
 		groups = {legendary_stone=1},
 		on_use = function(itemstack, player, pointed_thing)
+			local ok
 			minetest.chat_send_player(player:get_player_name(), "last use : "..itemstack:get_meta():get_string("pala_last_use"))
 			minetest.chat_send_player(player:get_player_name(), os.date("%Y-%m-%d"))
 			if not itemstack:get_meta():get_string("pala_last_use") then
-				local ok = true
+				ok = true
 			elseif itemstack:get_meta():get_string("pala_last_use") ~= os.date("%Y-%m-%d") then
 				minetest.chat_send_player(player:get_player_name(), itemstack:get_meta():get_string("pala_last_use"))
-				local ok = true
+				ok = true
 			else
 				--TODO:better message
 				minetest.chat_send_player(player:get_player_name(), "Already used")
-				local ok = false
+				ok = false
 			end
-			if local ok == true then
+			if ok == true then
 				itemstack:get_meta():set_string("pala_last_use", os.date("%Y-%m-%d"))
 				minetest.chat_send_player(player:get_player_name(),
 					"last use is now set to : "..itemstack:get_meta():get_string("pala_last_use"))
@@ -88,7 +89,7 @@ local function fortune(itemstack, player, pointed_thing)
 	end
 end
 function pala_legendary.get_random_stone()
-	local rnd = math.random(1, 1)
+	local rnd = math.random(1, #pala_legendary.stoneslist)
 	return pala_legendary.stoneslist[rnd]
 end
 
