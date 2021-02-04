@@ -1,10 +1,15 @@
+local S = minetest.get_translator("pala_spikes")
+
 pala_spikes = {}
 
 function pala_spikes.register_spike(name, desc, color, damage, id)
 	local newname = "pala_spikes:"..name.."_spike"
 	minetest.register_node(newname, {
 		description = (desc.." Spike"),
-		_doc_items_longdesc = ("Deals "..tostring(damage).." damage to people without armor. Destroy items thrown on the spike."),
+		_doc_items_longdesc = ("Deals "..tostring(damage)..[[
+			damage to people without armor.
+			Destroy items thrown on the spike.
+			]]),
 		drawtype="mesh",
 		mesh="pala_spikes_pyramid_spike.obj",
 		visual_scale=1.0,
@@ -13,9 +18,7 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 		on_walk_over = function(loc, nodeiamon, player)
 			-- Hurt players standing on top of this block
 			if player:get_hp() > 0 then
-				if mod_death_messages then
-					mcl_death_messages.player_damage(player, S("@1 stood too long on a spike.", player:get_player_name()))
-				end
+				mcl_death_messages.player_damage(player, S("@1 stood too long on a spike.", player:get_player_name()))
 				player:set_hp(player:get_hp() - damage, { type = "punch", from = "mod" })
 			end
 		end,
