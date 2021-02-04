@@ -54,6 +54,7 @@ local inactive_formspec = "size[9,8.75]"..
 	"listring[current_player;main]"..
 	"listring[current_name;fuel]"..
 	"listring[current_player;main]"
+
 local function cobblebreaker_node_timer(pos, elapsed)
 	--
 	-- Inizialize metadata
@@ -89,8 +90,6 @@ local function cobblebreaker_node_timer(pos, elapsed)
 
 		if cookable then -- fuel lasts long enough, adjust el to cooking duration
 			el = math.min(el, cooked.time - src_time)
-		end
-
 		elseif active then
 			el = math.min(el, fuel_totaltime - fuel_time)
 			-- The furnace is currently active and has enough fuel
