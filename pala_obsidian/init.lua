@@ -38,23 +38,23 @@ if minetest.get_modpath("mcl_explosions") then
 end
 
 if minetest.get_modpath("mcl_stairs") then
-	mcl_stairs.register_slab("obsidian", "mcl_core:obsidian", 
-		{pickaxey=5, building_block=1, material_stone=1}, 
-		{"default_obsidian.png"}, 
-		("Obsidian Slab"), mcl_sounds.node_sound_stone_defaults(), 1200, 50, 
+	mcl_stairs.register_slab("obsidian", "mcl_core:obsidian",
+		{pickaxey=5, building_block=1, material_stone=1},
+		{"default_obsidian.png"},
+		("Obsidian Slab"), mcl_sounds.node_sound_stone_defaults(), 1200, 50,
 		("Double Obsidian Slab"))
-	--[[mcl_stairs.register_stair(subname, recipeitem, 
+	--[[mcl_stairs.register_stair(subname, recipeitem,
 		groups,
 		images,
 		description,
 		sounds, blast-resistance, hardness,
 		corner_stair_texture_override)
 	]]
-	mcl_stairs.register_stair("obsidian", "mcl_core:obsidian", 
-		{pickaxey=5, building_block=1, material_stone=1}, 
-		{"default_obsidian.png"}, 
-		("Obsidian Stairs"), 
-		mcl_sounds.node_sound_stone_defaults(), 1200, 50, 
+	mcl_stairs.register_stair("obsidian", "mcl_core:obsidian",
+		{pickaxey=5, building_block=1, material_stone=1},
+		{"default_obsidian.png"},
+		("Obsidian Stairs"),
+		mcl_sounds.node_sound_stone_defaults(), 1200, 50,
 		"woodlike")
 end
 
