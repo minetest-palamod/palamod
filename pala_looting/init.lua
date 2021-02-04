@@ -179,9 +179,7 @@ minetest.register_abm({
 		local meta = minetest.get_meta(pos)
 		for _,player in ipairs(minetest.get_connected_players()) do
 			local name = player:get_player_name()
-			if name == meta:get_string("name") then
-				--minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
-			else
+			if not name == meta:get_string("name") then
 				minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
 			end
 		end
@@ -203,7 +201,7 @@ minetest.register_tool("pala_looting:chest_explorer", {
 			--local meta = minetest.get_meta(pointed_thing.under)
 			--item_image[<X>,<Y>;<W>,<H>;<item name>]
 			--local inv = minetest.get_inventory({ type="node", pos=pointed_thing.under })
-		    	--local size = inv:get_size("main")
+			--local size = inv:get_size("main")
 			--local list = inv:get_list("main")
 			local form = table.concat({
 				"formspec_version[3]",
