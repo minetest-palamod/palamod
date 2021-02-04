@@ -1,5 +1,3 @@
 # mt_palamod
-[![ContentDB](https://content.minetest.net/packages/AFCM/palamod/shields/title/)](https://content.minetest.net/packages/AFCM/palamod/) [![ContentDB](https://content.minetest.net/packages/AFCM/palamod/shields/downloads/)](https://content.minetest.net/packages/AFCM/palamod/)
-
-[![Stars](https://img.shields.io/github/stars/AFCMS/palamod/)
+![Discord](https://img.shields.io/discord/779809029773983766/779809029773983769)
 Palamod for Minetest
