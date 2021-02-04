@@ -113,7 +113,7 @@ mcl_buckets.register_liquid(
 			minetest.record_protection_violation(pos, placer_name)
 			return false
 		end
-		local nn = minetest.get_node(pos).name
+		--local nn = minetest.get_node(pos).name
 		-- Evaporate water if used in Nether (except on cauldron)
 		local dim = mcl_worlds.pos_to_dimension(pos)
 		if dim == "nether" then
