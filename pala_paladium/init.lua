@@ -257,7 +257,7 @@ minetest.register_node("pala_paladium:stone_with_findium", {
 	_mcl_hardness = 3,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		if digger:is_player() then
-			pala_job.earn_xp(digger, "miner", 
+			pala_job.earn_xp(digger, "miner",
 				{65, 58.5, 52, 45.5, 39, 0, 0, 0, 0, 0, 65, 58.5, 52, 45.5, 39, 32.5, 26, 19.5, 13, 6.5})
 		end
 	end,
