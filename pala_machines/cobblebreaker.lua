@@ -1,5 +1,6 @@
+S = minetest.get_translator("pala_machines")
 pala_machines.particule_list = {}
-local function active_formspec(fuel_percent, item_percent)
+--[[local function active_formspec(fuel_percent, item_percent)
 	return "size[9,8.75]"..
 	"label[0,4;"..minetest.formspec_escape(minetest.colorize("#313131", S("Inventory"))).."]"..
 	"list[current_player;main;0,4.5;9,3;9]"..
@@ -54,6 +55,7 @@ local inactive_formspec = "size[9,8.75]"..
 	"listring[current_player;main]"..
 	"listring[current_name;fuel]"..
 	"listring[current_player;main]"
+]]
 
 --[[local function cobblebreaker_node_timer(pos, elapsed)
 	--
@@ -185,7 +187,12 @@ minetest.register_node("pala_machines:cobblebreaker", {
 	_tt_help = ("Uses fuel to smelt or cook items"),
 	_doc_items_longdesc = ("Furnaces cook or smelt several items, using a furnace fuel, into something else."),
 	_doc_items_usagehelp =
-			("Use the furnace to open the furnace menu. Place a furnace fuel in the lower slot and the source material in the upper slot. The furnace will slowly use its fuel to smelt the item. The result will be placed into the output slot at the right side.").."\n"..
+			([[
+			Use the furnace to open the furnace menu.
+			Place a furnace fuel in the lower slot and the source material in the upper slot.
+			The furnace will slowly use its fuel to smelt the item.
+			The result will be placed into the output slot at the right side.
+			]]).."\n"..
 			("Use the recipe book to see what you can smelt, what you can use as fuel and how long it will burn."),
 	_doc_items_hidden = false,
 	tiles = {
@@ -225,18 +232,18 @@ minetest.register_node("pala_machines:cobblebreaker", {
 
 	on_metadata_inventory_move = function(pos)
 		-- Reset accumulated game time when player works with furnace:
-		furnace_reset_delta_time(pos)
+		--furnace_reset_delta_time(pos)
 		minetest.get_node_timer(pos):start(1.0)
 	end,
 	on_metadata_inventory_put = function(pos)
 		-- Reset accumulated game time when player works with furnace:
-		furnace_reset_delta_time(pos)
+		--furnace_reset_delta_time(pos)
 		-- start timer function, it will sort out whether furnace can burn or not.
 		minetest.get_node_timer(pos):start(1.0)
 	end,
 	on_metadata_inventory_take = function(pos)
 		-- Reset accumulated game time when player works with furnace:
-		furnace_reset_delta_time(pos)
+		--furnace_reset_delta_time(pos)
 		-- start timer function, it will helpful if player clears dst slot
 		minetest.get_node_timer(pos):start(1.0)
 	end,
