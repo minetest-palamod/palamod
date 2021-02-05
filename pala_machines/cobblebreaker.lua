@@ -156,7 +156,7 @@ local function cobblebreaker_node_timer(pos, elapsed)
 		 meta:set_string("src_item", "")
 	end
 	meta:set_string("formspec", formspec)
-return result
+	return result
 end
 
 local function allow_metadata_inventory_put(pos, listname, index, stack, player)
