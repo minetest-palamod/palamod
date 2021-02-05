@@ -75,7 +75,7 @@ pala_luckyblock.event_positive = {
 		for i = 0, 8, 1 do
 			local rndpos = math.random(1, 2)
 			local drop_pos = {x=pos.x+rndpos, y=pos.y+3+rndpos, z=pos.z+rndpos}
-			minetest.add_item(drop_pos, itemlist[math.random(1, 5)])
+			minetest.add_item(drop_pos, pala_luckyblock.minerallist[math.random(1, #pala_luckyblock.minerallist)])
 		end
 	end},
 	{"Nose", 50, "default_stone.png", pala_luckyblock.wip_event},
@@ -142,7 +142,8 @@ pala_luckyblock.event_positive = {
 	{"Camouflage", 1200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", function(pos, player)
 		--TODO:add beacon
-		minetest.place_schematic({x=pos.x-3,y=pos.y,z=pos.z-3}, pala_luckyblock.modpath .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
+		minetest.place_schematic({x=pos.x-3,y=pos.y,z=pos.z-3},
+			pala_luckyblock.modpath .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
 	end},
 	{"Mega Fast Learner", 2400, "default_stone.png", pala_luckyblock.wip_event},
 	{"Inevitable", 5000, "default_stone.png", pala_luckyblock.wip_event},
