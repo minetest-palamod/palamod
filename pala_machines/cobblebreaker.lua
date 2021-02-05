@@ -55,7 +55,7 @@ local inactive_formspec = "size[9,8.75]"..
 	"listring[current_name;fuel]"..
 	"listring[current_player;main]"
 
-local function cobblebreaker_node_timer(pos, elapsed)
+--[[local function cobblebreaker_node_timer(pos, elapsed)
 	--
 	-- Inizialize metadata
 	--
@@ -157,6 +157,7 @@ local function cobblebreaker_node_timer(pos, elapsed)
 	end
 	meta:set_string("formspec", formspec)
 	return result
+end]]
 
 local function allow_metadata_inventory_put(pos, listname, index, stack, player)
 	local name = player:get_player_name()
@@ -197,7 +198,7 @@ minetest.register_node("pala_machines:cobblebreaker", {
 	is_ground_content = false,
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 
-	on_timer = furnace_node_timer,
+	--on_timer = furnace_node_timer,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		local meta = minetest.get_meta(pos)
 		local meta2 = meta
@@ -261,7 +262,7 @@ minetest.register_node("pala_machines:cobblebreaker_active", {
 	groups = {pickaxey=1, container=4, deco_block=1, not_in_creative_inventory=1, material_stone=1},
 	is_ground_content = false,
 	sounds = mcl_sounds.node_sound_stone_defaults(),
-	on_timer = cobblebreaker_node_timer,
+	--on_timer = cobblebreaker_node_timer,
 
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
 		local meta = minetest.get_meta(pos)
