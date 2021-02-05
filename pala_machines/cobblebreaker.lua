@@ -223,7 +223,7 @@ minetest.register_node("pala_machines:cobblebreaker", {
 
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec", inactive_formspec)
+		--meta:set_string("formspec", inactive_formspec)
 		local inv = meta:get_inventory()
 		inv:set_size('src', 1)
 		inv:set_size('out', 6)
