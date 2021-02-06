@@ -15,9 +15,9 @@ minetest.register_tool("pala_armor:boots_weighted", {
 
 minetest.register_globalstep(function()
 	for _, player in ipairs(minetest.get_connected_players()) do
-   		local torso = player:get_inventory():get_stack("armor", 1)
+		local torso = player:get_inventory():get_stack("armor", 1)
 		if torso and torso:get_name() == "pala_armor:boots_weighted" then
-	   		player:set_physics_override({gravity = 5, speed = 0.5,}) -- reduced gravity
+		player:set_physics_override({gravity = 5, speed = 0.5,}) -- reduced gravity
 		else
 			player:set_physics_override({gravity = 1, speed = 1,}) -- reset to normal gravity
 		end

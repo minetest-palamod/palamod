@@ -105,7 +105,10 @@ end
 --Hardened Obsidian
 minetest.register_node("pala_obsidian:hardened_obsidian", {
 	description = ("Hardened Obsidian"),
-	_doc_items_longdesc = ("Hardened Obsidian is an extremely hard mineral with an enourmous blast-resistance. Breaks with a magical tool."),
+	_doc_items_longdesc = ([[
+		Hardened Obsidian is an extremely hard mineral with an enourmous blast-resistance.
+		Breaks with a magical tool.
+		]]),
 	tiles = {"default_obsidian.png"},
 	is_ground_content = true,
 	stack_max = 64,
@@ -240,7 +243,10 @@ end
 --Boom obsidian
 minetest.register_node("pala_obsidian:boom_obsidian", {
 	description = ("Boom Obsidian"),
-	_doc_items_longdesc = ("Obsidian is an extremely hard mineral with an enourmous blast-resistance. Give a poison effect to players"),
+	_doc_items_longdesc = ([[
+		Obsidian is an extremely hard mineral with an enourmous blast-resistance.
+		Give a poison effect to players
+		]]),
 	tiles = {"default_obsidian.png^pala_obsidian_boom_obsidian.png"},
 	is_ground_content = true,
 	stack_max = 64,

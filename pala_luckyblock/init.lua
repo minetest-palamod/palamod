@@ -413,7 +413,6 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		local palapos = minetest.deserialize(meta:get_string("pala_luckyblock:palapos"))
 		minetest.set_node(palapos, {name="air"})
 		--if not meta:get_int("pala_luckyblock:palatarget") then minetest.chat_send_all("pb") end
-		
 		minetest.chat_send_all("new:"..meta:get_int("pala_luckyblock:palatarget"))
 		pala_luckyblock.event_all[meta:get_int("pala_luckyblock:palatarget")][4](palapos, player)
 		--end
