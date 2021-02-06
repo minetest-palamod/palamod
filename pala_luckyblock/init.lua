@@ -6,6 +6,7 @@ else
         return(str)
     end
 end
+local C = minetest.colorize
 
 function randomFloat(lower, greater)
     return lower + math.random()  * (greater - lower);
@@ -202,7 +203,6 @@ pala_luckyblock.event_negative = {
 		end
 	end},
 	{"Un peu de silence ne fait pas de mal", 20, "default_stone.png", pala_luckyblock.wip_event},
-
 	{"Boom", 30, "pala_luckyblock_boom.png", function(pos, player)
 		mcl_explosions.explode(pos, 5, { drop_chance = 1.0 }, player)
 	end},
@@ -220,10 +220,10 @@ pala_luckyblock.event_negative = {
 	{"Allumer le feu", 40, "default_stone.png", pala_luckyblock.wip_event},
 	{"Instant break up", 40, "pala_luckyblock_instant_break_up.png", function(pos, player)
 		local inv = player:get_inventory()
-		local stackname = inv:get_stack("main", 1):get_name()
-		inv:remove_item("main", 1)
+		local oldstack = inv:get_stack("main", 1)
 		minetest.chat_send_player(player:get_player_name(),
-			"It seems to me you had a "..minetest.colorize("#44c8fc", stackname)) --TODO:make it work
+			"It seems to me you had a "..C("lightskyblue", oldstack:get_count().."x"..oldstack:get_name()))
+		inv:set_stack("main", 1, ItemStack())
 	end},
 	{"Sur la Lune", 40, "default_stone.png", pala_luckyblock.wip_event},
 	{"Zombie Hero", 40, "default_stone.png", pala_luckyblock.wip_event},
@@ -346,7 +346,7 @@ function pala_luckyblock.get_random_all()
 		end
 	end
 	--WARNING
-	return hit
+	return 71 --hit
 end
 
 function pala_luckyblock.get_random_img(nb)

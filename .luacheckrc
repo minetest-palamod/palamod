@@ -14,7 +14,8 @@ read_globals = {
     "vector", "ItemStack",
     "dump", "DIR_DELIM", "VoxelArea", "Settings",
 
-    -- MCL 
+    -- MCL
+	--------------------------------------------
     -- CORE
     "biomeinfo", "flowlib", "mcl_explosions", "mcl_sounds", "mcl_loot", "mcl_particles", "mcl_util", "mcl_worlds", "walkover",
     -- ENTITIES
@@ -26,7 +27,8 @@ read_globals = {
     -- HUD
     "awards", "mcl_death_messages", "mcl_experience", "mcl_formspec",
     -- ITEMS
-    "armor", "mcl_buckets", "mcl_doors", "mcl_enchanting", "mcl_fire", "mcl_potions", "mcl_throwing", "mcl_stairs", "screwdriver", "mesecon", "tnt",
+    "armor", "mcl_buckets", "mcl_doors", "mcl_enchanting", "mcl_fire",
+	"mcl_potions", "mcl_throwing", "mcl_stairs", "screwdriver", "mesecon", "tnt",
     -- PLAYER
     "mcl_hunger",
     

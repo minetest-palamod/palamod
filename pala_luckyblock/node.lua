@@ -63,12 +63,12 @@ minetest.register_node("pala_luckyblock:luckyblockfakeendium", {
 })
 
 local tnt_mesecons
-if minetest.get_modpath("mesecons") then
-	tnt_mesecons = {effector = {
-		action_on = tnt.ignite,
-		rules = mesecon.rules.alldirs,
-	}}
-end
+-- if minetest.get_modpath("mesecons") then
+	-- tnt_mesecons = {effector = {
+		-- action_on = tnt.ignite,
+		-- rules = mesecon.rules.alldirs,
+	-- }}
+-- end
 local sounds
 if minetest.get_modpath("mcl_sounds") then
 	sounds = mcl_sounds.node_sound_wood_defaults()
