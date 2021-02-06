@@ -1,13 +1,3 @@
-function table.containsplayer(table, element)
-  for _, value in pairs(table) do
-	local name = value:get_player_name()
-    if name == element then
-      return true
-    end
-  end
-  return false
-end
-
 minetest.register_node("pala_looting:caveblock", {
 	description = ("Cave Block"),
 	_doc_items_longdesc = ("Cave Block allow players to see through the blocks."),
@@ -38,12 +28,12 @@ end
 
 minetest.register_tool("pala_looting:unclaimfinder_green", {
   description = "Green Unclaimfinder",
-  wield_image = "ham_radio_receiver_handheld.png",
-  inventory_image = "ham_radio_receiver_handheld.png",
+  wield_image = "default_stone.png",
+  inventory_image = "default_stone.png",
   groups = { disable_repair = 1 },
   on_use = function(itemstack, user, pointed_thing)
-    local keys = user:get_player_control()
-    local meta = itemstack:get_meta()
+    --local keys = user:get_player_control()
+    --local meta = itemstack:get_meta()
   end
 })
 
@@ -67,6 +57,7 @@ if minetest.get_modpath("mcl_core") then
 end
 --online detector
 
+--[[
 minetest.register_on_leaveplayer(function(player)
 	minetest.chat_send_all(player:get_player_name().." has left this awesome game.")
 end)
@@ -74,6 +65,7 @@ end)
 minetest.register_on_joinplayer(function(player)
 	minetest.chat_send_all("Give a warm welcome to "..player:get_player_name().."!")
 end)
+]]
 
 minetest.register_node("pala_looting:online_detector_off", {
 	description = ("Online Detector"),
@@ -92,7 +84,7 @@ minetest.register_node("pala_looting:online_detector_off", {
 		meta:set_string("formspec", form)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
-		if field == name then
+		if fields.name then
 			local meta = minetest.get_meta(pos)
 			meta:set_string("name", fields.name)
 			for _,player in ipairs(minetest.get_connected_players()) do
@@ -138,7 +130,7 @@ minetest.register_node("pala_looting:online_detector_on", {
 		meta:set_string("formspec", form)
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
-		if field == name then
+		if fields.name then
 			local meta = minetest.get_meta(pos)
 			meta:set_string("name", fields.name)
 			for _,player in ipairs(minetest.get_connected_players()) do
@@ -187,33 +179,30 @@ minetest.register_abm({
 		local meta = minetest.get_meta(pos)
 		for _,player in ipairs(minetest.get_connected_players()) do
 			local name = player:get_player_name()
-			if name == meta:get_string("name") then
-				--minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
-			else
+			if not name == meta:get_string("name") then
 				minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
 			end
 		end
 	end,
 })
 
-
 --Chest Explorer
 minetest.register_tool("pala_looting:chest_explorer", {
-    description = "Chest Explorer",
-    inventory_image = "pala_looting_chest_explorer.png",
-    tool_capabilities = {
-        max_drop_level=3,
-        groupcaps= {
-            cracky={times={[1]=4.00, [2]=1.50, [3]=1.00}, uses=70, maxlevel=1}
-        }
-    },
+	description = "Chest Explorer",
+	inventory_image = "pala_looting_chest_explorer.png",
+	tool_capabilities = {
+		max_drop_level=3,
+		groupcaps= {
+			cracky={times={[1]=4.00, [2]=1.50, [3]=1.00}, uses=70, maxlevel=1}
+		}
+	},
 	on_use = function(itemstack, player, pointed_thing)
 		if pointed_thing.type == "node" then
 			--local meta = minetest.get_meta(pointed_thing.under)
 			--item_image[<X>,<Y>;<W>,<H>;<item name>]
-			local inv = minetest.get_inventory({ type="node", pos=pointed_thing.under })
-		    local size = inv:get_size("main")
-			local list = inv:get_list("main")
+			--local inv = minetest.get_inventory({ type="node", pos=pointed_thing.under })
+			--local size = inv:get_size("main")
+			--local list = inv:get_list("main")
 			local form = table.concat({
 				"formspec_version[3]",
 				"size[17,11]",

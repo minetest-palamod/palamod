@@ -1,8 +1,15 @@
 pala_tools = {}
 pala_tools.path = minetest.get_modpath(minetest.get_current_modname())
 
-local sword_longdesc = "Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles. Swords can also be used to cut down a few particular blocks, such as cobwebs."
-local pickaxe_longdesc = "Pickaxes are mining tools to mine hard blocks, such as stone. A pickaxe can also be used as weapon, but it is rather inefficient."
+local sword_longdesc = [[
+	Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles.
+	Swords can also be used to cut down a few particular blocks, such as cobwebs.
+	]]
+local pickaxe_longdesc = [[
+	Pickaxes are mining tools to mine hard blocks, such as stone.
+	A pickaxe can also be used as weapon, but it is rather inefficient.
+	]]
+local wield_scale = 1
 
 --Paladium
 minetest.register_tool("pala_tools:sword_paladium", {
@@ -23,7 +30,7 @@ minetest.register_tool("pala_tools:sword_paladium", {
 		punch_attack_uses = 4999,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	_repair_material = "group:wood",
+	--_repair_material = "group:wood",
 })
 if minetest.get_modpath("pala_paladium") then
 	minetest.register_craft({
@@ -54,7 +61,7 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 		punch_attack_uses = 20,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	_repair_material = "group:wood",
+	--_repair_material = "group:wood",
 })
 
 minetest.register_tool("pala_tools:broadsword_paladium", {
@@ -75,7 +82,7 @@ minetest.register_tool("pala_tools:broadsword_paladium", {
 		punch_attack_uses = 3000,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	_repair_material = "group:wood",
+	--_repair_material = "group:wood",
 })
 
 

@@ -1,3 +1,4 @@
+pala_obsidian = {}
 pala_obsidian.config = pala_obsidian.config or Settings(minetest.get_worldpath().."/pala_obsidian.conf")
 
 local conf_table = pala_obsidian.config:to_table()

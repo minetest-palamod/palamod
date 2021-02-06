@@ -66,7 +66,6 @@ function pala_backpack.clear_player(player, line)
 		local stack = inv:get_stack("backpack", i)
 		inv:set_stack("backpack", i, nil)
 		minetest.add_item(pos, stack:get_name())
-		
 	end
 end
 

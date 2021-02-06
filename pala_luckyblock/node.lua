@@ -7,7 +7,7 @@ function placefakepala(pos, player)
 		local pos2 = {x = x, y = y,z = z}
 	--minetest.chat_send_all(tostring(pos2))
 	--local pos3 = {x = x, y = pos.y + 5,z = z}
-		if not minetest.is_protected(pos2, name) then
+		if not minetest.is_protected(pos2, player:get_player_name()) then
 			minetest.set_node(pos2, {name="pala_luckyblock:fakepaladiumblock"})
 			local meta = minetest.get_meta(pos2)
 			meta:set_string("number", 1)
@@ -50,7 +50,7 @@ minetest.register_node("pala_luckyblock:luckyblockfakepaladium", {
 	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, not_in_creative_inventory=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
-}) 
+})
 
 minetest.register_node("pala_luckyblock:luckyblockfakeendium", {
 	description = ("Fake Endium LuckyBlock"),
@@ -60,13 +60,27 @@ minetest.register_node("pala_luckyblock:luckyblockfakeendium", {
 	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, not_in_creative_inventory=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
-}) 
+})
 
+local tnt_mesecons
+if minetest.get_modpath("mesecons") then
+	tnt_mesecons = {effector = {
+		action_on = tnt.ignite,
+		rules = mesecon.rules.alldirs,
+	}}
+end
+local sounds
+if minetest.get_modpath("mcl_sounds") then
+	sounds = mcl_sounds.node_sound_wood_defaults()
+end
 minetest.register_tool("pala_luckyblock:blaze_flint_and_steel", {
 	description = "Blaze Flint and Steel",
-	_tt_help = "Starts fires and ignites blocks", 
+	_tt_help = "Starts fires and ignites blocks",
 	_doc_items_longdesc = "Flint and steel is a tool to start fires and ignite blocks.",
-	_doc_items_usagehelp = "Rightclick the surface of a block to attempt to light a fire in front of it or ignite the block. A few blocks have an unique reaction when ignited.",
+	_doc_items_usagehelp = [[
+		Rightclick the surface of a block to attempt to light a fire in front of it or ignite the block.
+		A few blocks have an unique reaction when ignited.
+		]],
 	inventory_image = "mcl_fire_flint_and_steel.png",
 	liquids_pointable = false,
 	stack_max = 1,
@@ -144,7 +158,11 @@ minetest.register_node("pala_luckyblock:faketnt", {
 	sunlight_propagates = true,
 	_tt_help = "Ignited by tools, explosions, fire, lava, redstone power",
 	--_doc_items_longdesc = longdesc,
-	_doc_items_usagehelp = "Place the TNT and ignite it with one of the methods above. Quickly get in safe distance. The TNT will start to be affected by gravity and explodes in 4 seconds.",
+	_doc_items_usagehelp = [[
+		Place the TNT and ignite it with one of the methods above.
+		Quickly get in safe distance.
+		The TNT will start to be affected by gravity and explodes in 4 seconds.
+		]],
 	groups = { dig_immediate = 3, tnt = 1, enderman_takable=1, flammable=-1},
 	mesecons = tnt_mesecons,
 	on_blast = function(pos)
@@ -168,7 +186,9 @@ minetest.register_node("pala_luckyblock:faketnt", {
 			collisiondetection = false,
 			texture = "mcl_particles_smoke.png"
 		})
-		minetest.remove_node(pos)
+		if pointed_thing.type == "node" then
+			minetest.remove_node(minetest.get_pointed_thing_position(pointed_thing, true))
+		end
 	end,
 	_on_burn = function(pos)
 		minetest.add_particle({

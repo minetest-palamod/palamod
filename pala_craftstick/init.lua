@@ -9,20 +9,20 @@ else
 end
 
 minetest.register_craftitem("pala_craftstick:palastick", {
-	description = "Paladium Stick",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Paladium Stick"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 minetest.register_craftitem("pala_craftstick:titaniumstick", {
-	description = "Titanium Stick",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Titanium Stick"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_titaniumstick.png"
 })
 
 minetest.register_craftitem("pala_craftstick:amethyststick", {
-	description = "Amethyst Stick",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Amethyst Stick"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_amethyststick.png"
 })
 
@@ -47,59 +47,59 @@ end
 --orbs
 
 minetest.register_craftitem("pala_craftstick:orb_speed", {
-	description = "Speed Orb",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Speed Orb"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 minetest.register_craftitem("pala_craftstick:orb_heal", {
-	description = "Heal Orb",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Heal Orb"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 minetest.register_craftitem("pala_craftstick:orb_jump", {
-	description = "Jump Orb",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Jump Orb"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 minetest.register_craftitem("pala_craftstick:orb_knockback", {
-	description = "Knockback Orb",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Knockback Orb"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 minetest.register_craftitem("pala_craftstick:orb_strenght", {
-	description = "Strenght Orb",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Strenght Orb"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 --compressed
 
 minetest.register_craftitem("pala_craftstick:compressed_paladium", {
-	description = "Compressed Paladium",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Compressed Paladium"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 minetest.register_craftitem("pala_craftstick:compressed_titanium", {
-	description = "Compressed Titanium",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Compressed Titanium"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 minetest.register_craftitem("pala_craftstick:compressed_amethyst", {
-	description = "Compressed Amethyst",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Compressed Amethyst"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
 --Wither Skull Fragment
 minetest.register_craftitem("pala_craftstick:wither_skull_fragment", {
-	description = "Wither Skull Fragment",
-	_doc_items_longdesc = ("Useful in many crafts"),
+	description = S("Wither Skull Fragment"),
+	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_wither_skull_fragment.png"
 })
 

@@ -29,10 +29,11 @@ minetest.register_chatcommand("furnace", {
         })
 		if output and output.item and not output.item:is_empty() then
 			minetest.chat_send_player(name, tostring(output))
-			local outputname = output.item:get_name(),
-			minetest.chat_send_player(name, tostring(outputname))
-			player:set_wielded_item(outputname)
-            count = output.item:to_table().count
+			--local outputname = output.item:get_name(),
+			--minetest.chat_send_player(name, tostring(outputname))
+			minetest.Chat_send_player(name, "WIP")
+			--player:set_wielded_item(outputname)
+            --local count = output.item:to_table().count
 		end
 		--if output == item
 		mcl_hunger.set_hunger(player, 20)

@@ -1,6 +1,7 @@
 pala_job = {}
 pala_job.jobs = {"hunter", "miner", "farmer", "alchemist"}
-pala_job.levels = {480, 1195, 2476, 4710, 8327, 13792, 21597, 32262, 46328, 64357, 86931, 114649, 148126, 187995, 234901, 289504, 352478, 424509, 506296, 598549}
+pala_job.levels = {480, 1195, 2476, 4710, 8327, 13792, 21597, 32262, 46328, 64357,
+	86931, 114649, 148126, 187995, 234901, 289504, 352478, 424509, 506296, 598549}
 pala_job.default_xp = 0
 pala_job.job = {}
 --TODO:real money
@@ -12,8 +13,8 @@ end
 --TODO:hammer and cobblebreaker
 pala_job.job.hunter = {
 	{pala_job.money.." 2"},
-	{pala_job.money.." 3"}, 
-	{pala_job.money.." 4"}, 
+	{pala_job.money.." 3"},
+	{pala_job.money.." 4"},
 	{pala_job.money.." 5"},
 	{"pala_tools:pick_paladium"},
 	{pala_job.money.." 7"},
@@ -35,8 +36,8 @@ pala_job.job.hunter = {
 
 pala_job.job.miner = {
 	{pala_job.money.." 2"},
-	{pala_job.money.." 3"}, 
-	{pala_job.money.." 4"}, 
+	{pala_job.money.." 3"},
+	{pala_job.money.." 4"},
 	{pala_job.money.." 5"},
 	{"pala_tools:pick_paladium"},
 	{pala_job.money.." 7"},
@@ -70,7 +71,7 @@ function pala_job.earn_xp(player, job, list)
 		--pala_job.update_job
 		minetest.chat_send_all(tostring(player:get_meta():get_float("pala_job_xp_"..job)))
 		if meta:get_float("pala_job_xp_"..job) >= pala_job.levels[meta:get_int("pala_job_level_"..job) + 1] then
-			local oldlevel = player:get_meta():get_int("pala_job_level_"..job)
+			--local oldlevel = player:get_meta():get_int("pala_job_level_"..job)
 			player:get_meta():set_int("pala_job_level_"..job, player:get_meta():get_int("pala_job_level_"..job) + 1)
 			minetest.chat_send_all("lvl passed")
 			pala_job.give_loot(player, job, player:get_meta():get_int("pala_job_level_"..job))
@@ -88,7 +89,7 @@ function pala_job.update_job(player, job)
 	local meta = player:get_meta()
 	if pala_job.levels[meta:get_int("pala_job_level_"..job) + 1] then
 		if meta:get_float("pala_job_xp_"..job) >= pala_job.levels[meta:get_int("pala_job_level_"..job) + 1] then
-			local oldlevel = player:get_meta():get_int("pala_job_level_"..job)
+			--local oldlevel = player:get_meta():get_int("pala_job_level_"..job)
 			meta:set_int("pala_job_level_"..job, meta:get_int("pala_job_level_"..job) + 1)
 		end
 	end
@@ -97,17 +98,25 @@ end
 
 function pala_job.set_xp(player, job, amount)
 	local meta = player:get_meta()
-	local l = pala_job.levels[20]
+	--local l = pala_job.levels[20]
 	--if not amount>l then
 	meta:set_float("pala_job_xp_"..job, amount)
 	pala_job.update_job(player, job)
 		--return true
-	--else 
+	--else
 		--return false
 	--end
 end
 
---RAW:formspec_version[3]size[9,5.5]label[3.5,0.5;FARMER]label[3,2;You pass level 19]label[3,3.5;You receive :]image[1,4;1,1;]image[4,4;1,1;]image[7,4;1,1;]image[0,2.25;9,1;]
+--RAW:formspec_version[3]
+--size[9,5.5]
+--label[3.5,0.5;FARMER]
+--label[3,2;You pass level 19]
+--label[3,3.5;You receive :]
+--image[1,4;1,1;]
+--image[4,4;1,1;]
+--image[7,4;1,1;]
+--image[0,2.25;9,1;]
 function pala_job.show_win_level(player, job, level, loot)
 	local loot1 = loot[level][1] or "mcl_core:stone"
 	local loot2 = loot[level][2] or "mcl_core:stone"

@@ -19,6 +19,7 @@ function pala_legendary.register_legendary(name, longdesc, inventory_image, func
 		stack_max = 1,
 		groups = {legendary_stone=1},
 		on_use = function(itemstack, player, pointed_thing)
+			local ok
 			minetest.chat_send_player(player:get_player_name(), "last use : "..itemstack:get_meta():get_string("pala_last_use"))
 			minetest.chat_send_player(player:get_player_name(), os.date("%Y-%m-%d"))
 			if not itemstack:get_meta():get_string("pala_last_use") then
@@ -33,7 +34,8 @@ function pala_legendary.register_legendary(name, longdesc, inventory_image, func
 			end
 			if ok == true then
 				itemstack:get_meta():set_string("pala_last_use", os.date("%Y-%m-%d"))
-				minetest.chat_send_player(player:get_player_name(), "last use is now set to : "..itemstack:get_meta():get_string("pala_last_use"))
+				minetest.chat_send_player(player:get_player_name(),
+					"last use is now set to : "..itemstack:get_meta():get_string("pala_last_use"))
 				func(itemstack, player, pointed_thing)
 				pala_legendary.spawn_particle(player:get_pos())
 				return itemstack
@@ -86,9 +88,9 @@ local function fortune(itemstack, player, pointed_thing)
 		minetest.add_item(player:get_pos(), minerallist[rnd])
 	end
 end
-local function get_random_stone()
-	local rnd = math.random(1, 1)
-	return stoneslist[rnd]
+function pala_legendary.get_random_stone()
+	local rnd = math.random(1, #pala_legendary.stoneslist)
+	return pala_legendary.stoneslist[rnd]
 end
 
 local function random_stone(itemstack, player, pointed_thing)
@@ -96,28 +98,11 @@ local function random_stone(itemstack, player, pointed_thing)
 end
 
 --Fortune
-pala_legendary.register_legendary("fortune", "Gives a random number of a random ore (this can be coal such as palladium).", "default_stone.png", fortune)
-pala_legendary.register_legendary("random", "Basic legendary stone, it is the one that then gives one of the six stones.", "default_stone.png", random_stone)
--- minetest.register_craftitem("pala_legendary:legendary_fortune", {
-	-- description = ("Legendary Stone Fortune"),
-	-- _doc_items_longdesc = ("Marinated Ham is obtained by hunting and is a food item which can be eaten safely. Cooking it improves its nutritional value."),
-	-- inventory_image = "mcl_fishing_salmon_raw.png",
-	-- stack_max = 1,
-	-- groups = {},
-	-- on_use = function(itemstack, player, pointed_thing)
-		-- fortune(player:get_pos())
-	-- end,
--- })
+pala_legendary.register_legendary("fortune",
+	"Gives a random number of a random ore (this can be coal such as palladium).",
+	"default_stone.png", fortune)
+pala_legendary.register_legendary("random",
+	"Basic legendary stone, it is the one that then gives one of the six stones.",
+	"default_stone.png", random_stone)
 
--- minetest.register_craftitem("pala_legendary:legendary_random", {
-	-- description = ("Legendary Stone Random"),
-	-- _doc_items_longdesc = ("Marinated Ham is obtained by hunting and is a food item which can be eaten safely. Cooking it improves its nutritional value."),
-	-- inventory_image = "mcl_fishing_salmon_raw.png",
-	-- stack_max = 1,
-	-- groups = {},
-	-- on_use = function(itemstack, player, pointed_thing)
-		-- itemstack:replace(get_random_stone())
-		-- return itemstack
-	-- end,
--- })
 dofile(minetest.get_modpath("pala_legendary").."/endium_gauntlet.lua")
