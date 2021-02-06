@@ -346,7 +346,7 @@ function pala_luckyblock.get_random_all()
 		end
 	end
 	--WARNING
-	return 71 --hit
+	return hit
 end
 
 function pala_luckyblock.get_random_img(nb)
