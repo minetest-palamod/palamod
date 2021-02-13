@@ -210,7 +210,7 @@ pala_luckyblock.event_negative = {
 	{"Piggy Rodéo", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Pssssssss", 30, "pala_luckyblock_psss.png", function(pos, player)
 		for i = 1, 4, 1 do
-			minetest.add_entity(pos, "mobs_mc:creeper") --TODO:custom creeper
+			minetest.add_entity(pos, "pala_luckyblock:fake_creeper_charged")
 		end
 	end},
 	{"Ruée vers les minerais", 30, "default_stone.png", pala_luckyblock.wip_event},

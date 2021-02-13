@@ -45,38 +45,103 @@ if minetest.get_modpath("pala_paladium") then
 end
 
 --orbs
-
+----------------------------------------------------------
+--speed
 minetest.register_craftitem("pala_craftstick:orb_speed", {
 	description = S("Speed Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
+minetest.register_craft({
+	output = "pala_craftstick:orb_speed",
+	recipe = {
+		{"", "pala_paladium:paladium_ingot", ""},
+		{"pala_paladium:paladium_ingot", "mcl_core:sugar", "pala_paladium:paladium_ingot"},
+		{"", "pala_paladium:paladium_ingot", ""}
+	}
+})
+minetest.register_alias("#4571", "pala_craftstick:orb_speed")
+
+
+--heal
 minetest.register_craftitem("pala_craftstick:orb_heal", {
 	description = S("Heal Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
+minetest.register_craft({
+	output = "pala_craftstick:orb_heal",
+	recipe = {
+		{"", "pala_paladium:paladium_ingot", ""},
+		{"pala_paladium:paladium_ingot", "mcl_potions:speckled_melon", "pala_paladium:paladium_ingot"},
+		{"", "pala_paladium:paladium_ingot", ""}
+	}
+})
+minetest.register_craft({
+	output = "pala_craftstick:orb_heal",
+	recipe = {
+		{"", "pala_paladium:paladium_ingot", ""},
+		{"pala_paladium:paladium_ingot", "mcl_books:book", "pala_paladium:paladium_ingot"},
+		{"", "pala_paladium:paladium_ingot", ""}
+	}
+})
+minetest.register_alias("#4568", "pala_craftstick:orb_heal")
+
+--jump
 minetest.register_craftitem("pala_craftstick:orb_jump", {
 	description = S("Jump Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
+minetest.register_craft({
+	output = "pala_craftstick:orb_jump",
+	recipe = {
+		{"", "pala_paladium:paladium_ingot", ""},
+		{"pala_paladium:paladium_ingot", "mcl_nether:nether_wart_item", "pala_paladium:paladium_ingot"},
+		{"", "pala_paladium:paladium_ingot", ""}
+	}
+})
+minetest.register_alias("#4569", "pala_craftstick:orb_jump")
+
+--knockback
 minetest.register_craftitem("pala_craftstick:orb_knockback", {
 	description = S("Knockback Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
+minetest.register_craft({
+	output = "pala_craftstick:orb_knockback",
+	recipe = {
+		{"", "pala_paladium:paladium_ingot", ""},
+		{"pala_paladium:paladium_ingot", "mcl_mobitems:ghast_tear", "pala_paladium:paladium_ingot"},
+		{"", "pala_paladium:paladium_ingot", ""}
+	}
+})
+minetest.register_alias("#4570", "pala_craftstick:orb_knockback")
+
+--strenght
 minetest.register_craftitem("pala_craftstick:orb_strenght", {
 	description = S("Strenght Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftstick_paladiumstick.png"
 })
 
+minetest.register_craft({
+	output = "pala_craftstick:orb_strenght",
+	recipe = {
+		{"", "pala_paladium:paladium_ingot", ""},
+		{"pala_paladium:paladium_ingot", "mcl_mobitems:blaze_powder", "pala_paladium:paladium_ingot"},
+		{"", "pala_paladium:paladium_ingot", ""}
+	}
+})
+minetest.register_alias("#4572", "pala_craftstick:orb_strenght")
+
 --compressed
+--------------------------------------------------------------------
 
 minetest.register_craftitem("pala_craftstick:compressed_paladium", {
 	description = S("Compressed Paladium"),

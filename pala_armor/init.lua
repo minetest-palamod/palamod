@@ -29,7 +29,8 @@ end)
 minetest.register_tool("pala_armor:paladium_boots", {
 	description = "Paladium Boots",
 	_doc_items_longdesc = "Allows you to descend faster to the bottom of the water and stay there",
-	inventory_image = "pala_armor_boots_base.png^[colorize:#ff6021:200",
+	inventory_image = "pala_armor_boots_base.png",
+	color = "#fc7a16",
 	groups = {armor_feet=1, mcl_armor_points=5, mcl_armor_uses=2080, enchantability=25},
 	sounds = {
 		_mcl_armor_equip = "mcl_armor_equip_iron",

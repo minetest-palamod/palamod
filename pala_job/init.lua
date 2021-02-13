@@ -10,6 +10,9 @@ if minetest.get_modpath("my_super_money") then
 else
 	pala_job.money = "mcl_core:stone"
 end
+
+local pala_job_modpath = minetest.get_modpath("pala_job")
+
 --TODO:hammer and cobblebreaker
 pala_job.job.hunter = {
 	{pala_job.money.." 2"},
@@ -205,4 +208,5 @@ minetest.register_chatcommand("earn", {
 })
 
 
-dofile(minetest.get_modpath("pala_job").."/update.lua")
+dofile(pala_job_modpath.."/update.lua")
+dofile(pala_job_modpath.."/mobs.lua")
