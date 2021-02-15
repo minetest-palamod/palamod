@@ -16,6 +16,7 @@ pala_luckyblock = {}
 pala_luckyblock.modpath = minetest.get_modpath(minetest.get_current_modname())
 
 dofile(pala_luckyblock.modpath.."/node.lua")
+dofile(pala_luckyblock.modpath.."/mobs.lua")
 
 function pala_luckyblock.wip_event(pos, player)
 	minetest.chat_send_player(player:get_player_name(), minetest.colorize("#fc4b4b", S("This event is WIP")))
