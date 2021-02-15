@@ -120,3 +120,7 @@ minetest.register_craftitem("pala_food:marinated_ham", {
 	groups = { food=4, eatable = 4 },
 	_mcl_saturation = 0.4,
 })
+
+
+--Clear Golden Apple
+minetest.clear_craft({output = "mcl_core:apple_gold"})
