@@ -339,3 +339,34 @@ if has_mcl_core and minetest.get_modpath("mcl_potions") then
 		}
 	})
 end
+
+
+--Spikes Obsidians
+if minetest.get_modpath("pala_spikes") then
+	for name,value in pairs(pala_spikes.registered_spikes) do
+		minetest.register_node("pala_obsidian:spike_obsidian_"..value.name, {
+			description = ("Spike Obsidian "..value.desc),
+			_doc_items_longdesc = ("Obsidian is an extremely hard mineral with an enourmous blast-resistance."),
+			tiles = {"pala_obsidian_spike_overlay.png"},
+			overlay_tiles = {"pala_obsidian_spike_obsidian_overlay.png"},
+			color = value.color,
+			is_ground_content = true,
+			stack_max = 64,
+			sounds = mcl_sounds.node_sound_stone_defaults(),
+			--groups = {cracky = 1, level = 2, miner_level = 12},
+			_mcl_blast_resistance = 1200,
+			_mcl_hardness = 50,
+			after_dig_node = function(pos, oldnode, oldmetadata, digger)
+				minetest.set_node(pos, {name=name})
+			end,
+		})
+		minetest.register_craft({
+			output = "pala_obsidian:spike_obsidian_"..value.name,
+			recipe = {
+				{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+				{"mcl_core:obsidian", name, "mcl_core:obsidian"},
+				{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
+			}
+		})
+	end
+end

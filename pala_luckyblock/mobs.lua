@@ -127,4 +127,4 @@ mobs:register_mob("pala_luckyblock:fake_creeper_charged", {
 	fire_resistant = true,
 	glow = 3,
 })
-mobs:register_egg("pala_luckyblock:fake_creeper_charged", S("Fake Luckyblock Creeper"), "mobs_mc_spawn_icon_creeper.png[colorize:red:5", 0)
+mobs:register_egg("pala_luckyblock:fake_creeper_charged", S("Fake Luckyblock Creeper"), "mobs_mc_spawn_icon_creeper.png^[colorize:red:5", 0)

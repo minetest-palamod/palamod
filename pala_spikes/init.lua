@@ -4,7 +4,7 @@ pala_spikes = {}
 pala_spikes.registered_spikes = {}
 function pala_spikes.register_spike(name, desc, color, damage, id)
 	local newname = "pala_spikes:"..name.."_spike"
-	pala_spikes.registered_spikes[newname] = {desc, color, damage, id}
+	pala_spikes.registered_spikes[newname] = {name=name, desc=desc, color=color, damage=damage, id=id}
 	
 	minetest.register_node(newname, {
 		description = (desc.." Spike"),
@@ -15,7 +15,8 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 		drawtype="mesh",
 		mesh="pala_spikes_pyramid_spike.obj",
 		visual_scale=1.0,
-		tiles={"default_acacia_wood.png^[colorize:"..color..":150"},
+		tiles={"pala_spikes_wood_base.png"},
+		color = color,
 		groups = {pickaxey=2, building_block=1},
 		on_walk_over = function(loc, nodeiamon, player)
 			-- Hurt players standing on top of this block
