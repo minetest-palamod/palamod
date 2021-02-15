@@ -1,9 +1,11 @@
 local S = minetest.get_translator("pala_spikes")
 
 pala_spikes = {}
-
+pala_spikes.registered_spikes = {}
 function pala_spikes.register_spike(name, desc, color, damage, id)
 	local newname = "pala_spikes:"..name.."_spike"
+	pala_spikes.registered_spikes[newname] = {desc, color, damage, id}
+	
 	minetest.register_node(newname, {
 		description = (desc.." Spike"),
 		_doc_items_longdesc = ("Deals "..tostring(damage)..[[
@@ -23,7 +25,7 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 			end
 		end,
 	})
-	minetest.register_alias(tostring(id), newname)
+	minetest.register_alias("#"..tostring(id), newname)
 end
 
 pala_spikes.register_spike("wood", "Wood", "#b59246", 2, 438)
