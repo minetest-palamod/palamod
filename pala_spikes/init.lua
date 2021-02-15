@@ -101,20 +101,3 @@ minetest.register_craft({
 		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
 	}
 })
-
--- minetest.register_node("pala_spikes:test", {
-		-- drawtype="mesh",
-		-- mesh="pala_spikes_pyramid_spike.obj",
-		-- visual_scale=1.0,
-		-- tiles={"default_acacia_wood.png"},
-		-- groups = {pickaxey=5, building_block=1},
-		-- on_walk_over = function(loc, nodeiamon, player)
-			-- -- Hurt players standing on top of this block
-			-- if player:get_hp() > 0 then
-				-- if mod_death_messages then
-					-- mcl_death_messages.player_damage(player, S("@1 stood too long on a spike.", player:get_player_name()))
-				-- end
-				-- player:set_hp(player:get_hp() - 3, { type = "punch", from = "mod" })
-			-- end
-		-- end,
-	-- })
