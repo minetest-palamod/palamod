@@ -130,20 +130,24 @@ if has_mcl_core then
 end
 
 minetest.register_tool("pala_obsidian:magical_tool", {
-    description = "My Tool",
+    description = "Magical Tool",
     inventory_image = "default_stone.png",
-    tool_capabilities = {
-        full_punch_interval = 1.5,
-        max_drop_level = 1,
-        groupcaps = {
-            magical_tool = {
-                maxlevel = 2,
-                uses = 2000,
-                times = { [1]=0.05}
-            },
-        },
-        damage_groups = {fleshy=2},
-    },
+	on_place = function(itemstack, user, pointed_thing)
+		local pos = minetest.get_pointed_thing_position(pointed_thing)
+		local node = minetest.get_node(pos)
+		if not minetest.is_protected(pos, user) and node.name == "pala_obsidian:hardened_obsidian" then
+			minetest.remove_node(pos)
+			minetest.add_item(pos, {name="pala_obsidian:hardened_obsidian"})
+			itemstack:add_wear(65535/(600-1)) --600 = uses
+			if itemstack:get_count() == 0 then
+				if wdef.sound and wdef.sound.breaks then
+					minetest.sound_play(wdef.sound.breaks,
+						{pos = user:getpos(), gain = 0.5})
+				end
+			end
+			return itemstack
+		end
+	end,
 })
 
 --Lava Obsidian
