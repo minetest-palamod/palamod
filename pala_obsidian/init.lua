@@ -1,4 +1,7 @@
 local has_mcl_core = minetest.get_modpath("mcl_core")
+local has_pala_paladium = minetest.get_modpath("pala_paladium")
+local has_pala_craftstick = minetest.get_modpath("pala_craftstick")
+local wield_scale = { x = 1.8, y = 1.8, z = 1 }
 
 minetest.register_node("pala_obsidian:two_life_obsidian", {
 	description = ("Two Life Obsidian"),
@@ -131,7 +134,8 @@ end
 
 minetest.register_tool("pala_obsidian:magical_tool", {
     description = "Magical Tool",
-    inventory_image = "default_stone.png",
+    inventory_image = "pala_obsidian_magical_tool.png",
+	wield_scale = wield_scale,
 	on_place = function(itemstack, user, pointed_thing)
 		local pos = minetest.get_pointed_thing_position(pointed_thing)
 		local node = minetest.get_node(pos)
@@ -140,6 +144,17 @@ minetest.register_tool("pala_obsidian:magical_tool", {
 		end
 	end,
 })
+
+if has_pala_paladium and has_pala_craftstick then
+	minetest.register_craft({
+		output = 'pala_obsidian:magical_tool',
+		recipe = {
+			{"", "pala_paladium:paladium_ingot", ""},
+			{"pala_paladium:paladium_ingot", "pala_paladium:paladiumblock", "pala_paladium:paladium_ingot"},
+			{"", "pala_craftstick:palastick", ""},
+		}
+	})
+end
 
 --Lava Obsidian
 minetest.register_node("pala_obsidian:lava_obsidian", {
