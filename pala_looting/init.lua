@@ -165,6 +165,7 @@ minetest.register_abm({
 			local name = player:get_player_name()
 			if name == meta:get_string("name") then
 				minetest.swap_node(pos, { name = "pala_looting:online_detector_on" })
+				mesecon.receptor_on(pos, mesecon.rules.alldirs)
 			end
 		end
 	end,
@@ -181,6 +182,7 @@ minetest.register_abm({
 			local name = player:get_player_name()
 			if not name == meta:get_string("name") then
 				minetest.swap_node(pos, { name = "pala_looting:online_detector_off" })
+				mesecon.receptor_off(pos, mesecon.rules.alldirs)
 			end
 		end
 	end,

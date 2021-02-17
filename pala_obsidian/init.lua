@@ -36,9 +36,9 @@ function pala_obsidian.register_custom_obsidian(name, def)
 		_mcl_blast_resistance = 1200,
 		_mcl_hardness = 50,
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			if not digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" then
-				def.after_dig(pos, oldnode, oldmetadata, digger)
-			end
+			--if not digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" then
+			def.after_dig(pos, oldnode, oldmetadata, digger)
+			--end
 		end,
 	})
 end
