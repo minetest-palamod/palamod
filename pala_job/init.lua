@@ -51,7 +51,8 @@ pala_job.job.miner = {
 	{pala_job.money.." 8"},
 	{pala_job.money.." 9"},
 	{pala_job.money.." 10"},
-	{{itemstring = "pala_tools:pick_paladium", enchantments = {unbreaking = 5}}, "pala_tools:pick_paladium", "pala_tools:pick_paladium"}, --pala_pick_u5:to_string()
+	{{itemstring = "pala_tools:pick_paladium", enchantments = {unbreaking = 5}},
+		"pala_tools:pick_paladium", "pala_tools:pick_paladium"},
 	{pala_job.money.." 12"},
 	{pala_job.money.." 13"},
 	{pala_job.money.." 14"},
