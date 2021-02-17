@@ -51,7 +51,7 @@ pala_job.job.miner = {
 	{pala_job.money.." 8"},
 	{pala_job.money.." 9"},
 	{pala_job.money.." 10"},
-	{"", "pala_tools:pick_paladium", "pala_tools:pick_paladium"}, --pala_pick_u5:to_string()
+	{{itemstring = "pala_tools:pick_paladium", enchantments = {unbreaking = 5}}, "pala_tools:pick_paladium", "pala_tools:pick_paladium"}, --pala_pick_u5:to_string()
 	{pala_job.money.." 12"},
 	{pala_job.money.." 13"},
 	{pala_job.money.." 14"},
@@ -124,10 +124,24 @@ end
 --image[4,4;1,1;]
 --image[7,4;1,1;]
 --image[0,2.25;9,1;]
+
+function pala_job.get_loot_item(def)
+	if not def then
+		return ItemStack("mcl_core:stone")
+	elseif type(def) == "table" then
+		local item = ItemStack(def.itemstring)
+		mcl_enchanting.set_enchanted_itemstring(item)
+		mcl_enchanting.set_enchantments(item, def.enchantments)
+		return item
+	else
+		return ItemStack(def)
+	end
+end
+
 function pala_job.show_win_level(player, job, level, loot)
-	local loot1 = loot[level][1] or "mcl_core:stone"
-	local loot2 = loot[level][2] or "mcl_core:stone"
-	local loot3 = loot[level][3] or "mcl_core:stone"
+	local loot1 = pala_job.get_loot_item(loot[level][1])
+	local loot2 = pala_job.get_loot_item(loot[level][2])
+	local loot3 = pala_job.get_loot_item(loot[level][3])
 	local form = table.concat({
 		"formspec_version[3]",
 		"size[9,5.5]",
@@ -135,9 +149,9 @@ function pala_job.show_win_level(player, job, level, loot)
 		"label[3.5,0.5;"..string.upper(job).."]",
 		"label[3,2;You pass level "..level.."]",
 		"label[3,3.5;You receive :]",
-		"item_image[1,4;1,1;"..loot1.."]",
-		"item_image[4,4;1,1;"..loot2.."]",
-		"item_image[7,4;1,1;"..loot3.."]",
+		"item_image[1,4;1,1;"..loot1:get_name().." "..loot1:get_count().."]",
+		"item_image[4,4;1,1;"..loot2:get_name().." "..loot2:get_count().."]",
+		"item_image[7,4;1,1;"..loot3:get_name().." "..loot3:get_count().."]",
 		"image[0,2.25;9,1;pala_job_level_up_border.png]"
 	})
 	minetest.show_formspec(player:get_player_name(), "pala_job:level_up", form)
@@ -147,7 +161,7 @@ function pala_job.give_loot(player, job, level)
 	local loot = pala_job.get_job_loots(job)
 	local pos = player:get_pos()
 	for _,i in pairs(loot[level]) do
-		minetest.add_item(pos, i)
+		minetest.add_item(pos, pala_job.get_loot_item(i))
 	end
 	pala_job.show_win_level(player, job, level, loot)
 end
