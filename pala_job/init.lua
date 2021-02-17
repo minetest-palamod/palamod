@@ -23,22 +23,25 @@ pala_job.job.hunter = {
 	{pala_job.money.." 3"},
 	{pala_job.money.." 4"},
 	{pala_job.money.." 5"},
-	{"pala_tools:pick_paladium"},
+	{"pala_armor:paladium_helmet"},
 	{pala_job.money.." 7"},
 	{pala_job.money.." 8"},
 	{pala_job.money.." 9"},
 	{pala_job.money.." 10"},
-	{"pala_tools:sword_paladium", "pala_tools:infernal_knocker"},
+	{{itemstring = "pala_tools:sword_paladium", enchantments = {sharpness = 5, unbreaking = 4}},
+		{itemstring = "pala_tools:infernal_knocker", enchantments = {knockback = 5}}},
 	{pala_job.money.." 12"},
 	{pala_job.money.." 13"},
 	{pala_job.money.." 14"},
 	{pala_job.money.." 15"},
-	{"pala_tools:pick_paladium", "pala_tools:pick_paladium", "mcl_core:stone 2"},
+	{{itemstring = "pala_tools:sword_paladium", enchantments = {sharpness = 5, unbreaking = 4}},
+		"pala_tools:broadsword_paladium"}, --TODO:bow
 	{pala_job.money.." 17"},
 	{pala_job.money.." 18"},
 	{pala_job.money.." 19"},
 	{pala_job.money.." 20"},
-	{"pala_tools:pick_paladium", "pala_tools:pick_paladium", "pala_paladium:endium_nugget"}
+	{{itemstring = "pala_tools:sword_paladium", enchantments = {sharpness = 5, unbreaking = 4}},
+		"pala_tools:pick_paladium", "pala_paladium:endium_nugget"}
 }
 
 pala_job.job.miner = {
@@ -57,12 +60,14 @@ pala_job.job.miner = {
 	{pala_job.money.." 13"},
 	{pala_job.money.." 14"},
 	{pala_job.money.." 15"},
-	{"pala_tools:pick_paladium", "pala_tools:pick_paladium", "mcl_core:stone 2"},
+	{{itemstring = "pala_tools:pick_paladium", enchantments = {unbreaking = 5}},
+		"pala_tools:pick_paladium", "mcl_core:stone 2"},
 	{pala_job.money.." 17"},
 	{pala_job.money.." 18"},
 	{pala_job.money.." 19"},
 	{pala_job.money.." 20"},
-	{"pala_tools:pick_paladium", "pala_tools:pick_paladium", "pala_paladium:endium_nugget"}
+	{{itemstring = "pala_tools:pick_paladium", enchantments = {unbreaking = 5}},
+		"pala_tools:pick_paladium", "pala_paladium:endium_nugget"}
 }
 
 function pala_job.init_player(player)

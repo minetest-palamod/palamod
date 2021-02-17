@@ -43,6 +43,25 @@ function pala_obsidian.register_custom_obsidian(name, def)
 	})
 end
 
+-- minetest.register_tool("pala_obsidian:obsidian_pick", {
+	-- description = ("Obsidian Pickaxe"),
+	-- _doc_items_longdesc = pickaxe_longdesc,
+	-- inventory_image = "default_tool_diamondpick.png",
+	-- wield_scale = wield_scale,
+	-- groups = { tool=1, pickaxe=1, dig_speed_class=5, enchantability=10 },
+	-- tool_capabilities = {
+		-- -- 1/1.2
+		-- full_punch_interval = 0.83333333,
+		-- max_drop_level=5,
+		-- groupcaps={
+			-- pickaxey_dig_diamond = {times=mcl_autogroup.digtimes.pickaxey_dig_diamond, uses=1562, maxlevel=0},
+		-- },
+		-- damage_groups = {fleshy=5},
+		-- punch_attack_uses = 781,
+	-- },
+	-- sound = { breaks = "default_tool_breaks" },
+-- })
+
 pala_obsidian.register_custom_obsidian("two_life", {
 	desc = "Two Life Obsidian",
 	longdesc = "Place an obsidian on its break",
