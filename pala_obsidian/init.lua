@@ -3,23 +3,50 @@ local has_pala_paladium = minetest.get_modpath("pala_paladium")
 local has_pala_craftstick = minetest.get_modpath("pala_craftstick")
 local wield_scale = { x = 1.8, y = 1.8, z = 1 }
 
-minetest.register_node("pala_obsidian:two_life_obsidian", {
-	description = ("Two Life Obsidian"),
-	_doc_items_longdesc = ([[
-		Two Life Obsidian is an extremely hard mineral with an enourmous blast-resistance.
-		Place an obsidian on its break
-		]]),
-	tiles = {"default_obsidian.png"},
-	is_ground_content = true,
-	stack_max = 64,
-	sounds = mcl_sounds.node_sound_stone_defaults(),
-	groups = {cracky = 1, level = 2},
-	_mcl_blast_resistance = 1200,
-	_mcl_hardness = 50,
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		minetest.set_node(pos, {name="mcl_core:obsidian"})
-	end,
-})
+pala_obsidian = {}
+pala_obsidian.registered_custom_obsidian = {}
+
+function pala_obsidian.register_custom_obsidian(name, desc, longdesc, tiles, after_dig)
+	minetest.register_node("pala_obsidian:"..name.."_obsidian", {
+		description = desc,
+		_doc_items_longdesc = (
+			desc.." is an extremely hard mineral with an enourmous blast-resistance."..longdesc
+			),
+		tiles = tiles,
+		is_ground_content = true,
+		stack_max = 64,
+		sounds = mcl_sounds.node_sound_stone_defaults(),
+		groups = {cracky = 1, level = 2},
+		_mcl_blast_resistance = 1200,
+		_mcl_hardness = 50,
+		after_dig_node = function(pos, oldnode, oldmetadata, digger)
+			if not digger:get_wielded_item().name == "pala_obsidian:obsidian_pick" then
+				after_dig(pos, oldnode, oldmetadata, digger)
+			end
+		end,
+	})
+end
+
+pala_obsidian.register_custom_obsidian("two_life", "Two Life Obsidian", "Place an obsidian on its break", tiles,
+	function(pos, oldnode, oldmetadata, digger) minetest.set_node(pos, {name="mcl_core:obsidian"}) end)
+
+-- minetest.register_node("pala_obsidian:two_life_obsidian", {
+	-- description = ("Two Life Obsidian"),
+	-- _doc_items_longdesc = ([[
+		-- Two Life Obsidian is an extremely hard mineral with an enourmous blast-resistance.
+		-- Place an obsidian on its break
+		-- ]]),
+	-- tiles = {"default_obsidian.png"},
+	-- is_ground_content = true,
+	-- stack_max = 64,
+	-- sounds = mcl_sounds.node_sound_stone_defaults(),
+	-- groups = {cracky = 1, level = 2},
+	-- _mcl_blast_resistance = 1200,
+	-- _mcl_hardness = 50,
+	-- after_dig_node = function(pos, oldnode, oldmetadata, digger)
+		-- minetest.set_node(pos, {name="mcl_core:obsidian"})
+	-- end,
+-- })
 
 
 if minetest.get_modpath("mcl_explosions") then
