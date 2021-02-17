@@ -9,7 +9,7 @@ local pickaxe_longdesc = [[
 	Pickaxes are mining tools to mine hard blocks, such as stone.
 	A pickaxe can also be used as weapon, but it is rather inefficient.
 	]]
-local wield_scale = 1
+local wield_scale = { x = 1.8, y = 1.8, z = 1 }
 
 --Paladium
 minetest.register_tool("pala_tools:sword_paladium", {
@@ -97,7 +97,7 @@ minetest.register_tool("pala_tools:pick_paladium", {
 		full_punch_interval = 0.83333333,
 		max_drop_level=5,
 		groupcaps={
-			pickaxey_dig_diamond = {times=2, uses=4999, maxlevel=0},
+			--pickaxey_dig_diamond = {times={[1]=0.25, [2]=0.50, [3]=1}, uses=4999, maxlevel=0},
 		},
 		damage_groups = {fleshy=6.5},
 		punch_attack_uses = 4999,

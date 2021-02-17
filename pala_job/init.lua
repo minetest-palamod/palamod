@@ -13,6 +13,10 @@ end
 
 local pala_job_modpath = minetest.get_modpath("pala_job")
 
+--local palapick = ItemStack("pala_tools:pick_paladium_enchanted")
+--local pala_pick_u5 = mcl_enchanting.enchant(palapick, "unbreaking", 5)
+--local pala_pick_u5_efficiency4 = mcl_enchanting.enchant(pala_pick_u5, "efficiency", 4)
+
 --TODO:hammer and cobblebreaker
 pala_job.job.hunter = {
 	{pala_job.money.." 2"},
@@ -47,7 +51,7 @@ pala_job.job.miner = {
 	{pala_job.money.." 8"},
 	{pala_job.money.." 9"},
 	{pala_job.money.." 10"},
-	{"pala_tools:pick_paladium", "pala_tools:pick_paladium"},
+	{"", "pala_tools:pick_paladium", "pala_tools:pick_paladium"}, --pala_pick_u5:to_string()
 	{pala_job.money.." 12"},
 	{pala_job.money.." 13"},
 	{pala_job.money.." 14"},
