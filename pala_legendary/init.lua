@@ -20,20 +20,25 @@ function pala_legendary.register_legendary(name, longdesc, inventory_image, func
 		groups = {legendary_stone=1},
 		on_use = function(itemstack, player, pointed_thing)
 			local ok
-			minetest.chat_send_player(player:get_player_name(), "last use : "..itemstack:get_meta():get_string("pala_last_use"))
-			minetest.chat_send_player(player:get_player_name(), os.date("%Y-%m-%d"))
-			if not itemstack:get_meta():get_string("pala_last_use") then
+			minetest.chat_send_player(player:get_player_name(), "last use : "..itemstack:get_meta():get_int("pala_last_use"))
+			minetest.chat_send_player(player:get_player_name(), os.time())
+			
+			local last_use = itemstack:get_meta():get_int("pala_last_use")
+			
+			
+			if not last_use then
 				ok = true
-			elseif itemstack:get_meta():get_string("pala_last_use") ~= os.date("%Y-%m-%d") then
-				minetest.chat_send_player(player:get_player_name(), itemstack:get_meta():get_string("pala_last_use"))
+			elseif os.time()-86400 >= last_use then
+				--minetest.chat_send_player(player:get_player_name(), itemstack:get_meta():get_int("pala_last_use"))
 				ok = true
 			else
 				--TODO:better message
-				minetest.chat_send_player(player:get_player_name(), "Already used")
+				local nbhour = (last_use-(os.time()-86400))/3600
+				minetest.chat_send_player(player:get_player_name(), "You must wait "..(nbhour).."H to use this stone!")
 				ok = false
 			end
 			if ok == true then
-				itemstack:get_meta():set_string("pala_last_use", os.date("%Y-%m-%d"))
+				itemstack:get_meta():set_int("pala_last_use", os.time())
 				minetest.chat_send_player(player:get_player_name(),
 					"last use is now set to : "..itemstack:get_meta():get_string("pala_last_use"))
 				func(itemstack, player, pointed_thing)
