@@ -136,16 +136,7 @@ minetest.register_tool("pala_obsidian:magical_tool", {
 		local pos = minetest.get_pointed_thing_position(pointed_thing)
 		local node = minetest.get_node(pos)
 		if not minetest.is_protected(pos, user) and node.name == "pala_obsidian:hardened_obsidian" then
-			minetest.remove_node(pos)
-			minetest.add_item(pos, {name="pala_obsidian:hardened_obsidian"})
-			itemstack:add_wear(65535/(600-1)) --600 = uses
-			if itemstack:get_count() == 0 then
-				if wdef.sound and wdef.sound.breaks then
-					minetest.sound_play(wdef.sound.breaks,
-						{pos = user:getpos(), gain = 0.5})
-				end
-			end
-			return itemstack
+			minetest.dig_node(pos)
 		end
 	end,
 })
