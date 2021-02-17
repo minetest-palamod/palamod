@@ -17,7 +17,7 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 		visual_scale=1.0,
 		tiles={"pala_spikes_wood_base.png"},
 		color = color,
-		groups = {pickaxey=2, building_block=1},
+		groups = {pickaxey=2, building_block=1, pala_spikes=1},
 		on_walk_over = function(loc, nodeiamon, player)
 			-- Hurt players standing on top of this block
 			if player:get_hp() > 0 then
@@ -100,4 +100,29 @@ minetest.register_craft({
 		{'pala_tools:sword_titanium', 'pala_paladium:paladium_ingot', 'pala_tools:sword_titanium'},
 		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
 	}
+})
+
+minetest.register_abm({
+	label = "Spikes destroy dropped items",
+	nodenames = {"group:pala_spikes"},
+	interval = 3.0,
+	chance = 0.5,
+	action = function(pos, node, active_object_count, active_object_count_wider)
+		local abovenode = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
+		if not minetest.registered_items[abovenode.name] then return end
+		-- Don't bother checking item enties if node above is a container (should save some CPU)
+		if minetest.registered_items[abovenode.name].groups.container then
+			return
+		end
+		for _,object in ipairs(minetest.get_objects_inside_radius(pos, 2)) do
+			if not object:is_player() and object:get_luaentity() and object:get_luaentity().name == "__builtin:item" then
+				local posob = object:get_pos()
+				local posob_miny = posob.y + object:get_properties().collisionbox[2]
+				if math.abs(posob.x-pos.x) <= 0.5 and (posob_miny-pos.y < 1.5 and posob.y-pos.y >= 0.3) then
+					object:get_luaentity().itemstring = ""
+					object:remove()
+				end
+			end
+		end
+	end,
 })
