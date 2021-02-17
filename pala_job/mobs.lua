@@ -31,7 +31,7 @@ mobs:register_mob("pala_job:cavernous_zombie", {
 	jump = true,
 	jump_height = 4,
 	group_attack = { "mobs_mc:zombie", "mobs_mc:baby_zombie", "mobs_mc:husk", "mobs_mc:baby_husk" },
-	drops = drops_zombie,
+	--drops = drops_zombie,
 	animation = {
 		speed_normal = 25,		speed_run = 50,
 		stand_start = 40,		stand_end = 80,

@@ -19,7 +19,7 @@ read_globals = {
     -- CORE
     "biomeinfo", "flowlib", "mcl_explosions", "mcl_sounds", "mcl_loot", "mcl_particles", "mcl_util", "mcl_worlds", "walkover",
     -- ENTITIES
-    "mobs",
+    "mobs", "mobs_mc",
     -- ENVIRONNEMENT
     "lightning", "mcl_weather",
     -- HELP

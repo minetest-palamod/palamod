@@ -5,7 +5,7 @@ pala_spikes.registered_spikes = {}
 function pala_spikes.register_spike(name, desc, color, damage, id)
 	local newname = "pala_spikes:"..name.."_spike"
 	pala_spikes.registered_spikes[newname] = {name=name, desc=desc, color=color, damage=damage, id=id}
-	
+
 	minetest.register_node(newname, {
 		description = (desc.." Spike"),
 		_doc_items_longdesc = ("Deals "..tostring(damage)..[[
