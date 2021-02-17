@@ -36,7 +36,7 @@ function pala_obsidian.register_custom_obsidian(name, def)
 		_mcl_blast_resistance = 1200,
 		_mcl_hardness = 50,
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			if not digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" or "pala_obsidian:obsidian_pick_enchanted" then
+			if not digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" then
 				def.after_dig(pos, oldnode, oldmetadata, digger)
 			end
 		end,
@@ -49,7 +49,7 @@ pala_obsidian.register_custom_obsidian("two_life", {
 	tiles = {"default_obsidian.png"},
 	miner_level = 0,
 	after_dig = function(pos, oldnode, oldmetadata, digger)
-		minetest.set_node(pos, {name="mcl_core:obsidian"}) 
+		minetest.set_node(pos, {name="mcl_core:obsidian"})
 	end,
 })
 
@@ -60,7 +60,7 @@ if minetest.get_modpath("mcl_explosions") then
 		tiles = {"default_obsidian.png^[colorize:#fc4141:100"},
 		miner_level = 0,
 		after_dig = function(pos, oldnode, oldmetadata, digger)
-			mcl_explosions.explode(pos, 5, { drop_chance = 1.0 }, digger) 
+			mcl_explosions.explode(pos, 5, { drop_chance = 1.0 }, digger)
 		end,
 	})
 end
