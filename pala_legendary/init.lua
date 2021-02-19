@@ -25,7 +25,6 @@ function pala_legendary.register_legendary(name, longdesc, inventory_image, func
 			
 			local last_use = itemstack:get_meta():get_int("pala_last_use")
 			
-			
 			if not last_use then
 				ok = true
 			elseif os.time()-86400 >= last_use then
