@@ -41,9 +41,8 @@ function pala_legendary.register_legendary(name, longdesc, inventory_image, func
 				itemstack:get_meta():set_int("pala_last_use", os.time())
 				minetest.chat_send_player(player:get_player_name(),
 					"last use is now set to : "..itemstack:get_meta():get_string("pala_last_use"))
-				func(itemstack, player, pointed_thing)
 				pala_legendary.spawn_particle(player:get_pos())
-				return itemstack
+				return func(itemstack, player, pointed_thing)
 			end
 		end,
 	})
@@ -56,8 +55,8 @@ function pala_legendary.spawn_particle(pos)
         time = 1,
         minpos = {x=pos.x-3, y=pos.y-1, z=pos.z-3},
         maxpos = {x=pos.x+3, y=pos.y+1, z=pos.z+3},
-        minvel = {x=-1, y=-1, z=-1},
-        maxvel = {x=1, y=1, z=1},
+        minvel = {x=-0.2, y=-0.2, z=-0.2},
+        maxvel = {x=0.2, y=0.2, z=0.2},
         --minacc = {x=0, y=0, z=0},
         --maxacc = {x=0, y=0, z=0},
         minexptime = 1,
@@ -94,20 +93,23 @@ local function fortune(itemstack, player, pointed_thing)
 	end
 end
 function pala_legendary.get_random_stone()
-	local rnd = math.random(1, #pala_legendary.stones_list)
+	local rnd = math.random(2, #pala_legendary.stones_list)
 	return pala_legendary.stones_list[rnd]
 end
 
 local function random_stone(itemstack, player, pointed_thing)
-	itemstack:replace(pala_legendary.get_random_stone(1, 1))
+	--return itemstack:replace({name=pala_legendary.get_random_stone()})
+	return itemstack:replace("mcl_core:stone")
 end
 
+pala_legendary.register_legendary("random",
+	"Basic legendary stone, it is the one that then gives one of the six stones.",
+	"pala_legendary_legendary_random.png", random_stone)
+	
 --Fortune
 pala_legendary.register_legendary("fortune",
 	"Gives a random number of a random ore (this can be coal such as palladium).",
 	"pala_legendary_legendary_fortune.png", fortune)
-pala_legendary.register_legendary("random",
-	"Basic legendary stone, it is the one that then gives one of the six stones.",
-	"pala_legendary_legendary_random.png", random_stone)
+
 
 dofile(minetest.get_modpath("pala_legendary").."/endium_gauntlet.lua")
