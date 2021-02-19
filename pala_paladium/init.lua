@@ -122,7 +122,7 @@ minetest.register_alias("pala_paladium:titaniumblock", "248")
 minetest.register_node("pala_paladium:stone_with_paladium", {
 	description = ("Paladium Ore"),
 	_doc_items_longdesc = ("Paladium ore is rare and can be found in clusters near the bottom of the world."),
-	tiles = {"default_stone.png^pala_paladium_mineral_paladium.png"},
+	tiles = {"pala_paladium_mineral_paladium.png"},
 	is_ground_content = true,
 	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},
@@ -248,7 +248,7 @@ minetest.register_alias("pala_paladium:gpaladiumblock", "250")
 minetest.register_node("pala_paladium:stone_with_findium", {
 	description = ("Findium Ore"),
 	_doc_items_longdesc = ("Findium ore is rare and can be found in clusters near the bottom of the world."),
-	tiles = {"default_stone.png^pala_paladium_mineral_findium.png"},
+	tiles = {"pala_paladium_mineral_findium.png"},
 	is_ground_content = true,
 	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},

@@ -94,8 +94,8 @@ local function fortune(itemstack, player, pointed_thing)
 	end
 end
 function pala_legendary.get_random_stone()
-	local rnd = math.random(1, #pala_legendary.stoneslist)
-	return pala_legendary.stoneslist[rnd]
+	local rnd = math.random(1, #pala_legendary.stones_list)
+	return pala_legendary.stones_list[rnd]
 end
 
 local function random_stone(itemstack, player, pointed_thing)
@@ -105,9 +105,9 @@ end
 --Fortune
 pala_legendary.register_legendary("fortune",
 	"Gives a random number of a random ore (this can be coal such as palladium).",
-	"default_stone.png", fortune)
+	"pala_legendary_legendary_fortune.png", fortune)
 pala_legendary.register_legendary("random",
 	"Basic legendary stone, it is the one that then gives one of the six stones.",
-	"default_stone.png", random_stone)
+	"pala_legendary_legendary_random.png", random_stone)
 
 dofile(minetest.get_modpath("pala_legendary").."/endium_gauntlet.lua")
