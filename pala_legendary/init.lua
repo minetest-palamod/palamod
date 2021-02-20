@@ -10,16 +10,17 @@ function pala_legendary.get_random_stone(min_item, max_item)
 	local rnd = math.random(min_item, max_item)
 	return pala_legendary.stones_list[rnd]
 end
-function pala_legendary.register_legendary(name, longdesc, inventory_image, func)
+function pala_legendary.register_legendary(name, def)
 	local tempname = "pala_legendary:legendary_"..name
 	minetest.register_craftitem(tempname, {
 		description = ("Legendary Stone "..firstToUpper(name)),
-		_doc_items_longdesc = (longdesc.." Just right-click to use it."),
-		inventory_image = inventory_image,
+		_doc_items_longdesc = (def.longdesc.." Just right-click to use it."),
+		inventory_image = def.inventory_image,
 		stack_max = 1,
 		groups = {legendary_stone=1},
 		on_use = function(itemstack, player, pointed_thing)
 			local ok
+			minetest.chat_send_player(player:get_player_name(), "------------------------------------------------------")
 			minetest.chat_send_player(player:get_player_name(), "last use : "..itemstack:get_meta():get_int("pala_last_use"))
 			minetest.chat_send_player(player:get_player_name(), os.time())
 			
@@ -41,7 +42,8 @@ function pala_legendary.register_legendary(name, longdesc, inventory_image, func
 				minetest.chat_send_player(player:get_player_name(),
 					"last use is now set to : "..itemstack:get_meta():get_string("pala_last_use"))
 				pala_legendary.spawn_particle(player:get_pos())
-				return func(itemstack, player, pointed_thing)
+				def.func(itemstack, player, pointed_thing)
+				return itemstack
 			end
 		end,
 	})
@@ -96,19 +98,20 @@ function pala_legendary.get_random_stone()
 	return pala_legendary.stones_list[rnd]
 end
 
-local function random_stone(itemstack, player, pointed_thing)
-	--return itemstack:replace({name=pala_legendary.get_random_stone()})
-	return itemstack:replace("mcl_core:stone")
-end
-
-pala_legendary.register_legendary("random",
-	"Basic legendary stone, it is the one that then gives one of the six stones.",
-	"pala_legendary_legendary_random.png", random_stone)
+pala_legendary.register_legendary("random", {
+	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	inventory_image = "pala_legendary_legendary_random.png",
+	func = function(itemstack, player, pointed_thing) 
+		return itemstack:replace({name=pala_legendary.get_random_stone()})
+	end,
+})
 	
 --Fortune
-pala_legendary.register_legendary("fortune",
-	"Gives a random number of a random ore (this can be coal such as palladium).",
-	"pala_legendary_legendary_fortune.png", fortune)
+pala_legendary.register_legendary("fortune", {
+	longdesc = "Gives a random number of a random ore (this can be coal such as palladium).",
+	inventory_image = "pala_legendary_legendary_fortune.png",
+	func = fortune
+})
 
 
 dofile(minetest.get_modpath("pala_legendary").."/endium_gauntlet.lua")
