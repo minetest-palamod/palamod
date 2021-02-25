@@ -28,5 +28,3 @@ jobs:
           #args: # optional
           #config: # optional
           #annotate: # optional, default is none
-      - name: minetest
-        run: sudo apt-get install minetest
