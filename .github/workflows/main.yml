@@ -28,3 +28,5 @@ jobs:
           #args: # optional
           #config: # optional
           #annotate: # optional, default is none
+      - name: Install minetest
+        run: sudo snap install minetest
