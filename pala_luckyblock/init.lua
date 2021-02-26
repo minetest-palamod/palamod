@@ -91,9 +91,7 @@ pala_luckyblock.event_positive = {
 	{"Spawner", 100, "default_stone.png", pala_luckyblock.wip_event},
 	{"Consolation", 100, "default_stone.png", function(pos, player)
 		minetest.after(1, function()
-			for i = 1,  math.floor(64 * math.random(0.5, 2)), 1 do
-				minetest.add_item(pos, {"pala_paladium:paladium_ingot"})
-			end
+			minetest.add_item(pos, {name="pala_paladium:paladium_ingot", count=math.floor(64 * math.random(0.5, 2))})
 		end)
 	end},
 	{"Wither Head", 100, "default_stone.png", pala_luckyblock.wip_event},
@@ -165,9 +163,8 @@ pala_luckyblock.event_positive = {
 
 --46
 pala_luckyblock.event_negative = {
-	{"BOOM", 20, "default_stone.png", function(pos, player)
-		mcl_explosions.explode(pos, 3, { drop_chance = 1.0 }, player)
-		minetest.set_node(pos, {name="air"})
+	{"BOOM", 20, "pala_dynamite_big_dynamite_inv.png", function(pos, player)
+		minetest.add_entity(pos, "pala_dynamite:dynamite")
 	end},
 	{"Enfermé", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Geyser", 20, "pala_luckyblock_geyser.png", function(pos, player)
@@ -249,7 +246,7 @@ pala_luckyblock.event_negative = {
 	{"Tout feu tout flamme", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Victime", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"MEGABOOM", 70, "pala_luckyblock_megaboom.png", function(pos, player)
-		mcl_explosions.explode(pos, 10, { drop_chance = 1.0 }, player)
+		minetest.add_entity(pos, "pala_dynamite:dynamite_endium")
 	end},
 	{"ArachnoTrap", 80, "pala_luckyblock_arachnotrap.png", function(pos, player)
 		local playerpos = player:get_pos()
