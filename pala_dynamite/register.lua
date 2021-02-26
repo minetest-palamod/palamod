@@ -18,7 +18,7 @@ pala_dynamite.register_dynamite("pala_dynamite:dynamite_endium", {
 	description = "Endium Dynamite",
 	image = "pala_dynamite_endium_dynamite_inv.png",
 	on_explode = function(pos, name)
-		mcl_explosions.explode(pos, 10, {}, minetest.get_player_by_name(name))
+		mcl_explosions.explode(pos, 10, {max_blast_resistance = 10}, minetest.get_player_by_name(name))
 	end,
 })
 
