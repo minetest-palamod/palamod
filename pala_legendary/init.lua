@@ -94,8 +94,7 @@ local function fortune(itemstack, player, pointed_thing)
 	end
 end
 function pala_legendary.get_random_stone()
-	local rnd = math.random(2, #pala_legendary.stones_list)
-	return pala_legendary.stones_list[rnd]
+	return pala_legendary.stones_list[math.random(2, #pala_legendary.stones_list)] --exclude legendary stone random
 end
 
 pala_legendary.register_legendary("random", {
