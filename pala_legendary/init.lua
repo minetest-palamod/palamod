@@ -23,9 +23,9 @@ function pala_legendary.register_legendary(name, def)
 			minetest.chat_send_player(player:get_player_name(), "------------------------------------------------------")
 			minetest.chat_send_player(player:get_player_name(), "last use : "..itemstack:get_meta():get_int("pala_last_use"))
 			minetest.chat_send_player(player:get_player_name(), os.time())
-			
+
 			local last_use = itemstack:get_meta():get_int("pala_last_use")
-			
+
 			if not last_use then
 				ok = true
 			elseif os.time()-86400 >= last_use then
@@ -52,7 +52,7 @@ end
 
 function pala_legendary.spawn_particle(pos)
 	minetest.add_particlespawner({
-		amount = 50,
+		amount = 75,
         time = 1,
         minpos = {x=pos.x-3, y=pos.y-1, z=pos.z-3},
         maxpos = {x=pos.x+3, y=pos.y+1, z=pos.z+3},
@@ -101,11 +101,11 @@ end
 pala_legendary.register_legendary("random", {
 	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
 	inventory_image = "pala_legendary_legendary_random.png",
-	func = function(itemstack, player, pointed_thing) 
+	func = function(itemstack, player, pointed_thing)
 		return itemstack:replace({name=pala_legendary.get_random_stone()})
 	end,
 })
-	
+
 --Fortune
 pala_legendary.register_legendary("fortune", {
 	longdesc = "Gives a random number of a random ore (this can be coal such as palladium).",

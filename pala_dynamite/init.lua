@@ -119,7 +119,7 @@ function pala_dynamite.register_dynamite(name, def)
 	}
 
 	minetest.register_entity(name, dyna_entity)
-	
+
 	local newdef = {}
 
 	newdef.description = def.description
