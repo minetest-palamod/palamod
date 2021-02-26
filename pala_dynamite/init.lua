@@ -22,9 +22,10 @@ function pala_dynamite.register_dynamite(name, def)
 		physical = true,
 		sliding = 1,
 		collide_with_objects = true,
-		visual = "sprite",
-		visual_size = {x = 0.5, y = 0.5, z = 0.5},
-		textures = {def.image},
+		visual = "mesh",
+		visual_size = {x = 5, y = 5, z = 5},
+		mesh = "pala_dynamite_dynamite.obj",
+		textures = {def.texture},
 		collisionbox = {-0.2, -0.3, -0.2, 0.2, 0.15, 0.2},
 		pointable = false,
 		static_save = false,
@@ -125,7 +126,7 @@ function pala_dynamite.register_dynamite(name, def)
 	newdef.description = def.description
 	newdef.stack_max = 16
 	newdef.range = 0
-	newdef.inventory_image = def.image
+	newdef.inventory_image = def.inventory_image
 	newdef.on_use = function(itemstack, user, pointed_thing)
 		local player_name = user:get_player_name()
 
