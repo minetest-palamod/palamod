@@ -13,3 +13,5 @@ For the free voxel game engine Minetest with the MineClone2 subgame.
 This modpack is very WIP, use at your own risk.
 
 Breaking changes will be added with NO warning.
+
+This project is mostly a personal project, but I will accept pr for translation, bugfix and better textures.
