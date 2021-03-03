@@ -32,7 +32,7 @@ pala_dynamite.register_dynamite("pala_dynamite:dynamite_ninja", {
 	inventory_image = "pala_dynamite_ninja_dynamite_inv.png",
 	texture = "pala_dynamite_ninja_dynamite_texture.png",
 	on_explode = function(pos, name)
-		mcl_explosions.explode(pos, 5, {grief_protected = true, sound = false, particles = false,
+		mcl_explosions.explode(pos, 5, {grief_protected = true, sound = false, particles = false},
 			minetest.get_player_by_name(name))
 	end,
 })
