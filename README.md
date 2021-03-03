@@ -16,6 +16,7 @@ Breaking changes will be added with NO warning.
 
 This project is mostly a personal project, but I will accept pr for translation, bugfix and better textures.
 
-* Installing
+Installing
+----------
 
 No external mods are required, but I suggest you to use mcl_build_limit by @AFCMS.
