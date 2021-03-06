@@ -116,8 +116,7 @@ function pala_dynamite.register_dynamite(name, def)
 
 				obj:remove()
 			end
-		end
-	}
+		end}
 
 	minetest.register_entity(name, dyna_entity)
 

@@ -17,7 +17,7 @@ read_globals = {
     -- MCL
 	--------------------------------------------
     -- CORE
-    "biomeinfo", "flowlib", "mcl_explosions", "mcl_sounds", "mcl_loot", "mcl_particles", "mcl_util", "mcl_worlds", "walkover",
+    "biomeinfo", "flowlib", "mcl_explosions", "mcl_sounds", "mcl_loot", "mcl_particles", "mcl_util", "mcl_worlds", "walkover", "mcl_colors",
     -- ENTITIES
     "mobs", "mobs_mc",
     -- ENVIRONNEMENT
@@ -34,4 +34,8 @@ read_globals = {
     
     --OTHER
     "mcl_vars",
+	
+	-- PALAMOD
+	--------------------------------------------
+	"pala_dynamite",
 }
