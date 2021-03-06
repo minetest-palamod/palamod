@@ -69,20 +69,20 @@ function pala_dynamite.register_dynamite(name, def)
 				self.sliding = 1 -- Doesn't affect drag
 			end
 
-			if self.sliding > 1 then -- Is the grenade sliding?
+			if self.sliding > 1 then -- Is the dynamite sliding?
 				if vector.distance(vector.new(), vel) <= 1 and not vector.equals(vel, vector.new()) then -- Grenade is barely moving
 					obj:set_velocity(vector.new(0, -9.8, 0)) -- Make sure it stays unmoving
 					obj:set_acceleration(vector.new())
 				end
 			else
-				norm_vel = vector.normalize(vel)
+			norm_vel = vector.normalize(vel)
 
-				obj:set_acceleration({
-					x = -norm_vel.x * pala_dynamite.accel * self.sliding,
-					y = -9.8,
-					z = -norm_vel.z * pala_dynamite.accel * self.sliding,
-				})
-			end
+			obj:set_acceleration({
+				x = -norm_vel.x * pala_dynamite.accel * self.sliding,
+				y = -9.8,
+				z = -norm_vel.z * pala_dynamite.accel * self.sliding,
+			})
+			--end
 
 
 			-- Particles
