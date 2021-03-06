@@ -1,3 +1,6 @@
+local load_time = os.clock()
+minetest.log("action", "[pala_legendary] loading...")
+
 local function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
 end
@@ -114,3 +117,5 @@ pala_legendary.register_legendary("fortune", {
 
 
 dofile(minetest.get_modpath("pala_legendary").."/endium_gauntlet.lua")
+
+minetest.log("action", "[pala_legendary] loaded in "..((os.clock()-load_time)*1000).."ms")
