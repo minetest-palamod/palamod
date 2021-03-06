@@ -19,7 +19,7 @@ dofile(pala_luckyblock.modpath.."/node.lua")
 dofile(pala_luckyblock.modpath.."/mobs.lua")
 
 function pala_luckyblock.wip_event(pos, player)
-	minetest.chat_send_player(player:get_player_name(), minetest.colorize("#fc4b4b", S("This event is WIP")))
+	minetest.chat_send_player(player:get_player_name(), C(mcl_colors.RED, S("This event is WIP")))
 end
 
 pala_luckyblock.minerallist = {
@@ -38,7 +38,7 @@ pala_luckyblock.event_positive = {
 			if idx then
 				idx:set_nametag_attributes({text = name.."'s BodyGuard"})
 			end
-			minetest.chat_send_player(name, minetest.colorize("#13ced8", "To serve you !"))
+			minetest.chat_send_player(name, minetest.colorize(mcl_colors.BLUE, "To serve you !"))
 		end
 	end},
 	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", function(pos, player)
@@ -220,7 +220,7 @@ pala_luckyblock.event_negative = {
 		local inv = player:get_inventory()
 		local oldstack = inv:get_stack("main", 1)
 		minetest.chat_send_player(player:get_player_name(),
-			"It seems to me you had a "..C("lightskyblue", oldstack:get_count().."x"..oldstack:get_name()))
+			"It seems to me you had a "..C(mcl_colors.BLUE, oldstack:get_count().."x"..oldstack:get_name()))
 		inv:set_stack("main", 1, ItemStack())
 	end},
 	{"Sur la Lune", 40, "default_stone.png", pala_luckyblock.wip_event},
@@ -269,18 +269,18 @@ pala_luckyblock.event_negative = {
 	{"Carte au trésor “2”", 200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Hasta la vista", 200, "default_stone.png", function(pos, player)
 		local name = player:get_player_name()
-		minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
-				"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Malheureusement nous allons nous quitter d'ici 5 secondes"))
-		minetest.after(1, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
-						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Content d'avoir passé du temp avec toi"))end)
-		minetest.after(2, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
-						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 3 secondes :("))end)
-		minetest.after(3, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
-						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Plus que 2 secondes :("))end)
-		minetest.after(4, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
-						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "T'es encore là ?"))end)
-		minetest.after(5, function() minetest.chat_send_player(name,minetest.colorize("#fcfc6f",
-						"[LuckyBlock]").." "..minetest.colorize("#fc4a32", "Bye bye..."))end)
+		minetest.chat_send_player(name, C(mcl_colors.YELLOW,
+				"[LuckyBlock]").." "..C(mcl_colors.RED, S("Malheureusement nous allons nous quitter d'ici 5 secondes")))
+		minetest.after(1, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Content d'avoir passé du temp avec toi")))end)
+		minetest.after(2, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Plus que 3 secondes :(")))end)
+		minetest.after(3, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Plus que 2 secondes :(")))end)
+		minetest.after(4, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("T'es encore là ?")))end)
+		minetest.after(5, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Bye bye...")))end)
 		minetest.after(6, function() minetest.kick_player(name,"Crash")end)
 	end},
 	{"Reflexe", 200, "default_stone.png", pala_luckyblock.wip_event},
