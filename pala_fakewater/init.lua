@@ -95,7 +95,7 @@ minetest.register_node("pala_fakewater:fakewater_flowing", {
 })
 
 
-mcl_buckets.register_liquid(
+mcl_buckets.register_liquid({
 	source_place = "pala_fakewater:fakewater_source",
 	source_take = {"pala_fakewater:fakewater_source"},
 	itemname = "pala_fakewater:bucket_fakewater",
@@ -123,7 +123,7 @@ mcl_buckets.register_liquid(
 		end
 	end,
 	groups = { fakewater_bucket = 1 },
-)
+})
 
 
 minetest.register_craft({
@@ -227,7 +227,7 @@ minetest.register_node("pala_fakewater:angelicwater_flowing", {
 })
 
 
-mcl_buckets.register_liquid(
+mcl_buckets.register_liquid({
 	source_place = "pala_fakewater:angelicwater_source",
 	source_take = {"pala_fakewater:angelicwater_source"},
 	itemname = "pala_fakewater:bucket_angelicwater",
@@ -255,7 +255,7 @@ mcl_buckets.register_liquid(
 		--end
 	end,
 	groups = { angelicwater_bucket = 1 },
-)
+})
 
 minetest.register_craft({
 	type = "shapeless",
