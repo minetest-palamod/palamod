@@ -11,6 +11,15 @@ minetest.register_chatcommand("feed", {
 	end,
 })
 
+local show_crafting_form = mcl_crafting_table.show_crafting_form
+minetest.register_chatcommand("craft", {
+	params = "",
+	description = "Allows you to open a crafting table interface.",
+	privs = {gradepaladins = true},
+	func = function(name, param)
+		show_crafting_form(player)
+	end,
+})
 
 minetest.register_chatcommand("furnace", {
 	params = "",
