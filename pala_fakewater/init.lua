@@ -1,7 +1,8 @@
+local S = minetest.get_translator(minetest.get_current_modname())
 
 --Fake Water
 minetest.register_node("pala_fakewater:fakewater_source", {
-	description = ("Fake Water Source"),
+	description = S("Fake Water Source"),
 	drawtype = "liquid",
 	waving = 3,
 	tiles = {
@@ -46,7 +47,7 @@ minetest.register_node("pala_fakewater:fakewater_source", {
 })
 
 minetest.register_node("pala_fakewater:fakewater_flowing", {
-	description = ("Flowing Fake Water"),
+	description = S("Flowing Fake Water"),
 	drawtype = "flowingliquid",
 	waving = 3,
 	tiles = {"default_water.png"},
@@ -95,15 +96,15 @@ minetest.register_node("pala_fakewater:fakewater_flowing", {
 
 
 mcl_buckets.register_liquid(
-	"pala_fakewater:fakewater_source",
-	{"pala_fakewater:fakewater_source"},
-	"pala_fakewater:bucket_fakewater",
-	"bucket_water.png^pala_fakewater_overlay.png",
-	("Sulfuric Water Bucket"),
-	("A bucket can be used to collect and release liquids. This one is filled with water."),
-	("Place it to empty the bucket and create a fakewater source."),
-	("Places a fakewater source"),
-	function(pos, placer)
+	source_place = "pala_fakewater:fakewater_source",
+	source_take = {"pala_fakewater:fakewater_source"},
+	itemname = "pala_fakewater:bucket_fakewater",
+	inventory_image = "bucket_water.png^pala_fakewater_overlay.png",
+	name = S("Sulfuric Water Bucket"),
+	longdesc = S("A bucket can be used to collect and release liquids. This one is filled with water."),
+	usagehelp = S("Place it to empty the bucket and create a fakewater source."),
+	tt_help = S("Places a fakewater source"),
+	extra_check = function(pos, placer)
 		-- Check protection
 		local placer_name = ""
 		if placer ~= nil then
@@ -121,7 +122,7 @@ mcl_buckets.register_liquid(
 			return false
 		end
 	end,
-	{ fakewater_bucket = 1 }
+	groups = { fakewater_bucket = 1 },
 )
 
 
@@ -133,7 +134,7 @@ minetest.register_craft({
 
 --Angelic Water
 minetest.register_node("pala_fakewater:angelicwater_source", {
-	description = ("Angelic Water Source"),
+	description = S("Angelic Water Source"),
 	drawtype = "liquid",
 	waving = 3,
 	tiles = {
@@ -178,7 +179,7 @@ minetest.register_node("pala_fakewater:angelicwater_source", {
 })
 
 minetest.register_node("pala_fakewater:angelicwater_flowing", {
-	description = ("Flowing Angelic Water"),
+	description = S("Flowing Angelic Water"),
 	drawtype = "flowingliquid",
 	waving = 3,
 	tiles = {"pala_fakewater_angelic_water.png"},
@@ -227,15 +228,15 @@ minetest.register_node("pala_fakewater:angelicwater_flowing", {
 
 
 mcl_buckets.register_liquid(
-	"pala_fakewater:angelicwater_source",
-	{"pala_fakewater:angelicwater_source"},
-	"pala_fakewater:bucket_angelicwater",
-	"pala_fakewater_angelic_water_bucket.png",
-	("Angelic Water Bucket"),
-	("A bucket can be used to collect and release liquids. This one is filled with water."),
-	("Place it to empty the bucket and create a fakewater source."),
-	("Places an angelic water source"),
-	function(pos, placer)
+	source_place = "pala_fakewater:angelicwater_source",
+	source_take = {"pala_fakewater:angelicwater_source"},
+	itemname = "pala_fakewater:bucket_angelicwater",
+	inventory_image = "pala_fakewater_angelic_water_bucket.png",
+	name = S("Angelic Water Bucket"),
+	longdesc = S("A bucket can be used to collect and release liquids. This one is filled with water."),
+	usagehelp = S("Place it to empty the bucket and create a fakewater source."),
+	tt_help = S("Places an angelic water source"),
+	extra_check = function(pos, placer)
 		-- Check protection
 		local placer_name = ""
 		if placer ~= nil then
@@ -253,7 +254,7 @@ mcl_buckets.register_liquid(
 		--	return false
 		--end
 	end,
-	{ angelicwater_bucket = 1 }
+	groups = { angelicwater_bucket = 1 },
 )
 
 minetest.register_craft({
