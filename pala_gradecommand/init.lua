@@ -17,7 +17,7 @@ minetest.register_chatcommand("craft", {
 	description = "Allows you to open a crafting table interface.",
 	privs = {gradepaladins = true},
 	func = function(name, param)
-		show_crafting_form(player)
+		show_crafting_form(minetest.get_player_by_name(name))
 	end,
 })
 

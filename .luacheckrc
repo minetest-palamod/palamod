@@ -27,7 +27,7 @@ read_globals = {
     -- HUD
     "awards", "mcl_death_messages", "mcl_experience", "mcl_formspec",
     -- ITEMS
-    "armor", "mcl_buckets", "mcl_doors", "mcl_enchanting", "mcl_fire",
+    "armor", "mcl_crafting_table", "mcl_buckets", "mcl_doors", "mcl_enchanting", "mcl_fire",
 	"mcl_potions", "mcl_throwing", "mcl_stairs", "screwdriver", "mesecon", "tnt",
     -- PLAYER
     "mcl_hunger",
