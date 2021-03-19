@@ -22,15 +22,15 @@ minetest.register_tool("pala_tools:sword_paladium", {
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
-		groupcaps={
-			swordy_dig = {times=5, uses=60, maxlevel=0},
-			swordy_cobweb_dig = {times=1, uses=60, maxlevel=0},
-		},
 		damage_groups = {fleshy=8.5},
 		punch_attack_uses = 4999,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	--_repair_material = "group:wood",
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
+		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+	},
 })
 if minetest.get_modpath("pala_paladium") then
 	minetest.register_craft({
@@ -53,15 +53,15 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 	tool_capabilities = {
 		full_punch_interval = 0.15,
 		max_drop_level=1,
-		groupcaps={
-			swordy_dig = {times=5, uses=60, maxlevel=0},
-			swordy_cobweb_dig = {times=1, uses=60, maxlevel=0},
-		},
 		damage_groups = {fleshy=7},
 		punch_attack_uses = 20,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	--_repair_material = "group:wood",
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
+		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+	},
 })
 
 minetest.register_tool("pala_tools:broadsword_paladium", {
@@ -74,15 +74,15 @@ minetest.register_tool("pala_tools:broadsword_paladium", {
 	tool_capabilities = {
 		full_punch_interval = 2,
 		max_drop_level=1,
-		groupcaps={
-			swordy_dig = {times=5, uses=60, maxlevel=0},
-			swordy_cobweb_dig = {times=1, uses=60, maxlevel=0},
-		},
 		damage_groups = {fleshy=9},
 		punch_attack_uses = 3000,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	--_repair_material = "group:wood",
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
+		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+	},
 })
 
 
@@ -96,13 +96,14 @@ minetest.register_tool("pala_tools:pick_paladium", {
 		-- 1/1.2
 		full_punch_interval = 0.83333333,
 		max_drop_level=5,
-		groupcaps={
-			--pickaxey_dig_diamond = {times={[1]=0.25, [2]=0.50, [3]=1}, uses=4999, maxlevel=0},
-		},
-		damage_groups = {fleshy=6.5},
-		punch_attack_uses = 4999,
+		damage_groups = {fleshy=5},
+		punch_attack_uses = 781,
 	},
 	sound = { breaks = "default_tool_breaks" },
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+        pickaxey = { tool_multiplier = 10, level = 5, uses = 4999 },
+    },
 })
 
 if minetest.get_modpath("pala_paladium") then
@@ -127,15 +128,15 @@ minetest.register_tool("pala_tools:sword_gpaladium", {
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
-		groupcaps={
-			swordy_dig = {times=5, uses=60, maxlevel=0},
-			swordy_cobweb_dig = {times=1, uses=60, maxlevel=0},
-		},
 		damage_groups = {fleshy=8.5},
 		punch_attack_uses = 4999,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	_repair_material = "group:wood",
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
+		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+	},
 })
 
 --Endium
@@ -149,15 +150,15 @@ minetest.register_tool("pala_tools:sword_endium", {
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
-		groupcaps={
-			swordy_dig = {times=5, uses=60, maxlevel=0},
-			swordy_cobweb_dig = {times=1, uses=60, maxlevel=0},
-		},
 		damage_groups = {fleshy=9.5},
 		punch_attack_uses = 4999,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	_repair_material = "group:wood",
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
+		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+	},
 })
 
 
