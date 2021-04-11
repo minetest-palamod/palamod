@@ -1,14 +1,7 @@
 local load_time = os.clock()
 minetest.log("action", "[pala_luckyblock] loading...")
 
-local S
-if minetest.get_translator ~= nil then
-    S = minetest.get_translator(minetest.get_current_modname())
-else
-    S = function(str)
-        return(str)
-    end
-end
+local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
 --local vector = vector
 
@@ -292,15 +285,15 @@ pala_luckyblock.event_negative = {
 	{"Hasta la vista", 200, "default_stone.png", function(pos, player)
 		local name = player:get_player_name()
 		minetest.chat_send_player(name, C(mcl_colors.YELLOW,
-				"[LuckyBlock]").." "..C(mcl_colors.RED, S("Malheureusement nous allons nous quitter d'ici 5 secondes")))
+				"[LuckyBlock]").." "..C(mcl_colors.RED, S("Unhappily, you are going to leave us soon...")))
 		minetest.after(1, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
-						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Content d'avoir passé du temp avec toi")))end)
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Glad to spent time with you")))end)
 		minetest.after(2, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
-						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Plus que 3 secondes :(")))end)
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Three secondes left...")))end)
 		minetest.after(3, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
-						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Plus que 2 secondes :(")))end)
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Two secondes left...")))end)
 		minetest.after(4, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
-						"[LuckyBlock]").." "..C(mcl_colors.RED, S("T'es encore là ?")))end)
+						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Are you still here?")))end)
 		minetest.after(5, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
 						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Bye bye...")))end)
 		minetest.after(6, function() minetest.kick_player(name, "Crash")end)
