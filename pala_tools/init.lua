@@ -9,7 +9,7 @@ local pickaxe_longdesc = [[
 	Pickaxes are mining tools to mine hard blocks, such as stone.
 	A pickaxe can also be used as weapon, but it is rather inefficient.
 	]]
-local wield_scale = { x = 1.8, y = 1.8, z = 1 }
+local wield_scale = mcl_vars.tool_wield_scale
 
 --Paladium
 minetest.register_tool("pala_tools:sword_paladium", {
@@ -18,7 +18,7 @@ minetest.register_tool("pala_tools:sword_paladium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
+	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
@@ -28,8 +28,8 @@ minetest.register_tool("pala_tools:sword_paladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
-		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+		swordy = { speed = 2, level = 1, uses = 4999 },
+		swordy_cobweb = { speed = 2, level = 1, uses = 4999 }
 	},
 })
 if minetest.get_modpath("pala_paladium") then
@@ -49,7 +49,7 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumfastsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
+	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.15,
 		max_drop_level=1,
@@ -59,8 +59,8 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
-		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+		swordy = { speed = 2, level = 1, uses = 20 },
+		swordy_cobweb = { speed = 2, level = 1, uses = 20 }
 	},
 })
 
@@ -70,7 +70,7 @@ minetest.register_tool("pala_tools:broadsword_paladium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumbroadsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
+	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 2,
 		max_drop_level=1,
@@ -80,8 +80,8 @@ minetest.register_tool("pala_tools:broadsword_paladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
-		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+		swordy = { speed = 2, level = 1, uses = 3000 },
+		swordy_cobweb = { speed = 2, level = 1, uses = 3000 }
 	},
 })
 
@@ -91,7 +91,7 @@ minetest.register_tool("pala_tools:pick_paladium", {
 	_doc_items_longdesc = pickaxe_longdesc,
 	inventory_image = "pala_tools_paladiumpick.png",
 	wield_scale = wield_scale,
-	groups = { tool=1, pickaxe=1, dig_speed_class=5, enchantability=22},
+	groups = { tool=1, pickaxe=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
 		-- 1/1.2
 		full_punch_interval = 0.83333333,
@@ -102,7 +102,7 @@ minetest.register_tool("pala_tools:pick_paladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey = { tool_multiplier = 10, level = 5, uses = 4999 },
+        pickaxey = { speed = 10, level = 5, uses = 4999 },
     },
 })
 
@@ -124,7 +124,7 @@ minetest.register_tool("pala_tools:sword_gpaladium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_gpaladiumsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
+	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
@@ -134,8 +134,8 @@ minetest.register_tool("pala_tools:sword_gpaladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
-		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+		swordy = { speed = 2, level = 1, uses = 4999 },
+		swordy_cobweb = { speed = 2, level = 1, uses = 4999 }
 	},
 })
 
@@ -146,7 +146,7 @@ minetest.register_tool("pala_tools:sword_endium", {
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_endiumsword.png",
 	wield_scale = wield_scale,
-	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},
+	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
@@ -156,8 +156,8 @@ minetest.register_tool("pala_tools:sword_endium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-		swordy = { tool_multiplier = 2, level = 1, uses = 60 },
-		swordy_cobweb = { tool_multiplier = 2, level = 1, uses = 60 }
+		swordy = { speed = 2, level = 1, uses = 4999 },
+		swordy_cobweb = { speed = 2, level = 1, uses = 4999 }
 	},
 })
 
