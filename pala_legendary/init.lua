@@ -4,7 +4,7 @@ minetest.log("action", "[pala_legendary] loading...")
 local function firstToUpper(str)
     return (str:gsub("^%l", string.upper))
 end
-
+local math = math
 --TODO:textures and help
 pala_legendary = {}
 pala_legendary.stones_list = {}
@@ -37,7 +37,7 @@ function pala_legendary.register_legendary(name, def)
 			else
 				--TODO:better message
 				local nbhour = (last_use-(os.time()-86400))/3600
-				minetest.chat_send_player(player:get_player_name(), "You must wait "..(nbhour).."H to use this stone!")
+				minetest.chat_send_player(player:get_player_name(), "You must wait "..math.floor(nbhour).."h to use this stone!")
 				ok = false
 			end
 			if ok == true then
