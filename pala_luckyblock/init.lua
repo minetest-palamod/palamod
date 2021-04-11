@@ -36,7 +36,7 @@ pala_luckyblock.minerallist = {
 pala_luckyblock.event_positive = {
 	{"Body Guard", 10, "pala_luckyblock_body_guard.png", function(pos, player)
 		local name = player:get_player_name()
-		for i = 1, 2, 1 do
+		for i = 1, 2 do
 			local idx = minetest.add_entity(pos, "mobs_mc:iron_golem")
 			if idx then
 				idx:set_nametag_attributes({text = name.."'s BodyGuard"})
@@ -45,7 +45,7 @@ pala_luckyblock.event_positive = {
 		end
 	end},
 	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", function(pos, player)
-		minetest.set_node(player:get_pos(), "pala_luckyblock:fakepaladiumblock")
+		minetest.set_node(pos, {name="pala_luckyblock:fakepaladiumblock"})
 	end},
 	{"Pala-Pillone", 10, "pala_luckyblock_pala_pillone.png", function(pos, player)
 		local name = player:get_player_name()
@@ -130,7 +130,7 @@ pala_luckyblock.event_positive = {
 	{"Titane Beacon", 800, "default_stone.png", pala_luckyblock.wip_event},
 	{"Explosif", 900, "default_stone.png", function(pos, player)
 		minetest.set_node(pos, {name="mcl_core:obsidian"})
-		minetest.add_item(pos, "mcl_core:stone") --TODO:replace stone by endium dyna
+		minetest.add_item(pos, "pala_dynamite:dynamite_endium") --TODO:replace stone by endium dyna
 	end},
 	{"T’es chanceux wesh", 900, "default_stone.png", pala_luckyblock.wip_event},
 	{"Base déco", 1000, "default_stone.png", pala_luckyblock.wip_event},
@@ -158,6 +158,7 @@ pala_luckyblock.event_positive = {
 		if player:get_inventory():add_item("main", {name="pala_legendary:endium_gauntlet", count=1}) then
 			return
 		else
+			--TODO: add stones to gauntlet
 			minetest.add_item(pos, "pala_legendary:endium_gauntlet")
 			return
 		end
@@ -183,8 +184,8 @@ pala_luckyblock.event_negative = {
 			--maxacc = {x=0, y=0, z=0},
 			minexptime = 1,
 			maxexptime = 3,
-			minsize = 1,
-			maxsize = 1,
+			minsize = 2,
+			maxsize = 3,
 			collisiondetection = true,
 			collision_removal = false,
 			object_collision = false,
@@ -386,7 +387,7 @@ function pala_luckyblock.get_paladium_form()
 		"button[1,9;10,1.5;event;Event]",
 		"label[6,1;Lucky Block]",
 		"image[13,3;3,3;pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png]",
-		"button_exit[13,7;3,1;open;Open]",
+		"button[13,7;3,1;open;Open]",
 		"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]",
 		"image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]",
 		"image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]",
@@ -464,25 +465,20 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 			minetest.record_protection_violation(pos, sender:get_player_name())
 			return
 		end
-		if fields.quit == "true" then
-			local meta = minetest.get_meta(pos)
-			if meta:get_string("is_open") == "false" then
-				local form, hit = pala_luckyblock.get_random_all()
-				meta:set_string("formspec", form)
-				meta:set_string("is_open", "true")
-				meta:set_int("hit", hit)
-			elseif meta:get_string("is_open") == "true" then
-				local hit = meta:get_int("hit")
-				minetest.chat_send_all(hit)
-				minetest.set_node(pos, {name="air"})
-				minetest.after(1, function(nodepos, player, func)
-					func(nodepos, player)
-				end, pos, sender, pala_luckyblock.event_all[hit][4])
-			end
+		local meta = minetest.get_meta(pos)
+		if fields.open and meta:get_string("is_open") == "false" then
+			local form, hit = pala_luckyblock.get_random_all()
+			meta:set_string("formspec", form)
+			meta:set_string("is_open", "true")
+			meta:set_int("hit", hit)
+		elseif fields.quit and meta:get_string("is_open") == "true" then
+			local hit = meta:get_int("hit")
+			minetest.set_node(pos, {name="air"})
+			pala_luckyblock.event_all[hit][4](pos, sender)
 		end
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		if not oldmetadata:get_string("is_open") == "true" then
+		if not oldmetadata.is_open == "true" then
 			minetest.add_item(pos, "pala_luckyblock:luckyblockpaladium")
 		end
 	end,

@@ -36,7 +36,7 @@ minetest.register_node("pala_luckyblock:fakepaladiumblock", {
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	after_dig_node = function(pos, node, player)
-		placefakepala(pos)
+		placefakepala(pos, player)
 	end,
 	_mcl_blast_resistance = 6,
 	_mcl_hardness = 5,
