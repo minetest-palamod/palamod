@@ -37,8 +37,6 @@ function pala_legendary.register_legendary(name, def)
 			end
 			if ok == true then
 				itemstack:get_meta():set_int("pala_last_use", os.time())
-				minetest.chat_send_player(player:get_player_name(),
-					"last use is now set to : "..itemstack:get_meta():get_string("pala_last_use"))
 				pala_legendary.spawn_particle(player:get_pos())
 				def.func(itemstack, player, pointed_thing)
 				return itemstack
