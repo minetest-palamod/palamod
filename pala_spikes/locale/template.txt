@@ -1,0 +1,9 @@
+@1 Spike=
+Deals @1 damage to people without armor. Destroy items thrown on the spike.=
+@1 stood too long on a spike.=
+Wood=
+Iron=
+Diamond=
+Amethyst=
+Titanium=
+Paladium=

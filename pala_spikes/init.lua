@@ -7,11 +7,10 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 	pala_spikes.registered_spikes[newname] = {name=name, desc=desc, color=color, damage=damage, id=id}
 
 	minetest.register_node(newname, {
-		description = (desc.." Spike"),
-		_doc_items_longdesc = ("Deals "..tostring(damage)..[[
-			damage to people without armor.
+		description = S("@1 Spike", desc),
+		_doc_items_longdesc = S([[Deals @1 damage to people without armor.
 			Destroy items thrown on the spike.
-			]]),
+			]], damage),
 		drawtype="mesh",
 		mesh="pala_spikes_pyramid_spike.obj",
 		visual_scale=1.0,
@@ -29,13 +28,13 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 	minetest.register_alias("#"..tostring(id), newname)
 end
 
-pala_spikes.register_spike("wood", "Wood", "#b59246", 2, 438)
-pala_spikes.register_spike("iron", "Iron", "#f4f4f4", 5, 439)
-pala_spikes.register_spike("gold", "Gold", "#fcfc07", 7, 440)
-pala_spikes.register_spike("diamond", "Diamond", "#0af0fc", 10, 441)
-pala_spikes.register_spike("amethyst", "Amethyst", "#a43afc", 10, 442)
-pala_spikes.register_spike("titanium", "Titanium", "#777777", 12, 443)
-pala_spikes.register_spike("paladium", "Paladium", "#fc552f", 14, 444)
+pala_spikes.register_spike("wood", S("Wood"), "#b59246", 2, 438)
+pala_spikes.register_spike("iron", S("Iron"), "#f4f4f4", 5, 439)
+pala_spikes.register_spike("gold", S("Gold"), "#fcfc07", 7, 440)
+pala_spikes.register_spike("diamond", S("Diamond"), "#0af0fc", 10, 441)
+pala_spikes.register_spike("amethyst", S("Amethyst"), "#a43afc", 10, 442)
+pala_spikes.register_spike("titanium", S("Titanium"), "#777777", 12, 443)
+pala_spikes.register_spike("paladium", S("Paladium"), "#fc552f", 14, 444)
 
 --Craft
 
