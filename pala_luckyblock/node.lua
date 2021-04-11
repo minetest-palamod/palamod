@@ -2,6 +2,7 @@ function placefakepala(pos, player)
 	local x = math.random(pos.x-10,pos.x+10)
 	local z = math.random(pos.z-10,pos.z+10)
 	local y = minetest.get_spawn_level(x, z)
+	if not player:is_player() then return end
 	if minetest.get_spawn_level(x, z) then
 	--minetest.chat_send_all(tostring(y))
 		local pos2 = {x = x, y = y,z = z}
@@ -36,7 +37,7 @@ minetest.register_node("pala_luckyblock:fakepaladiumblock", {
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	after_dig_node = function(pos, node, player)
-		placefakepala(pos, player)
+		--placefakepala(pos, player)
 	end,
 	_mcl_blast_resistance = 6,
 	_mcl_hardness = 5,

@@ -336,23 +336,25 @@ for i = 1,#pala_luckyblock.event_negative do
     pala_luckyblock.event_all[#pala_luckyblock.event_positive+i] = pala_luckyblock.event_negative[i]
 end
 
+--Store table lenth of events to avoid multiple call to #pala_luckyblock.event_all
 local number_images_pala = #pala_luckyblock.event_all
+local number_images_endium = #pala_luckyblock.event_positive
 pala_luckyblock.somme = pala_luckyblock.positive_somme + pala_luckyblock.negative_somme
 
 function pala_luckyblock.get_random_positive()
 	local rnd = randomFloat(0, pala_luckyblock.positive_somme)
-	--minetest.chat_send_all(tostring(rnd))
 	local somme = 0
 	local hit = nil
 	for k, v in ipairs(pala_luckyblock.event_positive) do
 		somme = somme + v[2]
-		--minetest.chat_send_all(tostring(somme))
 		hit = k
 		if rnd < somme then
 			break
 		end
 	end
-	return hit
+	local def = pala_luckyblock.event_positive[hit]
+	return pala_luckyblock.get_open_formspec(def, number_images_endium,
+		"pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png"), hit
 end
 
 function pala_luckyblock.get_random_all()
@@ -367,10 +369,11 @@ function pala_luckyblock.get_random_all()
 		end
 	end
 	local def = pala_luckyblock.event_all[hit]
-	return pala_luckyblock.get_open_formspec(def, number_images_pala), hit
+	return pala_luckyblock.get_open_formspec(def, number_images_pala,
+		"pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png"), hit
 end
 
-function pala_luckyblock.get_open_formspec(def, nbimg)
+function pala_luckyblock.get_open_formspec(def, nbimg, texture)
 	local form = table.concat({
 		"formspec_version[3]",
 		"size[17,11]",
@@ -379,7 +382,7 @@ function pala_luckyblock.get_open_formspec(def, nbimg)
 		"image_button[9,4;1.9,1.9;"..def[3]..";;;false;true;]",
 		"button_exit[1,9;10,1.5;event;"..def[1].."]",
 		"label[6,1;Lucky Block]",
-		"image[13,3;3,3;pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png]",
+		"image[13,3;3,3;"..texture.."]",
 		"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(nbimg).."]",
 		"image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(nbimg).."]",
 		"image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(nbimg).."]",
@@ -415,47 +418,25 @@ function pala_luckyblock.get_paladium_form()
 	})
 end
 
---[[minetest.register_on_player_receive_fields(function(player, formname, fields)
-	minetest.chat_send_all(formname)
-	minetest.chat_send_all(minetest.serialize(fields))
-	if formname == "pala_luckyblock:paladium_show" and fields.quit == "true" then
-		local pos = minetest.deserialize(player:get_meta():get_string("pala_luckyblock:palapos"))
-		minetest.chat_send_all(minetest.serialize(pos))
-		--if minetest.get_node_or_nil(pos).name == "pala_luckyblock:luckyblockpaladium" then
-		--pala_luckyblock.open_paladium(pos, player)
-		minetest.chat_send_all("pala_open")
-		local target = pala_luckyblock.get_random_all()
-		minetest.chat_send_all(target)
-		player:get_meta():set_int("pala_luckyblock:palatarget", target)
-		minetest.show_formspec(player:get_player_name(), "pala_luckyblock:paladium_open", table.concat({
-			"formspec_version[3]",
-			"size[17,11]",
-			"image_button[1,4;1.9,1.9;"..pala_luckyblock.event_all[target][3]..";img1;;false;true;]",
-			"image_button[5,4;1.9,1.9;"..pala_luckyblock.event_all[target][3]..";img2;;false;true;]",
-			"image_button[9,4;1.9,1.9;"..pala_luckyblock.event_all[target][3]..";;;false;true;]",
-			"button_exit[1,9;10,1.5;event;"..pala_luckyblock.event_all[target][1].."]",
-			"label[6,1;Lucky Block]",
-			"image[13,3;3,3;pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png]",
-			"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]",
-			"image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]",
-			"image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]",
-			"image[1,2;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]",
-			"image[5,2;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]",
-			"image[9,2;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala).."]"})
-		)
-		--end
-	end
-	if formname == "pala_luckyblock:paladium_open" and fields.quit == "true" then
-		--if minetest.get_node_or_nil(pos).name == "pala_luckyblock:luckyblockpaladium" then
-		local meta = player:get_meta()
-		local palapos = minetest.deserialize(meta:get_string("pala_luckyblock:palapos"))
-		minetest.set_node(palapos, {name="air"})
-		--if not meta:get_int("pala_luckyblock:palatarget") then minetest.chat_send_all("pb") end
-		minetest.chat_send_all("new:"..meta:get_int("pala_luckyblock:palatarget"))
-		pala_luckyblock.event_all[meta:get_int("pala_luckyblock:palatarget")][4](palapos, player)
-		--end
-	end
-end)]]
+function pala_luckyblock.get_endium_form()
+	return table.concat({
+		"formspec_version[3]",
+		"size[17,11]",
+		"image_button[1,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium)..";img1;;false;true;]",
+		"image_button[5,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium)..";img2;;false;true;]",
+		"image_button[9,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium)..";img3;;false;true;]",
+		"button[1,9;10,1.5;event;Event]",
+		"label[6,1;Lucky Block]",
+		"image[13,3;3,3;pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png]",
+		"button[13,7;3,1;open;Open]",
+		"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium).."]",
+		"image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium).."]",
+		"image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium).."]",
+		"image[1,2;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium).."]",
+		"image[5,2;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium).."]",
+		"image[9,2;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium).."]"
+	})
+end
 
 minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 	description = ("Paladium LuckyBlock"),
@@ -463,15 +444,8 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 	tiles = {"pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png"},
 	is_ground_content = false,
 	stack_max = 64,
-	drop = "",
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
-	--[[on_rightclick = function(pos, node, player, itemstack, pointed_thing)
-		if not minetest.is_protected(pos, player:get_player_name()) then
-			minetest.chat_send_all("pala")
-			pala_luckyblock.show_paladium(pos, node, player, itemstack, pointed_thing)
-		end
-	end,]]
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("is_open", "false")
@@ -504,64 +478,39 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 	_mcl_hardness = 5,
 })
 
--- minetest.register_node("pala_luckyblock:luckyblockendium", {
-	-- description = ("Endium LuckyBlock"),
-	-- _doc_items_longdesc = ("Endium LuckyBlock"),
-	-- tiles = {"pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png"},
-	-- is_ground_content = false,
-	-- stack_max = 64,
-	-- groups = {pickaxey=4, building_block=1},
-	-- sounds = mcl_sounds.node_sound_stone_defaults(),
-	-- after_place_node = function(pos, placer)
-		-- local form2 = table.concat({
-			-- "formspec_version[3]",
-			-- "size[17,11]",
-			-- "image_button[1,4;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala)..";img1;;false;true;]",
-			-- "image_button[5,4;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala)..";img2;;false;true;]",
-			-- "image_button[9,4;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala)..";img3;;false;true;]",
-			-- "button[1,9;10,1.5;event;Event]",
-			-- "label[6,1;Lucky Block]",
-			-- "image[13,3;3,3;pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png]",
-			-- "button[13,7;3,1;open;Open]",
-			-- "image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[1,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[5,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[9,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]"})
-		-- local meta = minetest.get_meta(pos)
-        -- meta:set_string("formspec", form2)
-	-- end,
-	-- on_receive_fields = function(pos, formname, fields, player)
-        -- if fields.open then
-			-- local pala_luckyblock.number_images_pala = 43
-			-- local target_positive = get_random_positive()
-			-- local form2 = table.concat({
-			-- "formspec_version[3]",
-			-- "size[17,11]",
-			-- "image_button[1,4;1.9,1.9;"..target_positive[3]..";img1;;false;true;]",
-			-- "image_button[5,4;1.9,1.9;"..target_positive[3]..";img2;;false;true;]",
-			-- "image_button[9,4;1.9,1.9;"..target_positive[3]..";;;false;true;]",
-			-- "button[1,9;10,1.5;event;"..target_positive[1].."]",
-			-- "label[6,1;Lucky Block]",
-			-- "image[13,3;3,3;pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png]",
-			-- "image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[5,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[9,6;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[1,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[5,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]",
-			-- "image[9,2;1.9,1.9;"..pala_luckyblock.get_random_img(pala_luckyblock.number_images_pala).."]"})
-            -- minetest.show_formspec(player:get_player_name(), "palaluckyblock_confirm", form2)
-			-- minetest.after(2, function()
-				-- minetest.set_node(pos, {name="air"})
-				-- target_positive[4](pos, player)
-			-- end)
-        -- end
-
-        -- --print(fields.x)
-    -- end,
-	-- _mcl_blast_resistance = 1200,
-	-- _mcl_hardness = 5,
--- })
+minetest.register_node("pala_luckyblock:luckyblockendium", {
+	description = ("Endium LuckyBlock"),
+	_doc_items_longdesc = ("Endium LuckyBlock"),
+	tiles = {"pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png"},
+	is_ground_content = false,
+	stack_max = 64,
+	groups = {pickaxey=4, building_block=1},
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	on_construct = function(pos)
+		local meta = minetest.get_meta(pos)
+		meta:set_string("is_open", "false")
+		meta:set_string("formspec", pala_luckyblock.get_endium_form())
+	end,
+	on_receive_fields = function(pos, formname, fields, sender)
+		if not sender:is_player() then return end
+		if minetest.is_protected(pos, sender:get_player_name()) then
+			minetest.record_protection_violation(pos, sender:get_player_name())
+			return
+		end
+		local meta = minetest.get_meta(pos)
+		if fields.open and meta:get_string("is_open") == "false" then
+			local form, hit = pala_luckyblock.get_random_positive()
+			meta:set_string("formspec", form)
+			meta:set_string("is_open", "true")
+			meta:set_int("hit", hit)
+		elseif fields.quit and meta:get_string("is_open") == "true" then
+			local hit = meta:get_int("hit")
+			minetest.set_node(pos, {name="air"})
+			pala_luckyblock.event_positive[hit][4](pos, sender)
+		end
+	end,
+	_mcl_blast_resistance = 1200,
+	_mcl_hardness = 5,
+})
 
 minetest.log("action", "[pala_luckyblock] loaded in "..((os.clock()-load_time)*1000).."ms")
