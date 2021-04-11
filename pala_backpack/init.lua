@@ -1,3 +1,6 @@
+local C = minetest.colorize
+local S = minetest.get_translator(minetest.get_current_modname())
+
 minetest.register_on_joinplayer(function(player)
 	local inv = player:get_inventory()
 	inv:set_size('backpack', 81) -- 9*9
@@ -21,9 +24,8 @@ pala_backpack.form.amethyst = table.concat({
 	"list[current_player;backpack;0.5,1;9,1;]", --9
 	"list[current_player;main;0.5,3;9,4;]",
 	"listring[]",
-	"listcolors[#9990;#FFF7;#FFF0;#000;#FFF]",
-	"label[0.5,0.5;"..minetest.colorize("#313131", "Backpack").."]",
-	"label[0.5,2.5;"..minetest.colorize("#313131", "Inventory").."]",
+	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
+	"label[0.5,2.5;"..C(mcl_colors.GRAY, S("Inventory")).."]",
 })
 
 pala_backpack.form.titanium = table.concat({
@@ -32,9 +34,8 @@ pala_backpack.form.titanium = table.concat({
 	"list[current_player;backpack;0.5,1;9,3;]", --27
 	"list[current_player;main;0.5,5.5;9,4;]",
 	"listring[]",
-	"listcolors[#9990;#FFF7;#FFF0;#000;#FFF]",
-	"label[0.5,0.5;"..minetest.colorize("#313131", "Backpack").."]",
-	"label[0.5,5;"..minetest.colorize("#313131", "Inventory").."]",
+	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
+	"label[0.5,5;"..C(mcl_colors.GRAY, S("Inventory")).."]",
 })
 
 pala_backpack.form.paladium = table.concat({
@@ -43,9 +44,8 @@ pala_backpack.form.paladium = table.concat({
 	"list[current_player;backpack;0.5,1;9,6;]", --56
 	"list[current_player;main;0.5,9.5;9,4;]",
 	"listring[]",
-	"listcolors[#9990;#FFF7;#FFF0;#000;#FFF]",
-	"label[0.5,0.5;"..minetest.colorize("#313131", "Backpack").."]",
-	"label[0.5,9;"..minetest.colorize("#313131", "Inventory").."]",
+	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
+	"label[0.5,9;"..C(mcl_colors.GRAY, S("Inventory")).."]",
 })
 
 pala_backpack.form.endium = table.concat({
@@ -54,9 +54,8 @@ pala_backpack.form.endium = table.concat({
 	"list[current_player;backpack;0.5,1;9,9;]", --81
 	"list[current_player;main;0.5,13;9,4;]",
 	"listring[]",
-	"listcolors[#9990;#FFF7;#FFF0;#000;#FFF]",
-	"label[0.5,0.5;"..minetest.colorize("#313131", "Backpack").."]",
-	"label[0.5,12.5;"..minetest.colorize("#313131", "Inventory").."]",
+	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
+	"label[0.5,12.5;"..C(mcl_colors.GRAY, S("Inventory")).."]",
 })
 
 function pala_backpack.clear_player(player, line)
@@ -73,8 +72,8 @@ end
 --Backpack------------------------------
 --Amethyst
 minetest.register_craftitem("pala_backpack:amethyste_backpack", {
-	description = (minetest.colorize("#9f2bd1", "Ametyste").." Backpack"),
-	_doc_items_longdesc = ("Offers 9 storage slots"),
+	description = S("@1 Backpack", C(mcl_colors.DARK_PURPLE, S("Amethyste"))),
+	_doc_items_longdesc = S("Offers @1 storage slots", 9),
 	inventory_image = "pala_backpack_ametyst.png",
 	stack_max = 1,
 	groups = {miner_level=5},
@@ -86,8 +85,8 @@ minetest.register_craftitem("pala_backpack:amethyste_backpack", {
 
 --Titanium
 minetest.register_craftitem("pala_backpack:titanium_backpack", {
-	description = (minetest.colorize("#666666", "Titanium").." Backpack"),
-	_doc_items_longdesc = ("Offers 27 storage slots"),
+	description = S("@1 Backpack", C(mcl_colors.DARK_GRAY, S("Titanium"))),
+	_doc_items_longdesc = S("Offers @1 storage slots", 27),
 	inventory_image = "pala_backpack_titanium.png",
 	stack_max = 1,
 	groups = {miner_level=10},
@@ -98,8 +97,8 @@ minetest.register_craftitem("pala_backpack:titanium_backpack", {
 
 --Paladium
 minetest.register_craftitem("pala_backpack:paladium_backpack", {
-	description = (minetest.colorize("#f9aa3b", "Paladium").." Backpack"),
-	_doc_items_longdesc = ("Offers 56 storage slots"),
+	description = S("@1 Backpack", C(mcl_colors.RED, S("Paladium"))),
+	_doc_items_longdesc = S("Offers @1 storage slots", 56),
 	inventory_image = "pala_backpack_paladium.png",
 	stack_max = 1,
 	groups = {miner_level=15},
@@ -110,8 +109,8 @@ minetest.register_craftitem("pala_backpack:paladium_backpack", {
 
 --Endium
 minetest.register_craftitem("pala_backpack:endium_backpack", {
-	description = (minetest.colorize("#0e32d3", "Endium").." Backpack"),
-	_doc_items_longdesc = ("Offers 81 storage slots"),
+	description = S("@1 Backpack", C(mcl_colors.BLUE, S("Endium"))),
+	_doc_items_longdesc = S("Offers @1 storage slots", 81),
 	inventory_image = "pala_backpack_endium.png",
 	stack_max = 1,
 	groups = {miner_level=20},

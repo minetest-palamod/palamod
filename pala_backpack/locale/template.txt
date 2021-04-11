@@ -1,0 +1,8 @@
+Inventory=
+Backpack=
+Offers @1 storage slots=
+@1 Backpack=
+Amethyste=
+Titanium=
+Paladium=
+Endium=
