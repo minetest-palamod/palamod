@@ -10,6 +10,7 @@ else
     end
 end
 local C = minetest.colorize
+local vector = vector
 
 function randomFloat(lower, greater)
     return lower + math.random()  * (greater - lower);
@@ -58,18 +59,18 @@ pala_luckyblock.event_positive = {
 	end},
 	{"Fish and Chips", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Bow in armor", 20, "default_stone.png", pala_luckyblock.wip_event},
-	{"Colorful Lamp", 20, "default_stone.png", pala_luckyblock.wip_event},
+	{"Colorful Lamp", 20, "default_stone.png", function(pos, player)
+		minetest.add_item(pos, "pala_decoblock:colored_lamp 6")
+	end},
 	{"Hunter Plant", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Picasso", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Well", 30, "default_stone.png", function(pos, player)
-		minetest.after(3, function()
-			minetest.set_node(pos, {name="mcl_core:obsidian"})
-			lightning.strike(pos)
-			for i = 1, 10, 1 do
-				local rnd = math.random(1, 5)
-				minetest.add_item(pos, pala_luckyblock.minerallist[rnd])
-			end
-		end)
+		minetest.set_node(pos, {name="mcl_core:obsidian"})
+		lightning.strike(pos)
+		for i = 1, 10, 1 do
+			local rnd = math.random(1, 5)
+			minetest.add_item(pos, pala_luckyblock.minerallist[rnd])
+		end
 	end},
 	{"To infinity and beyond", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"Ruée vers les minerais", 30, "default_stone.png", pala_luckyblock.wip_event},
@@ -174,7 +175,7 @@ pala_luckyblock.event_negative = {
 	{"Geyser", 20, "pala_luckyblock_geyser.png", function(pos, player)
 		--TODO: water particules
 		minetest.add_particlespawner({
-			amount = 50,
+			amount = 500,
 			time = 2,
 			minpos = {x=pos.x-0.5, y=pos.y, z=pos.z-0.5},
 			maxpos = {x=pos.x+0.5, y=pos.y+30, z=pos.z+0.5},
@@ -190,7 +191,7 @@ pala_luckyblock.event_negative = {
 			collision_removal = false,
 			object_collision = false,
 			--attached = ObjectRef,
-			--vertical = false,
+			vertical = true,
 			texture = mcl_weather.rain.get_texture(),
 			-- playername = "singleplayer",
 			--animation = {Tile Animation definition},
@@ -219,7 +220,24 @@ pala_luckyblock.event_negative = {
 	{"0 + 0 = La tête à Toto", 40, "default_stone.png", function(pos, player)
 		mcl_experience.set_player_xp_level(player, 0)
 	end},
-	{"Allumer le feu", 40, "default_stone.png", pala_luckyblock.wip_event},
+	{"Allumer le feu", 40, "default_stone.png", function(pos, player)
+		local playername = player:get_player_name()
+		local pos1 = {x=pos.x-6, y=pos.y-2, z=pos.z-6}
+		local pos2 = {x=pos.x+6, y=pos.y+2, z=pos.z+6}
+		if minetest.is_area_protected(pos1, pos2, playername, 2) then
+			minetest.record_protection_violation(pos, playername)
+		else
+			local positions = minetest.find_nodes_in_area_under_air(
+				pos1,
+				pos2,
+				{"group:building_block"}
+			)
+			for _,node in pairs(positions) do
+				node = vector.add(node, {x=0, y=1, z=0})
+			end
+			minetest.bulk_set_node(positions, {name="mcl_fire:fire"})
+		end
+	end},
 	{"Instant break up", 40, "pala_luckyblock_instant_break_up.png", function(pos, player)
 		local inv = player:get_inventory()
 		local oldstack = inv:get_stack("main", 1)
