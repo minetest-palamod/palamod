@@ -10,7 +10,7 @@ else
     end
 end
 local C = minetest.colorize
-local vector = vector
+--local vector = vector
 
 function randomFloat(lower, greater)
     return lower + math.random()  * (greater - lower);
@@ -232,9 +232,9 @@ pala_luckyblock.event_negative = {
 				pos2,
 				{"group:building_block"}
 			)
-			for _,node in pairs(positions) do
-				node = vector.add(node, {x=0, y=1, z=0})
-			end
+			--for _,node in pairs(positions) do
+			--	node = vector.add(node, {x=0, y=1, z=0})
+			--end
 			minetest.bulk_set_node(positions, {name="mcl_fire:fire"})
 		end
 	end},

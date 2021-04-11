@@ -23,16 +23,11 @@ function pala_legendary.register_legendary(name, def)
 		groups = {legendary_stone=1},
 		on_use = function(itemstack, player, pointed_thing)
 			local ok
-			minetest.chat_send_player(player:get_player_name(), "------------------------------------------------------")
-			minetest.chat_send_player(player:get_player_name(), "last use : "..itemstack:get_meta():get_int("pala_last_use"))
-			minetest.chat_send_player(player:get_player_name(), os.time())
-
 			local last_use = itemstack:get_meta():get_int("pala_last_use")
 
 			if not last_use then
 				ok = true
 			elseif os.time()-86400 >= last_use then
-				--minetest.chat_send_player(player:get_player_name(), itemstack:get_meta():get_int("pala_last_use"))
 				ok = true
 			else
 				--TODO:better message
@@ -61,8 +56,6 @@ function pala_legendary.spawn_particle(pos)
         maxpos = {x=pos.x+3, y=pos.y+1, z=pos.z+3},
         minvel = {x=-0.2, y=-0.2, z=-0.2},
         maxvel = {x=0.2, y=0.2, z=0.2},
-        --minacc = {x=0, y=0, z=0},
-        --maxacc = {x=0, y=0, z=0},
         minexptime = 1,
         maxexptime = 3,
         minsize = 1,
@@ -70,14 +63,8 @@ function pala_legendary.spawn_particle(pos)
         collisiondetection = false,
         collision_removal = false,
         object_collision = false,
-        --attached = ObjectRef,
-        --vertical = false,
         texture = "pala_legendary_particule.png",
-        -- playername = "singleplayer",
-        --animation = {Tile Animation definition},
         glow = 3,
-        --node = {name = "ignore", param2 = 0},
-        --node_tile = 0,
 	})
 end
 

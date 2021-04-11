@@ -1,4 +1,4 @@
-function placefakepala(pos, player)
+--[[local function placefakepala(pos, player)
 	local x = math.random(pos.x-10,pos.x+10)
 	local z = math.random(pos.z-10,pos.z+10)
 	local y = minetest.get_spawn_level(x, z)
@@ -26,7 +26,7 @@ function placefakepala(pos, player)
 	end
 	--minetest.chat_send_all(x..pos.y..z)
 	--minetest.chat_send_all(minetest.get_node({x, pos.y, z}).name)
-end
+end]]
 
 minetest.register_node("pala_luckyblock:fakepaladiumblock", {
 	description = ("Fake Block of Paladium"),
