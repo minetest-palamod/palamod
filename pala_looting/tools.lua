@@ -12,15 +12,9 @@ minetest.register_tool("pala_looting:unclaimfinder_green", {
   })
 
 --Chest Explorer
-minetest.register_tool("pala_looting:chest_explorer", {
-    description = "Chest Explorer",
+minetest.register_craftitem("pala_looting:chest_explorer", {
+    description = S("Chest Explorer"),
     inventory_image = "pala_looting_chest_explorer.png",
-    tool_capabilities = {
-        max_drop_level=3,
-        groupcaps= {
-            cracky={times={[1]=4.00, [2]=1.50, [3]=1.00}, uses=70, maxlevel=1}
-        }
-    },
     on_use = function(itemstack, player, pointed_thing)
         if pointed_thing.type == "node" then
             --local meta = minetest.get_meta(pointed_thing.under)
