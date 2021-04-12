@@ -1,0 +1,5 @@
+You must have the [@1] grade to run this command.=
+Chalenger=
+Hero=
+Legendary=
+YouTube=

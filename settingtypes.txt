@@ -1,0 +1,6 @@
+
+[pala_grade]
+
+#    Default grade to use if not handled by other mods.
+#    default: chalenger
+pala_grade.default_grade (pala_grade.default_grade) enum chalenger none,chalenger,hero,legendary,youtube

@@ -1,13 +1,19 @@
+local S = minetest.get_translator(minetest.get_current_modname())
+
 minetest.register_chatcommand("feed", {
 	params = "",
 	description = "Allows you to completely fill your food bar",
-	privs = {gradepaladins = true},
+	privs = {interact = true},
 	func = function(name, param)
 		local player = minetest.get_player_by_name(name)
 		if not player then
 			return false, "Player not found"
 		end
-		mcl_hunger.set_hunger(player, 20)
+        if pala_grade.can_execute(player, 2) then
+		    mcl_hunger.set_hunger(player, 20)
+        else
+            return false, S("You must have the [@1] grade to run this command.", pala_grade.grades.youtube.desc)
+        end
 	end,
 })
 
@@ -15,7 +21,7 @@ local show_crafting_form = mcl_crafting_table.show_crafting_form
 minetest.register_chatcommand("craft", {
 	params = "",
 	description = "Allows you to open a crafting table interface.",
-	privs = {gradepaladins = true},
+	privs = {interact = true},
 	func = function(name, param)
 		show_crafting_form(minetest.get_player_by_name(name))
 	end,
@@ -24,7 +30,7 @@ minetest.register_chatcommand("craft", {
 minetest.register_chatcommand("furnace", {
 	params = "",
 	description = "Allows you to cook an item without a furnace",
-	privs = {gradepaladins = true},
+	privs = {interact = true},
 	func = function(name, param)
 		local player = minetest.get_player_by_name(name)
 		if not player then
@@ -47,19 +53,4 @@ minetest.register_chatcommand("furnace", {
 		--if output == item
 		mcl_hunger.set_hunger(player, 20)
 	end,
-})
-
-minetest.register_privilege("gradetitan", {
-	description = "Titan Grade",
-	give_to_singleplayer = true,
-})
-
-minetest.register_privilege("gradepaladins", {
-	description = "Paladin Grade",
-	give_to_singleplayer = true,
-})
-
-minetest.register_privilege("gradeendium", {
-	description = "Endium Grade",
-	give_to_singleplayer = true,
 })
