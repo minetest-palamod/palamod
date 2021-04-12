@@ -29,4 +29,4 @@ jobs:
           #config: # optional
           #annotate: # optional, default is none
       - name: translation
-        run: python3 '${{ GITHUB_WORKSPACE }}/palamod/tools/update_translation.py fr ${{ GITHUB_WORKSPACE }}/palamod'
+        run: python3 ${GITHUB_WORKSPACE}/palamod/tools/update_translation.py fr ${GITHUB_WORKSPACE}/palamod
