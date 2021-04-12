@@ -170,8 +170,8 @@ pala_luckyblock.event_negative = {
 		minetest.add_particlespawner({
 			amount = 500,
 			time = 2,
-			minpos = {x=pos.x-0.5, y=pos.y, z=pos.z-0.5},
-			maxpos = {x=pos.x+0.5, y=pos.y+30, z=pos.z+0.5},
+			minpos = {x=pos.x-0.2, y=pos.y, z=pos.z-0.2},
+			maxpos = {x=pos.x+0.2, y=pos.y+30, z=pos.z+0.2},
 			minvel = {x=-0.5, y=5, z=-0.5},
 			maxvel = {x=0.5, y=10, z=0.5},
 			--minacc = {x=0, y=0, z=0},
