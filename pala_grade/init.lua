@@ -32,7 +32,8 @@ function pala_grade.set_grade(player, grade)
 	if pala_grade.grades[grade] then
 		player:get_meta():set_string("pala_grade.grade", grade)
 	else
-		minetest.log("error", "[pala_grade] Failed to set grade to player ["..player:get_player_name().."]: Invalid grade ["..grade.."]")
+		minetest.log("error",
+			"[pala_grade] Failed to set grade to player ["..player:get_player_name().."]: Invalid grade ["..grade.."]")
 	end
 end
 
@@ -43,10 +44,6 @@ end
 
 minetest.register_on_joinplayer(function(player)
 	pala_grade.update_grade(player)
-end)
-
-minetest.register_on_newplayer(function(player)
-	pala_grade.update_grade(player, grade)
 end)
 
 dofile(modpath.."/commands.lua")
