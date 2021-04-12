@@ -1,0 +1,15 @@
+@1 Ore=
+@1 ore is rare and can be found in clusters near the bottom of the world.=
+@1 Ingot=
+Molten @1. It is used to craft armor, tools, and whatnot.=
+Block of @1=
+Amethyst Ore=
+Amethyst ore is rare and can be found in clusters near the bottom of the world.=
+Amethyst Ingot=
+Molten Amethyst. It is used to craft armor, tools, and whatnot.=
+Block of Amethyst=
+A block of Amethyst is mostly a shiny decorative block.=
+Amethyst=
+Titanium=
+Findium Gem. It is used to craft armor, tools, and whatnot.=
+Findium Gem=
