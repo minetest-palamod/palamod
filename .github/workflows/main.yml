@@ -30,5 +30,6 @@ jobs:
           #annotate: # optional, default is none
       - name: translation
         run: |
-          echo ${GITHUB_WORKSPACE}
-          python3 ${GITHUB_WORKSPACE}/tools/update_translation.py fr ${GITHUB_WORKSPACE}
+          echo "::group::{French}"
+          python3 ${GITHUB_WORKSPACE}/tools/update_translation.py fr
+          echo "::endgroup::"
