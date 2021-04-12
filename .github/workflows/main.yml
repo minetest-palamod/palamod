@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  luacheck:
+  main:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +28,5 @@ jobs:
           #args: # optional
           #config: # optional
           #annotate: # optional, default is none
+      - name: translation
+        run: python3 '${{ github.workspace }}/tools/update_translation.py fr ${{ github.workspace }}'
