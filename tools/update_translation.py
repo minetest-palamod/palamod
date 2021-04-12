@@ -1,3 +1,5 @@
+# Copy of MineClone2 script
+
 # Output indicator
 # !<   Indicates a text line without '=' in template.txt
 # <<   Indicates an untranslated line in template.txt or an extra line in translate file (.tr)
