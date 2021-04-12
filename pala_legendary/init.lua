@@ -1,23 +1,26 @@
 local load_time = os.clock()
 minetest.log("action", "[pala_legendary] loading...")
 
-local function firstToUpper(str)
-    return (str:gsub("^%l", string.upper))
-end
+local modname = minetest.get_current_modname()
+local modpath = minetest.get_modpath(modname)
+local S = minetest.get_translator(modpath)
+
 local math = math
---TODO:textures and help
+
+--TODO: help
 pala_legendary = {}
-pala_legendary.stones_list = {}
+pala_legendary.registered_stones = {}
+local stone_list = {}
 
 function pala_legendary.get_random_stone(min_item, max_item)
 	local rnd = math.random(min_item, max_item)
-	return pala_legendary.stones_list[rnd]
+	return stone_list[rnd]
 end
 function pala_legendary.register_legendary(name, def)
 	local tempname = "pala_legendary:legendary_"..name
 	minetest.register_craftitem(tempname, {
-		description = ("Legendary Stone "..firstToUpper(name)),
-		_doc_items_longdesc = (def.longdesc.." Just right-click to use it."),
+		description = S("Legendary Stone @1", def.name),
+		_doc_items_longdesc = S(def.longdesc.." Just right-click to use it."),
 		inventory_image = def.inventory_image,
 		stack_max = 1,
 		groups = {legendary_stone=1},
@@ -43,7 +46,13 @@ function pala_legendary.register_legendary(name, def)
 			end
 		end,
 	})
-	table.insert(pala_legendary.stones_list, tempname)
+	pala_legendary.registered_stones[name] = {
+		name = def.name,
+		longdesc = def.longdesc,
+		inventory_image = def.inventory_image,
+		func = def.func,
+	}
+	table.insert(stone_list, tempname)
 end
 
 function pala_legendary.spawn_particle(pos)
@@ -74,18 +83,12 @@ local minerallist = {
 	"mcl_core:steel_ingot"
 }
 
-local function fortune(itemstack, player, pointed_thing)
-	local rnd2 = math.random(6, 40)
-	for i = 1, rnd2, 1 do
-		local rnd = math.random(1, 5)
-		minetest.add_item(player:get_pos(), minerallist[rnd])
-	end
-end
 function pala_legendary.get_random_stone()
-	return pala_legendary.stones_list[math.random(2, #pala_legendary.stones_list)] --exclude legendary stone random
+	return stone_list[math.random(2, #stone_list)] --exclude legendary stone random
 end
 
 pala_legendary.register_legendary("random", {
+	name = S("Random"),
 	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
 	inventory_image = "pala_legendary_legendary_random.png",
 	func = function(itemstack, player, pointed_thing)
@@ -95,12 +98,19 @@ pala_legendary.register_legendary("random", {
 
 --Fortune
 pala_legendary.register_legendary("fortune", {
+	name = S("Fortune"),
 	longdesc = "Gives a random number of a random ore (this can be coal such as palladium).",
 	inventory_image = "pala_legendary_legendary_fortune.png",
-	func = fortune
+	func = function(itemstack, player, pointed_thing)
+		local rnd2 = math.random(6, 40)
+		for i = 1, rnd2, 1 do
+			local rnd = math.random(1, 5)
+			minetest.add_item(player:get_pos(), minerallist[rnd])
+		end
+	end,
 })
 
 
-dofile(minetest.get_modpath("pala_legendary").."/endium_gauntlet.lua")
+dofile(modpath.."/endium_gauntlet.lua")
 
 minetest.log("action", "[pala_legendary] loaded in "..((os.clock()-load_time)*1000).."ms")
