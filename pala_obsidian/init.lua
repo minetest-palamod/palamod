@@ -1,13 +1,13 @@
 local has_mcl_core = minetest.get_modpath("mcl_core")
 local has_pala_paladium = minetest.get_modpath("pala_paladium")
 local has_pala_craftstick = minetest.get_modpath("pala_craftstick")
-local wield_scale = { x = 1.8, y = 1.8, z = 1 }
+local wield_scale = mcl_vars.tool_wield_scale
+local modname = minetest.get_current_modname()
+local S = minetest.get_translator(modname)
 
 pala_obsidian = {}
 pala_obsidian.registered_custom_obsidian = {}
-pala_obsidian.modpath = minetest.get_modpath(minetest.get_current_modname())
-
-local pala_obsidian_modpath = pala_obsidian.modpath
+pala_obsidian.modpath = minetest.get_modpath(modname)
 
 function pala_obsidian.register_custom_obsidian(name, def)
 	local newname = "pala_obsidian:"..name.."_obsidian"
@@ -24,7 +24,7 @@ function pala_obsidian.register_custom_obsidian(name, def)
 	minetest.register_node(newname, {
 		description = def.desc,
 		_doc_items_longdesc = (
-			def.desc.." is an extremely hard mineral with an enourmous blast-resistance."..def.longdesc
+			S("@1 is an extremely hard mineral with an enourmous blast-resistance. @2", def.desc, def.longdesc)
 			),
 		tiles = def.tiles,
 		overlay_tiles = def.overlay,
@@ -32,35 +32,39 @@ function pala_obsidian.register_custom_obsidian(name, def)
 		is_ground_content = true,
 		stack_max = 64,
 		sounds = mcl_sounds.node_sound_stone_defaults(),
-		groups = {pickaxey=5, building_block=1, material_stone=1, miner_level = def.miner_level},
+		groups = {pickaxey=5, building_block=1, material_stone=1, miner_level=def.miner_level, pickaxey_obsidian=5},
 		_mcl_blast_resistance = 1200,
 		_mcl_hardness = 50,
 		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			--if not digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" then
-			def.after_dig(pos, oldnode, oldmetadata, digger)
-			--end
+			if digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" then
+				return
+			else
+				def.after_dig(pos, oldnode, oldmetadata, digger)
+			end
 		end,
 	})
 end
 
--- minetest.register_tool("pala_obsidian:obsidian_pick", {
-	-- description = ("Obsidian Pickaxe"),
-	-- _doc_items_longdesc = pickaxe_longdesc,
-	-- inventory_image = "default_tool_diamondpick.png",
-	-- wield_scale = wield_scale,
-	-- groups = { tool=1, pickaxe=1, dig_speed_class=5, enchantability=10 },
-	-- tool_capabilities = {
-		-- -- 1/1.2
-		-- full_punch_interval = 0.83333333,
-		-- max_drop_level=5,
-		-- groupcaps={
-			-- pickaxey_dig_diamond = {times=mcl_autogroup.digtimes.pickaxey_dig_diamond, uses=1562, maxlevel=0},
-		-- },
-		-- damage_groups = {fleshy=5},
-		-- punch_attack_uses = 781,
-	-- },
-	-- sound = { breaks = "default_tool_breaks" },
--- })
+mcl_autogroup.register_diggroup("pickaxey_obsidian")
+
+minetest.register_tool("pala_obsidian:obsidian_pick", {
+	description = S("Obsidian Pickaxe"),
+	_doc_items_longdesc = pickaxe_longdesc,
+	inventory_image = "default_tool_diamondpick.png",
+	wield_scale = wield_scale,
+	groups = { tool=1, pickaxe=1, dig_speed_class=5, enchantability=10 },
+	tool_capabilities = {
+		full_punch_interval = 0.83333333,
+		max_drop_level=5,
+		damage_groups = {fleshy=5},
+		punch_attack_uses = 781,
+	},
+	sound = { breaks = "default_tool_breaks" },
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+        pickaxey_obsidian = { speed = 10, level = 5, uses = 4999 },
+    },
+})
 
 pala_obsidian.register_custom_obsidian("two_life", {
 	desc = "Two Life Obsidian",
@@ -204,7 +208,7 @@ pala_obsidian.register_custom_obsidian("wither", {
 		--TODO: Check if digger is Wither
 		local playerpos = digger:get_pos()
 		local pos2 = {x=playerpos.x-3,y=playerpos.y-1,z=playerpos.z-3}
-		minetest.place_schematic(pos2, pala_obsidian_modpath.."/schematics/pala_obsidian_cage.mts", 0, nil, true)
+		minetest.place_schematic(pos2, pala_obsidian.modpath.."/schematics/pala_obsidian_cage.mts", 0, nil, true)
 	end,
 })
 
