@@ -30,7 +30,7 @@ read_globals = {
     "armor", "mcl_crafting_table", "mcl_buckets", "mcl_doors", "mcl_enchanting", "mcl_fire",
 	"mcl_potions", "mcl_throwing", "mcl_stairs", "screwdriver", "mesecon", "tnt",
     -- PLAYER
-    "mcl_hunger",
+    "mcl_hunger", "playerphysics",
     
     --OTHER
     "mcl_vars",
