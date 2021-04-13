@@ -1,12 +1,11 @@
 pala_job = {}
-pala_job.jobs = {"hunter", "miner", "farmer", "alchemist"}
 pala_job.levels = {480, 1195, 2476, 4710, 8327, 13792, 21597, 32262, 46328, 64357,
 	86931, 114649, 148126, 187995, 234901, 289504, 352478, 424509, 506296, 598549}
-pala_job.default_xp = 0
-pala_job.job = {}
+pala_job.default_xp = minetest.settings:get("pala_job.default_xp") or 0
+pala_job.jobs = {}
 --TODO:real money
-if minetest.get_modpath("my_super_money") then
-	pala_job.money = ""
+if minetest.get_modpath("mc_economy") then
+	pala_job.money = "mc_economy:money"
 else
 	pala_job.money = "mcl_core:stone"
 end
@@ -18,7 +17,7 @@ local pala_job_modpath = minetest.get_modpath("pala_job")
 --local pala_pick_u5_efficiency4 = mcl_enchanting.enchant(pala_pick_u5, "efficiency", 4)
 
 --TODO:hammer and cobblebreaker
-pala_job.job.hunter = {
+pala_job.jobs.hunter = {
 	{pala_job.money.." 2"},
 	{pala_job.money.." 3"},
 	{pala_job.money.." 4"},
@@ -44,7 +43,7 @@ pala_job.job.hunter = {
 		"pala_tools:pick_paladium", "pala_paladium:endium_nugget"}
 }
 
-pala_job.job.miner = {
+pala_job.jobs.miner = {
 	{pala_job.money.." 2"},
 	{pala_job.money.." 3"},
 	{pala_job.money.." 4"},
@@ -207,18 +206,13 @@ minetest.register_chatcommand("add_xp", {
 })
 
 function pala_job.get_job_loots(job)
-	if job == "hunter" then
-		return pala_job.job.hunter
-	elseif job == "miner" then
-		return pala_job.job.miner
-	elseif job == "farmer" then
-		return pala_job.job.farmer
-	elseif job == "alchemist" then
-		return pala_job.job.alchemist
+	if pala_job.jobs[job] then
+		return pala_job.jobs[job]
+	else
+		return nil
 	end
 end
 minetest.register_on_newplayer(function(player)
-	--local playern = player:get_player_name()
 	pala_job.init_player(player)
 end)
 
