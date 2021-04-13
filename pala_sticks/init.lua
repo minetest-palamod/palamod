@@ -11,7 +11,7 @@ minetest.register_tool("pala_sticks:teleport_stick", {
 minetest.register_tool("pala_sticks:heal_stick", {
     description = "Heal Stick",
     inventory_image = "default_stick.png",
-	on_use = function(pos, node, player)
+	on_use = function(itemstack, player, pointed_thing)
 		local addhp = 6
 		local hp = player:get_hp()
 		if hp + addhp >= 20 then
