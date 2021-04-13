@@ -167,7 +167,10 @@ pala_luckyblock.event_positive = {
 --46
 pala_luckyblock.event_negative = {
 	{"BOOM", 20, "pala_dynamite_big_dynamite_inv.png", function(pos, player)
-		minetest.add_entity(pos, "pala_dynamite:dynamite")
+		local obj = minetest.add_entity(pos, "pala_dynamite:dynamite")
+		if obj then
+			obj:get_luaentity().thrower_name = player:get_player_name()
+		end
 	end},
 	{"Enfermé", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Geyser", 20, "pala_luckyblock_geyser.png", function(pos, player)
@@ -266,7 +269,10 @@ pala_luckyblock.event_negative = {
 	{"Tout feu tout flamme", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"Victime", 50, "default_stone.png", pala_luckyblock.wip_event},
 	{"MEGABOOM", 70, "pala_luckyblock_megaboom.png", function(pos, player)
-		minetest.add_entity(pos, "pala_dynamite:dynamite_endium")
+		local obj = minetest.add_entity(pos, "pala_dynamite:dynamite_endium")
+		if obj then
+			obj:get_luaentity().thrower_name = player:get_player_name()
+		end
 	end},
 	{"ArachnoTrap", 80, "pala_luckyblock_arachnotrap.png", function(pos, player)
 		local playerpos = player:get_pos()
