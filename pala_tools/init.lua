@@ -1,5 +1,9 @@
+local modname = minetest.get_current_modname()
+local S = minetest.get_translator(modname)
+
 pala_tools = {}
-pala_tools.path = minetest.get_modpath(minetest.get_current_modname())
+pala_tools.path = minetest.get_modpath(modname)
+
 
 local sword_longdesc = S([[
 	Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles.
