@@ -1,2 +1,5 @@
 Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles. Swords can also be used to cut down a few particular blocks, such as cobwebs.=
 Pickaxes are mining tools to mine hard blocks, such as stone. A pickaxe can also be used as weapon, but it is rather inefficient.=
+Amethyst Pickaxe=
+Paladium Pickaxe=
+Amethyst Sword=

@@ -17,6 +17,90 @@ local pickaxe_longdesc = S([[
 
 local wield_scale = mcl_vars.tool_wield_scale
 
+--Amethyst
+minetest.register_tool("pala_tools:sword_amethyst", {
+	description = S("Amethyst Sword"),
+	_doc_items_longdesc = sword_longdesc,
+	_doc_items_hidden = false,
+	inventory_image = "pala_tools_paladiumsword.png",
+	wield_scale = wield_scale,
+	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
+	tool_capabilities = {
+		full_punch_interval = 0.625,
+		max_drop_level=1,
+		damage_groups = {fleshy=7},
+		punch_attack_uses = 2999,
+	},
+	sound = { breaks = "default_tool_breaks" },
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+		swordy = { speed = 8, level = 1, uses = 2999 },
+		swordy_cobweb = { speed = 8, level = 1, uses = 2999 }
+	},
+})
+
+minetest.register_tool("pala_tools:pick_amethyst", {
+	description = S("Amethyst Pickaxe"),
+	_doc_items_longdesc = pickaxe_longdesc,
+	inventory_image = "pala_tools_paladiumpick.png",
+	wield_scale = wield_scale,
+	groups = { tool=1, pickaxe=1, dig_speed_class=6, enchantability=22},
+	tool_capabilities = {
+		-- 1/1.2
+		full_punch_interval = 0.83333333,
+		max_drop_level=5,
+		damage_groups = {fleshy=5}, --TODO: be sure values are real
+		punch_attack_uses = 781,
+	},
+	sound = { breaks = "default_tool_breaks" },
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+        pickaxey = { speed = 8, level = 5, uses = 2999 }, --TODO: be sure values are real
+    },
+})
+
+--Titanium
+minetest.register_tool("pala_tools:sword_titanium", {
+	description = S("Titanium Sword"),
+	_doc_items_longdesc = sword_longdesc,
+	_doc_items_hidden = false,
+	inventory_image = "pala_tools_paladiumsword.png",
+	wield_scale = wield_scale,
+	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
+	tool_capabilities = {
+		full_punch_interval = 0.625,
+		max_drop_level=1,
+		damage_groups = {fleshy=7.5},
+		punch_attack_uses = 3999,
+	},
+	sound = { breaks = "default_tool_breaks" },
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+		swordy = { speed = 9, level = 1, uses = 3999 },
+		swordy_cobweb = { speed = 9, level = 1, uses = 3999 }
+	},
+})
+
+minetest.register_tool("pala_tools:pick_titanium", {
+	description = S("Titanium Pickaxe"),
+	_doc_items_longdesc = pickaxe_longdesc,
+	inventory_image = "pala_tools_paladiumpick.png",
+	wield_scale = wield_scale,
+	groups = { tool=1, pickaxe=1, dig_speed_class=6, enchantability=22},
+	tool_capabilities = {
+		-- 1/1.2
+		full_punch_interval = 0.83333333,
+		max_drop_level=5,
+		damage_groups = {fleshy=5}, --TODO: be sure values are real
+		punch_attack_uses = 781,
+	},
+	sound = { breaks = "default_tool_breaks" },
+	_mcl_toollike_wield = true,
+	_mcl_diggroups = {
+        pickaxey = { speed = 9, level = 5, uses = 3999 }, --TODO: be sure values are real
+    },
+})
+
 --Paladium
 minetest.register_tool("pala_tools:sword_paladium", {
 	description = "Paladium Sword",
@@ -34,8 +118,8 @@ minetest.register_tool("pala_tools:sword_paladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-		swordy = { speed = 2, level = 1, uses = 4999 },
-		swordy_cobweb = { speed = 2, level = 1, uses = 4999 }
+		swordy = { speed = 10, level = 1, uses = 4999 },
+		swordy_cobweb = { speed = 10, level = 1, uses = 4999 }
 	},
 })
 if minetest.get_modpath("pala_paladium") then
@@ -65,8 +149,8 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-		swordy = { speed = 2, level = 1, uses = 20 },
-		swordy_cobweb = { speed = 2, level = 1, uses = 20 }
+		swordy = { speed = 10, level = 1, uses = 20 },
+		swordy_cobweb = { speed = 10, level = 1, uses = 20 }
 	},
 })
 
@@ -86,14 +170,14 @@ minetest.register_tool("pala_tools:broadsword_paladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-		swordy = { speed = 2, level = 1, uses = 3000 },
-		swordy_cobweb = { speed = 2, level = 1, uses = 3000 }
+		swordy = { speed = 10, level = 1, uses = 3000 },
+		swordy_cobweb = { speed = 10, level = 1, uses = 3000 }
 	},
 })
 
 
 minetest.register_tool("pala_tools:pick_paladium", {
-	description = "Paladium Pickaxe",
+	description = S("Paladium Pickaxe"),
 	_doc_items_longdesc = pickaxe_longdesc,
 	inventory_image = "pala_tools_paladiumpick.png",
 	wield_scale = wield_scale,
@@ -111,6 +195,7 @@ minetest.register_tool("pala_tools:pick_paladium", {
         pickaxey = { speed = 10, level = 5, uses = 4999 },
     },
 })
+
 
 if minetest.get_modpath("pala_paladium") then
 	minetest.register_craft({
