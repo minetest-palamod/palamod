@@ -6,15 +6,6 @@ minetest.register_on_joinplayer(function(player)
 	inv:set_size('backpack', 81) -- 9*9
 end)
 
-minetest.register_on_dieplayer(function(player)
-	local inv = player:get_inventory()
-	for i = 1, 27 do
-		if inv:get_stack("main", i).name == "pala_backpack:amethyste_backpack" then
-			pala_backpack.clear_player(3)
-		end
-	end
-end)
-
 pala_backpack = {}
 pala_backpack.form = {}
 pala_backpack.form.amethyst = table.concat({
@@ -57,17 +48,6 @@ pala_backpack.form.endium = table.concat({
 	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
 	"label[0.5,12.5;"..C(mcl_colors.GRAY, S("Inventory")).."]",
 })
-
-function pala_backpack.clear_player(player, line)
-	local inv = player:get_inventory()
-	local pos = player:get_pos()
-	for i = 1, 9*line do
-		local stack = inv:get_stack("backpack", i)
-		inv:set_stack("backpack", i, nil)
-		minetest.add_item(pos, stack:get_name())
-	end
-end
-
 
 --Backpack------------------------------
 --Amethyst
@@ -118,6 +98,8 @@ minetest.register_craftitem("pala_backpack:endium_backpack", {
 		minetest.show_formspec(player:get_player_name(), "endium_backpack", pala_backpack.form.endium)
 	end,
 })
+
+mcl_death_drop.register_dropped_list("PLAYER", "backpack", true)
 
 --Craft (WIP)
 --Chest missing
