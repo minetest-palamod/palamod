@@ -2,6 +2,10 @@ local has_mcl_core = minetest.get_modpath("mcl_core")
 local has_pala_paladium = minetest.get_modpath("pala_paladium")
 local has_pala_craftstick = minetest.get_modpath("pala_craftstick")
 local wield_scale = mcl_vars.tool_wield_scale
+local pickaxe_longdesc = [[
+	Pickaxes are mining tools to mine hard blocks, such as stone.
+	A pickaxe can also be used as weapon, but it is rather inefficient.
+	]]
 local modname = minetest.get_current_modname()
 local S = minetest.get_translator(modname)
 

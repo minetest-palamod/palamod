@@ -12,7 +12,7 @@ end
 function pala_legendary.gauntlet.add_stone_gauntlet(itemstack, name)
 	local stones = pala_legendary.gauntlet.get_stones_gauntlet(itemstack)
 	stones[name] = {}
-	itemstack:get_meta():set_string("pala_legendary:stones", minetest.serialize(stones))
+	itemstack:get_meta():set_string("pala_legendary:stones", serialize(stones))
 	itemstack = pala_legendary.gauntlet.regenerate_description(itemstack)
 	return itemstack
 end

@@ -1,6 +1,36 @@
 local S = minetest.get_translator(minetest.get_current_modname())
+local C = minetest.colorize
+local table = table
 
-pala_machines.particule_list = {}
+pala_machines.cobblebreaker = {}
+
+local function get_active_form(percent)
+	return table.concat({
+		"size[9,8.75]",
+		"label[0,4;"..minetest.formspec_escape(C("#313131", S("Inventory"))).."]",
+		"list[current_player;main;0,4.5;9,3;9]",
+		mcl_formspec.get_itemslot_bg(0,4.5,9,3),
+		"list[current_player;main;0,7.74;9,1;]",
+		mcl_formspec.get_itemslot_bg(0,7.74,9,1),
+		"label[2.75,0;"..minetest.formspec_escape(C("#313131", S("Cobblebreaker"))).."]",
+		"list[current_name;src;2.75,0.5;1,1;]",
+		mcl_formspec.get_itemslot_bg(2.75,0.5,1,1),
+		"list[current_name;out;2.75,2.5;1,1;]",
+		mcl_formspec.get_itemslot_bg(2.75,2.5,1,1),
+		"image[4.1,1.5;1.5,1;gui_furnace_arrow_bg.png^[lowpart:",
+		(percent)..":gui_furnace_arrow_fg.png^[transformR270]",
+		"listring[current_name;dst]",
+		"listring[current_player;main]",
+		"listring[current_name;src]",
+		"listring[current_player;main]",
+		"listring[current_name;fuel]",
+		"listring[current_player;main]",
+	})
+end
+
+get_active_form(10)
+
+--pala_machines.particule_list = {}
 --[[local function active_formspec(fuel_percent, item_percent)
 	return "size[9,8.75]"..
 	"label[0,4;"..minetest.formspec_escape(minetest.colorize("#313131", S("Inventory"))).."]"..
@@ -162,7 +192,7 @@ local inactive_formspec = "size[9,8.75]"..
 	return result
 end]]
 
-local function allow_metadata_inventory_put(pos, listname, index, stack, player)
+--[[local function allow_metadata_inventory_put(pos, listname, index, stack, player)
 	local name = player:get_player_name()
 	if minetest.is_protected(pos, name) then
 		minetest.record_protection_violation(pos, name)
@@ -193,8 +223,8 @@ minetest.register_node("pala_machines:cobblebreaker", {
 			Place a furnace fuel in the lower slot and the source material in the upper slot.
 			The furnace will slowly use its fuel to smelt the item.
 			The result will be placed into the output slot at the right side.
-			]]).."\n"..
-			("Use the recipe book to see what you can smelt, what you can use as fuel and how long it will burn."),
+			]]--).."\n"..
+			--[[("Use the recipe book to see what you can smelt, what you can use as fuel and how long it will burn."),
 	_doc_items_hidden = false,
 	tiles = {
 		"default_furnace_top.png", "default_furnace_bottom.png",
@@ -293,7 +323,7 @@ minetest.register_node("pala_machines:cobblebreaker_active", {
 	--on_receive_fields = receive_fields,
 	_mcl_blast_resistance = 3.5,
 	_mcl_hardness = 3.5,
-})
+})]]
 
 minetest.register_craft({
 	output = "pala_machines:cobblebreaker",
