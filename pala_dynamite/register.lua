@@ -1,7 +1,9 @@
+local S = minetest.get_translator(minetest.get_current_modname())
+
 --TODO:check if at spawn (in related project)
 
 pala_dynamite.register_dynamite("pala_dynamite:dynamite", {
-	description = "Dynamite",
+	description = S("Dynamite"),
 	inventory_image = "pala_dynamite_dynamite_inv.png",
 	texture = "pala_dynamite_dynamite_texture.png",
 	on_explode = function(pos, name)
@@ -10,7 +12,7 @@ pala_dynamite.register_dynamite("pala_dynamite:dynamite", {
 })
 
 pala_dynamite.register_dynamite("pala_dynamite:dynamite_big", {
-	description = "Big Dynamite",
+	description = S("Big Dynamite"),
 	inventory_image = "pala_dynamite_big_dynamite_inv.png",
 	texture = "pala_dynamite_dynamite_texture.png",
 	on_explode = function(pos, name)
@@ -19,7 +21,7 @@ pala_dynamite.register_dynamite("pala_dynamite:dynamite_big", {
 })
 
 pala_dynamite.register_dynamite("pala_dynamite:dynamite_endium", {
-	description = "Endium Dynamite",
+	description = S("Endium Dynamite"),
 	inventory_image = "pala_dynamite_endium_dynamite_inv.png",
 	texture = "pala_dynamite_endium_dynamite_texture.png",
 	on_explode = function(pos, name)
@@ -28,7 +30,7 @@ pala_dynamite.register_dynamite("pala_dynamite:dynamite_endium", {
 })
 
 pala_dynamite.register_dynamite("pala_dynamite:dynamite_ninja", {
-	description = "Dynamite Ninja",
+	description = S("Ninja Dynamite"),
 	inventory_image = "pala_dynamite_ninja_dynamite_inv.png",
 	texture = "pala_dynamite_ninja_dynamite_texture.png",
 	on_explode = function(pos, name)
