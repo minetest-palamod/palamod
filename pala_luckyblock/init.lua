@@ -166,15 +166,14 @@ pala_luckyblock.event_negative = {
 	end},
 	{"Enfermé", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Geyser", 20, "pala_luckyblock_geyser.png", function(pos, player)
-		--TODO: water particules
 		local playerpos = player:get_pos()
 		minetest.add_particlespawner({
 			amount = 1000,
 			time = 2,
-			minpos = {x=playerpos.x-0.1, y=playerpos.y, z=playerpos.z-0.1},
-			maxpos = {x=playerpos.x+0.1, y=playerpos.y+30, z=playerpos.z+0.1},
-			minvel = {x=-0.5, y=5, z=-0.5},
-			maxvel = {x=0.5, y=10, z=0.5},
+			minpos = {x=playerpos.x-0.05, y=playerpos.y, z=playerpos.z-0.05},
+			maxpos = {x=playerpos.x+0.05, y=playerpos.y-30, z=playerpos.z+0.05},
+			minvel = {x=-0.1, y=-5, z=-0.1},
+			maxvel = {x=0.1, y=-10, z=0.1},
 			--minacc = {x=0, y=0, z=0},
 			--maxacc = {x=0, y=0, z=0},
 			minexptime = 1,
@@ -182,15 +181,12 @@ pala_luckyblock.event_negative = {
 			minsize = 2,
 			maxsize = 3,
 			collisiondetection = true,
-			collision_removal = false,
+			collision_removal = true,
 			object_collision = false,
-			--attached = ObjectRef,
+			attached = player,
 			vertical = true,
 			texture = mcl_weather.rain.get_texture(),
 			-- playername = "singleplayer",
-			--animation = {Tile Animation definition},
-			--node = {name = "ignore", param2 = 0},
-			--node_tile = 0,
 		})
 		player:add_player_velocity({x=0,y=30,z=0})
 	end},
