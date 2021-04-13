@@ -1,4 +1,5 @@
-S = minetest.get_translator("pala_machines")
+local S = minetest.get_translator(minetest.get_current_modname())
+
 pala_machines.particule_list = {}
 --[[local function active_formspec(fuel_percent, item_percent)
 	return "size[9,8.75]"..
