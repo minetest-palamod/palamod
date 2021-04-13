@@ -26,6 +26,16 @@ pala_luckyblock.minerallist = {
 	"mcl_core:gold_ingot",
 	"mcl_core:steel_ingot"
 }
+
+local function give_item(player, item)
+	if player:get_inventory():add_item("main", item) then
+		return
+	else
+		minetest.add_item(player:get_pos(), item)
+		return
+	end
+end
+
 --60
 pala_luckyblock.event_positive = {
 	{"Body Guard", 10, "pala_luckyblock_body_guard.png", function(pos, player)
@@ -149,13 +159,7 @@ pala_luckyblock.event_positive = {
 	{"Wuzzyyyy/AFCMMMMMMMMMMMMS", 10000, "default_stone.png", pala_luckyblock.wip_event},
 	--{"Méga-Thétanos", 42500, "default_stone.png", pala_luckyblock.wip_event},
 	{"Big Inevitable", 12500, "pala_luckyblock_mega_ineluctable.png", function(pos, player)
-		if player:get_inventory():add_item("main", {name="pala_legendary:endium_gauntlet", count=1}) then
-			return
-		else
-			--TODO: add stones to gauntlet
-			minetest.add_item(pos, "pala_legendary:endium_gauntlet")
-			return
-		end
+		give_item(player, "pala_legendary:endium_gauntlet")
 	end},
 }
 
