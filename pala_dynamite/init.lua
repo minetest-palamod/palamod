@@ -112,7 +112,7 @@ function pala_dynamite.register_dynamite(name, def)
 				if self.thrower_name then
 					minetest.log("action", "[pala_dynamite] A dynamite thrown by " .. self.thrower_name ..
 					" explodes at " .. minetest.pos_to_string(vector.round(pos)))
-					if pala_dynamite.can_explode(pos, self.thrower_name)
+					if pala_dynamite.can_explode(pos, self.thrower_name) then
 						def.on_explode(pos, self.thrower_name)
 					end
 				end
