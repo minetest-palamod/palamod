@@ -1,2 +1,4 @@
+local modpath = minetest.get_modpath(minetest.get_current_modname())
+
 pala_machines = {}
-dofile(minetest.get_modpath("pala_machines").."/cobblebreaker.lua")
+dofile(modpath.."/cobblebreaker.lua")
