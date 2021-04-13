@@ -112,7 +112,9 @@ function pala_dynamite.register_dynamite(name, def)
 				if self.thrower_name then
 					minetest.log("action", "[pala_dynamite] A dynamite thrown by " .. self.thrower_name ..
 					" explodes at " .. minetest.pos_to_string(vector.round(pos)))
-					def.on_explode(pos, self.thrower_name)
+					if pala_dynamite.can_explode(pos, self.thrower_name)
+						def.on_explode(pos, self.thrower_name)
+					end
 				end
 
 				obj:remove()
@@ -143,6 +145,12 @@ function pala_dynamite.register_dynamite(name, def)
 		return itemstack
 	end
 	minetest.register_craftitem(name, newdef)
+end
+
+
+--This function should be overriden by protection mods to protect spawn or other areas
+function pala_dynamite.can_explode(pos, player)
+	return true
 end
 
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/register.lua")
