@@ -1,5 +1,6 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
+local formspec_escape = minetest.formspec_escape
 local table = table
 
 pala_machines.cobblebreaker = {}
@@ -7,12 +8,12 @@ pala_machines.cobblebreaker = {}
 local function get_active_form(percent)
 	return table.concat({
 		"size[9,8.75]",
-		"label[0,4;"..minetest.formspec_escape(C("#313131", S("Inventory"))).."]",
+		"label[0,4;"..formspec_escape(C("#313131", S("Inventory"))).."]",
 		"list[current_player;main;0,4.5;9,3;9]",
 		mcl_formspec.get_itemslot_bg(0,4.5,9,3),
 		"list[current_player;main;0,7.74;9,1;]",
 		mcl_formspec.get_itemslot_bg(0,7.74,9,1),
-		"label[2.75,0;"..minetest.formspec_escape(C("#313131", S("Cobblebreaker"))).."]",
+		"label[2.75,0;"..formspec_escape(C("#313131", S("Cobblebreaker"))).."]",
 		"list[current_name;src;2.75,0.5;1,1;]",
 		mcl_formspec.get_itemslot_bg(2.75,0.5,1,1),
 		"list[current_name;out;2.75,2.5;1,1;]",
@@ -30,56 +31,18 @@ end
 
 get_active_form(10)
 
---pala_machines.particule_list = {}
---[[local function active_formspec(fuel_percent, item_percent)
-	return "size[9,8.75]"..
-	"label[0,4;"..minetest.formspec_escape(minetest.colorize("#313131", S("Inventory"))).."]"..
+--[[local inactive_formspec = "size[9,8.75]"..
+	"label[0,4;"..formspec_escape(C("#313131", S("Inventory"))).."]"..
 	"list[current_player;main;0,4.5;9,3;9]"..
 	mcl_formspec.get_itemslot_bg(0,4.5,9,3)..
 	"list[current_player;main;0,7.74;9,1;]"..
 	mcl_formspec.get_itemslot_bg(0,7.74,9,1)..
-	"label[2.75,0;"..minetest.formspec_escape(minetest.colorize("#313131", S("Furnace"))).."]"..
+	"label[2.75,0;"..formspec_escape(C("#313131", S("Cobblebreaker"))).."]"..
 	"list[current_name;src;2.75,0.5;1,1;]"..
 	mcl_formspec.get_itemslot_bg(2.75,0.5,1,1)..
-	"list[current_name;fuel;2.75,2.5;1,1;]"..
+	"list[current_name;out;2.75,2.5;1,1;]"..
 	mcl_formspec.get_itemslot_bg(2.75,2.5,1,1)..
-	"list[current_name;dst;5.75,1.5;1,1;]"..
-	mcl_formspec.get_itemslot_bg(5.75,1.5,1,1)..
-	"image[2.75,1.5;1,1;default_furnace_fire_bg.png^[lowpart:"..
-	(100-fuel_percent)..":default_furnace_fire_fg.png]"..
-	"image[4.1,1.5;1.5,1;gui_furnace_arrow_bg.png^[lowpart:"..
-	(item_percent)..":gui_furnace_arrow_fg.png^[transformR270]"..
-	-- Craft guide button temporarily removed due to Minetest bug.
-	-- TODO: Add it back when the Minetest bug is fixed.
-	--"image_button[8,0;1,1;craftguide_book.png;craftguide;]"..
-	--"tooltip[craftguide;"..minetest.formspec_escape(S("Recipe book")).."]"..
-	"listring[current_name;dst]"..
-	"listring[current_player;main]"..
-	"listring[current_name;src]"..
-	"listring[current_player;main]"..
-	"listring[current_name;fuel]"..
-	"listring[current_player;main]"
-end
-
-local inactive_formspec = "size[9,8.75]"..
-	"label[0,4;"..minetest.formspec_escape(minetest.colorize("#313131", S("Inventory"))).."]"..
-	"list[current_player;main;0,4.5;9,3;9]"..
-	mcl_formspec.get_itemslot_bg(0,4.5,9,3)..
-	"list[current_player;main;0,7.74;9,1;]"..
-	mcl_formspec.get_itemslot_bg(0,7.74,9,1)..
-	"label[2.75,0;"..minetest.formspec_escape(minetest.colorize("#313131", S("Furnace"))).."]"..
-	"list[current_name;src;2.75,0.5;1,1;]"..
-	mcl_formspec.get_itemslot_bg(2.75,0.5,1,1)..
-	"list[current_name;fuel;2.75,2.5;1,1;]"..
-	mcl_formspec.get_itemslot_bg(2.75,2.5,1,1)..
-	"list[current_name;dst;5.75,1.5;1,1;]"..
-	mcl_formspec.get_itemslot_bg(5.75,1.5,1,1)..
-	"image[2.75,1.5;1,1;default_furnace_fire_bg.png]"..
 	"image[4.1,1.5;1.5,1;gui_furnace_arrow_bg.png^[transformR270]"..
-	-- Craft guide button temporarily removed due to Minetest bug.
-	-- TODO: Add it back when the Minetest bug is fixed.
-	--"image_button[8,0;1,1;craftguide_book.png;craftguide;]"..
-	--"tooltip[craftguide;"..minetest.formspec_escape(S("Recipe book")).."]"..
 	"listring[current_name;dst]"..
 	"listring[current_player;main]"..
 	"listring[current_name;src]"..
