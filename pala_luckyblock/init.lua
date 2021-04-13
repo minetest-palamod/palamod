@@ -4,6 +4,7 @@ minetest.log("action", "[pala_luckyblock] loading...")
 local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
 --local vector = vector
+local math = math
 
 function randomFloat(lower, greater)
     return lower + math.random()  * (greater - lower);
