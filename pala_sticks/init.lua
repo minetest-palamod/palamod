@@ -1,7 +1,6 @@
 local is_creative_enabled = minetest.is_creative_enabled
 local function take_pearl(player)
 	local inv = player:get_inventory()
-	local stack
 	for i=1, inv:get_size("main") do
 		local it = inv:get_stack("main", i)
 		if it:get_name() == "mcl_throwing:ender_pearl" then
