@@ -4,7 +4,7 @@ local function take_pearl(player)
 	local stack
 	for i=1, inv:get_size("main") do
 		local it = inv:get_stack("main", i)
-		if not it:is_empty() and it:get_name() == "mcl_throwing:ender_pearl" then
+		if it:get_name() == "mcl_throwing:ender_pearl" then
 			inv:set_stack("main", i, it:take_item())
 			return true
 		end
