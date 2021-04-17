@@ -23,7 +23,7 @@ minetest.register_craftitem("pala_looting:chest_explorer", {
             local meta = minetest.get_meta(pointed_thing.under)
             local inv = meta:get_inventory()
             local size = inv:get_size("main")
-            local width = inv:get_width("main")
+            --local width = inv:get_width("main")
 
             --item_image[<X>,<Y>;<W>,<H>;<item name>]
             --local inv = minetest.get_inventory({ type="node", pos=pointed_thing.under })

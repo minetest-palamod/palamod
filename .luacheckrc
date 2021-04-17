@@ -4,6 +4,7 @@ max_line_length = 125
 
 globals = {
     "minetest",
+    "mcl_spawn",
 }
 
 read_globals = {
@@ -30,7 +31,7 @@ read_globals = {
     "armor", "mcl_crafting_table", "mcl_buckets", "mcl_doors", "mcl_enchanting", "mcl_fire",
 	"mcl_potions", "mcl_throwing", "mcl_stairs", "screwdriver", "mesecon", "tnt",
     -- PLAYER
-    "mcl_hunger", "playerphysics", "mcl_death_drop", "mcl_spawn",
+    "mcl_hunger", "playerphysics", "mcl_death_drop",
     
     --OTHER
     "mcl_vars",
