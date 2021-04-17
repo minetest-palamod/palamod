@@ -30,7 +30,7 @@ minetest.register_craftitem("pala_looting:chest_explorer", {
             --local size = inv:get_size("main")
             --local list = inv:get_list("main")
             local form = "formspec_version[3]"..
-                "size[30,30]"..
+                "size[10,10]"..
                 mcl_formspec.get_itemslot_bg(0,4.5, width, size/width)
             for i = 1, size do
                 local stack = inv:get_stack("main", i)

@@ -244,7 +244,7 @@ pala_luckyblock.event_negative = {
 		local inv = player:get_inventory()
 		local oldstack = inv:get_stack("main", 1)
 		minetest.chat_send_player(player:get_player_name(),
-			S("It seems to me you had @1", C(mcl_colors.AQUA, oldstack:get_count().."x"..oldstack:get_name()))
+			S("It seems to me you had @1", C(mcl_colors.AQUA, oldstack:get_count().."x"..oldstack:get_name())))
 		inv:set_stack("main", 1, ItemStack())
 	end},
 	{"Sur la Lune", 40, "default_stone.png", pala_luckyblock.wip_event},
