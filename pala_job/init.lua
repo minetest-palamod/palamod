@@ -1,3 +1,5 @@
+local get_item_group = minetest.get_item_group
+
 pala_job = {}
 pala_job.levels = {480, 1195, 2476, 4710, 8327, 13792, 21597, 32262, 46328, 64357,
 	86931, 114649, 148126, 187995, 234901, 289504, 352478, 424509, 506296, 598549}
@@ -178,10 +180,9 @@ end
 minetest.register_chatcommand("level", {
 	params = "<text>",
 	description = "Send text to chat",
-	privs = {talk = true},
+	privs = {},
 	func = function(name, param)
-		pala_job.get_level(minetest.get_player_by_name(name), "miner")
-		return true, "Text was sent successfully"
+		return true, pala_job.get_level(minetest.get_player_by_name(name), "miner")
 	end,
 })
 
@@ -225,6 +226,14 @@ minetest.register_chatcommand("earn", {
 	end,
 })
 
+local get_level = pala_job.get_level
+minetest.register_craft_predict(function(itemstack, player, old_craft_grid, craft_inv)
+	local mgroup = get_item_group(itemstack:get_name(), "miner_level")
+	if mgroup > 0 and get_level(player, "miner") < mgroup then
+		minetest.chat_send_all("called")
+		return ItemStack("")
+	end
+end)
 
 dofile(pala_job_modpath.."/update.lua")
 dofile(pala_job_modpath.."/mobs.lua")

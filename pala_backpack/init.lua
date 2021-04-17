@@ -101,7 +101,7 @@ minetest.register_craftitem("pala_backpack:endium_backpack", {
 
 mcl_death_drop.register_dropped_list("PLAYER", "backpack", true)
 
---Craft (WIP)
+--Craft (WIP) (BROKEN)
 --Chest missing
 if minetest.get_modpath("mcl_mobitems") and minetest.get_modpath("pala_paladium") then
 	minetest.register_craft({
