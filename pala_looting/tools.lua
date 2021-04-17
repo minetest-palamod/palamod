@@ -29,12 +29,15 @@ minetest.register_craftitem("pala_looting:chest_explorer", {
             --local inv = minetest.get_inventory({ type="node", pos=pointed_thing.under })
             --local size = inv:get_size("main")
             --local list = inv:get_list("main")
-            local form = "formspec_version[3]"..
-                "size[10,10]"..
-                mcl_formspec.get_itemslot_bg(0,4.5, width, size/width)
+            local form = table.concat({
+                "formspec_version[4]",
+                "size[10,10]",
+                mcl_formspec.get_itemslot_bg(0.375,0.375, 9, 3),
+            })
+                --mcl_formspec.get_itemslot_bg(0,4.5, width, size/width)
             for i = 1, size do
                 local stack = inv:get_stack("main", i)
-                form = form.."item_image[0,4.5;1,1;"..stack:get_name().."]"
+                form = form.."item_image["..-0.375+(1*i)..",0.375;1,1;"..stack:get_name().."]"
             end
             minetest.show_formspec(placer:get_player_name(), "chest_explorer", form)
         end
