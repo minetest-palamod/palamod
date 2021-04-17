@@ -15,19 +15,28 @@ minetest.register_tool("pala_looting:unclaimfinder_green", {
 minetest.register_craftitem("pala_looting:chest_explorer", {
     description = S("Chest Explorer"),
     inventory_image = "pala_looting_chest_explorer.png",
-    on_use = function(itemstack, player, pointed_thing)
-        if pointed_thing.type == "node" then
-            --local meta = minetest.get_meta(pointed_thing.under)
+    wield_scale = mcl_vars.tool_wield_scale,
+    stack_max = 1,
+    on_place = function(itemstack, placer, pointed_thing)
+        if placer:is_player() and placer:get_player_control().sneak and pointed_thing.type == "node" then
+            local nodename = minetest.get_node(pointed_thing.under)
+            local meta = minetest.get_meta(pointed_thing.under)
+            local inv = meta:get_inventory()
+            local size = inv:get_size("main")
+            local width = inv:get_width("main")
+
             --item_image[<X>,<Y>;<W>,<H>;<item name>]
             --local inv = minetest.get_inventory({ type="node", pos=pointed_thing.under })
             --local size = inv:get_size("main")
             --local list = inv:get_list("main")
-            local form = table.concat({
-                "formspec_version[3]",
-                "size[17,11]",
-                "list[list;main_chest_exp;1,1;1,1]"
-            })
-            minetest.show_formspec(player:get_player_name(), "chest_explorer", form)
+            local form = "formspec_version[3]"..
+                "size[30,30]"..
+                mcl_formspec.get_itemslot_bg(0,4.5, width, size/width)
+            for i = 1, size do
+                local stack = inv:get_stack("main", i)
+                form = form.."item_image[0,4.5;1,1;"..stack:get_name().."]"
+            end
+            minetest.show_formspec(placer:get_player_name(), "chest_explorer", form)
         end
     end,
 })
