@@ -1,0 +1,5 @@
+Welcome to @1=
+Spawn=
+a place where @1=
+PvP is disabled=
+Player not found=

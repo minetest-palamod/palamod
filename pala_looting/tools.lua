@@ -19,7 +19,7 @@ minetest.register_craftitem("pala_looting:chest_explorer", {
     stack_max = 1,
     on_place = function(itemstack, placer, pointed_thing)
         if placer:is_player() and placer:get_player_control().sneak and pointed_thing.type == "node" then
-            local nodename = minetest.get_node(pointed_thing.under)
+            --local nodename = minetest.get_node(pointed_thing.under)
             local meta = minetest.get_meta(pointed_thing.under)
             local inv = meta:get_inventory()
             local size = inv:get_size("main")
