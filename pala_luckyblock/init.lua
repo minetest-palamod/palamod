@@ -219,6 +219,7 @@ pala_luckyblock.event_negative = {
 	end},
 	{"Ruée vers les minerais", 30, "default_stone.png", pala_luckyblock.wip_event},
 	{"0 + 0 = La tête à Toto", 40, "default_stone.png", function(pos, player)
+		minetest.chat_send_player(player:get_player_name(), C(mcl_colors.RED, S("You will lose your xp in the next second!")))
 		mcl_experience.set_player_xp_level(player, 0)
 	end},
 	{"Allumer le feu", 40, "default_stone.png", function(pos, player)
