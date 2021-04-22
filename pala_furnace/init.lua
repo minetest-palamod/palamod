@@ -547,16 +547,3 @@ minetest.register_lbm({
 		spawn_flames(pos, node.param2)
 	end,
 })
-
--- Legacy
-minetest.register_lbm({
-	label = "Update furnace formspecs (0.60.0)",
-	name = "mcl_furnaces:update_formspecs_0_60_0",
-	-- Only update inactive furnaces because active ones should update themselves
-	nodenames = { "mcl_furnaces:furnace" },
-	run_at_every_load = false,
-	action = function(pos, node)
-		local meta = minetest.get_meta(pos)
-		meta:set_string("formspec", inactive_formspec)
-	end,
-})
