@@ -19,6 +19,20 @@
 	-- "listring[]",
 -- })
 
+local trash = minetest.create_detached_inventory("voidstone_trash", {
+	allow_put = function(inv, listname, index, stack, player)
+		if minetest.is_creative_enabled(player:get_player_name()) then
+			return stack:get_count()
+		else
+			return 0
+		end
+	end,
+	on_put = function(inv, listname, index, stack, player)
+		inv:set_stack(listname, index, "")
+	end,
+})
+trash:set_size("main", 1)
+
 pala_tools.voidstone_form = table.concat({
 	"size[9.21,5.32]",
 	"real_coordinates[false]",
@@ -32,7 +46,7 @@ pala_tools.voidstone_form = table.concat({
 	"list[current_player;main;0.1,4.66;9.0,1.0;0]",
 	"label[0.1,-0.15;Voidstone]",
 	mcl_formspec.get_itemslot_bg(4.1,0.11,1,1),
-	"list[detached:trash;main;4.1,0.11;1.0,1.0;0]",
+	"list[detached:voidstone_trash;main;4.1,0.11;1.0,1.0;0]",
 })
 
 minetest.register_craftitem("pala_tools:voidstone", {
