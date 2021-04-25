@@ -9,6 +9,21 @@ local get_itemslot_bg = mcl_formspec.get_itemslot_bg_v4
 	label[0.5,12.5;Inventory]
 	list[current_player;main;5.5,0.5;1,1;0]
 ]]
+
+local trash = minetest.create_detached_inventory("voidstone_trash", {
+	allow_put = function(inv, listname, index, stack, player)
+		if minetest.is_creative_enabled(player:get_player_name()) then
+			return stack:get_count()
+		else
+			return 0
+		end
+	end,
+	on_put = function(inv, listname, index, stack, player)
+		inv:set_stack(listname, index, "")
+	end,
+})
+trash:set_size("main", 1)
+
 --TODO: use better inventory
 pala_tools.voidstone_form = table.concat({
 	"formspec_version[4]",
