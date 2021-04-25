@@ -7,4 +7,8 @@ dofile(modpath.."/caveblock.lua")
 dofile(modpath.."/handglider.lua")
 dofile(modpath.."/onlinedetector.lua")
 dofile(modpath.."/items.lua")
-dofile(modpath.."/tools.lua")
+
+if minetest.settings:get_bool("palamod.experimental", false) then
+    dofile(modpath.."/unclaimfinder.lua")
+	dofile(modpath.."/chest_explorer.lua")
+end
