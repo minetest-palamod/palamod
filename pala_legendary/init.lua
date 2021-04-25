@@ -110,7 +110,8 @@ pala_legendary.register_legendary("fortune", {
 	end,
 })
 
-
-dofile(modpath.."/endium_gauntlet.lua")
+if minetest.settings:get_bool("palamod.experimental", false) then
+	dofile(modpath.."/endium_gauntlet.lua")
+end
 
 minetest.log("action", "[pala_legendary] loaded in "..((os.clock()-load_time)*1000).."ms")
