@@ -1,15 +1,5 @@
 --Voidstone
 
-local trash = minetest.create_detached_inventory("voidstone_trash", {
-	allow_put = function(inv, listname, index, stack, player)
-		return stack:get_count()
-	end,
-	on_put = function(inv, listname)
-		inv:set_list(listname, {})
-	end,
-})
-trash:set_size("main", 1)
-
 --[[formspec_version[3]
 	size[12,7]
 	list[current_player;main;0.5,2;9,4;0]
@@ -29,7 +19,7 @@ trash:set_size("main", 1)
 	-- "listring[]",
 -- })
 
-pala_tools.void_form = table.concat({
+pala_tools.voidstone_form = table.concat({
 	"size[9.21,5.32]",
 	"real_coordinates[false]",
 	mcl_formspec.get_itemslot_bg(0.1,1.41,9,1),
@@ -42,18 +32,18 @@ pala_tools.void_form = table.concat({
 	"list[current_player;main;0.1,4.66;9.0,1.0;0]",
 	"label[0.1,-0.15;Voidstone]",
 	mcl_formspec.get_itemslot_bg(4.1,0.11,1,1),
-	"list[detached:voidstone_trash;main;4.1,0.11;1.0,1.0;0]",
+	"list[detached:trash;main;4.1,0.11;1.0,1.0;0]",
 })
 
 minetest.register_craftitem("pala_tools:voidstone", {
 	description = "Voidstone",
-	_doc_items_longdesc = "Voidstone",
+	_doc_items_longdesc = "Voidstone", --TODO: desc and translation
 	inventory_image = "pala_tools_voidstone.png",
 	stack_max = 1,
 	groups = {},
 	on_use = function(itemstack, user, pointed_thing)
 		if user:is_player() then
-			minetest.show_formspec(user:get_player_name(), "pala_tools:voidstone", pala_tools.void_form)
+			minetest.show_formspec(user:get_player_name(), "pala_tools:voidstone", pala_tools.voidstone_form)
 		end
 	end
 })
