@@ -17,3 +17,11 @@ pala_server.pvp_spawn (PvP at spawn) bool false
 
 #    PvP protection radius at spawn.
 pala_server.pvp_spawn_radius (Disabled PvP radius at spawn) int 30
+
+[advanced]
+
+#    Enable debug features
+palamod.debug (Debug features) bool false
+
+#    Experimental features for testing purpose
+palamod.experimental (Experimental features) bool false

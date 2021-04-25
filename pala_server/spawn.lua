@@ -67,7 +67,7 @@ minetest.register_chatcommand("spawn", {
 })
 
 
---TODO: add registration of no pvp areas
+--TODO: add registration of no pvp chunk
 if is_spawn_nopvp then
 	local is_nopvp = pala_server.is_nopvp
 	minetest.register_on_player_hpchange(function(player, hp_change, reason)
