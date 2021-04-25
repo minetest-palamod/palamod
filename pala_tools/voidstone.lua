@@ -47,6 +47,7 @@ pala_tools.voidstone_form = table.concat({
 	"label[0.1,-0.15;Voidstone]",
 	mcl_formspec.get_itemslot_bg(4.1,0.11,1,1),
 	"list[detached:voidstone_trash;main;4.1,0.11;1.0,1.0;0]",
+	"listring[]",
 })
 
 minetest.register_craftitem("pala_tools:voidstone", {
