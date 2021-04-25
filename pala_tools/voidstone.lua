@@ -1,5 +1,6 @@
 --Voidstone
 
+local S = minetest.get_translator(minetest.get_current_modname())
 local get_itemslot_bg = mcl_formspec.get_itemslot_bg_v4
 
 --[[formspec_version[3]
@@ -37,8 +38,8 @@ pala_tools.voidstone_form = table.concat({
 })
 
 minetest.register_craftitem("pala_tools:voidstone", {
-	description = "Voidstone",
-	_doc_items_longdesc = "Voidstone", --TODO: desc and translation
+	description = S("Voidstone"),
+	_doc_items_longdesc = "Allow you to trash items", --TODO: paladium desc and translation
 	inventory_image = "pala_tools_voidstone.png",
 	stack_max = 1,
 	groups = {},
