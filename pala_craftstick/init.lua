@@ -1,12 +1,4 @@
-local S
-
-if minetest.get_translator ~= nil then
-    S = minetest.get_translator(minetest.get_current_modname())
-else
-    S = function(str)
-        return(str)
-    end
-end
+local S = minetest.get_translator(minetest.get_current_modname())
 
 minetest.register_craftitem("pala_craftstick:palastick", {
 	description = S("Paladium Stick"),
