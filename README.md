@@ -19,4 +19,7 @@ This project is mostly a personal project, but I will accept pr for translation,
 Installing
 ----------
 
-No external mods are required, but I suggest you to use mcl_build_limit by @AFCMS.
+You can just clone the repo and start to play, but if you want to create a server or replicate more exactly the gameplay, you should use some external mods:
+Economy: [minetest-palamod/mc_economy](https://github.com/minetest-palamod/mc_economy)
+WorldEdit: [Uberi/Minetest-WorldEdit](https://github.com/Uberi/Minetest-WorldEdit)
+Build Limit: [AFCMS/mcl_build_limit](https://github.com/AFCMS/mcl_build_limit)
