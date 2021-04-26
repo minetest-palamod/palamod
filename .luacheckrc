@@ -39,4 +39,7 @@ read_globals = {
 	-- PALAMOD
 	--------------------------------------------
 	"pala_dynamite",
+
+    -- Mods
+    "mc_economy", "mc_faction",
 }
