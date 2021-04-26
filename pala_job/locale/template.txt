@@ -1,0 +1,3 @@
+# textdomain: pala_job
+HUNTER=
+MINER=

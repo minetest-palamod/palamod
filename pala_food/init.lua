@@ -1,4 +1,4 @@
-local S = minetest.get_translator(minetest.get_current_modame())
+local S = minetest.get_translator(minetest.get_current_modname())
 
 local function eat_pala_apple(itemstack, placer, pointed_thing)
 	if pointed_thing.type == "node" then

@@ -1,3 +1,4 @@
+# textdomain: pala_server
 Welcome to @1=
 Spawn=
 a place where @1=
