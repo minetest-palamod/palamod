@@ -4,9 +4,9 @@ local vector = vector
 local log = minetest.log
 
 local static_spawnpoint = minetest.setting_get_pos("static_spawnpoint")
-local spawn_pos = mcl_spawn.get_world_spawn_pos()
+--local spawn_pos = mcl_spawn.get_world_spawn_pos()
 local is_spawn_nopvp = minetest.settings:get_bool("pala_server.pvp_spawn", true)
-local no_pvp = minetest.settings:get("pala_server.pvp_spawn_radius") or 20
+--local no_pvp = minetest.settings:get("pala_server.pvp_spawn_radius") or 20
 --TODO: dynamicly add every chunk to spawn_chunks
 
 local spawn_chunks = {}

@@ -16,9 +16,9 @@ else
     function pala_server.pos_to_chunk(pos)
         local dim = dim_to_number(pos_to_dim(pos))
 	    if dim then
-	    	return pos_tohash({x=dim,y=math.floor(pos.y/16),z=math.floor(pos.z/16)})
+			return pos_tohash({x=dim,y=math.floor(pos.y/16),z=math.floor(pos.z/16)})
 	    else
-	    	return nil
+			return nil
 	    end
     end
 end
