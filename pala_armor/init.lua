@@ -1,3 +1,5 @@
+local S = minetest.get_translator(minetest.get_current_modname())
+
 minetest.register_tool("pala_armor:boots_weighted", {
 	description = "Weighted boots",
 	_doc_items_longdesc = "Allows you to descend faster to the bottom of the water and stay there",
@@ -27,7 +29,7 @@ end)]]
 
 --Paladium
 minetest.register_tool("pala_armor:paladium_boots", {
-	description = "Paladium Boots",
+	description = S("Paladium Boots"),
 	_doc_items_longdesc = "Allows you to descend faster to the bottom of the water and stay there",
 	inventory_image = "pala_armor_boots_base.png",
 	color = "#fc7a16",
