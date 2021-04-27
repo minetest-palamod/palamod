@@ -82,7 +82,7 @@ minetest.register_chatcommand("spawn", {
 if is_spawn_nopvp then
 	local is_nopvp = pala_server.is_nopvp
 	mcl_damage.register_modifier(function(obj, damage, reason)
-		if is_nopvp(player) then
+		if is_nopvp(obj) then
 			return 0
 		end
 		return damage
