@@ -276,6 +276,12 @@ minetest.register_tool("pala_tools:infernal_knocker", {
 	_repair_material = "group:wood",
 })
 
+minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
+	if itemstack:get_name() == "pala_tools:infernal_knocker" then
+		mcl_enchanting.enchant(itemstack, "knockback", 5)
+	end
+end)
+
 minetest.register_craft_predict(function(itemstack, player, old_craft_grid, craft_inv)
 	if itemstack:get_name() == "pala_tools:infernal_knocker" then
 		return mcl_enchanting.enchant(itemstack, "knockback", 5)
