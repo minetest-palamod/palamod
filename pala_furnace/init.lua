@@ -540,8 +540,8 @@ minetest.register_node("pala_furnace:furnace_active", {
 
 minetest.register_lbm({
 	label = "Active furnace flame particles",
-	name = "mcl_furnaces:flames",
-	nodenames = {"mcl_furnaces:furnace_active"},
+	name = "pala_furnace:flames",
+	nodenames = {"pala_furnace:furnace_active"},
 	run_at_every_load = true,
 	action = function(pos, node)
 		spawn_flames(pos, node.param2)
