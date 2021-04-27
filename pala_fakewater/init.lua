@@ -42,7 +42,7 @@ minetest.register_node("pala_fakewater:fakewater_source", {
 	liquid_viscosity = 1,
 	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
 	damage_per_second = 4,
-	groups = {water = 3, liquid = 3, cools_lava = 1, fall_damage_add_percent=-100},
+	groups = {water = 3, liquid = 3, cools_lava = 1},
 	sounds = mcl_sounds.node_sound_water_defaults(),
 })
 
@@ -89,8 +89,7 @@ minetest.register_node("pala_fakewater:fakewater_flowing", {
 	liquid_viscosity = 1,
 	damage_per_second = 4,
 	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
-	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1,
-		cools_lava = 1, fall_damage_add_percent=-100},
+	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1, cools_lava = 1},
 	sounds = mcl_sounds.node_sound_water_defaults(),
 })
 
@@ -174,7 +173,7 @@ minetest.register_node("pala_fakewater:angelicwater_source", {
 	liquid_viscosity = 1,
 	post_effect_color = {a = 103, r = 60, g = 100, b = 100},
 	damage_per_second = -2,
-	groups = {water = 3, liquid = 3, cools_lava = 1, fall_damage_add_percent=-100},
+	groups = {water = 3, liquid = 3, cools_lava = 1},
 	sounds = mcl_sounds.node_sound_water_defaults(),
 })
 
@@ -221,8 +220,7 @@ minetest.register_node("pala_fakewater:angelicwater_flowing", {
 	liquid_viscosity = 1,
 	damage_per_second = -2,
 	post_effect_color = {a = 103, r = 60, g = 100, b = 100},
-	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1,
-		cools_lava = 1, fall_damage_add_percent=-100},
+	groups = {water = 3, liquid = 3, not_in_creative_inventory = 1, cools_lava = 1},
 	sounds = mcl_sounds.node_sound_water_defaults(),
 })
 
