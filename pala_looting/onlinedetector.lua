@@ -1,4 +1,5 @@
 local S = minetest.get_translator(minetest.get_current_modname())
+local F = minetest.formspec_escape
 
 --online detector
 minetest.register_node("pala_looting:online_detector_off", {
@@ -11,9 +12,9 @@ minetest.register_node("pala_looting:online_detector_off", {
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
 		local form = table.concat({
-			"formspec_version[3]",
+			"formspec_version[4]",
 			"size[8,3]",
-			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
+			"field[0.25,0.75;7.5,0.75;name;"..F(S("Online Detector"))..";"..default.."]",
 			"label[0.25,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
@@ -34,9 +35,9 @@ minetest.register_node("pala_looting:online_detector_off", {
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
 		local form = table.concat({
-			"formspec_version[3]",
+			"formspec_version[4]",
 			"size[8,3]",
-			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
+			"field[0.25,0.75;7.5,0.75;name;"..F(S("Online Detector"))..";"..default.."]",
 			"label[0.25,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
@@ -57,9 +58,9 @@ minetest.register_node("pala_looting:online_detector_on", {
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
 		local form = table.concat({
-			"formspec_version[3]",
+			"formspec_version[4]",
 			"size[8,3]",
-			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
+			"field[0.25,0.75;7.5,0.75;name;"..F(S("Online Detector"))..";"..default.."]",
 			"label[0.25,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
@@ -80,9 +81,9 @@ minetest.register_node("pala_looting:online_detector_on", {
 		local meta = minetest.get_meta(pos)
 		local default = meta:get_string("name")
 		local form = table.concat({
-			"formspec_version[3]",
+			"formspec_version[4]",
 			"size[8,3]",
-			"field[0.25,0.75;7.5,0.75;name;Online Detector;"..default.."]",
+			"field[0.25,0.75;7.5,0.75;name;"..F(S("Online Detector"))..";"..default.."]",
 			"label[0.25,2.25;Detecting: "..default.."]"})
 		meta:set_string("formspec", form)
 	end,
