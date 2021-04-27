@@ -230,7 +230,6 @@ local get_level = pala_job.get_level
 minetest.register_craft_predict(function(itemstack, player, old_craft_grid, craft_inv)
 	local mgroup = get_item_group(itemstack:get_name(), "miner_level")
 	if mgroup > 0 and get_level(player, "miner") < mgroup then
-		minetest.chat_send_all("called")
 		return ItemStack("")
 	end
 end)
