@@ -1,6 +1,6 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
-minetest.register_tool("pala_armor:boots_weighted", {
+--[[minetest.register_tool("pala_armor:boots_weighted", {
 	description = "Weighted boots",
 	_doc_items_longdesc = "Allows you to descend faster to the bottom of the water and stay there",
 	inventory_image = "mcl_armor_inv_boots_leather.png",
@@ -11,7 +11,7 @@ minetest.register_tool("pala_armor:boots_weighted", {
 	},
 	on_place = armor.on_armor_use,
 	on_secondary_use = armor.on_armor_use,
-})
+})]]
 
 --3=torso
 
@@ -28,16 +28,17 @@ end)]]
 
 
 --Paladium
-minetest.register_tool("pala_armor:paladium_boots", {
-	description = S("Paladium Boots"),
-	_doc_items_longdesc = "Allows you to descend faster to the bottom of the water and stay there",
-	inventory_image = "pala_armor_boots_base.png",
-	color = "#fc7a16",
-	groups = {armor_feet=1, mcl_armor_points=5, mcl_armor_uses=2080, enchantability=25},
-	sounds = {
-		_mcl_armor_equip = "mcl_armor_equip_iron",
-		_mcl_armor_unequip = "mcl_armor_unequip_iron",
+mcl_armor.register_set({
+	name = "paladium",
+	description = "Paladium",
+	durability = 2080,
+	enchantability = 25,
+	points = {
+		head = 4.5,
+		torso = 6.5,
+		legs = 5.5,
+		feet = 5,
 	},
-	on_place = armor.on_armor_use,
-	on_secondary_use = armor.on_armor_use,
+	toughness = 2,
+	craft_material = "pala_paladium:paladium_ingot",
 })
