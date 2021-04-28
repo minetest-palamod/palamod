@@ -26,14 +26,14 @@ jobs:
       - name: translation
         run: |
           echo "::group::French"
-          python3 ${GITHUB_WORKSPACE}/tools/update_translation.py fr
+          python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py fr
           echo "::endgroup::"
           echo "::group::Deutch"
-          python3 ${GITHUB_WORKSPACE}/tools/update_translation.py de
+          python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py de
           echo "::endgroup::"
           echo "::group::Spanish"
-          python3 ${GITHUB_WORKSPACE}/tools/update_translation.py es
+          python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py es
           echo "::endgroup::"
           echo "::group::Rusian"
-          python3 ${GITHUB_WORKSPACE}/tools/update_translation.py ru
+          python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py ru
           echo "::endgroup::"
