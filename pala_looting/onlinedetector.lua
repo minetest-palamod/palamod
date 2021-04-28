@@ -58,7 +58,7 @@ minetest.register_node("pala_looting:online_detector_off", {
 })
 
 minetest.register_node("pala_looting:online_detector_on", {
-	description = S("Online Detector On"),
+	description = S("Online Detector"),
 	_doc_items_longdesc = S("Allows you to know if a player is connected."),
 	tiles = {"pala_looting_online_detector_on.png"},
 	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1, not_in_creative_inventory=1},
@@ -99,4 +99,13 @@ minetest.register_abm({
 	action = function(pos)
 		update_detector_on(pos, minetest.get_meta(pos):get_string("name"))
 	end,
+})
+
+minetest.register_craft({
+	output = "pala_looting:online_detector_off",
+	recipe = {
+		{'mcl_dye:black', 'mcl_dye:black', 'mcl_dye:black'},
+		{'mcl_dye:black', 'pala_paladium:paladium_ingot', 'mcl_dye:black'},
+		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
+	}
 })
