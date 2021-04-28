@@ -4,7 +4,7 @@ pala_mapgen.TITANIUM_LAYER = 25
 pala_mapgen.PALADIUM_LAYER = 16
 pala_mapgen.FINDIUM_LAYER = 20
 
-if minetest.settings:get_bool("mcl_generate_ores", true) then
+if minetest.settings:get_bool("pala_mapgen.generate_ores", true) then
 	--Amethyst
 	-- Common spawn
 	minetest.register_ore({

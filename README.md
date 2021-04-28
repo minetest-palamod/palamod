@@ -6,17 +6,28 @@
 ![ContentDB](https://content.minetest.net/packages/minetest-palamod/palamod/shields/title/)
 
 
-A free clone of the main modpack of the french minecraft pvp-faction server [Paladium](https://paladium-pvp.fr/).
+Why this project?
+-----------------
 
-For the free voxel game engine Minetest with the MineClone2 subgame.
+This project is a free clone of the main modpack of a french minecraft server called [Paladium](https://paladium-pvp.fr/).
+This server was created by the french youtuber FuzeIII and is the second biggest french pvp-faction.
 
-This modpack is very WIP, use at your own risk.
+Informations
+------------
 
-Breaking changes will be added with NO warning.
+This project use the free voxel game engine [Minetest](https://www.minetest.net/) with the [MineClone2](https://git.minetest.land/MineClone2/MineClone2) subgame.
+
+This modpack is very WIP and breaking changes can be made with  no warning. Use at your own risk until the main features of the modpack will become stable.
 
 This project is mostly a personal project, but I will accept pr for translation, bugfix and better textures.
 
 Installing
 ----------
 
-No external mods are required, but I suggest you to use mcl_build_limit by @AFCMS.
+You can just clone the repo and start to play, but if you want to create a server or replicate more exactly the gameplay, you should use some external mods:
+
+Economy: [minetest-palamod/mc_economy](https://github.com/minetest-palamod/mc_economy)
+
+WorldEdit: [Uberi/Minetest-WorldEdit](https://github.com/Uberi/Minetest-WorldEdit)
+
+Build Limit: [AFCMS/mcl_build_limit](https://github.com/AFCMS/mcl_build_limit)

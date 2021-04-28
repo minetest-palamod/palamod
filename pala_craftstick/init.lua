@@ -1,12 +1,4 @@
-local S
-
-if minetest.get_translator ~= nil then
-    S = minetest.get_translator(minetest.get_current_modname())
-else
-    S = function(str)
-        return(str)
-    end
-end
+local S = minetest.get_translator(minetest.get_current_modname())
 
 minetest.register_craftitem("pala_craftstick:palastick", {
 	description = S("Paladium Stick"),
@@ -61,8 +53,6 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""}
 	}
 })
-minetest.register_alias("#4571", "pala_craftstick:orb_speed")
-
 
 --heal
 minetest.register_craftitem("pala_craftstick:orb_heal", {
@@ -87,7 +77,6 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""}
 	}
 })
-minetest.register_alias("#4568", "pala_craftstick:orb_heal")
 
 --jump
 minetest.register_craftitem("pala_craftstick:orb_jump", {
@@ -104,7 +93,6 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""}
 	}
 })
-minetest.register_alias("#4569", "pala_craftstick:orb_jump")
 
 --knockback
 minetest.register_craftitem("pala_craftstick:orb_knockback", {
@@ -121,7 +109,6 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""}
 	}
 })
-minetest.register_alias("#4570", "pala_craftstick:orb_knockback")
 
 --strenght
 minetest.register_craftitem("pala_craftstick:orb_strenght", {
@@ -138,7 +125,6 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""}
 	}
 })
-minetest.register_alias("#4572", "pala_craftstick:orb_strenght")
 
 --compressed
 --------------------------------------------------------------------

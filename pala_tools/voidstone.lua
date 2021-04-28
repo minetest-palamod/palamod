@@ -3,7 +3,7 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 local get_itemslot_bg = mcl_formspec.get_itemslot_bg_v4
 
---[[formspec_version[3]
+--[[formspec_version[4]
 	size[12,7]
 	list[current_player;main;0.5,2;9,4;0]
 	label[0.5,0.5;Voidstone]
@@ -13,11 +13,7 @@ local get_itemslot_bg = mcl_formspec.get_itemslot_bg_v4
 
 local trash = minetest.create_detached_inventory("voidstone_trash", {
 	allow_put = function(inv, listname, index, stack, player)
-		if minetest.is_creative_enabled(player:get_player_name()) then
-			return stack:get_count()
-		else
-			return 0
-		end
+		return stack:get_count()
 	end,
 	on_put = function(inv, listname, index, stack, player)
 		inv:set_stack(listname, index, "")
@@ -31,7 +27,7 @@ pala_tools.voidstone_form = table.concat({
 	"size[12,7]",
 	get_itemslot_bg(0.5,2,9,4),
 	"list[current_player;main;0.5,2;9,4;0]",
-	"label[0.5,0.5;Voidstone]",
+	"label[0.5,0.5;"..S("Voidstone").."]",
 	get_itemslot_bg(5.5,0.5,1,1),
 	"list[detached:trash;main;5.5,0.5;1,1;0]",
 	"listring[]",
@@ -39,7 +35,7 @@ pala_tools.voidstone_form = table.concat({
 
 minetest.register_craftitem("pala_tools:voidstone", {
 	description = S("Voidstone"),
-	_doc_items_longdesc = "Allow you to trash items", --TODO: paladium desc and translation
+	_doc_items_longdesc = S("Allow you to trash items"), --TODO: paladium desc
 	inventory_image = "pala_tools_voidstone.png",
 	stack_max = 1,
 	groups = {},

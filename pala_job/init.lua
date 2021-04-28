@@ -1,3 +1,8 @@
+local modname = minetest.get_current_modname()
+local modpath = minetest.get_modpath(modname)
+
+local S = minetest.get_translator(modname)
+
 local get_item_group = minetest.get_item_group
 
 pala_job = {}
@@ -5,18 +10,13 @@ pala_job.levels = {480, 1195, 2476, 4710, 8327, 13792, 21597, 32262, 46328, 6435
 	86931, 114649, 148126, 187995, 234901, 289504, 352478, 424509, 506296, 598549}
 pala_job.default_xp = minetest.settings:get("pala_job.default_xp") or 0
 pala_job.jobs = {}
+
 --TODO:real money
 if minetest.get_modpath("mc_economy") then
 	pala_job.money = "mc_economy:money"
 else
 	pala_job.money = "mcl_core:stone"
 end
-
-local pala_job_modpath = minetest.get_modpath("pala_job")
-
---local palapick = ItemStack("pala_tools:pick_paladium_enchanted")
---local pala_pick_u5 = mcl_enchanting.enchant(palapick, "unbreaking", 5)
---local pala_pick_u5_efficiency4 = mcl_enchanting.enchant(pala_pick_u5, "efficiency", 4)
 
 --TODO:hammer and cobblebreaker
 pala_job.jobs.hunter = {
@@ -145,15 +145,15 @@ function pala_job.get_loot_item(def)
 	end
 end
 
+--TODO: better styling
 function pala_job.show_win_level(player, job, level, loot)
 	local loot1 = pala_job.get_loot_item(loot[level][1])
 	local loot2 = pala_job.get_loot_item(loot[level][2])
 	local loot3 = pala_job.get_loot_item(loot[level][3])
 	local form = table.concat({
-		"formspec_version[3]",
+		"formspec_version[4]",
 		"size[9,5.5]",
-		"real_coordinates[true]",
-		"label[3.5,0.5;"..string.upper(job).."]",
+		"label[3.5,0.5;"..S(string.upper(job)).."]",
 		"label[3,2;You pass level "..level.."]",
 		"label[3,3.5;You receive :]",
 		"item_image[1,4;1,1;"..loot1:get_name().." "..loot1:get_count().."]",
@@ -230,10 +230,9 @@ local get_level = pala_job.get_level
 minetest.register_craft_predict(function(itemstack, player, old_craft_grid, craft_inv)
 	local mgroup = get_item_group(itemstack:get_name(), "miner_level")
 	if mgroup > 0 and get_level(player, "miner") < mgroup then
-		minetest.chat_send_all("called")
 		return ItemStack("")
 	end
 end)
 
-dofile(pala_job_modpath.."/update.lua")
-dofile(pala_job_modpath.."/mobs.lua")
+dofile(modpath.."/update.lua")
+dofile(modpath.."/mobs.lua")

@@ -1,3 +1,4 @@
+# textdomain: pala_backpack
 Inventory=
 Backpack=
 Offers @1 storage slots=
