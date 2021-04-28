@@ -15,7 +15,7 @@ This server was created by the french youtuber FuzeIII and is the biggest french
 Informations
 ------------
 
-This project use the free voxel game engine [Minetest](https://www.minetest.net/) with the [MineClone2](https://git.minetest.land/MineClone2/MineClone2) subgame.
+This project use the free voxel game engine [Minetest](https://www.minetest.net/) with the [MineClone2](https://git.minetest.land/MineClone2/MineClone2) game.
 
 This modpack is very WIP and breaking changes can be made with  no warning. Use at your own risk until the main features of the modpack will become stable.
 
