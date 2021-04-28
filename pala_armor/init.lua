@@ -16,7 +16,40 @@ minetest.register_tool("pala_armor:boots_weighted", {
 	on_place = mcl_armor.equip_on_use,
 	on_secondary_use = mcl_armor.equip_on_use,
 	_mcl_armor_element = "feet",
-	_mcl_armor_texture = "mcl_armor_elytra.png"
+	_mcl_armor_texture = "mcl_armor_boots_leather.png"
+})
+
+--Usual Armors---------
+--TODO: be sure durability is right
+
+--Amethyst
+mcl_armor.register_set({
+	name = "amethyst",
+	description = "Amethyst",
+	durability = 1500,
+	enchantability = 15,
+	points = {
+		head = 4.5,
+		torso = 5,
+		legs = 4,
+		feet = 4.5,
+	},
+	craft_material = "pala_paladium:amethyst_ingot",
+})
+
+--Titanium
+mcl_armor.register_set({
+	name = "titanium",
+	description = "Titanium",
+	durability = 1500,
+	enchantability = 20,
+	points = {
+		head = 4.5,
+		torso = 5,
+		legs = 5,
+		feet = 4.5,
+	},
+	craft_material = "pala_paladium:titanium_ingot",
 })
 
 --Paladium
@@ -33,4 +66,20 @@ mcl_armor.register_set({
 	},
 	toughness = 2,
 	craft_material = "pala_paladium:paladium_ingot",
+})
+
+--Green Paladium
+mcl_armor.register_set({
+	name = "gpaladium",
+	description = "Green Paladium",
+	durability = 2080,
+	enchantability = 25,
+	points = {
+		head = 4.5,
+		torso = 6.5,
+		legs = 5.5,
+		feet = 5,
+	},
+	toughness = 2,
+	craft_material = "pala_paladium:gpaladium_ingot",
 })
