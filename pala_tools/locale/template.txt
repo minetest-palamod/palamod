@@ -3,3 +3,4 @@ Pickaxes are mining tools to mine hard blocks, such as stone. A pickaxe can also
 Amethyst Pickaxe=
 Paladium Pickaxe=
 Amethyst Sword=
+Voidstone=

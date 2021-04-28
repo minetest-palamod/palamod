@@ -4,13 +4,24 @@ local vector = vector
 local log = minetest.log
 
 local static_spawnpoint = minetest.setting_get_pos("static_spawnpoint")
-local spawn_pos = mcl_spawn.get_world_spawn_pos()
+--local spawn_pos = mcl_spawn.get_world_spawn_pos()
 local is_spawn_nopvp = minetest.settings:get_bool("pala_server.pvp_spawn", true)
-local no_pvp = minetest.settings:get("pala_server.pvp_spawn_radius") or 20
+--local no_pvp = minetest.settings:get("pala_server.pvp_spawn_radius") or 20
+--TODO: dynamicly add every chunk to spawn_chunks
+
+local spawn_chunks = {}
+
+spawn_chunks[pala_server.pos_to_chunk({x=0,y=0,z=0})] = true
 
 function pala_server.is_nopvp(player)
-	if vector.distance(spawn_pos, player:get_pos()) < no_pvp then
-		return true
+	if is_spawn_nopvp then
+		--nd vector.distance(spawn_pos, player:get_pos()) < no_pvp then
+		if spawn_chunks[pala_server.pos_to_chunk(vector.round(player:get_pos()))] then
+			--minetest.chat_send_all(pala_server.pos_to_chunk(vector.round(player:get_pos())))
+			--minetest.chat_send_all(pala_server.pos_to_chunk({x=0,y=0,z=0}))
+			return true
+		end
+		return false
 	else
 		return false
 	end
@@ -70,10 +81,10 @@ minetest.register_chatcommand("spawn", {
 --TODO: add registration of no pvp chunk
 if is_spawn_nopvp then
 	local is_nopvp = pala_server.is_nopvp
-	minetest.register_on_player_hpchange(function(player, hp_change, reason)
-		if is_nopvp(player) then
+	mcl_damage.register_modifier(function(obj, damage, reason)
+		if is_nopvp(obj) then
 			return 0
 		end
-		return hp_change
-	end, true)
+		return damage
+	end, 200)
 end

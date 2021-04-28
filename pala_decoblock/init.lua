@@ -1,3 +1,5 @@
+local S = minetest.get_translator(minetest.get_current_modname())
+
 if minetest.get_modpath("pala_paladium") then
 	if minetest.get_modpath("mcl_stairs") then
 		--Paladium
@@ -70,12 +72,25 @@ if minetest.get_modpath("pala_paladium") then
 	end
 end
 
+--Colored Lamp
+minetest.register_node("pala_decoblock:colored_lamp_off", {
+	description = S("Colored Lamp"),
+	tiles = {"pala_decoblock_colored_lamp_off.png"},
+	groups = {handy = 1, mesecon_effector_off = 1, mesecon = 2},
+	sounds = mcl_sounds.node_sound_glass_defaults(),
+	mesecons = {effector = {
+		action_on = function (pos, node)
+			minetest.swap_node(pos, {name="pala_decoblock:colored_lamp_on", param2 = node.param2})
+		end,
+		rules = mesecon.rules.alldirs,
+	}},
+})
 
-minetest.register_node("pala_decoblock:colored_lamp", {
-	description = "Colored Lamp",
+minetest.register_node("pala_decoblock:colored_lamp_on", {
+	description = S("Colored Lamp"),
 	tiles = {
 		{
-			image = "default_furnace_front_active.png",
+			image = "pala_decoblock_colored_lamp_on.png",
 			backface_culling = false,
 			animation = {
 				type = "vertical_frames",
@@ -85,7 +100,14 @@ minetest.register_node("pala_decoblock:colored_lamp", {
 			},
 		}
 	},
+	drop = "pala_decoblock:colored_lamp_off",
 	light_source = 14,
-	groups = {cracky=2},
-	sounds = mcl_sounds.node_sound_stone_defaults(),
+	groups = {handy = 1, mesecon_effector_on = 1, mesecon = 2, not_in_creative_inventory = 1},
+	sounds = mcl_sounds.node_sound_glass_defaults(),
+	mesecons = {effector = {
+		action_off = function (pos, node)
+			minetest.swap_node(pos, {name="pala_decoblock:colored_lamp_off", param2 = node.param2})
+		end,
+		rules = mesecon.rules.alldirs,
+	}},
 })

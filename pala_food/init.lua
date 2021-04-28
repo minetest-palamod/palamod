@@ -1,3 +1,5 @@
+local S = minetest.get_translator(minetest.get_current_modname())
+
 local function eat_pala_apple(itemstack, placer, pointed_thing)
 	if pointed_thing.type == "node" then
 		local node = minetest.get_node(pointed_thing.under)
@@ -16,7 +18,7 @@ local function eat_pala_apple(itemstack, placer, pointed_thing)
 end
 
 minetest.register_craftitem("pala_food:apple_pala", {
-	description = ("Paladium Apple"),
+	description = S("Paladium Apple"),
 	_doc_items_longdesc = ("Paladium apples are precious food items which can be eaten."),
 	wield_image = "mcl_core_apple_golden.png",
 	inventory_image = "mcl_core_apple_golden.png",

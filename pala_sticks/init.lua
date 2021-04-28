@@ -29,6 +29,7 @@ minetest.register_tool("pala_sticks:teleport_stick", {
 minetest.register_tool("pala_sticks:heal_stick", {
     description = "Heal Stick",
     inventory_image = "default_stick.png",
+	groups = {},
 	on_use = function(itemstack, player, pointed_thing)
 		local addhp = 6
 		local hp = player:get_hp()
@@ -37,6 +38,8 @@ minetest.register_tool("pala_sticks:heal_stick", {
 		else
 			player:set_hp(20)
 		end
-		--TODO: remove wear
+		if not minetest.is_creative_enabled(player:get_player_name()) then
+			itemstack:add_wear(65535/65) -- TODO: paladium like wear
+		end
 	end,
 })

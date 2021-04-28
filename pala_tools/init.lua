@@ -282,6 +282,12 @@ minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv
 	end
 end)
 
+minetest.register_craft_predict(function(itemstack, player, old_craft_grid, craft_inv)
+	if itemstack:get_name() == "pala_tools:infernal_knocker" then
+		return mcl_enchanting.enchant(itemstack, "knockback", 5)
+	end
+end)
+
 if minetest.get_modpath("pala_paladium") and minetest.get_modpath("pala_craftstick") then
 	minetest.register_craft({
 		output = 'pala_tools:infernal_knocker',

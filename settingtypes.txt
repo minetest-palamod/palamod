@@ -10,6 +10,11 @@ pala_grade.default_grade (Default grade) enum chalenger none,chalenger,hero,lege
 #    Default xp amount per job.
 pala_job.default_xp (Default XP) int 0
 
+[pala_mapgen]
+
+#    Default xp amount per job.
+pala_mapgen.generate_ores (Custom ores generation) bool true
+
 [pala_server]
 
 #    Is PvP enabled at spawn.
