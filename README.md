@@ -28,6 +28,8 @@ You can just clone the repo and start to play, but if you want to create a serve
 
 Economy: [minetest-palamod/mc_economy](https://github.com/minetest-palamod/mc_economy)
 
+Faction: [minetest-palamod/mc_faction](https://github.com/minetest-palamod/mc_faction)
+
 WorldEdit: [Uberi/Minetest-WorldEdit](https://github.com/Uberi/Minetest-WorldEdit)
 
 Build Limit: [AFCMS/mcl_build_limit](https://github.com/AFCMS/mcl_build_limit)
