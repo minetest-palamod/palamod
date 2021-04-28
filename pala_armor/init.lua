@@ -2,13 +2,17 @@
 local modpath = minetest.get_modpath(minetest.get_current_modname())
 
 --Usual Armors---------
---TODO: be sure durability is right
 
 --Amethyst
 mcl_armor.register_set({
 	name = "amethyst",
 	description = "Amethyst",
-	durability = 1500,
+	durabilities = {
+		head = 1100,
+		torso = 1600,
+		legs = 1500,
+		feet = 1300,
+	},
 	enchantability = 15,
 	points = {
 		head = 4.5,
@@ -23,7 +27,12 @@ mcl_armor.register_set({
 mcl_armor.register_set({
 	name = "titanium",
 	description = "Titanium",
-	durability = 1500,
+	durabilities = {
+		head = 2750,
+		torso = 4000,
+		legs = 3750,
+		feet = 3250,
+	},
 	enchantability = 20,
 	points = {
 		head = 4.5,
@@ -38,7 +47,12 @@ mcl_armor.register_set({
 mcl_armor.register_set({
 	name = "paladium",
 	description = "Paladium",
-	durability = 2080,
+	durabilities = {
+		head = 1760,
+		torso = 2560,
+		legs = 2400,
+		feet = 2080,
+	},
 	enchantability = 25,
 	points = {
 		head = 4.5,
@@ -46,7 +60,6 @@ mcl_armor.register_set({
 		legs = 5.5,
 		feet = 5,
 	},
-	toughness = 2,
 	craft_material = "pala_paladium:paladium_ingot",
 })
 
@@ -54,7 +67,12 @@ mcl_armor.register_set({
 mcl_armor.register_set({
 	name = "gpaladium",
 	description = "Green Paladium",
-	durability = 2080,
+	durabilities = {
+		head = 1760,
+		torso = 2560,
+		legs = 2400,
+		feet = 2080,
+	},
 	enchantability = 25,
 	points = {
 		head = 4.5,
@@ -62,8 +80,27 @@ mcl_armor.register_set({
 		legs = 5.5,
 		feet = 5,
 	},
-	toughness = 2,
 	craft_material = "pala_paladium:gpaladium_ingot",
+})
+
+--Endium
+mcl_armor.register_set({
+	name = "endium",
+	description = "Endium",
+	durabilities = {
+		head = 1650,
+		torso = 2400,
+		legs = 2250,
+		feet = 1950,
+	},
+	enchantability = 30,
+	points = {
+		head = 4.5,
+		torso = 6.5,
+		legs = 5.5,
+		feet = 5,
+	},
+	craft_material = "pala_paladium:endium_ingot",
 })
 
 dofile(modpath.."/travel.lua")

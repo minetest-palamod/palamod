@@ -73,8 +73,11 @@ if minetest.get_modpath("pala_paladium") then
 end
 
 --Colored Lamp
+local usage_help = S("Once installed, the lamp acts like a normal redstone lamp except that it constantly changes color.")
+
 minetest.register_node("pala_decoblock:colored_lamp_off", {
 	description = S("Colored Lamp"),
+	_doc_items_usagehelp = usage_help,
 	tiles = {"pala_decoblock_colored_lamp_off.png"},
 	groups = {handy = 1, mesecon_effector_off = 1, mesecon = 2},
 	sounds = mcl_sounds.node_sound_glass_defaults(),
@@ -88,6 +91,7 @@ minetest.register_node("pala_decoblock:colored_lamp_off", {
 
 minetest.register_node("pala_decoblock:colored_lamp_on", {
 	description = S("Colored Lamp"),
+	_doc_items_usagehelp = usage_help,
 	tiles = {
 		{
 			image = "pala_decoblock_colored_lamp_on.png",
