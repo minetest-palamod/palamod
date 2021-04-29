@@ -4,6 +4,7 @@ minetest.log("action", "[pala_legendary] loading...")
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 local S = minetest.get_translator(modname)
+local C = minetest.colorize
 
 local math = math
 
@@ -29,9 +30,10 @@ function pala_legendary.register_legendary(name, def)
 			elseif os.time()-86400 >= last_use then
 				ok = true
 			else
-				--TODO:better message
+				--TODO:be sure the message is exactly mc like
 				local nbhour = (last_use-(os.time()-86400))/3600
-				minetest.chat_send_player(player:get_player_name(), "You must wait "..math.floor(nbhour).."h to use this stone!")
+				minetest.chat_send_player(player:get_player_name(),
+					C(mcl_colors.RED, S("You must wait @1h to use this stone!", math.floor(nbhour))))
 				ok = false
 			end
 			if ok == true then
