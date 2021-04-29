@@ -16,7 +16,7 @@ minetest.register_chatcommand("feed", {
 			return true, S("Your food bar has been filled")
         else
             return false, C(mcl_colors.RED, S("You must have the [@1] grade to run this command.",
-				pala_grade.grades.youtube.desc..color_escape(mcl_colors.RED)))
+				pala_grade.grades.hero.desc..color_escape(mcl_colors.RED)))
         end
 	end,
 })
