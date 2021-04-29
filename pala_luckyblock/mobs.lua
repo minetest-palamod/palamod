@@ -1,4 +1,4 @@
-local S = minetest.get_translator(minetest.get_current_modname())
+--local S = minetest.get_translator(minetest.get_current_modname())
 
 --[[mobs:register_mob("pala_luckyblock:fake_creeper_charged", {
 	type = "monster",
