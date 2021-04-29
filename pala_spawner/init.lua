@@ -1,4 +1,4 @@
-if minetest.settings:get_bool("palamod.experimental", true) then
+if minetest.settings:get_bool("palamod.experimental", false) then
 	minetest.register_node("pala_spawner:spawner_brocken", {
 		tiles = {"mob_spawner.png"},
 		drawtype = "glasslike",

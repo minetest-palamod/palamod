@@ -26,13 +26,32 @@ mcl_damage.register_modifier(function(obj, damage, reason)
     return damage
 end, 199)
 
-if minetest.settings:get_bool("palamod.experimental", true) then
+if minetest.settings:get_bool("palamod.experimental", false) then
 	--Hood Helmet
 	--TODO: real action and properties
 	minetest.register_tool("pala_armor:helmet_hood", {
 		description = S("Hood Helmet"),
 		_doc_items_longdesc = mcl_armor.longdesc..
 			" "..S("Make your nametag invisible"),
+		_doc_items_usagehelp = mcl_armor.usage,
+		inventory_image = "mcl_armor_inv_helmet_leather.png",
+		groups = {armor_head = 1, non_combat_head = 1, mcl_armor_points=1, mcl_armor_uses = 165},
+		sounds = {
+			_mcl_armor_equip = "mcl_armor_equip_leather",
+			_mcl_armor_unequip = "mcl_armor_unequip_leather",
+		},
+		on_place = mcl_armor.equip_on_use,
+		on_secondary_use = mcl_armor.equip_on_use,
+		_mcl_armor_element = "head",
+		_mcl_armor_texture = "mcl_armor_helmet_leather.png"
+	})
+
+	--Scuba Helmet
+	--TODO: provide water breathing and properties
+	minetest.register_tool("pala_armor:helmet_scuba", {
+		description = S("Scuba Helmet"),
+		_doc_items_longdesc = mcl_armor.longdesc..
+			" "..S("Make your breath bar not go down"),
 		_doc_items_usagehelp = mcl_armor.usage,
 		inventory_image = "mcl_armor_inv_helmet_leather.png",
 		groups = {armor_head = 1, non_combat_head = 1, mcl_armor_points=1, mcl_armor_uses = 165},
