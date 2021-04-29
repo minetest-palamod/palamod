@@ -1,6 +1,6 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
-mobs:register_mob("pala_luckyblock:fake_creeper_charged", {
+--[[mobs:register_mob("pala_luckyblock:fake_creeper_charged", {
 	type = "monster",
 	spawn_class = "hostile",
 	hp_min = 20,
@@ -120,6 +120,7 @@ mobs:register_mob("pala_luckyblock:fake_creeper_charged", {
 	fire_resistant = true,
 	glow = 3,
 })
+
 mobs:register_egg("pala_luckyblock:fake_creeper_charged",
 	S("Fake Luckyblock Creeper"),
-	"mobs_mc_spawn_icon_creeper.png^[colorize:red:5", 0)
+	"mobs_mc_spawn_icon_creeper.png^[colorize:red:5", 0)]]
