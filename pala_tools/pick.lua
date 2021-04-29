@@ -72,6 +72,22 @@ minetest.register_tool("pala_tools:pick_paladium", {
 
 
 if minetest.get_modpath("pala_paladium") then
+    minetest.register_craft({
+		output = 'pala_tools:pick_amethyst',
+		recipe = {
+			{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
+			{"", "mcl_core:stick", ""},
+			{"", "mcl_core:stick", ""},
+		}
+	})
+    minetest.register_craft({
+		output = 'pala_tools:pick_titanium',
+		recipe = {
+			{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
+			{"", "mcl_core:stick", ""},
+			{"", "mcl_core:stick", ""},
+		}
+	})
 	minetest.register_craft({
 		output = 'pala_tools:pick_paladium',
 		recipe = {
