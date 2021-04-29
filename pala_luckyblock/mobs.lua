@@ -1,11 +1,4 @@
-local S
-if minetest.get_translator ~= nil then
-    S = minetest.get_translator(minetest.get_current_modname())
-else
-    S = function(str)
-        return(str)
-    end
-end
+local S = minetest.get_translator(minetest.get_current_modname())
 
 mobs:register_mob("pala_luckyblock:fake_creeper_charged", {
 	type = "monster",
