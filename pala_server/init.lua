@@ -4,6 +4,7 @@ local modpath = minetest.get_modpath(modname)
 pala_server = {}
 
 dofile(modpath.."/utils.lua")
+dofile(modpath.."/msg.lua")
 dofile(modpath.."/spawn.lua")
 
 if minetest.settings:get_bool("palamod.debug", false) then
