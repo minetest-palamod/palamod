@@ -1,14 +1,6 @@
-local S
+local S = minetest.get_translator(minetest.get_current_modname())
 
-if minetest.get_translator ~= nil then
-    S = minetest.get_translator(minetest.get_current_modname())
-else
-    S = function(str)
-        return(str)
-    end
-end
-
-mobs:register_mob("pala_golem:guardian_golem", {
+--[[mobs:register_mob("pala_golem:guardian_golem", {
 	type = "npc",
 	spawn_class = "passive",
 	passive = true,
@@ -60,7 +52,7 @@ mobs:register_mob("pala_golem:guardian_golem", {
 
 
 -- spawn eggs
-mobs:register_egg("pala_golem:guardian_golem", S("Guardian Golem"), "mobs_mc_spawn_icon_iron_golem.png", 0)
+mobs:register_egg("pala_golem:guardian_golem", S("Guardian Golem"), "mobs_mc_spawn_icon_iron_golem.png", 0)]]
 
 --This summons an iron golen if placing the pumpkin created an iron golem summon pattern:
 
