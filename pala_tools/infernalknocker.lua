@@ -29,7 +29,7 @@ minetest.register_tool("pala_tools:infernal_knocker", {
 
 minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
 	if itemstack:get_name() == "pala_tools:infernal_knocker" then
-		mcl_enchanting.enchant(itemstack, "knockback", 5)
+		return mcl_enchanting.enchant(itemstack, "knockback", 5)
 	end
 end)
 

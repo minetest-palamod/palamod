@@ -29,7 +29,7 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 
 --Paladium broadsword
 minetest.register_tool("pala_tools:broadsword_paladium", {
-	description = "Paladium Broad Sword",
+	description = S("Paladium Broad Sword"),
 	_doc_items_longdesc = sword_longdesc,
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumbroadsword.png",

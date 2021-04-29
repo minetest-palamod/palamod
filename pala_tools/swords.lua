@@ -53,7 +53,7 @@ minetest.register_tool("pala_tools:sword_titanium", {
 
 --Paladium
 minetest.register_tool("pala_tools:sword_paladium", {
-	description = "Paladium Sword",
+	description = S("Paladium Sword"),
 	_doc_items_longdesc = sword_longdesc,
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumsword.png",
@@ -75,7 +75,7 @@ minetest.register_tool("pala_tools:sword_paladium", {
 
 --Green Paladium
 minetest.register_tool("pala_tools:sword_gpaladium", {
-	description = "Green Paladium Sword",
+	description = S("Green Paladium Sword"),
 	_doc_items_longdesc = sword_longdesc,
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_gpaladiumsword.png",
@@ -97,7 +97,7 @@ minetest.register_tool("pala_tools:sword_gpaladium", {
 
 --Endium
 minetest.register_tool("pala_tools:sword_endium", {
-	description = "Endium Sword",
+	description = S("Endium Sword"),
 	_doc_items_longdesc = sword_longdesc,
 	_doc_items_hidden = false,
 	inventory_image = "pala_tools_endiumsword.png",
