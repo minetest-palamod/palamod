@@ -72,7 +72,7 @@ pala_job.jobs.miner = {
 }
 
 function pala_job.init_player(player)
-	for _,job in pairs(pala_job.jobs) do
+	for job,_ in pairs(pala_job.jobs) do
 		player:get_meta():set_int("pala_job_xp_"..job, pala_job.default_xp)
 	end
 end
