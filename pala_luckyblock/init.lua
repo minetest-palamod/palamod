@@ -64,7 +64,7 @@ pala_luckyblock.event_positive = {
 	{"Fish and Chips", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Bow in armor", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Colorful Lamp", 20, "default_stone.png", function(pos, player)
-		minetest.add_item(pos, "pala_decoblock:colored_lamp 6")
+		minetest.add_item(pos, "pala_decoblock:colored_lamp 16")
 	end},
 	{"Hunter Plant", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Picasso", 20, "default_stone.png", pala_luckyblock.wip_event},
