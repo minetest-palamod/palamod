@@ -1,5 +1,6 @@
 local S = minetest.get_translator(minetest.get_current_modname())
---local C = minetest.colorize
+local C = minetest.colorize
+local color_escape = minetest.get_color_escape_sequence
 
 minetest.register_chatcommand("feed", {
 	params = "",
@@ -14,7 +15,8 @@ minetest.register_chatcommand("feed", {
 		    mcl_hunger.set_hunger(player, 20)
 			return true, S("Your food bar has been filled")
         else
-            return false, S("You must have the [@1] grade to run this command.", pala_grade.grades.youtube.desc)
+            return false, C(mcl_colors.RED, S("You must have the [@1] grade to run this command.",
+				pala_grade.grades.youtube.desc..color_escape(mcl_colors.RED)))
         end
 	end,
 })
