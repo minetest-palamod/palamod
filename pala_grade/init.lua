@@ -14,6 +14,7 @@ pala_grade.grades.hero      = {rank=2, desc=C(mcl_colors.RED, S("Hero"))}
 pala_grade.grades.legendary = {rank=3, desc=C(mcl_colors.BLUE, S("Legendary"))}
 pala_grade.grades.youtube   = {rank=3, desc=C(mcl_colors.RED, "You")..C(mcl_colors.WHITE, "Tube")}
 
+--TODO: handle grade with database?
 function pala_grade.get_grade(player)
 	return player:get_meta():get_string("pala_grade.grade")
 end
