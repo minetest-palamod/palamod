@@ -9,7 +9,6 @@ local sword_longdesc = S([[
 minetest.register_tool("pala_tools:fastsword_paladium", {
 	description = S("Paladium Fast Sword"),
 	_doc_items_longdesc = sword_longdesc,
-	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumfastsword.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
@@ -31,7 +30,6 @@ minetest.register_tool("pala_tools:fastsword_paladium", {
 minetest.register_tool("pala_tools:broadsword_paladium", {
 	description = S("Paladium Broad Sword"),
 	_doc_items_longdesc = sword_longdesc,
-	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumbroadsword.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},

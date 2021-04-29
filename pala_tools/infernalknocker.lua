@@ -9,7 +9,6 @@ local sword_longdesc = S([[
 minetest.register_tool("pala_tools:infernal_knocker", {
 	description = S("Infernal Knocker"),
 	_doc_items_longdesc = sword_longdesc,
-	_doc_items_hidden = false,
 	inventory_image = "pala_tools_infernalknocker.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=2, enchantability=22},

@@ -10,7 +10,6 @@ local sword_longdesc = S([[
 minetest.register_tool("pala_tools:sword_amethyst", {
 	description = S("Amethyst Sword"),
 	_doc_items_longdesc = sword_longdesc,
-	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumsword.png",
 	wield_scale = mcl_vars.tool_wield_scale ,
 	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
@@ -32,7 +31,6 @@ minetest.register_tool("pala_tools:sword_amethyst", {
 minetest.register_tool("pala_tools:sword_titanium", {
 	description = S("Titanium Sword"),
 	_doc_items_longdesc = sword_longdesc,
-	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumsword.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
@@ -54,7 +52,6 @@ minetest.register_tool("pala_tools:sword_titanium", {
 minetest.register_tool("pala_tools:sword_paladium", {
 	description = S("Paladium Sword"),
 	_doc_items_longdesc = sword_longdesc,
-	_doc_items_hidden = false,
 	inventory_image = "pala_tools_paladiumsword.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
@@ -76,7 +73,6 @@ minetest.register_tool("pala_tools:sword_paladium", {
 minetest.register_tool("pala_tools:sword_gpaladium", {
 	description = S("Green Paladium Sword"),
 	_doc_items_longdesc = sword_longdesc,
-	_doc_items_hidden = false,
 	inventory_image = "pala_tools_gpaladiumsword.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
@@ -98,7 +94,6 @@ minetest.register_tool("pala_tools:sword_gpaladium", {
 minetest.register_tool("pala_tools:sword_endium", {
 	description = S("Endium Sword"),
 	_doc_items_longdesc = sword_longdesc,
-	_doc_items_hidden = false,
 	inventory_image = "pala_tools_endiumsword.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { weapon=1, sword=1, dig_speed_class=6, enchantability=22},
