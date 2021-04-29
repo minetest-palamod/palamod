@@ -1,6 +1,5 @@
 local modname = minetest.get_current_modname()
 local S = minetest.get_translator(modname)
-local has_pala_paladium = minetest.get_modpath("pala_paladium")
 
 local sword_longdesc = S([[
 	Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles.
@@ -118,7 +117,7 @@ minetest.register_tool("pala_tools:sword_endium", {
 })
 
 --CRAFTS
-if has_pala_paladium then
+if minetest.get_modpath("pala_paladium") then
 	minetest.register_craft({
 		output = 'pala_tools:sword_amethyst',
 		recipe = {
