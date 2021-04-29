@@ -3,6 +3,20 @@ local C = minetest.colorize
 local vector = vector
 local log = minetest.log
 
+pala_server.messages = {}
+
+if minetest.settings:get_bool("pala_server.pvp_spawn", true) then
+    pala_server.messages.enter_nopvp = C(mcl_colors.DARK_GREEN, S("Welcome to @1", C(mcl_colors.GOLD , S("Spawn"))))..
+        C(mcl_colors.DARK_GREEN, ", ")..
+        C(mcl_colors.DARK_GREEN, S("a place where @1", C(mcl_colors.GOLD, S("PvP is disabled"))))
+
+	pala_server.messages.enter_pvp = C(mcl_colors.DARK_GREEN, S("Welcome to @1", C(mcl_colors.RED , S("Warzone"))))..
+	C(mcl_colors.DARK_GREEN, ", ")..
+	C(mcl_colors.DARK_GREEN, S("a place where @1", C(mcl_colors.RED, S("PvP is enabled"))))
+else
+    pala_server.messages.enter_nopvp = C(mcl_colors.DARK_GREEN, S("Welcome to @1", C(mcl_colors.RED , S("Warzone"))))
+end
+
 local static_spawnpoint = minetest.setting_get_pos("static_spawnpoint")
 --local spawn_pos = mcl_spawn.get_world_spawn_pos()
 local is_spawn_nopvp = minetest.settings:get_bool("pala_server.pvp_spawn", true)
@@ -53,16 +67,6 @@ if static_spawnpoint then
 	end
 end
 
-local spawnmsg
-if minetest.settings:get_bool("pala_server.pvp_spawn", true) then
-    spawnmsg = C(mcl_colors.DARK_GREEN, S("Welcome to @1", C(mcl_colors.GOLD , S("Spawn"))))..
-        C(mcl_colors.DARK_GREEN, ", ")..
-        C(mcl_colors.DARK_GREEN, S("a place where @1", C(mcl_colors.GOLD, S("PvP is disabled"))))
-else
-    spawnmsg = C(mcl_colors.DARK_GREEN, S("Welcome to @1", C(mcl_colors.GOLD , S("Spawn"))))
-end
-
-
 --This command allow any player to go to spawn
 minetest.register_chatcommand("spawn", {
 	params = "",
@@ -73,7 +77,7 @@ minetest.register_chatcommand("spawn", {
 			return false, C(mcl_colors.RED, S("Player not found"))
 		end
         mcl_spawn.spawn(player)
-		return true, spawnmsg
+		return true, pala_server.messages.enter_nopvp
 	end,
 })
 

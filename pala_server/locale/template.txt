@@ -1,6 +1,8 @@
 # textdomain: pala_server
 Welcome to @1=
 Spawn=
+Warzone=
 a place where @1=
 PvP is disabled=
+PvP is enabled=
 Player not found=
