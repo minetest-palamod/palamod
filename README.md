@@ -25,14 +25,50 @@ This modpack is very WIP and breaking changes can be made with  no warning. Use 
 
 This project is mostly a personal project, but I will accept pr for translation, bugfix and better textures.
 
+Gameplay
+--------
+
+### Features
+
+This modpack aim to recreate the main features of the original server.
+
+This target include:
+* ores, weapons, armors, machines, tools and basic storage systems
+* plants and farming related stuff
+* job system
+* grade system (WARNING: If you really want to use it on servers, you should write retriving and optention system yourself. But by default, you can just configure a grade who is aplied for every player)
+* server commands
+
+Additional features:
+* A good API to allow external mod to work with this modpack properly.
+
+### Freaures not included in target
+
+Some features aren't and will not be included in this modpack.
+
+This modpack isn't a custom version of the MineClone2 game.
+So, it can be difficult to recreate some non trivial and strange features like some luckyblock events.
+
+It doesn't include:
+* The original craft guide (the existing one works pretty good)
+* The menus graphical theme (I don't like it and there is no need of it)
+* Some luckyblock events
+* Drawers (Because you can add them with an external mod)
+* Exact mapgen (mapgen is handeled by the engine, so it can be difficult to recrate exactly the original behaviour)
+* Faction and protection system (Handled by another mod)
+* Economy system (Handled by another mod)
+* Decocraft (I dont like decocraft and it should be external)
+
 Installing
 ----------
 
-You can just clone the repo and start to play, but if you want to create a server or replicate more exactly the gameplay, you should use some external mods:
+You can just clone the repo in your mods folder and start to play, but if you want to create a server or replicate more exactly the gameplay, you should use some external mods:
 
 Economy: [minetest-palamod/mc_economy](https://github.com/minetest-palamod/mc_economy)
 
 Faction: [minetest-palamod/mc_faction](https://github.com/minetest-palamod/mc_faction)
+
+Drawers: [minetest-mods/drawers](https://github.com/minetest-mods/drawers)
 
 WorldEdit: [Uberi/Minetest-WorldEdit](https://github.com/Uberi/Minetest-WorldEdit)
 
