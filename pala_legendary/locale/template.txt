@@ -5,3 +5,4 @@ Fortune=
 You must wait @1h to use this stone!=
 Fortune has fallen upon you!=
 You worked hard. You earned a lot of xp. Congratulations!=
+You just put chaos around you!=
