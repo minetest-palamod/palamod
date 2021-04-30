@@ -28,5 +28,8 @@ pala_legendary.register_legendary("fortune", {
 			local rnd = math.random(1, 5)
 			minetest.add_item(player:get_pos(), minerallist[rnd])
 		end
+		minetest.chat_send_player(player:get_player_name(), C(mcl_colors.GRAY, S("Fortune has fallen upon you!")))
+		--minetest.chat_send_player(player:get_player_name(),
+		--	C(mcl_colors.GRAY, S("You worked hard. You earned a lot of xp. Congratulations!")))
 	end,
 })
