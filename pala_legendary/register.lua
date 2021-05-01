@@ -1,4 +1,5 @@
 local S = minetest.get_translator(minetest.get_current_modname())
+local C = minetest.colorize
 
 local minerallist = {
 	"pala_paladium:paladium_ingot",
