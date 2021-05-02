@@ -2,7 +2,6 @@ local S = minetest.get_translator("mcl_chests")
 local F = minetest.formspec_escape
 local C = minetest.colorize
 
-local add, mul, vec, cross = vector.add, vector.multiply, vector.new, vector.cross
 
 pala_storage = {}
 
@@ -39,12 +38,11 @@ minetest.register_entity("pala_storage:chest", {
 		end
 	end,
 	close = function(self, playername)
-		local playerlist = self.players
-		playerlist[playername] = nil
+		self.players[playername] = nil
 		if self.is_open then
-			for _ in pairs(playerlist) do
+			--[[for _ in pairs(self.players) do
 				return
-			end
+			end]]
 			self:set_animation("close")
 			minetest.sound_play(self.sound_prefix .. "_close", {
 				pos = self.node_pos,
@@ -106,13 +104,13 @@ local function find_entity(pos)
 	end
 end
 
-local function get_entity_info(pos, param2, entity_pos)
+local function get_entity_info(pos, param2)
 	local dir = minetest.facedir_to_dir(param2)
 	return dir, get_entity_pos(pos, dir)
 end
 
 local function create_entity(pos, node_name, textures, param2, sound_prefix, mesh_prefix)
-	local dir, entity_pos = get_entity_info(pos, param2, entity_pos)
+	local dir, entity_pos = get_entity_info(pos, param2)
 	local obj = minetest.add_entity(entity_pos, "pala_storage:chest")
 	local luaentity = obj:get_luaentity()
 	luaentity:initialize(pos, node_name, textures, dir, sound_prefix, mesh_prefix)
@@ -120,19 +118,21 @@ local function create_entity(pos, node_name, textures, param2, sound_prefix, mes
 end
 
 local function find_or_create_entity(pos, node_name, textures, param2, sound_prefix, mesh_prefix)
-	local dir, entity_pos = get_entity_info(pos, param2, entity_pos)
-	return find_entity(entity_pos) or create_entity(pos, node_name, textures, param2, sound_prefix, mesh_prefix, dir, entity_pos)
+	local dir, entity_pos = get_entity_info(pos, param2)
+	return find_entity(entity_pos)
+        or create_entity(pos, node_name, textures, param2, sound_prefix, mesh_prefix, dir, entity_pos)
 end
 
-local no_rotate, simple_rotate
+local simple_rotate
 if minetest.get_modpath("screwdriver") then
-	no_rotate = screwdriver.disallow
+	--no_rotate = screwdriver.disallow
 	simple_rotate = function(pos, node, user, mode, new_param2)
 		if screwdriver.rotate_simple(pos, node, user, mode, new_param2) ~= false then
 			local nodename = node.name
 			local nodedef = minetest.registered_nodes[nodename]
 			local dir = minetest.facedir_to_dir(new_param2)
-			find_or_create_entity(pos, nodename, nodedef._chest_entity_textures, new_param2, false, nodedef._chest_entity_sound, nodedef._chest_entity_mesh, dir):set_yaw(dir)
+			find_or_create_entity(pos, nodename, nodedef._chest_entity_textures, new_param2,
+                false, nodedef._chest_entity_sound, nodedef._chest_entity_mesh, dir):set_yaw(dir)
 		else
 			return false
 		end
@@ -147,9 +147,11 @@ Value:
 local open_chests = {}
 
 -- To be called if a player opened a chest
-local player_chest_open = function(player, pos, node_name, textures, param2, sound, mesh, shulker)
+local player_chest_open = function(player, pos, node_name, textures, param2, sound, mesh)
 	local name = player:get_player_name()
-	open_chests[name] = {pos = pos, node_name = node_name, textures = textures, param2 = param2, sound = sound, mesh = mesh, shulker = shulker}
+	open_chests[name] = {
+        pos = pos, node_name = node_name, textures = textures, param2 = param2, sound = sound, mesh = mesh,
+    }
 	if animate_chests then
 		local dir = minetest.facedir_to_dir(param2)
 		find_or_create_entity(pos, node_name, textures, param2, sound, mesh, "chest", dir):open(name)
@@ -189,7 +191,8 @@ local player_chest_close = function(player)
 		return
 	end
 	if animate_chests then
-		find_or_create_entity(open_chest.pos, open_chest.node_name, open_chest.textures, open_chest.param2, open_chest.sound, open_chest.mesh, open_chest.shulker and "shulker" or "chest"):close(name)
+		find_or_create_entity(open_chest.pos, open_chest.node_name,
+            open_chest.textures, open_chest.param2, open_chest.sound, open_chest.mesh):close(name)
 	end
 	chest_update_after_close(open_chest.pos)
 
@@ -219,28 +222,12 @@ local on_chest_blast = function(pos)
     minetest.remove_node(pos)
 end
 
-local function limit_put_list(stack, list)
-    for _, other in ipairs(list) do
-        stack = other:add_item(stack)
-        if stack:is_empty() then
-            break
-        end
-    end
-    return stack
-end
-
-local function limit_put(stack, inv1, inv2)
-    local leftover = ItemStack(stack)
-    leftover = limit_put_list(leftover, inv1:get_list("main"))
-    leftover = limit_put_list(leftover, inv2:get_list("main"))
-    return stack:get_count() - leftover:get_count()
-end
-
 local function close_forms(basename, pos)
     local players = minetest.get_connected_players()
     for p=1, #players do
         if vector.distance(players[p]:get_pos(), pos) <= 30 then
-            minetest.close_formspec(players[p]:get_player_name(), "mcl_chests:"..basename.."_"..pos.x.."_"..pos.y.."_"..pos.z)
+            minetest.close_formspec(players[p]:get_player_name(),
+                "pala_storage:"..basename.."_"..pos.x.."_"..pos.y.."_"..pos.z)
         end
     end
 end
@@ -271,7 +258,7 @@ function pala_storage.register_chest(basename, def)
         stack_max = 64,
         sounds = mcl_sounds.node_sound_wood_defaults(),
         groups = {deco_block=1},
-        on_construct = function(pos, node)
+        on_construct = function(pos)
             local node = minetest.get_node(pos)
             node.name = small_name
             minetest.set_node(pos, node)
@@ -300,8 +287,9 @@ function pala_storage.register_chest(basename, def)
         paramtype = "light",
         paramtype2 = "facedir",
         stack_max = 64,
-        drop = drop,
-        groups = {handy=1,axey=1, container=2, deco_block=1, material_wood=1,flammable=-1,pala_chest_entity=1, not_in_creative_inventory=1},
+        drop = "pala_storage:chest_"..basename,
+        groups = {handy=1,axey=1, container=2, deco_block=1,
+            material_wood=1,flammable=-1,pala_chest_entity=1, not_in_creative_inventory=1},
         is_ground_content = false,
         sounds = mcl_sounds.node_sound_wood_defaults(),
         on_construct = function(pos)
@@ -345,7 +333,8 @@ function pala_storage.register_chest(basename, def)
         _mcl_blast_resistance = 2.5,
         _mcl_hardness = 2.5,
         on_rightclick = function(pos, node, clicker)
-            if minetest.registered_nodes[minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z}).name].groups.opaque == 1 then
+            if minetest.registered_nodes[
+                minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z}).name].groups.opaque == 1 then
                 -- won't open if there is no space from the top
                 return false
             end
@@ -369,7 +358,8 @@ function pala_storage.register_chest(basename, def)
                     --"listring[nodemeta:"..pos.x..","..pos.y..","..pos.z..";main]",
                     --"listring[current_player;main]",
                 }))
-            player_chest_open(clicker, pos, small_name, small_textures, node.param2, false, "default_chest", "mcl_chests_chest")
+            player_chest_open(clicker, pos, small_name, def.textures.entity, node.param2,
+                false, "default_chest")
         end,
         on_destruct = function(pos)
             close_forms(basename, pos)
@@ -394,7 +384,8 @@ end)
 local function select_and_spawn_entity(pos, node)
 	local node_name = node.name
 	local node_def = minetest.registered_nodes[node_name]
-	find_or_create_entity(pos, node_name, node_def._chest_entity_textures, node.param2, node_def._chest_entity_sound, node_def._chest_entity_mesh, node_def._chest_entity_animation_type)
+	find_or_create_entity(pos, node_name, node_def._chest_entity_textures,
+        node.param2, node_def._chest_entity_sound, node_def._chest_entity_mesh, node_def._chest_entity_animation_type)
 end
 
 minetest.register_lbm({

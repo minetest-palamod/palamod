@@ -15,7 +15,7 @@ end)
 
 minetest.register_on_leaveplayer(function(player)
     local playername = player:get_player_name()
-    minetest.remove_detached_inventory("pala_looting:chest_explorer_"..playername) 
+    minetest.remove_detached_inventory("pala_looting:chest_explorer_"..playername)
     tmp_inventories[playername] = nil
 end)
 
