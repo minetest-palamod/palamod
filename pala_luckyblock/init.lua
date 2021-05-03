@@ -153,7 +153,9 @@ pala_luckyblock.event_positive = {
 			pala_luckyblock.modpath .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
 	end},
 	{"Mega Fast Learner", 2400, "default_stone.png", pala_luckyblock.wip_event},
-	{"Inevitable", 5000, "pala_legendary_endium_gauntlet.png", pala_luckyblock.wip_event},
+	{"Inevitable", 5000, "pala_legendary_endium_gauntlet.png", function(pos, player)
+		give_item(player, "pala_legendary:endium_gauntlet")
+	end},
 	{"+ Money", 5000, "default_stone.png", pala_luckyblock.wip_event},
 	--{"Téthanos", 5000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Endium Grade", 10000, "default_stone.png", pala_luckyblock.wip_event},
