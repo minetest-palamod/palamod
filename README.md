@@ -14,7 +14,8 @@ This server was created by the french youtuber FuzeIII and is the biggest french
 I attemp to provide players a good alternative, providing singleplayer and multiplayer support, for any purpose.
 You can freely create a server with this modpack if you want or enjoy singleplayer.
 
-This project is free software, so it doesn't aim to compete the original server.
+This project is free software, and it doesn't aim to compete the original server.
+It is just made for fun, testing and freedom fans.
 
 Informations
 ------------
