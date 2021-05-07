@@ -42,7 +42,7 @@ This target include:
 Additional features:
 * A good API to allow external mod to work with this modpack properly.
 
-### Freaures not included in target
+### Features not included in this target
 
 Some features aren't and will not be included in this modpack.
 
@@ -58,6 +58,7 @@ It doesn't include:
 * Faction and protection system (Handled by another mod)
 * Economy system (Handled by another mod)
 * Decocraft (I dont like decocraft and it should be external)
+* Gost blocks (Should be in external mod and sadly require engine change)
 
 Installing
 ----------
