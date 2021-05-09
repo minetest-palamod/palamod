@@ -82,4 +82,5 @@ pala_legendary.register_legendary("jobs", {
 --[[
 TODO: every legendary stones working
 TODO: be sure chaos player search value is right
+TODO: textures for power, invisibility, chaos, job stones
 ]]
