@@ -11,7 +11,8 @@ local minerallist = {
 
 pala_legendary.register_legendary("random", {
 	name = S("Random"),
-	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	longdesc = S("Basic legendary stone, it is the one that then gives one of the @1 stones.",
+		#pala_legendary.registered_stones),
 	inventory_image = "pala_legendary_legendary_random.png",
 	func = function(itemstack, player, pointed_thing)
 		return itemstack:replace({name=pala_legendary.get_random_stone()})
@@ -21,7 +22,7 @@ pala_legendary.register_legendary("random", {
 --Fortune
 pala_legendary.register_legendary("fortune", {
 	name = S("Fortune"),
-	longdesc = "Gives a random number of a random ore (this can be coal such as palladium).",
+	longdesc = S("Gives a random number of a random ore (this can be coal such as palladium)."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 	func = function(itemstack, player, pointed_thing)
 		local rnd2 = math.random(6, 40)
@@ -37,24 +38,24 @@ pala_legendary.register_legendary("fortune", {
 
 pala_legendary.register_legendary("power", {
 	name = S("Power"),
-	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 })
 
 pala_legendary.register_legendary("invisibility", {
 	name = S("Invisibility"),
-	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 })
 
 pala_legendary.register_legendary("chaos", {
 	name = S("Chaos"),
-	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 })
 
 pala_legendary.register_legendary("jobs", {
 	name = S("Jobs"),
-	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 })
