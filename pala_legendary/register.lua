@@ -1,6 +1,9 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
 
+local table = table
+local ipairs = ipairs
+
 local minerallist = {
 	"pala_paladium:paladium_ingot",
 	"pala_paladium:titanium_ingot",
@@ -36,26 +39,47 @@ pala_legendary.register_legendary("fortune", {
 	end,
 })
 
+--Power
 pala_legendary.register_legendary("power", {
 	name = S("Power"),
 	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 })
 
+--Invisibility
 pala_legendary.register_legendary("invisibility", {
 	name = S("Invisibility"),
 	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 })
 
+--Chaos
 pala_legendary.register_legendary("chaos", {
 	name = S("Chaos"),
 	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
+	func = function(itemstack, player, pointed_thing)
+		local playername = player:get_player_name()
+		for _,target in ipairs(minetest.get_objects_inside_radius(player:get_pos(), 6)) do
+			if target:is_player() and target:get_player_name() ~= playername then
+				local inv = target:get_inventory()
+				local list = inv:get_list("main")
+				table.shuffle(list)
+				inv:set_list("main", list)
+			end
+		end
+		minetest.chat_send_player(playername, C(mcl_colors.GRAY, S("You just put chaos around you!")))
+	end,
 })
 
+--Jobs
 pala_legendary.register_legendary("jobs", {
 	name = S("Jobs"),
 	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 })
+
+--[[
+TODO: every legendary stones working
+TODO: be sure chaos player search value is right
+]]
