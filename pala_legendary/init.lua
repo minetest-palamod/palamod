@@ -15,6 +15,7 @@ local stone_list = {}
 
 function pala_legendary.register_legendary(name, def)
 	local tempname = "pala_legendary:legendary_"..name
+	if not def.func then def.func = function() end end
 	minetest.register_craftitem(tempname, {
 		description = S("Legendary Stone @1", def.name),
 		_doc_items_longdesc = S(def.longdesc.." Just right-click to use it."),

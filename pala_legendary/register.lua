@@ -34,3 +34,27 @@ pala_legendary.register_legendary("fortune", {
 		--	C(mcl_colors.GRAY, S("You worked hard. You earned a lot of xp. Congratulations!")))
 	end,
 })
+
+pala_legendary.register_legendary("power", {
+	name = S("Power"),
+	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	inventory_image = "pala_legendary_legendary_random.png",
+})
+
+pala_legendary.register_legendary("invisibility", {
+	name = S("Invisibility"),
+	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	inventory_image = "pala_legendary_legendary_random.png",
+})
+
+pala_legendary.register_legendary("chaos", {
+	name = S("Chaos"),
+	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	inventory_image = "pala_legendary_legendary_random.png",
+})
+
+pala_legendary.register_legendary("jobs", {
+	name = S("Jobs"),
+	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
+	inventory_image = "pala_legendary_legendary_random.png",
+})
