@@ -12,5 +12,6 @@ if minetest.settings:get_bool("pala_server.pvp_spawn", true) then
 	C(mcl_colors.DARK_GREEN, ", ")..
 	C(mcl_colors.DARK_GREEN, S("a place where @1", C(mcl_colors.RED, S("PvP is enabled"))))
 else
-    pala_server.messages.enter_nopvp = C(mcl_colors.DARK_GREEN, S("Welcome to @1", C(mcl_colors.RED , S("Warzone"))))
+    pala_server.messages.enter_nopvp = C(mcl_colors.DARK_GREEN, S("Welcome to @1", C(mcl_colors.GOLD , S("Spawn"))))
+    pala_server.messages.enter_pvp = C(mcl_colors.DARK_GREEN, S("Welcome to @1", C(mcl_colors.RED , S("Warzone"))))
 end
