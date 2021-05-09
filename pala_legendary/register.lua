@@ -39,20 +39,6 @@ pala_legendary.register_legendary("fortune", {
 	end,
 })
 
---Power
-pala_legendary.register_legendary("power", {
-	name = S("Power"),
-	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
-	inventory_image = "pala_legendary_legendary_fortune.png",
-})
-
---Invisibility
-pala_legendary.register_legendary("invisibility", {
-	name = S("Invisibility"),
-	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
-	inventory_image = "pala_legendary_legendary_fortune.png",
-})
-
 --Chaos
 pala_legendary.register_legendary("chaos", {
 	name = S("Chaos"),
@@ -72,12 +58,27 @@ pala_legendary.register_legendary("chaos", {
 	end,
 })
 
---Jobs
-pala_legendary.register_legendary("jobs", {
-	name = S("Jobs"),
-	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
-	inventory_image = "pala_legendary_legendary_fortune.png",
-})
+if minetest.settings:get_bool("palamod.experimental", false) then
+	--Jobs
+	pala_legendary.register_legendary("jobs", {
+		name = S("Jobs"),
+		longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
+		inventory_image = "pala_legendary_legendary_fortune.png",
+	})
+	--Power
+	pala_legendary.register_legendary("power", {
+		name = S("Power"),
+		longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
+		inventory_image = "pala_legendary_legendary_fortune.png",
+	})
+
+	--Invisibility
+	pala_legendary.register_legendary("invisibility", {
+		name = S("Invisibility"),
+		longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
+		inventory_image = "pala_legendary_legendary_fortune.png",
+	})
+end
 
 --[[
 TODO: every legendary stones working
