@@ -1,3 +1,5 @@
+--This mod is derivated from grenade mob by LoneWolfHT
+
 minetest.log("action", "[pala_dynamite] loading...")
 
 pala_dynamite = {}
