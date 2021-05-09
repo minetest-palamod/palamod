@@ -1,4 +1,3 @@
-local load_time = os.clock()
 minetest.log("action", "[pala_legendary] loading...")
 
 local modname = minetest.get_current_modname()
@@ -84,4 +83,4 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 	dofile(modpath.."/endium_gauntlet.lua")
 end
 
-minetest.log("action", "[pala_legendary] loaded in "..((os.clock()-load_time)*1000).."ms")
+minetest.log("action", "[pala_legendary] loaded succesfully")
