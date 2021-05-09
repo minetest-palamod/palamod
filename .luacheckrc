@@ -9,7 +9,7 @@ globals = {
 
 read_globals = {
     string = {fields = {"split"}},
-    table = {fields = {"copy", "getn"}},
+    table = {fields = {"copy", "getn", "shuffle"}},
 
     -- Builtin
     "vector", "ItemStack",

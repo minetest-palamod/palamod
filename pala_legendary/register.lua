@@ -65,7 +65,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 		inventory_image = "pala_legendary_legendary_fortune.png",
 	})
-	
+
 	--Power
 	pala_legendary.register_legendary("power", {
 		name = S("Power"),
