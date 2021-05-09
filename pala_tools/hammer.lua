@@ -7,7 +7,7 @@ minetest.register_tool("pala_tools:hammer_amethyst", {
 	description = "Amethyst Hammer",
 	inventory_image = "default_stick.png",
 	_mcl_diggroups = {
-		pickaxey = { speed = 5, level = 5, uses = 4999 }, --TODO: be sure the value is right
+		pickaxey = { speed = 5, level = 5, uses = 4999 },
 	},
 })
 

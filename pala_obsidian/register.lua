@@ -54,7 +54,10 @@ pala_obsidian.register_custom_obsidian("big", {
 	end,
 })
 
---TODO:fix paladium core missing
+--[[
+TODO: add paladium core craftitem to craft receipe then added
+]]
+
 if has_mcl_core and minetest.get_modpath("pala_craftstick") then
 	minetest.register_craft({
 		output = 'pala_obsidian:big_obsidian',
@@ -102,9 +105,8 @@ if has_mcl_core and minetest.get_modpath("pala_dynamite") then
 		output = 'pala_obsidian:boom_obsidian',
 		recipe = {
 			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
-			{"", "", ""},
+			{"pala_dynamite:dynamite_big", "pala_dynamite:dynamite_big", "pala_dynamite:dynamite_big"},
 			{"mcl_core:obsidian", "mcl_core:obsidian", "mcl_core:obsidian"},
-			--TODO:big dynamite
 		}
 	})
 end
@@ -140,14 +142,19 @@ pala_obsidian.register_custom_obsidian("wither", {
 	tiles = {"default_obsidian.png^pala_obsidian_wither_obsidian.png"},
 	miner_level = 12,
 	after_dig = function(pos, oldnode, oldmetadata, digger)
-		--TODO: Check if digger is Wither
+		--[[
+		TODO: Check if digger is Wither to spawn the obsidian cage
+		]]
 		local playerpos = digger:get_pos()
 		local pos2 = {x=playerpos.x-3,y=playerpos.y-1,z=playerpos.z-3}
 		minetest.place_schematic(pos2, pala_obsidian.modpath.."/schematics/pala_obsidian_cage.mts", 0, nil, true)
 	end,
 })
 
---TODO:fix diamond chest missing
+--[[
+TODO: add diamond chest to craft then fully working
+]]
+
 if has_mcl_core and minetest.get_modpath("mcl_potions") then
 	minetest.register_craft({
 		output = 'pala_obsidian:wither_obsidian',

@@ -17,7 +17,6 @@ minetest.log("action", "[pala_golem] loading...")
 	},
 	visual_size = {x=3, y=3},
 	makes_footstep_sound = true,
-	-- TODO: sounds
 	view_range = 16,
 	stepheight = 1.1,
 	owner = "",

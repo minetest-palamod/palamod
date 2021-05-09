@@ -1,5 +1,9 @@
 --Voidstone
 
+--[[
+TODO: item description and translation
+]]
+
 local S = minetest.get_translator(minetest.get_current_modname())
 
 --[[formspec_version[4]
@@ -49,7 +53,7 @@ pala_tools.voidstone_form = table.concat({
 
 minetest.register_craftitem("pala_tools:voidstone", {
 	description = S("Voidstone"),
-	_doc_items_longdesc = S("Voidstone"), --TODO: desc and translation
+	_doc_items_longdesc = S("Voidstone"),
 	inventory_image = "pala_tools_voidstone.png",
 	stack_max = 1,
 	groups = {},

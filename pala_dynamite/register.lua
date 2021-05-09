@@ -1,6 +1,8 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
---TODO:check if at spawn (in related project)
+--[[
+TODO:check if at spawn (in related project)
+]]
 
 pala_dynamite.register_dynamite("pala_dynamite:dynamite", {
 	description = S("Dynamite"),

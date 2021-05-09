@@ -1,7 +1,9 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
 --Weighted boots
---TODO: increase gravity then wearing
+--[[
+TODO: increase gravity then wearing
+]]
 minetest.register_tool("pala_armor:boots_weighted", {
 	description = S("Weighted boots"),
 	_doc_items_longdesc = mcl_armor.longdesc..

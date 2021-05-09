@@ -7,7 +7,10 @@ local C = minetest.colorize
 
 local math = math
 
---TODO: help
+--[[
+TODO: add documentation
+]]
+
 pala_legendary = {}
 pala_legendary.registered_stones = {}
 local stone_list = {}
@@ -30,7 +33,9 @@ function pala_legendary.register_legendary(name, def)
 			elseif os.time()-86400 >= last_use then
 				ok = true
 			else
-				--TODO:be sure the message is exactly mc like
+				--[[
+				TODO:be sure the message is exactly mc like
+				]]
 				local nbhour = (last_use-(os.time()-86400))/3600
 				minetest.chat_send_player(player:get_player_name(),
 					C(mcl_colors.RED, S("You must wait @1h to use this stone!", math.floor(nbhour))))

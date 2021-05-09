@@ -7,7 +7,11 @@ local static_spawnpoint = minetest.setting_get_pos("static_spawnpoint")
 --local spawn_pos = mcl_spawn.get_world_spawn_pos()
 local is_spawn_nopvp = minetest.settings:get_bool("pala_server.pvp_spawn", true)
 --local no_pvp = minetest.settings:get("pala_server.pvp_spawn_radius") or 20
---TODO: dynamicly add every chunk to spawn_chunks
+
+--[[
+TODO: dynamicly add every chunks in area to spawn_chunks
+TODO: add registration of no pvp chunk
+]]
 
 local spawn_chunks = {}
 
@@ -67,8 +71,6 @@ minetest.register_chatcommand("spawn", {
 	end,
 })
 
-
---TODO: add registration of no pvp chunk
 if is_spawn_nopvp then
 	local is_nopvp = pala_server.is_nopvp
 	mcl_damage.register_modifier(function(obj, damage, reason)

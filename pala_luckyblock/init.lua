@@ -147,7 +147,9 @@ pala_luckyblock.event_positive = {
 	{"Rodshild", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Camouflage", 1200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", function(pos, player)
-		--TODO:add beacon
+		--[[
+		TODO: add beacon at the structure top
+		]]
 		minetest.place_schematic({x=pos.x-3,y=pos.y,z=pos.z-3},
 			pala_luckyblock.modpath .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
 	end},
@@ -175,7 +177,6 @@ pala_luckyblock.event_negative = {
 	end},
 	{"Enfermé", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Geyser", 20, "pala_luckyblock_geyser.png", function(pos, player)
-		--TODO: water particules
 		local playerpos = player:get_pos()
 		minetest.add_particlespawner({
 			amount = 1000,

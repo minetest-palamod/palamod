@@ -40,8 +40,6 @@
 	stop_to_explode = true,
 
 	-- Force-ignite creeper with flint and steel and explode after 1.5 seconds.
-	-- TODO: Make creeper flash after doing this as well.
-	-- TODO: Test and debug this code.
 	on_rightclick = function(self, clicker)
 		if self._forced_explosion_countdown_timer ~= nil then
 			return

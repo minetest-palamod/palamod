@@ -40,7 +40,10 @@ minetest.register_craftitem("pala_looting:chest_explorer", {
             --local size = inv:get_size("main")
             local list = inv:get_list("main")
             local tmp_inv = tmp_inventories[playername]
-            if not tmp_inv then return end --TODO: error
+            --[[
+            TODO: log error message
+            ]]
+            if not tmp_inv then return end
 
             tmp_inv:set_size("main", size)
             tmp_inv:set_list("main", list)

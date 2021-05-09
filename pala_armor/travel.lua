@@ -28,7 +28,9 @@ end, 199)
 
 if minetest.settings:get_bool("palamod.experimental", false) then
 	--Hood Helmet
-	--TODO: real action and properties
+	--[[
+	TODO: real action and properties
+	]]
 	minetest.register_tool("pala_armor:helmet_hood", {
 		description = S("Hood Helmet"),
 		_doc_items_longdesc = mcl_armor.longdesc..
@@ -47,7 +49,9 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 	})
 
 	--Scuba Helmet
-	--TODO: provide water breathing and properties
+	--[[
+	TODO: provide water breathing and properties
+	]]
 	minetest.register_tool("pala_armor:helmet_scuba", {
 		description = S("Scuba Helmet"),
 		_doc_items_longdesc = mcl_armor.longdesc..
