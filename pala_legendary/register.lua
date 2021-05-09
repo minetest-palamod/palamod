@@ -38,23 +38,23 @@ pala_legendary.register_legendary("fortune", {
 pala_legendary.register_legendary("power", {
 	name = S("Power"),
 	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
-	inventory_image = "pala_legendary_legendary_random.png",
+	inventory_image = "pala_legendary_legendary_fortune.png",
 })
 
 pala_legendary.register_legendary("invisibility", {
 	name = S("Invisibility"),
 	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
-	inventory_image = "pala_legendary_legendary_random.png",
+	inventory_image = "pala_legendary_legendary_fortune.png",
 })
 
 pala_legendary.register_legendary("chaos", {
 	name = S("Chaos"),
 	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
-	inventory_image = "pala_legendary_legendary_random.png",
+	inventory_image = "pala_legendary_legendary_fortune.png",
 })
 
 pala_legendary.register_legendary("jobs", {
 	name = S("Jobs"),
 	longdesc = "Basic legendary stone, it is the one that then gives one of the six stones.",
-	inventory_image = "pala_legendary_legendary_random.png",
+	inventory_image = "pala_legendary_legendary_fortune.png",
 })
