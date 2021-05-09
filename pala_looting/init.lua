@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_looting] loading...")
+
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
@@ -12,3 +14,5 @@ if minetest.settings:get_bool("palamod.experimental", false) then
     dofile(modpath.."/unclaimfinder.lua")
 	dofile(modpath.."/chest_explorer.lua")
 end
+
+minetest.log("action", "[pala_looting] loaded succesfully")

@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_dynamite] loading...")
+
 pala_dynamite = {}
 pala_dynamite.accel = 13
 
@@ -154,3 +156,5 @@ function pala_dynamite.can_explode(pos, player)
 end
 
 dofile(minetest.get_modpath(minetest.get_current_modname()).."/register.lua")
+
+minetest.log("action", "[pala_dynamite] loaded succesfully")

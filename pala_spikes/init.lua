@@ -1,7 +1,11 @@
-local S = minetest.get_translator("pala_spikes")
+minetest.log("action", "[pala_spikes] loading...")
+
+local S = minetest.get_translator(minetest.get_current_modname())
 
 pala_spikes = {}
+
 pala_spikes.registered_spikes = {}
+
 function pala_spikes.register_spike(name, desc, color, damage, id)
 	local newname = "pala_spikes:"..name.."_spike"
 	pala_spikes.registered_spikes[newname] = {name=name, desc=desc, color=color, damage=damage, id=id}
@@ -37,7 +41,6 @@ pala_spikes.register_spike("titanium", S("Titanium"), "#777777", 12, 443)
 pala_spikes.register_spike("paladium", S("Paladium"), "#fc552f", 14, 444)
 
 --Craft
-
 minetest.register_craft({
 	output = "pala_spike:wood_spike",
 	recipe = {
@@ -125,3 +128,5 @@ minetest.register_abm({
 		end
 	end,
 })
+
+minetest.log("action", "[pala_spikes] loaded succesfully")

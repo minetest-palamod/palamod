@@ -1,4 +1,7 @@
+minetest.log("action", "[pala_sticks] loading...")
+
 local is_creative_enabled = minetest.is_creative_enabled
+
 local function take_pearl(player)
 	local inv = player:get_inventory()
 	for i=1, inv:get_size("main") do
@@ -10,6 +13,7 @@ local function take_pearl(player)
 	end
 	return false
 end
+
 minetest.register_tool("pala_sticks:teleport_stick", {
     description = "Teleport Stick",
     inventory_image = "default_stick.png",
@@ -43,3 +47,5 @@ minetest.register_tool("pala_sticks:heal_stick", {
 		end
 	end,
 })
+
+minetest.log("action", "[pala_sticks] loaded succesfully")

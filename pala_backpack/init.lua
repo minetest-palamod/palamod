@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_backpack] loading...")
+
 local C = minetest.colorize
 local S = minetest.get_translator(minetest.get_current_modname())
 
@@ -137,3 +139,5 @@ if minetest.get_modpath("mcl_mobitems") and minetest.get_modpath("pala_paladium"
 		}
 	})
 end
+
+minetest.log("action", "[pala_backpack] loaded succesfully")

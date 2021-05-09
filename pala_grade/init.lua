@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_grade] loading...")
+
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 local S = minetest.get_translator(modname)
@@ -48,3 +50,5 @@ minetest.register_on_joinplayer(function(player)
 end)
 
 dofile(modpath.."/commands.lua")
+
+minetest.log("action", "[pala_grade] loaded succesfully")

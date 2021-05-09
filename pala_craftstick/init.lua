@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_craftstick] loading...")
+
 local S = minetest.get_translator(minetest.get_current_modname())
 
 minetest.register_craftitem("pala_craftstick:palastick", {
@@ -161,3 +163,5 @@ if minetest.get_modpath("mcl_heads") then
 		recipe = {"mcl_heads:wither_skeleton"}
 	})
 end
+
+minetest.log("action", "[pala_craftstick] loaded succesfully")

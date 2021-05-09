@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_food] loading...")
+
 local S = minetest.get_translator(minetest.get_current_modname())
 
 local function eat_pala_apple(itemstack, placer, pointed_thing)
@@ -126,3 +128,5 @@ minetest.register_craftitem("pala_food:marinated_ham", {
 
 --Clear Golden Apple
 minetest.clear_craft({output = "mcl_core:apple_gold"})
+
+minetest.log("action", "[pala_food] loaded succesfully")

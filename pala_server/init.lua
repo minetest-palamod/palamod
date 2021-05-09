@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_server] loading...")
+
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
@@ -10,3 +12,5 @@ dofile(modpath.."/spawn.lua")
 if minetest.settings:get_bool("palamod.debug", false) then
 	dofile(modpath.."/debug.lua")
 end
+
+minetest.log("action", "[pala_server] loaded succesfully")

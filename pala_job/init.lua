@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_job] loading...")
+
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
@@ -236,3 +238,5 @@ end)
 
 dofile(modpath.."/update.lua")
 dofile(modpath.."/mobs.lua")
+
+minetest.log("action", "[pala_job] loaded succesfully")

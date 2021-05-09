@@ -1,4 +1,3 @@
-local load_time = os.clock()
 minetest.log("action", "[pala_luckyblock] loading...")
 
 local S = minetest.get_translator(minetest.get_current_modname())
@@ -521,4 +520,4 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
 	_mcl_hardness = 5,
 })
 
-minetest.log("action", "[pala_luckyblock] loaded in "..((os.clock()-load_time)*1000).."ms")
+minetest.log("action", "[pala_luckyblock] loaded succesfully")

@@ -1,4 +1,3 @@
-local load_time = os.clock()
 minetest.log("action", "[pala_paladium] loading...")
 
 pala_paladium = {}
@@ -326,4 +325,4 @@ minetest.register_craft({
 	}
 })
 
-minetest.log("action", "[pala_paladium] loaded in "..((os.clock()-load_time)*1000).."ms")
+minetest.log("action", "[pala_paladium] loaded succesfully")

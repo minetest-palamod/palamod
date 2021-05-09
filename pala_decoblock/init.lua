@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_decoblock] loading...")
+
 local S = minetest.get_translator(minetest.get_current_modname())
 
 if minetest.get_modpath("pala_paladium") then
@@ -115,3 +117,5 @@ minetest.register_node("pala_decoblock:colored_lamp_on", {
 		rules = mesecon.rules.alldirs,
 	}},
 })
+
+minetest.log("action", "[pala_decoblock] loaded succesfully")

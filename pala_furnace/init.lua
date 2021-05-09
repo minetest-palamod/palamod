@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_furnace] loading...")
+
 local LIGHT_ACTIVE_FURNACE = 13
 local S = minetest.get_translator("pala_furnace")
 --
@@ -547,3 +549,5 @@ minetest.register_lbm({
 		spawn_flames(pos, node.param2)
 	end,
 })
+
+minetest.log("action", "[pala_furnace] loaded succesfully")

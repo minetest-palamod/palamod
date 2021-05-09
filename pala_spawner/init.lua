@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_spawner] loading...")
+
 if minetest.settings:get_bool("palamod.experimental", false) then
 	minetest.register_node("pala_spawner:spawner_brocken", {
 		tiles = {"mob_spawner.png"},
@@ -23,3 +25,5 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		_mcl_hardness = 5,
 	})
 end
+
+minetest.log("action", "[pala_server] loaded succesfully")

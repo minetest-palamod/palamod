@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_fakewater] loading...")
+
 local S = minetest.get_translator(minetest.get_current_modname())
 
 --Fake Water
@@ -260,3 +262,5 @@ minetest.register_craft({
 	output = "pala_fakewater:bucket_angelicwater",
 	recipe = {"mcl_potions:regeneration", "mcl_buckets:bucket_water"},
 })
+
+minetest.log("action", "[pala_fakewater] loaded succesfully")
