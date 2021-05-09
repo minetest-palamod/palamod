@@ -73,6 +73,11 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		inventory_image = "pala_legendary_legendary_fortune.png",
 	})
 
+	--[[mcl_damage.register_modifier(function(obj, damage, reason)
+		if obj:is_player() and reason.type == "node_damage" then
+		end
+	end, 100)]]
+
 	--Invisibility
 	pala_legendary.register_legendary("invisibility", {
 		name = S("Invisibility"),
