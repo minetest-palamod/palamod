@@ -396,7 +396,7 @@ end
 
 function pala_luckyblock.get_open_formspec(def, nbimg, texture)
 	local form = table.concat({
-		"formspec_version[3]",
+		"formspec_version[4]",
 		"size[17,11]",
 		"image_button[1,4;1.9,1.9;"..def[3]..";img1;;false;true;]",
 		"image_button[5,4;1.9,1.9;"..def[3]..";img2;;false;true;]",
@@ -421,7 +421,7 @@ end
 
 function pala_luckyblock.get_paladium_form()
 	return table.concat({
-		"formspec_version[3]",
+		"formspec_version[4]",
 		"size[17,11]",
 		"image_button[1,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala)..";img1;;false;true;]",
 		"image_button[5,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala)..";img2;;false;true;]",
@@ -441,7 +441,7 @@ end
 
 function pala_luckyblock.get_endium_form()
 	return table.concat({
-		"formspec_version[3]",
+		"formspec_version[4]",
 		"size[17,11]",
 		"image_button[1,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium)..";img1;;false;true;]",
 		"image_button[5,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium)..";img2;;false;true;]",
