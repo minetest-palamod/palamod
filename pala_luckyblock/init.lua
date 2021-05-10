@@ -330,7 +330,6 @@ pala_luckyblock.event_negative = {
 	{"Triforce", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Good Bye have a great time!", 2000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Silence, ça tourne", 2000, "default_stone.png", pala_luckyblock.wip_event},
-
 }
 
 pala_luckyblock.positive_somme = 0
