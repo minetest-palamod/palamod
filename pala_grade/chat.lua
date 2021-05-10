@@ -1,4 +1,4 @@
-local C = minetest.colorize
+--local C = minetest.colorize
 
 --[[
 TODO: add exactly like mc colored chat handling
@@ -15,7 +15,7 @@ end
 
 function minetest.format_chat_message(name, message)
 	local error_str = "Invalid chat message format - missing %s"
-	local str = core.settings:get("chat_message_format")
+	local str = minetest.settings:get("chat_message_format")
 	local replaced
 
 	-- Name
