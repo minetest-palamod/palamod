@@ -45,7 +45,7 @@ pala_luckyblock.event_positive = {
 			if idx then
 				idx:set_nametag_attributes({text = name.."'s BodyGuard"})
 			end
-			minetest.chat_send_player(name, C(mcl_colors.BLUE, "To serve you !"))
+			minetest.chat_send_player(name, C(mcl_colors.BLUE, S("To serve you!")))
 		end
 	end},
 	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", function(pos, player)
