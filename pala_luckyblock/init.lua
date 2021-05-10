@@ -320,7 +320,7 @@ pala_luckyblock.event_negative = {
 						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Are you still here?")))end)
 		minetest.after(5, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
 						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Bye bye...")))end)
-		minetest.after(6, function() minetest.kick_player(name, "Crash")end)
+		minetest.after(6, function() minetest.kick_player(name)end)
 	end},
 	{"Reflexe", 200, "default_stone.png", pala_luckyblock.wip_event},
 	{"La mort ou…", 500, "default_stone.png", pala_luckyblock.wip_event},
