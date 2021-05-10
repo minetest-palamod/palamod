@@ -52,6 +52,7 @@ minetest.register_on_joinplayer(function(player)
 	pala_grade.update_grade(player)
 end)
 
+dofile(modpath.."/chat.lua")
 dofile(modpath.."/commands.lua")
 
 minetest.log("action", "[pala_grade] loaded succesfully")
