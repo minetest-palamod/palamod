@@ -33,12 +33,9 @@ function pala_legendary.register_legendary(name, def)
 			elseif os.time()-86400 >= last_use then
 				ok = true
 			else
-				--[[
-				TODO:be sure the message is exactly mc like
-				]]
 				local nbhour = (last_use-(os.time()-86400))/3600
 				minetest.chat_send_player(player:get_player_name(),
-					C(mcl_colors.RED, S("You must wait @1h to use this stone!", math.floor(nbhour))))
+					C(mcl_colors.GRAY, S("You must wait @1 hours before you can use it.", math.floor(nbhour))))
 				ok = false
 			end
 			if ok == true then
