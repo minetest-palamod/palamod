@@ -57,14 +57,14 @@ end
 
 function pala_legendary.spawn_particle(pos)
 	minetest.add_particlespawner({
-		amount = 75,
-        time = 1,
+		amount = 300,
+        --time = 1,
         minpos = {x=pos.x-3, y=pos.y-1, z=pos.z-3},
         maxpos = {x=pos.x+3, y=pos.y+1, z=pos.z+3},
-        minvel = {x=-0.2, y=-0.2, z=-0.2},
-        maxvel = {x=0.2, y=0.2, z=0.2},
-        minexptime = 1,
-        maxexptime = 3,
+        --minvel = {x=-0.1, y=-0.1, z=-0.1},
+        --maxvel = {x=0.1, y=0.1, z=0.1},
+        minexptime = 2,
+        maxexptime = 2,
         minsize = 1,
         maxsize = 2,
         collisiondetection = false,
