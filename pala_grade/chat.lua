@@ -1,5 +1,9 @@
 local C = minetest.colorize
 
+--[[
+TODO: add exactly like mc colored chat handling
+]]
+
 local function safe_gsub(s, replace, with)
 	local i1, i2 = s:find(replace, 1, true)
 	if not i1 then
