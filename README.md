@@ -14,7 +14,8 @@ This server was created by the french youtuber FuzeIII and is the biggest french
 I attemp to provide players a good alternative, providing singleplayer and multiplayer support, for any purpose.
 You can freely create a server with this modpack if you want or enjoy singleplayer.
 
-This project is free software, so it doesn't aim to compete the original server.
+This project is free software, and it doesn't aim to compete the original server.
+It is just made for fun, testing and freedom fans.
 
 Informations
 ------------
@@ -42,7 +43,7 @@ This target include:
 Additional features:
 * A good API to allow external mod to work with this modpack properly.
 
-### Freaures not included in target
+### Features not included in this target
 
 Some features aren't and will not be included in this modpack.
 
@@ -58,6 +59,7 @@ It doesn't include:
 * Faction and protection system (Handled by another mod)
 * Economy system (Handled by another mod)
 * Decocraft (I dont like decocraft and it should be external)
+* Gost blocks (Should be in external mod and sadly require engine change)
 
 Installing
 ----------
