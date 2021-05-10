@@ -126,7 +126,7 @@ function pala_job.set_xp(player, job, amount)
 	--end
 end
 
---RAW:formspec_version[3]
+--RAW:formspec_version[4]
 --size[9,5.5]
 --label[3.5,0.5;FARMER]
 --label[3,2;You pass level 19]
