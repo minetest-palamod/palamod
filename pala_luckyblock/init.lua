@@ -159,7 +159,16 @@ pala_luckyblock.event_positive = {
 	end},
 	{"+ Money", 5000, "default_stone.png", pala_luckyblock.wip_event},
 	--{"Téthanos", 5000, "default_stone.png", pala_luckyblock.wip_event},
-	{"Endium Grade", 10000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Endium Grade", 10000, "default_stone.png", function(pos, player)
+		--[[
+		TODO: make sure grade is saved
+		]]
+		if pala_grade.can_execute(player, 3) then
+			give_item(player, "pala_paladium:endium_nugget")
+		else
+			pala_grade.set_grade(player, "legendary")
+		end
+	end},
 	{"Wuzzyyyy/AFCMMMMMMMMMMMMS", 10000, "default_stone.png", pala_luckyblock.wip_event},
 	--{"Méga-Thétanos", 42500, "default_stone.png", pala_luckyblock.wip_event},
 	{"Big Inevitable", 12500, "pala_luckyblock_mega_ineluctable.png", function(pos, player)
