@@ -260,7 +260,12 @@ pala_luckyblock.event_negative = {
 		inv:set_stack("main", 1, ItemStack())
 	end},
 	{"Sur la Lune", 40, "default_stone.png", pala_luckyblock.wip_event},
-	{"Zombie Hero", 40, "default_stone.png", pala_luckyblock.wip_event},
+	{"Zombie Hero", 40, "default_stone.png", function(pos, player)
+		minetest.add_entity(pos, "mobs_mc:zombie")
+		--[[
+		TODO: add armor to zombie then available
+		]]
+	end},
 	{"Batman nerveux", 50, "pala_luckyblock_batman_nerveux.png", function(pos, player)
 		for i = 1, 20, 1 do
 			minetest.add_entity(pos, "mobs_mc:bat")
