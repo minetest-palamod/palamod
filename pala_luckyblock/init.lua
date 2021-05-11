@@ -165,7 +165,7 @@ pala_luckyblock.event_positive = {
 		]]
 		if pala_grade.can_execute(player, 3) then
 			minetest.chat_send_player(player:get_player_name(),
-				C(mcl_colors.GRAY, S("You already have the rank, so here is an endium nugget"))
+				C(mcl_colors.GRAY, S("You already have the rank, so here is an endium nugget")))
 			give_item(player, "pala_paladium:endium_nugget")
 		else
 			pala_grade.set_grade(player, "legendary")
