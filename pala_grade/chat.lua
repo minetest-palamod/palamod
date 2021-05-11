@@ -1,5 +1,5 @@
 --local C = minetest.colorize
-local F = minetest.formspec_escape
+--local F = minetest.formspec_escape
 local has_mc_faction = minetest.get_modpath("mc_faction")
 
 --[[
@@ -20,14 +20,14 @@ pala_grade.chat.colors = {
 	["&9"] = {mcl_colors.BLUE, true},
 }
 
-local function safe_gsub(s, replace, with)
+--[[local function safe_gsub(s, replace, with)
 	local i1, i2 = s:find(replace, 1, true)
 	if not i1 then
 		return s, false
 	end
 
 	return s:sub(1, i1 - 1) .. with .. s:sub(i2 + 1), true
-end
+end]]
 
 function minetest.format_chat_message(name, message)
 	local player = minetest.get_player_by_name(name)
@@ -44,7 +44,7 @@ function minetest.format_chat_message(name, message)
 
     if player then
 		if has_mc_faction then
-        	return pala_grade.grades[grade].desc.." "..name..": "..message
+			return pala_grade.grades[grade].desc.." "..name..": "..message
 		else
 			return pala_grade.grades[grade].desc.." "..name..": "..message
 		end
