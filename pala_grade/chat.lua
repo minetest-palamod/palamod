@@ -1,5 +1,6 @@
 --local C = minetest.colorize
 local F = minetest.formspec_escape
+local has_mc_faction = minetest.get_modpath("mc_faction")
 
 --[[
 TODO: add exactly like mc colored chat handling
@@ -29,39 +30,25 @@ local function safe_gsub(s, replace, with)
 end
 
 function minetest.format_chat_message(name, message)
-	local error_str = "Invalid chat message format - missing %s"
-	local str = minetest.settings:get("chat_message_format")
-	local replaced
 	local player = minetest.get_player_by_name(name)
 	local grade = pala_grade.get_grade(player)
 
-	-- Name
-	str, replaced = safe_gsub(str, "@name", name)
-	if not replaced then
-		error(error_str:format("@name"), 2)
-	end
-
-	-- Timestamp
-	str = safe_gsub(str, "@timestamp", os.date("%H:%M:%S", os.time()))
-
 	-- Colors
 	--if player and pala_grade.can_execute(player, 1) then
-	for pattern, def in pairs(pala_grade.chat.colors) do
+	--for pattern, def in pairs(pala_grade.chat.colors) do
 		--if def[2] then
-		str = safe_gsub(str, pattern, F(def[1]))
+		--str = safe_gsub(str, pattern, F(def[1]))
 		--end
-	end
+	--end
 	--end
 
-	-- Insert the message into the string only after finishing all other processing
-	str, replaced = safe_gsub(str, "@message", message)
-	if not replaced then
-		error(error_str:format("@message"), 2)
-	end
-
     if player then
-        return "["..pala_grade.grades[grade].desc.."] "..str
+		if has_mc_faction then
+        	return pala_grade.grades[grade].desc.." "..name..": "..message
+		else
+			return pala_grade.grades[grade].desc.." "..name..": "..message
+		end
     else
-	    return str
+	    return name..": "..message
     end
 end

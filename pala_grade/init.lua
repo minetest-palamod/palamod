@@ -15,10 +15,10 @@ TODO: handle grade with database
 pala_grade = {}
 pala_grade.grades = {}
 pala_grade.grades.none      = {rank=0, desc=""}
-pala_grade.grades.chalenger = {rank=1, desc=C(mcl_colors.GRAY, S("Chalenger"))}
-pala_grade.grades.hero      = {rank=2, desc=C(mcl_colors.RED, S("Hero"))}
-pala_grade.grades.legendary = {rank=3, desc=C(mcl_colors.BLUE, S("Legendary"))}
-pala_grade.grades.youtube   = {rank=3, desc=C(mcl_colors.RED, "You")..C(mcl_colors.WHITE, "Tube")}
+pala_grade.grades.chalenger = {rank=1, desc=C(mcl_colors.GRAY, "["..S("Chalenger").."]")}
+pala_grade.grades.hero      = {rank=2, desc=C(mcl_colors.RED, "["..S("Hero").."]")}
+pala_grade.grades.legendary = {rank=3, desc=C(mcl_colors.BLUE, "["..S("Legendary").."]")}
+pala_grade.grades.youtube   = {rank=3, desc=C(mcl_colors.RED, "[You")..C(mcl_colors.WHITE, "Tube]")}
 
 function pala_grade.get_grade(player)
 	return player:get_meta():get_string("pala_grade.grade")
