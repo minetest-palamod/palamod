@@ -159,11 +159,13 @@ pala_luckyblock.event_positive = {
 	end},
 	{"+ Money", 5000, "default_stone.png", pala_luckyblock.wip_event},
 	--{"Téthanos", 5000, "default_stone.png", pala_luckyblock.wip_event},
-	{"Endium Grade", 10000, "default_stone.png", function(pos, player)
+	{"Endium Grade", 10000, "pala_paladium_endium_nugget.png", function(pos, player)
 		--[[
 		TODO: make sure grade is saved
 		]]
 		if pala_grade.can_execute(player, 3) then
+			minetest.chat_send_player(player:get_player_name(),
+				C(mcl_colors.GRAY, S("You already have the rank, so here is an endium nugget"))
 			give_item(player, "pala_paladium:endium_nugget")
 		else
 			pala_grade.set_grade(player, "legendary")

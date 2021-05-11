@@ -7,3 +7,4 @@ Three secondes left...=
 Two secondes left...=
 Are you still here?=
 Bye bye...=
+You already have the rank, so here is an endium nugget=
