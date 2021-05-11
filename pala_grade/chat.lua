@@ -1,4 +1,4 @@
---local C = minetest.colorize
+local C = minetest.colorize
 --local F = minetest.formspec_escape
 local has_mc_faction = minetest.get_modpath("mc_faction")
 
@@ -46,7 +46,8 @@ function minetest.format_chat_message(name, message)
 		if has_mc_faction then
 			return pala_grade.grades[grade].desc.." "..name..": "..message
 		else
-			return pala_grade.grades[grade].desc.." "..name..": "..message
+			return C(mcl_colors.YELLOW, "<BlackOld> ")..
+				pala_grade.grades[grade].desc.." "..C(mcl_colors.GRAY, name..": "..message)
 		end
     else
 	    return name..": "..message
