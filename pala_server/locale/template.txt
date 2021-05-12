@@ -1,5 +1,6 @@
 # textdomain: pala_server
 Welcome to @1=
+You just entered @1=
 Spawn=
 Warzone=
 a place where @1=
