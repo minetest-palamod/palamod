@@ -28,6 +28,12 @@ pala_server.pvp_spawn (PvP at spawn) bool false
 #    PvP protection radius at spawn.
 pala_server.pvp_spawn_radius (Disabled PvP radius at spawn) int 30
 
+#    Is clear lag enabled.
+pala_server.clear_lag (Clear Lag) bool true
+
+#    Clear lag interval.
+pala_server.clear_lag_interval (Clear Lag) int 300
+
 [advanced]
 
 #    Enable debug features
