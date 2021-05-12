@@ -16,20 +16,6 @@ if minetest.settings:get_bool("pala_server.clear_lag", true) then
             minetest.after(30, function()
                 for id, val in pairs(minetest.luaentities) do
                     local def = minetest.registered_entities[minetest.luaentities[id].name]
-                    --[[if option == "M" then
-                        test = (def.type =="monster")
-                    elseif option == "a" then
-                        test = true
-                    elseif option == "f" then
-                        test = (def.type == "animal")
-                    elseif option == "i" then
-                        test = (val.name == "__builtin:item")
-                    elseif option == "m" then
-                        test = (def.type == "monster" or def.type == "animal")
-                    else
-                        minetest.chat_send_player(name, minetest.colorize("#FF0000", "Invalid option."))
-                        return
-                    end]]
                     if def._cmi_is_mob or val.name == "__builtin:item" then
                         minetest.luaentities[id].object:remove()
                         --count = count + 1
