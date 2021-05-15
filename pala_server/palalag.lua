@@ -32,7 +32,7 @@ if minetest.settings:get_bool("pala_server.clear_lag", true) then
         params = "",
         description = S("Allow you to show next clearlag"),
         func = function(name, param)
-            return true, "Next clearlag in "..math.round(CLEAR_INTERVAL-time).."s"
+            return true, S("Next clearlag in @1s", math.round(CLEAR_INTERVAL-time))
         end,
     })
 end
