@@ -1,5 +1,9 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
+--[[
+TODO: make player stick to roof
+]]
+
 --Slimy Helmet
 minetest.register_tool("pala_armor:helmet_slimy", {
 	description = S("Slimy Helmet"),
