@@ -14,6 +14,7 @@ end
 minetest.register_tool("pala_sticks:teleport_stick", {
     description = "Teleport Stick",
     inventory_image = "default_stick.png",
+	groups = {pala_stick = 1, weapon = 1},
 	on_use = function(itemstack, player, pointed_thing)
 		local name = player:get_player_name()
 		local pos = player:get_pos()
@@ -30,7 +31,8 @@ minetest.register_tool("pala_sticks:teleport_stick", {
 minetest.register_tool("pala_sticks:heal_stick", {
     description = "Heal Stick",
     inventory_image = "default_stick.png",
-	groups = {},
+	groups = {pala_stick = 1, weapon = 1},
+	_mcl_uses = 65,
 	on_use = function(itemstack, player, pointed_thing)
 		local addhp = 6
 		local hp = player:get_hp()
@@ -40,10 +42,12 @@ minetest.register_tool("pala_sticks:heal_stick", {
 			player:set_hp(20)
 		end
 		if not is_creative_enabled(player:get_player_name()) then
-			mcl_util.use_item_durability(itemstack, 65)
-            --[[
-            TODO: be sure wear is right
-            ]]
+			--[[
+			TODO: be sure wear is right
+			TODO: do not use wear if hp doesn't change
+			]]
+            mcl_util.use_item_durability(itemstack, 1)
+			return itemstack
 		end
 	end,
 })
