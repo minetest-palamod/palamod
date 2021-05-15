@@ -24,8 +24,16 @@ minetest.register_tool("pala_armor:helmet_slimy", {
 
 --No fall damage if wearing slimy helmet
 mcl_damage.register_modifier(function(obj, damage, reason)
-    if reason.type == "fall" and obj:get_inventory():get_stack("armor", 2):get_name() == "pala_armor:helmet_slimy" then
-        return 0
+    if reason.type == "fall" then
+        local inv = obj:get_inventory()
+        local stack = inv:get_stack("armor", 2)
+		if stack:get_name() == "pala_armor:helmet_slimy" then
+			if obj:is_player() and not minetest.is_creative_enabled(obj:get_player_name()) then
+				mcl_util.use_item_durability(stack, 1)
+            end
+            inv:set_stack("armor", 2, stack)
+            return 0
+        end
     end
     return damage
 end, 199)
