@@ -2,6 +2,8 @@
 
 minetest.log("action", "[pala_dynamite] loading...")
 
+local vector = vector
+
 pala_dynamite = {}
 pala_dynamite.accel = 13
 
