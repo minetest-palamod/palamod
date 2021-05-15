@@ -65,7 +65,37 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		},
 		on_place = mcl_armor.equip_on_use,
 		on_secondary_use = mcl_armor.equip_on_use,
+        _on_equip = function(obj, itemstack)
+            mcl_potions.water_breathing_func(obj, nil, 16)
+        end,
+        _on_unequip = function(obj, itemstack)
+            --mcl_potions.water_breathing_func(player, nil, 16)
+        end,
 		_mcl_armor_element = "head",
 		_mcl_armor_texture = "mcl_armor_helmet_leather.png"
 	})
+
+    --[[
+    TODO: use the player globalstep API the implemented
+    TODO: use the new potion API then implemented
+    ]]
+    local time = 0
+    minetest.register_globalstep(function(dtime)
+        time = time + dtime;
+        if time >= 15 then
+            for _,player in pairs(minetest.get_connected_players()) do
+                local inv = player:get_inventory()
+                if inv:get_stack("armor", 2):get_name() == "pala_armor:helmet_scuba" then --Helmet
+                    mcl_potions.water_breathing_func(player, nil, 16)
+                end
+            end
+            time = 0
+        end
+    end)
+    minetest.register_on_joinplayer(function(player)
+        local inv = player:get_inventory()
+        if inv:get_stack("armor", 2):get_name() == "pala_armor:helmet_scuba" then --Helmet
+            mcl_potions.water_breathing_func(player, nil, 16)
+        end
+    end)
 end
