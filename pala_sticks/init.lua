@@ -39,7 +39,7 @@ minetest.register_tool("pala_sticks:heal_stick", {
 		else
 			player:set_hp(20)
 		end
-		if not minetest.is_creative_enabled(player:get_player_name()) then
+		if not is_creative_enabled(player:get_player_name()) then
 			mcl_util.use_item_durability(itemstack, 65)
             --[[
             TODO: be sure wear is right
