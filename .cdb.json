@@ -1,0 +1,15 @@
+{
+    "type": "MOD",
+    "title": "Palamod",
+    "name": "palamod",
+    "short_description": "Palamod Modpack",
+    "tags": ["pvp", "survival", "multiplayer"],
+    "content_warnings": null,
+    "license": "GPLv3",
+    "media_license": "CC BY 4.0",
+    "long_description": "Palamod modpack for MineClone2",
+    "repo": "https://github.com/minetest-palamod/palamod",
+    "website": "https://github.com/minetest-palamod/palamod",
+    "issue_tracker": "https://github.com/minetest-palamod/palamod/issues",
+    "forums": null
+}
