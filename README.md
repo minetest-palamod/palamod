@@ -10,7 +10,7 @@ Why this project?
 -----------------
 
 This project is a free clone of the main modpack of a french minecraft server called [Paladium](https://paladium-pvp.fr/).
-This server was created by the french youtuber FuzeIII and is the biggest french pvp-faction.
+This server was created by the french youtuber [FuzeIII](https://www.youtube.com/channel/UCfznY5SlSoZoXN0-kBPtCdg) and is the biggest french pvp-faction.
 I attemp to provide players a good alternative, providing singleplayer and multiplayer support, for any purpose.
 You can freely create a server with this modpack if you want or enjoy singleplayer.
 
