@@ -3,7 +3,7 @@
     "title": "Palamod",
     "name": "palamod",
     "short_description": "Palamod Modpack",
-    "tags": ["pvp", "survival", "multiplayer"],
+    "tags": ["pvp", "pve", "survival", "multiplayer"],
     "content_warnings": null,
     "license": "GPLv3",
     "media_license": "CC BY 4.0",
