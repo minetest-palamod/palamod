@@ -6,9 +6,13 @@ pala_food.clear_golden_apples (Clear golden apples) bool true
 
 [pala_grade]
 
+#    Grade to use if in singleplayer.
+#    default: none
+pala_grade.singleplayer_grade (Singleplayer grade) enum none none,chalenger,hero,legendary,youtube
+
 #    Default grade to use if not handled by other mods.
-#    default: chalenger
-pala_grade.default_grade (Default grade) enum chalenger none,chalenger,hero,legendary,youtube
+#    default: none
+pala_grade.default_grade (Default grade) enum none none,chalenger,hero,legendary,youtube
 
 [pala_job]
 
