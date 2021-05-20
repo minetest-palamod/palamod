@@ -5,6 +5,11 @@ local modpath = minetest.get_modpath(modname)
 local S = minetest.get_translator(modname)
 local C = minetest.colorize
 
+local GRAY = mcl_colors.GRAY
+local RED = mcl_colors.RED
+local BLUE = mcl_colors.BLUE
+local WHITE = mcl_colors.WHITE
+
 local default_grade = minetest.settings:get("pala_grade.default_grade") or "none"
 local singleplayer_grade = minetest.settings:get("pala_grade.singleplayer_grade") or "none"
 
@@ -13,15 +18,16 @@ local is_singleplayer = minetest.is_singleplayer()
 --[[
 TODO: like mc colored chat handling
 TODO: handle grade with database
+TODO: be sure grade prefixs are mc like
 ]]
 
 pala_grade = {}
 pala_grade.grades = {}
-pala_grade.grades.none      = {rank=0, desc=""}
-pala_grade.grades.chalenger = {rank=1, desc=C(mcl_colors.GRAY, "["..S("Chalenger").."]")}
-pala_grade.grades.hero      = {rank=2, desc=C(mcl_colors.RED, "["..S("Hero").."]")}
-pala_grade.grades.legendary = {rank=3, desc=C(mcl_colors.BLUE, "["..S("Legendary").."]")}
-pala_grade.grades.youtube   = {rank=3, desc=C(mcl_colors.RED, "[You")..C(mcl_colors.WHITE, "Tube]")}
+pala_grade.grades.none      = {rank=0, desc="", prefix=""}
+pala_grade.grades.chalenger = {rank=1, desc=C(GRAY, "["..S("Chalenger").."]"), prefix=C(GRAY, "CH")}
+pala_grade.grades.hero      = {rank=2, desc=C(RED, "["..S("Hero").."]"), prefix=C(RED, "HR")}
+pala_grade.grades.legendary = {rank=3, desc=C(BLUE, "["..S("Legendary").."]"), prefix=C(BLUE, "LG")}
+pala_grade.grades.youtube   = {rank=3, desc=C(RED, "[You")..C(WHITE, "Tube]"), prefix=C(RED, "YT")}
 
 function pala_grade.get_grade(player)
 	return player:get_meta():get_string("pala_grade.grade")
