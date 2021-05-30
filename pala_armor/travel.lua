@@ -11,7 +11,7 @@ minetest.register_tool("pala_armor:helmet_slimy", {
 		" "..S("Negate fall damage"),
 	_doc_items_usagehelp = mcl_armor.usage,
 	inventory_image = "mcl_armor_inv_helmet_leather.png",
-	groups = {armor_head = 1, non_combat_head = 1, mcl_armor_points=1, mcl_armor_uses = 165},
+	groups = {armor_head = 1, non_combat_head = 1, mcl_armor_points=1, mcl_armor_uses = 165, enchantability = 15},
 	sounds = {
 		_mcl_armor_equip = "slimenodes_step.1",
 		_mcl_armor_unequip = "slimenodes_step.1",
@@ -49,7 +49,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 			" "..S("Make your nametag invisible"),
 		_doc_items_usagehelp = mcl_armor.usage,
 		inventory_image = "mcl_armor_inv_helmet_leather.png",
-		groups = {armor_head = 1, non_combat_head = 1, mcl_armor_points=1, mcl_armor_uses = 165},
+		groups = {armor_head = 1, non_combat_head = 1, mcl_armor_points = 1, mcl_armor_uses = 165, enchantability = 15},
 		sounds = {
 			_mcl_armor_equip = "mcl_armor_equip_leather",
 			_mcl_armor_unequip = "mcl_armor_unequip_leather",
@@ -70,7 +70,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 			" "..S("Make your breath bar not go down"),
 		_doc_items_usagehelp = mcl_armor.usage,
 		inventory_image = "mcl_armor_inv_helmet_leather.png",
-		groups = {armor_head = 1, non_combat_head = 1, mcl_armor_points=1, mcl_armor_uses = 165},
+		groups = {armor_head = 1, non_combat_head = 1, mcl_armor_points = 1, mcl_armor_uses = 165, enchantability = 15},
 		sounds = {
 			_mcl_armor_equip = "mcl_armor_equip_leather",
 			_mcl_armor_unequip = "mcl_armor_unequip_leather",
