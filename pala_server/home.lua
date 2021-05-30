@@ -108,7 +108,7 @@ function pala_server.homes.list(player)
 				list = list..", "..name.." "..minetest.pos_to_string(h)
 			end
 		end
-		return S("Your Homes (@1/@2): ", count_homes(homes), 5)..list
+		return C(mcl_colors.GRAY, S("Your Homes (@1/@2): ", count_homes(homes), 5)..list)
         --return "test"
 	end
 end
@@ -148,7 +148,7 @@ minetest.register_privilege("pala_home", {
 -- [override] /home
 minetest.register_chatcommand("home", {
     description = "Teleport you to one of your home points (related: /sethome, /delhome)",
-    params = "<home name>",
+    params = "[<home name>]",
     func = function(name, param)
         if param and param ~= "" then
             return pala_server.homes.go(minetest.get_player_by_name(name), param)
@@ -176,7 +176,7 @@ minetest.register_chatcommand("sethome", {
 minetest.register_chatcommand("delhome", {
     description = "Delete one of your home points (related: /home, /sethome)",
     params = "<home name>",
-    privs = {home=true},
+    privs = {},
     func = function(name, param)
         if param and param ~= "" then
             return pala_server.homes.remove(minetest.get_player_by_name(name), param)
