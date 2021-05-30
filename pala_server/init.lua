@@ -10,6 +10,10 @@ dofile(modpath.."/msg.lua")
 dofile(modpath.."/spawn.lua")
 dofile(modpath.."/palalag.lua")
 
+if minetest.settings:get_bool("palamod.experimental", false) then
+	dofile(modpath.."/home.lua")
+end
+
 if minetest.settings:get_bool("palamod.debug", false) then
 	dofile(modpath.."/debug.lua")
 end

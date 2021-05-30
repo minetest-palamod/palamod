@@ -9,3 +9,7 @@ PvP is enabled=
 Player not found=
 Entities will be deleted in 30s!=
 Entities have been deleted!=
+
+# home
+Home deleted=
+The home has been set to your position=
