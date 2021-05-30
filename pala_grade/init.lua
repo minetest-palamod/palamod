@@ -7,7 +7,7 @@ local C = minetest.colorize
 
 local GRAY = mcl_colors.GRAY
 local RED = mcl_colors.RED
-local BLUE = mcl_colors.BLUE
+--local BLUE = mcl_colors.BLUE
 local WHITE = mcl_colors.WHITE
 local GOLD = mcl_colors.GOLD
 local DARK_PURPLE = mcl_colors.DARK_PURPLE
