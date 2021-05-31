@@ -8,26 +8,14 @@ minetest.register_node("pala_fakewater:fakewater_source", {
 	drawtype = "liquid",
 	waving = 3,
 	tiles = {
+		{name="default_water_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0}}
+	},
+	special_tiles = {
 		{
-			name = "default_water_source_animated.png",
+			name="default_water_source_animated.png",
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0},
 			backface_culling = false,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 2.0,
-			},
-		},
-		{
-			name = "default_water_source_animated.png",
-			backface_culling = true,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 2.0,
-			},
-		},
+		}
 	},
 	use_texture_alpha = "blend",
 	paramtype = "light",
@@ -44,7 +32,7 @@ minetest.register_node("pala_fakewater:fakewater_source", {
 	liquid_viscosity = 1,
 	post_effect_color = {a = 103, r = 30, g = 60, b = 90},
 	damage_per_second = 4,
-	groups = {water = 3, liquid = 3, cools_lava = 1},
+	groups = {water = 3, liquid = 3},
 	sounds = mcl_sounds.node_sound_water_defaults(),
 })
 
@@ -52,27 +40,17 @@ minetest.register_node("pala_fakewater:fakewater_flowing", {
 	description = S("Flowing Fake Water"),
 	drawtype = "flowingliquid",
 	waving = 3,
-	tiles = {"default_water.png"},
+	tiles = {"default_water_flowing_animated.png^[verticalframe:64:0"},
 	special_tiles = {
 		{
-			name = "default_water_flowing_animated.png",
-			backface_culling = false,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 0.5,
-			},
+			image="default_water_flowing_animated.png",
+			backface_culling=false,
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=4.0}
 		},
 		{
-			name = "default_water_flowing_animated.png",
-			backface_culling = true,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 0.5,
-			},
+			image="default_water_flowing_animated.png",
+			backface_culling=false,
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=4.0}
 		},
 	},
 	use_texture_alpha = "blend",
@@ -138,27 +116,15 @@ minetest.register_node("pala_fakewater:angelicwater_source", {
 	description = S("Angelic Water Source"),
 	drawtype = "liquid",
 	waving = 3,
-	tiles = {
+    tiles = {
+		{name="pala_fakewater_angelic_water_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0}}
+	},
+	special_tiles = {
 		{
-			name = "pala_fakewater_angelic_water_source_animated.png",
+			name="pala_fakewater_angelic_water_source_animated.png",
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0},
 			backface_culling = false,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 2.0,
-			},
-		},
-		{
-			name = "pala_fakewater_angelic_water_source_animated.png",
-			backface_culling = true,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 2.0,
-			},
-		},
+		}
 	},
 	use_texture_alpha = "blend",
 	paramtype = "light",
@@ -183,27 +149,17 @@ minetest.register_node("pala_fakewater:angelicwater_flowing", {
 	description = S("Flowing Angelic Water"),
 	drawtype = "flowingliquid",
 	waving = 3,
-	tiles = {"pala_fakewater_angelic_water.png"},
+    tiles = {"pala_fakewater_angelic_water_flowing_animated.png^[verticalframe:64:0"},
 	special_tiles = {
 		{
-			name = "pala_fakewater_angelic_water_flowing_animated.png",
-			backface_culling = false,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 0.5,
-			},
+			image="pala_fakewater_angelic_water_flowing_animated.png",
+			backface_culling=false,
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=4.0}
 		},
 		{
-			name = "pala_fakewater_angelic_water_flowing_animated.png",
-			backface_culling = true,
-			animation = {
-				type = "vertical_frames",
-				aspect_w = 16,
-				aspect_h = 16,
-				length = 0.5,
-			},
+			image="pala_fakewater_angelic_water_flowing_animated.png",
+			backface_culling=false,
+			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=4.0}
 		},
 	},
 	use_texture_alpha = "blend",

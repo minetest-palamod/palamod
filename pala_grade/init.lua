@@ -7,8 +7,10 @@ local C = minetest.colorize
 
 local GRAY = mcl_colors.GRAY
 local RED = mcl_colors.RED
-local BLUE = mcl_colors.BLUE
+--local BLUE = mcl_colors.BLUE
 local WHITE = mcl_colors.WHITE
+local GOLD = mcl_colors.GOLD
+local DARK_PURPLE = mcl_colors.DARK_PURPLE
 
 local default_grade = minetest.settings:get("pala_grade.default_grade") or "none"
 local singleplayer_grade = minetest.settings:get("pala_grade.singleplayer_grade") or "none"
@@ -22,12 +24,40 @@ TODO: be sure grade prefixs are mc like
 ]]
 
 pala_grade = {}
-pala_grade.grades = {}
-pala_grade.grades.none      = {rank=0, desc="", prefix=""}
-pala_grade.grades.chalenger = {rank=1, desc=C(GRAY, "["..S("Chalenger").."]"), prefix=C(GRAY, "CH")}
-pala_grade.grades.hero      = {rank=2, desc=C(RED, "["..S("Hero").."]"), prefix=C(RED, "HR")}
-pala_grade.grades.legendary = {rank=3, desc=C(BLUE, "["..S("Legendary").."]"), prefix=C(BLUE, "LG")}
-pala_grade.grades.youtube   = {rank=3, desc=C(RED, "[You")..C(WHITE, "Tube]"), prefix=C(RED, "YT")}
+
+--prefixs are from https://youtu.be/BUuh-RIlkM0?t=801
+pala_grade.grades = {
+    none = {
+        rank = 0,
+        color = nil,
+        desc = "",
+        prefix = "",
+    },
+    chalenger = {
+        rank = 1,
+        color = GRAY,
+        desc = C(GRAY, "["..S("Chalenger").."]"),
+        prefix = C(GRAY, S("CH")),
+    },
+    hero = {
+        rank = 2,
+        color = GOLD,
+        desc = C(GOLD, "["..S("Hero").."]"),
+        prefix = C(GOLD, S("HR")),
+    },
+    legendary = {
+        rank = 3,
+        color = DARK_PURPLE,
+        desc = C(DARK_PURPLE, "["..S("Legendary").."]"),
+        prefix = C(DARK_PURPLE, S("LG")),
+    },
+    youtube = {
+        rank = 3,
+        color = nil,
+        desc = C(RED, "[You")..C(WHITE, "Tube]"),
+        prefix = C(RED, S("YT")),
+    },
+}
 
 function pala_grade.get_grade(player)
 	return player:get_meta():get_string("pala_grade.grade")

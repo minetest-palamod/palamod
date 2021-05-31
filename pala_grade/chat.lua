@@ -2,6 +2,9 @@ local C = minetest.colorize
 --local F = minetest.formspec_escape
 local has_mc_faction = minetest.get_modpath("mc_faction")
 
+local GRAY = mcl_colors.GRAY
+local YELLOW = mcl_colors.YELLOW
+
 --[[
 TODO: add exactly like mc colored chat handling
 ]]
@@ -31,25 +34,38 @@ end]]
 
 function minetest.format_chat_message(name, message)
 	local player = minetest.get_player_by_name(name)
-	local grade = pala_grade.get_grade(player)
-
-	-- Colors
-	--if player and pala_grade.can_execute(player, 1) then
-	--for pattern, def in pairs(pala_grade.chat.colors) do
-		--if def[2] then
-		--str = safe_gsub(str, pattern, F(def[1]))
+	if player then
+		local grade = pala_grade.get_grade(player)
+		-- Colors
+		--if player and pala_grade.can_execute(player, 1) then
+		--for pattern, def in pairs(pala_grade.chat.colors) do
+			--if def[2] then
+			--str = safe_gsub(str, pattern, F(def[1]))
+			--end
 		--end
-	--end
-	--end
-
-    if player then
-		if has_mc_faction then
-			return pala_grade.grades[grade].desc.." "..name..": "..message
-		else
-			return C(mcl_colors.YELLOW, "<BlackOld> ")..
-				pala_grade.grades[grade].desc.." "..C(mcl_colors.GRAY, name..": "..message)
+		--end
+		local desc
+		if grade ~= "none" then
+			desc = pala_grade.grades[grade].desc
+			if pala_grade.grades[grade].color then
+				desc = C(pala_grade.grades[grade].color, desc)
+			end
 		end
-    else
-	    return name..": "..message
-    end
+
+		if has_mc_faction then
+			if desc then
+				return desc.." "..name..": "..message --FIXME
+			else
+				return name..": "..message --FIXME
+			end
+		else
+			if desc then
+				return C(YELLOW, "<BlackOld> ")..desc.." "..C(GRAY, name..": "..message)
+			else
+				return C(YELLOW, "<BlackOld> ")..C(GRAY, name..": "..message)
+			end
+		end
+	else
+		return name..": "..message
+	end
 end
