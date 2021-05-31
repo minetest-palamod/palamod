@@ -8,7 +8,10 @@ minetest.register_node("pala_fakewater:fakewater_source", {
 	drawtype = "liquid",
 	waving = 3,
 	tiles = {
-		{name="default_water_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0}}
+		{
+            name="default_water_source_animated.png",
+            animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0},
+        },
 	},
 	special_tiles = {
 		{
@@ -117,14 +120,17 @@ minetest.register_node("pala_fakewater:angelicwater_source", {
 	drawtype = "liquid",
 	waving = 3,
     tiles = {
-		{name="pala_fakewater_angelic_water_source_animated.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0}}
+		{
+            name="pala_fakewater_angelic_water_source_animated.png",
+            animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0},
+        },
 	},
 	special_tiles = {
 		{
 			name="pala_fakewater_angelic_water_source_animated.png",
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0},
 			backface_culling = false,
-		}
+		},
 	},
 	use_texture_alpha = "blend",
 	paramtype = "light",
