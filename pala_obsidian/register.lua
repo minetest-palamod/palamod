@@ -58,7 +58,7 @@ pala_obsidian.register_custom_obsidian("big", {
 TODO: add paladium core craftitem to craft receipe then added
 ]]
 
-if has_mcl_core and minetest.get_modpath("pala_craftstick") then
+if has_mcl_core and minetest.get_modpath("pala_craftitems") then
 	minetest.register_craft({
 		output = 'pala_obsidian:big_obsidian',
 		recipe = {
@@ -79,7 +79,7 @@ pala_obsidian.register_custom_obsidian("fake", {
 	end,
 })
 
-if has_mcl_core and minetest.get_modpath("pala_craftstick") then
+if has_mcl_core and minetest.get_modpath("pala_craftitems") then
 	minetest.register_craft({
 		output = 'pala_obsidian:fake_obsidian',
 		recipe = {

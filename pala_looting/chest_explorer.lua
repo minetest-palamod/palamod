@@ -79,7 +79,7 @@ minetest.register_craft({
 	output = "pala_looting:chest_explorer",
 	recipe = {
 		{'pala_paladium:findium_gem', 'pala_paladium:paladium_ingot', 'pala_paladium:findium_gem'},
-		{'pala_paladium:findium_gem', 'pala_craftstick:compressed_paladium', 'pala_paladium:findium_gem'},
+		{'pala_paladium:findium_gem', 'pala_craftitems:compressed_paladium', 'pala_paladium:findium_gem'},
 		{'pala_paladium:findium_gem', 'pala_paladium:paladium_ingot', 'pala_paladium:findium_gem'},
 	}
 })
