@@ -1,7 +1,7 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
 local has_pala_paladium = minetest.get_modpath("pala_paladium")
-local has_pala_craftstick = minetest.get_modpath("pala_craftstick")
+local has_pala_craftitems = minetest.get_modpath("pala_craftitems")
 
 local pickaxe_longdesc = [[
 	Pickaxes are mining tools to mine hard blocks, such as stone.
@@ -44,13 +44,13 @@ minetest.register_tool("pala_obsidian:magical_tool", {
 	end,
 })
 
-if has_pala_paladium and has_pala_craftstick then
+if has_pala_paladium and has_pala_craftitems then
 	minetest.register_craft({
 		output = 'pala_obsidian:magical_tool',
 		recipe = {
 			{"", "pala_paladium:paladium_ingot", ""},
 			{"pala_paladium:paladium_ingot", "pala_paladium:paladiumblock", "pala_paladium:paladium_ingot"},
-			{"", "pala_craftstick:palastick", ""},
+			{"", "pala_craftitems:palastick", ""},
 		}
 	})
 end

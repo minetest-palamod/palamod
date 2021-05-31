@@ -38,13 +38,13 @@ minetest.register_craft_predict(function(itemstack, player, old_craft_grid, craf
 	end
 end)
 
-if minetest.get_modpath("pala_paladium") and minetest.get_modpath("pala_craftstick") then
+if minetest.get_modpath("pala_paladium") and minetest.get_modpath("pala_craftitems") then
 	minetest.register_craft({
 		output = 'pala_tools:infernal_knocker',
 		recipe = {
 			{"pala_paladium:paladium_ingot", "", ""},
-			{"pala_craftstick:orb_knockback", "", ""},
-			{"pala_craftstick:palastick", "", ""},
+			{"pala_craftitems:orb_knockback", "", ""},
+			{"pala_craftitems:palastick", "", ""},
 		}
 	})
 end

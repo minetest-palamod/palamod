@@ -111,7 +111,7 @@ mcl_buckets.register_liquid({
 minetest.register_craft({
 	type = "shapeless",
 	output = "pala_fakewater:bucket_fakewater",
-	recipe = {"pala_craftstick:palastick", "mcl_buckets:bucket_water"},
+	recipe = {"pala_craftitems:palastick", "mcl_buckets:bucket_water"},
 })
 
 --Angelic Water

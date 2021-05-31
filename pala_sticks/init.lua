@@ -1,5 +1,7 @@
 minetest.log("action", "[pala_sticks] loading...")
 
+local S = minetest.get_translator(minetest.get_current_modname())
+
 local is_creative_enabled = minetest.is_creative_enabled
 
 local function take_pearl(player)
@@ -11,10 +13,14 @@ local function take_pearl(player)
 	return false
 end
 
+mcl_enchanting.enchantments.unbreaking.primary.pala_stick_usable = true
+
 minetest.register_tool("pala_sticks:teleport_stick", {
-    description = "Teleport Stick",
-    inventory_image = "default_stick.png",
+	description = S("Teleport Stick"),
+	inventory_image = "default_stick.png",
 	groups = {pala_stick = 1, weapon = 1},
+	wield_scale = mcl_vars.tool_wield_scale,
+	_mcl_toollike_wield = true,
 	on_use = function(itemstack, player, pointed_thing)
 		local name = player:get_player_name()
 		local pos = player:get_pos()
@@ -29,15 +35,17 @@ minetest.register_tool("pala_sticks:teleport_stick", {
 })
 
 minetest.register_tool("pala_sticks:heal_stick", {
-    description = "Heal Stick",
-    inventory_image = "default_stick.png",
-	groups = {pala_stick = 1, weapon = 1},
+	description = S("Heal Stick"),
+	inventory_image = "default_stick.png",
+	groups = {pala_stick_usable = 1, weapon = 1, enchantability = 10},
+	wield_scale = mcl_vars.tool_wield_scale,
 	_mcl_uses = 65,
+	_mcl_toollike_wield = true,
 	on_use = function(itemstack, player, pointed_thing)
 		local addhp = 6
 		local hp = player:get_hp()
 		if hp + addhp >= 20 then
-			player:set_hp(hp+addhp)
+			player:set_hp(hp + addhp)
 		else
 			player:set_hp(20)
 		end
@@ -46,7 +54,7 @@ minetest.register_tool("pala_sticks:heal_stick", {
 			TODO: be sure wear is right
 			TODO: do not use wear if hp doesn't change
 			]]
-            mcl_util.use_item_durability(itemstack, 1)
+			mcl_util.use_item_durability(itemstack, 1)
 			return itemstack
 		end
 	end,
