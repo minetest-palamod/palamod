@@ -6,6 +6,7 @@ globals = {
     "minetest",
     "mcl_spawn",
     mcl_death_messages = {fields = {"messages"}},
+	mcl_enchanting = {fields = {"enchantments"}},
 }
 
 read_globals = {

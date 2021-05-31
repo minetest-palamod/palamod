@@ -13,6 +13,8 @@ local function take_pearl(player)
 	return false
 end
 
+mcl_enchanting.enchantments.unbreaking.primary.pala_stick_usable = true
+
 minetest.register_tool("pala_sticks:teleport_stick", {
 	description = S("Teleport Stick"),
 	inventory_image = "default_stick.png",
@@ -35,7 +37,7 @@ minetest.register_tool("pala_sticks:teleport_stick", {
 minetest.register_tool("pala_sticks:heal_stick", {
 	description = S("Heal Stick"),
 	inventory_image = "default_stick.png",
-	groups = {pala_stick = 1, weapon = 1, enchantability = 15},
+	groups = {pala_stick_usable = 1, weapon = 1, enchantability = 10},
 	wield_scale = mcl_vars.tool_wield_scale,
 	_mcl_uses = 65,
 	_mcl_toollike_wield = true,
