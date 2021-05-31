@@ -15,6 +15,7 @@ minetest.register_tool("pala_sticks:teleport_stick", {
     description = "Teleport Stick",
     inventory_image = "default_stick.png",
 	groups = {pala_stick = 1, weapon = 1},
+	_mcl_toollike_wield = true,
 	on_use = function(itemstack, player, pointed_thing)
 		local name = player:get_player_name()
 		local pos = player:get_pos()
@@ -33,6 +34,7 @@ minetest.register_tool("pala_sticks:heal_stick", {
     inventory_image = "default_stick.png",
 	groups = {pala_stick = 1, weapon = 1},
 	_mcl_uses = 65,
+	_mcl_toollike_wield = true,
 	on_use = function(itemstack, player, pointed_thing)
 		local addhp = 6
 		local hp = player:get_hp()
