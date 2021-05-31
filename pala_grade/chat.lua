@@ -4,6 +4,8 @@ local has_mc_faction = minetest.get_modpath("mc_faction")
 
 local string = string
 
+local get_color_escape_sequence = minetest.get_color_escape_sequence
+
 local GRAY = mcl_colors.GRAY
 local YELLOW = mcl_colors.YELLOW
 
@@ -30,16 +32,16 @@ function minetest.format_chat_message(name, message)
 	if player then
 		local grade = pala_grade.get_grade(player)
 
-		--check if player has the required grade
-		message = string.gsub(message, "(&[%a%d])", function(color)
-			minetest.get_color_escape_sequence(mcl_colors.RED)
-			--if pala_grade.chat.colors[color] and pala_grade.chat.colors[color][2] then
-			if pala_grade.chat.colors[color] then --re enable last line then every colors implemented
-				return minetest.get_color_escape_sequence(pala_grade.chat.colors[color][1])
-			else
-				return ""
-			end
-		end)
+		if pala_grade.can_execute(player, 1) then
+			message = string.gsub(message, "(&[%a%d])", function(color)
+				--if pala_grade.chat.colors[color] and pala_grade.chat.colors[color][2] then
+				if pala_grade.chat.colors[color] then --re enable last line then every colors implemented
+					return get_color_escape_sequence(pala_grade.chat.colors[color][1])
+				else
+					return ""
+				end
+			end)
+		end
 
 		local desc
 		if grade ~= "none" then
