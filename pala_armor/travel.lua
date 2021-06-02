@@ -81,9 +81,9 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		_on_equip = function(obj, itemstack)
 			mcl_potions.water_breathing_func(obj, nil, 16)
 		end,
-		_on_unequip = function(obj, itemstack)
-			--mcl_potions.water_breathing_func(player, nil, 16)
-		end,
+		--_on_unequip = function(obj, itemstack)
+		--	mcl_potions.water_breathing_func(player, nil, 16)
+		--end,
 		_mcl_armor_element = "head",
 		_mcl_armor_texture = "pala_armor_helmet_scuba.png",
 	})
