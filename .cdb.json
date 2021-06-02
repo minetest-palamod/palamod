@@ -8,9 +8,37 @@
     "license": "GPLv3",
     "media_license": "CC BY 4.0",
     "long_description": [
+		"# Minetest Palamod",
+		"",
+		"Why this project?",
+		"-----------------",
         "This project is a free clone of the main modpack of a french minecraft server called Paladium.",
         "This server was created by the french youtuber FuzeIII and is the biggest french pvp-faction.",
-        "I attemp to provide players a good alternative, providing singleplayer and multiplayer support, for any purpose."
+        "I attemp to provide players a good alternative, providing singleplayer and multiplayer support, for any purpose.",
+		"",
+		"Features",
+		"--------",
+		"This modpack aim to recreate the main features of the original server.",
+		"This include:",
+		"* ores, weapons, armors, machines, tools and basic storage systems",
+		"* plants and farming related stuff",
+		"* job system",
+		"* grade system (WARNING: If you really want to use it on servers, you should write retriving and optention system yourself. But by default, you can just configure a grade who is aplied for every player)",
+		"* server commands",
+		"",
+		"Installing",
+		"----------",
+		"You can just clone the repo in your mods folder or directly install from ContentDB and start to play, but if you want to create a server or replicate more exactly the gameplay, you should use some external mods:",
+
+		"Economy: [minetest-palamod/mc_economy](https://github.com/minetest-palamod/mc_economy)",
+
+		"Faction: [minetest-palamod/mc_faction](https://github.com/minetest-palamod/mc_faction)",
+
+		"Drawers: [minetest-mods/drawers](https://github.com/minetest-mods/drawers)",
+
+		"WorldEdit: [Uberi/Minetest-WorldEdit](https://github.com/Uberi/Minetest-WorldEdit)",
+
+		"Build Limit: [AFCMS/mcl_build_limit](https://github.com/AFCMS/mcl_build_limit)"
     ],
     "repo": "https://github.com/minetest-palamod/palamod",
     "website": "https://github.com/minetest-palamod/palamod",
