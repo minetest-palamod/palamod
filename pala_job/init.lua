@@ -242,6 +242,9 @@ minetest.register_craft_predict(function(itemstack, player, old_craft_grid, craf
 end)
 
 dofile(modpath.."/update.lua")
-dofile(modpath.."/mobs.lua")
+
+if minetest.settings:get_bool("palamod.experimental", false) then
+	dofile(modpath.."/mobs.lua")
+end
 
 minetest.log("action", "[pala_job] loaded succesfully")
