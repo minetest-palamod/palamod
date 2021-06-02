@@ -1,5 +1,6 @@
 # textdomain: pala_server
 Welcome to @1=Bienvenue dans le @1
+You just entered @1=Vous venez d'entrer dans la @1
 Spawn=Spawn
 Warzone=Warzone
 a place where @1=une zone où le @1
@@ -9,3 +10,7 @@ Player not found=Le joueur n'existe pas
 Entities will be deleted in 30s!=Les entités seront supprimées dans 30 secondes !
 Entities have been deleted!=Les entités ont étés supprimées !
 Next clearlag in @1s=Prochain clear automatique dans : @1 secondes
+
+# home
+Home deleted=Home supprimé
+The home has been set to your position=Le home a été crée à votre position

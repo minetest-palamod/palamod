@@ -13,6 +13,10 @@ if minetest.settings:get_bool("pala_server.clear_lag", true) then
 	dofile(modpath.."/palalag.lua")
 end
 
+if minetest.settings:get_bool("palamod.experimental", false) then
+	dofile(modpath.."/home.lua")
+end
+
 if minetest.settings:get_bool("palamod.debug", false) then
 	dofile(modpath.."/debug.lua")
 end
