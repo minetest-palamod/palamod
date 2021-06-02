@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_golem] loading...")
+
 --local S = minetest.get_translator(minetest.get_current_modname())
 
 --[[mobs:register_mob("pala_golem:guardian_golem", {
@@ -15,7 +17,6 @@
 	},
 	visual_size = {x=3, y=3},
 	makes_footstep_sound = true,
-	-- TODO: sounds
 	view_range = 16,
 	stepheight = 1.1,
 	owner = "",
@@ -160,3 +161,5 @@ mobs:register_egg("pala_golem:guardian_golem", S("Guardian Golem"), "mobs_mc_spa
 		-- end
 	-- end
 -- end
+
+minetest.log("action", "[pala_golem] loaded succesfully")

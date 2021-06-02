@@ -1,5 +1,9 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
+--[[
+TODO: be sure durability and mining speed are same as mc
+]]
+
 local pickaxe_longdesc = S([[
 	Pickaxes are mining tools to mine hard blocks, such as stone.
 	A pickaxe can also be used as weapon, but it is rather inefficient.
@@ -15,13 +19,13 @@ minetest.register_tool("pala_tools:pick_amethyst", {
 		-- 1/1.2
 		full_punch_interval = 0.83333333,
 		max_drop_level=5,
-		damage_groups = {fleshy=5}, --TODO: be sure values are real
+		damage_groups = {fleshy=5},
 		punch_attack_uses = 781,
 	},
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey = { speed = 8, level = 5, uses = 2999 }, --TODO: be sure values are real
+        pickaxey = { speed = 8, level = 5, uses = 2999 },
     },
 })
 
@@ -36,13 +40,13 @@ minetest.register_tool("pala_tools:pick_titanium", {
 		-- 1/1.2
 		full_punch_interval = 0.83333333,
 		max_drop_level=5,
-		damage_groups = {fleshy=5}, --TODO: be sure values are real
+		damage_groups = {fleshy=5},
 		punch_attack_uses = 781,
 	},
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey = { speed = 9, level = 5, uses = 3999 }, --TODO: be sure values are real
+        pickaxey = { speed = 9, level = 5, uses = 3999 },
     },
 })
 
@@ -90,7 +94,6 @@ minetest.register_tool("pala_tools:pick_gpaladium", {
 
 
 --Endium
---TODO: check values
 minetest.register_tool("pala_tools:pick_endium", {
 	description = S("Endium Pickaxe"),
 	_doc_items_longdesc = pickaxe_longdesc,

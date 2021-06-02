@@ -1,4 +1,3 @@
-local load_time = os.clock()
 minetest.log("action", "[pala_luckyblock] loading...")
 
 local S = minetest.get_translator(minetest.get_current_modname())
@@ -46,7 +45,7 @@ pala_luckyblock.event_positive = {
 			if idx then
 				idx:set_nametag_attributes({text = name.."'s BodyGuard"})
 			end
-			minetest.chat_send_player(name, C(mcl_colors.BLUE, "To serve you !"))
+			minetest.chat_send_player(name, C(mcl_colors.BLUE, S("To serve you!")))
 		end
 	end},
 	{"Wesh you're suck", 10, "pala_paladium_paladium_block.png", function(pos, player)
@@ -148,15 +147,30 @@ pala_luckyblock.event_positive = {
 	{"Rodshild", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Camouflage", 1200, "default_stone.png", pala_luckyblock.wip_event},
 	{"Paladium Beacon", 1200, "pala_luckyblock_pala_beacon.png", function(pos, player)
-		--TODO:add beacon
+		--[[
+		TODO: add beacon at the structure top
+		]]
 		minetest.place_schematic({x=pos.x-3,y=pos.y,z=pos.z-3},
 			pala_luckyblock.modpath .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
 	end},
 	{"Mega Fast Learner", 2400, "default_stone.png", pala_luckyblock.wip_event},
-	{"Inevitable", 5000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Inevitable", 5000, "pala_legendary_endium_gauntlet.png", function(pos, player)
+		give_item(player, "pala_legendary:endium_gauntlet")
+	end},
 	{"+ Money", 5000, "default_stone.png", pala_luckyblock.wip_event},
 	--{"Téthanos", 5000, "default_stone.png", pala_luckyblock.wip_event},
-	{"Endium Grade", 10000, "default_stone.png", pala_luckyblock.wip_event},
+	{"Endium Grade", 10000, "pala_paladium_endium_nugget.png", function(pos, player)
+		--[[
+		TODO: make sure grade is saved
+		]]
+		if pala_grade.can_execute(player, 3) then
+			minetest.chat_send_player(player:get_player_name(),
+				C(mcl_colors.GRAY, S("You already have the rank, so here is an endium nugget")))
+			give_item(player, "pala_paladium:endium_nugget")
+		else
+			pala_grade.set_grade(player, "legendary")
+		end
+	end},
 	{"Wuzzyyyy/AFCMMMMMMMMMMMMS", 10000, "default_stone.png", pala_luckyblock.wip_event},
 	--{"Méga-Thétanos", 42500, "default_stone.png", pala_luckyblock.wip_event},
 	{"Big Inevitable", 12500, "pala_luckyblock_mega_ineluctable.png", function(pos, player)
@@ -174,7 +188,6 @@ pala_luckyblock.event_negative = {
 	end},
 	{"Enfermé", 20, "default_stone.png", pala_luckyblock.wip_event},
 	{"Geyser", 20, "pala_luckyblock_geyser.png", function(pos, player)
-		--TODO: water particules
 		local playerpos = player:get_pos()
 		minetest.add_particlespawner({
 			amount = 1000,
@@ -249,7 +262,12 @@ pala_luckyblock.event_negative = {
 		inv:set_stack("main", 1, ItemStack())
 	end},
 	{"Sur la Lune", 40, "default_stone.png", pala_luckyblock.wip_event},
-	{"Zombie Hero", 40, "default_stone.png", pala_luckyblock.wip_event},
+	{"Zombie Hero", 40, "default_stone.png", function(pos, player)
+		minetest.add_entity(pos, "mobs_mc:zombie")
+		--[[
+		TODO: add armor to zombie then available
+		]]
+	end},
 	{"Batman nerveux", 50, "pala_luckyblock_batman_nerveux.png", function(pos, player)
 		for i = 1, 20, 1 do
 			minetest.add_entity(pos, "mobs_mc:bat")
@@ -309,7 +327,7 @@ pala_luckyblock.event_negative = {
 						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Are you still here?")))end)
 		minetest.after(5, function() minetest.chat_send_player(name, C(mcl_colors.YELLOW,
 						"[LuckyBlock]").." "..C(mcl_colors.RED, S("Bye bye...")))end)
-		minetest.after(6, function() minetest.kick_player(name, "Crash")end)
+		minetest.after(6, function() minetest.kick_player(name)end)
 	end},
 	{"Reflexe", 200, "default_stone.png", pala_luckyblock.wip_event},
 	{"La mort ou…", 500, "default_stone.png", pala_luckyblock.wip_event},
@@ -319,7 +337,6 @@ pala_luckyblock.event_negative = {
 	{"Triforce", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Good Bye have a great time!", 2000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Silence, ça tourne", 2000, "default_stone.png", pala_luckyblock.wip_event},
-
 }
 
 pala_luckyblock.positive_somme = 0
@@ -381,7 +398,7 @@ end
 
 function pala_luckyblock.get_open_formspec(def, nbimg, texture)
 	local form = table.concat({
-		"formspec_version[3]",
+		"formspec_version[4]",
 		"size[17,11]",
 		"image_button[1,4;1.9,1.9;"..def[3]..";img1;;false;true;]",
 		"image_button[5,4;1.9,1.9;"..def[3]..";img2;;false;true;]",
@@ -406,7 +423,7 @@ end
 
 function pala_luckyblock.get_paladium_form()
 	return table.concat({
-		"formspec_version[3]",
+		"formspec_version[4]",
 		"size[17,11]",
 		"image_button[1,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala)..";img1;;false;true;]",
 		"image_button[5,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_pala)..";img2;;false;true;]",
@@ -426,7 +443,7 @@ end
 
 function pala_luckyblock.get_endium_form()
 	return table.concat({
-		"formspec_version[3]",
+		"formspec_version[4]",
 		"size[17,11]",
 		"image_button[1,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium)..";img1;;false;true;]",
 		"image_button[5,4;1.9,1.9;"..pala_luckyblock.get_random_img(number_images_endium)..";img2;;false;true;]",
@@ -519,4 +536,4 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
 	_mcl_hardness = 5,
 })
 
-minetest.log("action", "[pala_luckyblock] loaded in "..((os.clock()-load_time)*1000).."ms")
+minetest.log("action", "[pala_luckyblock] loaded succesfully")

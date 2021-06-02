@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_armor] loading...")
+
 --local S = minetest.get_translator(minetest.get_current_modname())
 local modpath = minetest.get_modpath(minetest.get_current_modname())
 
@@ -105,3 +107,5 @@ mcl_armor.register_set({
 
 dofile(modpath.."/travel.lua")
 dofile(modpath.."/extra.lua")
+
+minetest.log("action", "[pala_armor] loaded succesfully")

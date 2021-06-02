@@ -1,20 +1,64 @@
+minetest.log("action", "[pala_grade] loading...")
+
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 local S = minetest.get_translator(modname)
 local C = minetest.colorize
 
+local GRAY = mcl_colors.GRAY
+local RED = mcl_colors.RED
+--local BLUE = mcl_colors.BLUE
+local WHITE = mcl_colors.WHITE
+local GOLD = mcl_colors.GOLD
+local DARK_PURPLE = mcl_colors.DARK_PURPLE
+
 local default_grade = minetest.settings:get("pala_grade.default_grade") or "none"
+local singleplayer_grade = minetest.settings:get("pala_grade.singleplayer_grade") or "none"
 
---TODO: like mc chat handling
+local is_singleplayer = minetest.is_singleplayer()
+
+--[[
+TODO: like mc colored chat handling
+TODO: handle grade with database
+TODO: be sure grade prefixs are mc like
+]]
+
 pala_grade = {}
-pala_grade.grades = {}
-pala_grade.grades.none      = {rank=0, desc=""}
-pala_grade.grades.chalenger = {rank=1, desc=C(mcl_colors.GRAY, S("Chalenger"))}
-pala_grade.grades.hero      = {rank=2, desc=C(mcl_colors.RED, S("Hero"))}
-pala_grade.grades.legendary = {rank=3, desc=C(mcl_colors.BLUE, S("Legendary"))}
-pala_grade.grades.youtube   = {rank=3, desc=C(mcl_colors.RED, "You")..C(mcl_colors.WHITE, "Tube")}
 
---TODO: handle grade with database?
+--prefixs are from https://youtu.be/BUuh-RIlkM0?t=801
+pala_grade.grades = {
+    none = {
+        rank = 0,
+        color = nil,
+        desc = "",
+        prefix = "",
+    },
+    chalenger = {
+        rank = 1,
+        color = GRAY,
+        desc = C(GRAY, "["..S("Chalenger").."]"),
+        prefix = C(GRAY, S("CH")),
+    },
+    hero = {
+        rank = 2,
+        color = GOLD,
+        desc = C(GOLD, "["..S("Hero").."]"),
+        prefix = C(GOLD, S("HR")),
+    },
+    legendary = {
+        rank = 3,
+        color = DARK_PURPLE,
+        desc = C(DARK_PURPLE, "["..S("Legendary").."]"),
+        prefix = C(DARK_PURPLE, S("LG")),
+    },
+    youtube = {
+        rank = 3,
+        color = nil,
+        desc = C(RED, "[You")..C(WHITE, "Tube]"),
+        prefix = C(RED, S("YT")),
+    },
+}
+
 function pala_grade.get_grade(player)
 	return player:get_meta():get_string("pala_grade.grade")
 end
@@ -38,13 +82,28 @@ function pala_grade.set_grade(player, grade)
 	end
 end
 
---This function should be overiden by network mods to retreive grade from auth database
-function pala_grade.update_grade(player)
-	return pala_grade.set_grade(player, default_grade)
+--This function should be overiden by network mods to retreive grade from auth database and return grade name
+function pala_grade.retrieve_grade(player)
+	return nil
 end
 
 minetest.register_on_joinplayer(function(player)
-	pala_grade.update_grade(player)
+    if is_singleplayer then
+        pala_grade.set_grade(player, singleplayer_grade)
+    else
+        local retrived_grade = pala_grade.retrieve_grade(player)
+        if retrived_grade then
+            pala_grade.set_grade(player, retrived_grade)
+        else
+            pala_grade.set_grade(player, default_grade)
+        end
+    end
 end)
 
+if minetest.settings:get_bool("palamod.experimental", false) then
+	dofile(modpath.."/chat.lua")
+end
+
 dofile(modpath.."/commands.lua")
+
+minetest.log("action", "[pala_grade] loaded succesfully")

@@ -1,10 +1,16 @@
 local S = minetest.get_translator(minetest.get_current_modname())
+
 local has_pala_paladium = minetest.get_modpath("pala_paladium")
-local has_pala_craftstick = minetest.get_modpath("pala_craftstick")
+local has_pala_craftitems = minetest.get_modpath("pala_craftitems")
+
 local pickaxe_longdesc = [[
 	Pickaxes are mining tools to mine hard blocks, such as stone.
 	A pickaxe can also be used as weapon, but it is rather inefficient.
-	]]
+]]
+
+local get_node = minetest.get_node
+local dig_node = minetest.dig_node
+local get_pointed_thing_position = minetest.get_pointed_thing_position
 
 minetest.register_tool("pala_obsidian:obsidian_pick", {
 	description = S("Obsidian Pickaxe"),
@@ -31,21 +37,20 @@ minetest.register_tool("pala_obsidian:magical_tool", {
     inventory_image = "pala_obsidian_magical_tool.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	on_place = function(itemstack, user, pointed_thing)
-		local pos = minetest.get_pointed_thing_position(pointed_thing)
-		local node = minetest.get_node(pos)
-		if not minetest.is_protected(pos, user) and node.name == "pala_obsidian:hardened_obsidian" then
-			minetest.dig_node(pos)
+		local pos = get_pointed_thing_position(pointed_thing)
+		if not minetest.is_protected(pos, user) and get_node(pos).name == "pala_obsidian:hardened_obsidian" then
+			dig_node(pos)
 		end
 	end,
 })
 
-if has_pala_paladium and has_pala_craftstick then
+if has_pala_paladium and has_pala_craftitems then
 	minetest.register_craft({
 		output = 'pala_obsidian:magical_tool',
 		recipe = {
 			{"", "pala_paladium:paladium_ingot", ""},
 			{"pala_paladium:paladium_ingot", "pala_paladium:paladiumblock", "pala_paladium:paladium_ingot"},
-			{"", "pala_craftstick:palastick", ""},
+			{"", "pala_craftitems:palastick", ""},
 		}
 	})
 end

@@ -1,7 +1,22 @@
-local S = minetest.get_translator("pala_spikes")
+minetest.log("action", "[pala_spikes] loading...")
+
+local S = minetest.get_translator(minetest.get_current_modname())
+
+local pairs = pairs
+local math = math
 
 pala_spikes = {}
+
 pala_spikes.registered_spikes = {}
+
+mcl_damage.register_type("spike_floor", {})
+
+mcl_death_messages.messages.spike_floor = {
+    _translator = S,
+    plain = "@1 stood too long on a spike",
+    assist = "@1 stood too long on a spike due to @2",
+}
+
 function pala_spikes.register_spike(name, desc, color, damage, id)
 	local newname = "pala_spikes:"..name.."_spike"
 	pala_spikes.registered_spikes[newname] = {name=name, desc=desc, color=color, damage=damage, id=id}
@@ -19,10 +34,10 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 		groups = {pickaxey=2, building_block=1, pala_spikes=1},
 		on_walk_over = function(loc, nodeiamon, player)
 			-- Hurt players standing on top of this block
-			if player:get_hp() > 0 then
-				mcl_death_messages.player_damage(player, S("@1 stood too long on a spike.", player:get_player_name()))
-				player:set_hp(player:get_hp() - damage, { type = "punch", from = "mod" })
-			end
+            --[[
+            TODO: damage people at the pointing face only
+            ]]
+            mcl_util.deal_damage(player, damage, {type = "spike_floor"})
 		end,
 	})
 	minetest.register_alias("#"..tostring(id), newname)
@@ -37,7 +52,6 @@ pala_spikes.register_spike("titanium", S("Titanium"), "#777777", 12, 443)
 pala_spikes.register_spike("paladium", S("Paladium"), "#fc552f", 14, 444)
 
 --Craft
-
 minetest.register_craft({
 	output = "pala_spike:wood_spike",
 	recipe = {
@@ -107,21 +121,25 @@ minetest.register_abm({
 	interval = 3.0,
 	chance = 0.5,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-		local abovenode = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
-		if not minetest.registered_items[abovenode.name] then return end
-		-- Don't bother checking item enties if node above is a container (should save some CPU)
-		if minetest.registered_items[abovenode.name].groups.container then
-			return
-		end
-		for _,object in ipairs(minetest.get_objects_inside_radius(pos, 2)) do
-			if not object:is_player() and object:get_luaentity() and object:get_luaentity().name == "__builtin:item" then
-				local posob = object:get_pos()
-				local posob_miny = posob.y + object:get_properties().collisionbox[2]
-				if math.abs(posob.x-pos.x) <= 0.5 and (posob_miny-pos.y < 1.5 and posob.y-pos.y >= 0.3) then
-					object:get_luaentity().itemstring = ""
-					object:remove()
-				end
-			end
-		end
+        if active_object_count > 0 then
+            local abovenode = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
+            if not minetest.registered_items[abovenode.name] then return end
+            -- Don't bother checking item enties if node above is a container (should save some CPU)
+            if minetest.registered_items[abovenode.name].groups.container then
+                return
+            end
+            for _,object in pairs(minetest.get_objects_inside_radius(pos, 2)) do
+                if not object:is_player() and object:get_luaentity() and object:get_luaentity().name == "__builtin:item" then
+                    local posob = object:get_pos()
+                    local posob_miny = posob.y + object:get_properties().collisionbox[2]
+                    if math.abs(posob.x-pos.x) <= 0.5 and (posob_miny-pos.y < 1.5 and posob.y-pos.y >= 0.3) then
+                        object:get_luaentity().itemstring = ""
+                        object:remove()
+                    end
+                end
+            end
+        end
 	end,
 })
+
+minetest.log("action", "[pala_spikes] loaded succesfully")

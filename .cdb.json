@@ -1,0 +1,19 @@
+{
+    "type": "MOD",
+    "title": "Palamod",
+    "name": "palamod",
+    "short_description": "Palamod modpack for MineClone2",
+    "tags": ["pvp", "pve", "survival", "multiplayer"],
+    "content_warnings": [],
+    "license": "GPLv3",
+    "media_license": "CC BY 4.0",
+    "long_description": [
+        "This project is a free clone of the main modpack of a french minecraft server called Paladium.",
+        "This server was created by the french youtuber FuzeIII and is the biggest french pvp-faction.",
+        "I attemp to provide players a good alternative, providing singleplayer and multiplayer support, for any purpose."
+    ],
+    "repo": "https://github.com/minetest-palamod/palamod",
+    "website": "https://github.com/minetest-palamod/palamod",
+    "issue_tracker": "https://github.com/minetest-palamod/palamod/issues",
+    "forums": null
+}
