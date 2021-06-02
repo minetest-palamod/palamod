@@ -9,7 +9,7 @@ local minerallist = {
 	"pala_paladium:titanium_ingot",
 	"pala_paladium:ametyst_ingot",
 	"mcl_core:gold_ingot",
-	"mcl_core:steel_ingot"
+	"mcl_core:steel_ingot",
 }
 
 pala_legendary.register_legendary("random", {
@@ -18,7 +18,7 @@ pala_legendary.register_legendary("random", {
 		#pala_legendary.registered_stones),
 	inventory_image = "pala_legendary_legendary_random.png",
 	func = function(itemstack, player, pointed_thing)
-		return itemstack:replace({name=pala_legendary.get_random_stone()})
+		return itemstack:replace({name = pala_legendary.get_random_stone()})
 	end,
 })
 
