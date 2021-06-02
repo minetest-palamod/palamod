@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_backpack] loading...")
+
 local C = minetest.colorize
 local S = minetest.get_translator(minetest.get_current_modname())
 
@@ -9,7 +11,7 @@ end)
 pala_backpack = {}
 pala_backpack.form = {}
 pala_backpack.form.amethyst = table.concat({
-	"formspec_version[3]",
+	"formspec_version[4]",
 	"size[12,8]",
 	--mcl_formspec.get_itemslot_bg(0.5,1,9,1),
 	"list[current_player;backpack;0.5,1;9,1;]", --9
@@ -20,7 +22,7 @@ pala_backpack.form.amethyst = table.concat({
 })
 
 pala_backpack.form.titanium = table.concat({
-	"formspec_version[3]",
+	"formspec_version[4]",
 	"size[12,10.5]",
 	"list[current_player;backpack;0.5,1;9,3;]", --27
 	"list[current_player;main;0.5,5.5;9,4;]",
@@ -30,7 +32,7 @@ pala_backpack.form.titanium = table.concat({
 })
 
 pala_backpack.form.paladium = table.concat({
-	"formspec_version[3]",
+	"formspec_version[4]",
 	"size[12,14.5]",
 	"list[current_player;backpack;0.5,1;9,6;]", --56
 	"list[current_player;main;0.5,9.5;9,4;]",
@@ -40,7 +42,7 @@ pala_backpack.form.paladium = table.concat({
 })
 
 pala_backpack.form.endium = table.concat({
-	"formspec_version[3]",
+	"formspec_version[4]",
 	"size[12,18]",
 	"list[current_player;backpack;0.5,1;9,9;]", --81
 	"list[current_player;main;0.5,13;9,4;]",
@@ -137,3 +139,5 @@ if minetest.get_modpath("mcl_mobitems") and minetest.get_modpath("pala_paladium"
 		}
 	})
 end
+
+minetest.log("action", "[pala_backpack] loaded succesfully")

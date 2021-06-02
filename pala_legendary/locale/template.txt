@@ -2,3 +2,7 @@
 Legendary Stone @1=
 Random=
 Fortune=
+You must wait @1 hours before you can use it.=
+Fortune has fallen upon you!=
+You worked hard. You earned a lot of xp. Congratulations!=
+You just put chaos around you!=

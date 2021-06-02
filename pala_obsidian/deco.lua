@@ -2,7 +2,6 @@
 --DECO BLOCKS
 
 
---TODO:Craft
 --#2e0051
 -- if minetest.get_modpath("mcl_doors") then
 	-- mcl_doors.register_door("pala_obsidian:obsidian_door", {

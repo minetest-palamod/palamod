@@ -1,6 +1,7 @@
 @1 Spike=
 Deals @1 damage to people without armor. Destroy items thrown on the spike.=
-@1 stood too long on a spike.=
+@1 stood too long on a spike=
+@1 stood too long on a spike due to @2=
 Wood=
 Iron=
 Diamond=

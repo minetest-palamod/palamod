@@ -1,6 +1,12 @@
 # textdomain: pala_server
 Welcome to @1=
+You just entered @1=
 Spawn=
+Warzone=
 a place where @1=
 PvP is disabled=
+PvP is enabled=
 Player not found=
+Entities will be deleted in 30s!=
+Entities have been deleted!=
+Next clearlag in @1s=

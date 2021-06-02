@@ -1,5 +1,18 @@
-local load_time = os.clock()
 minetest.log("action", "[pala_paladium] loading...")
+
+pala_paladium = {}
+
+--TEMP FUNCTION
+--MUST BE REMOVED WHEM mcl2 MIGRATE TO FORMSPEC V4
+function pala_paladium.get_itemslot_bg(x, y, w, h)
+	local out = ""
+	for i = 0, w - 1, 1 do
+		for j = 0, h - 1, 1 do
+			out = out .."image["..x+i+(i*0.25)..","..y+j+(j*0.25)..";1,1;mcl_formspec_itemslot.png]"
+		end
+	end
+	return out
+end
 
 local S = minetest.get_translator(minetest.get_current_modname())
 
@@ -312,4 +325,4 @@ minetest.register_craft({
 	}
 })
 
-minetest.log("action", "[pala_paladium] loaded in "..((os.clock()-load_time)*1000).."ms")
+minetest.log("action", "[pala_paladium] loaded succesfully")
