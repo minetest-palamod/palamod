@@ -3,6 +3,9 @@ local C = minetest.colorize
 local F = minetest.formspec_escape
 local get_group = minetest.get_item_group
 
+local function update_inventory()
+end
+
 -- Update the inventory slots
 -- meta: Metadata of node
 local function update_slots(meta)
