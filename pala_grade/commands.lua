@@ -15,7 +15,7 @@ minetest.register_chatcommand("feed", {
 		    mcl_hunger.set_hunger(player, 20)
 			return true, C(mcl_colors.GREEN, S("You have been feed!"))
         else
-            return false, C(mcl_colors.RED, S("You must have the @1 grade to run this command.",
+            return false, C(mcl_colors.RED, S("You must have the [@1] grade to run this command.",
 				pala_grade.grades.hero.desc..F(mcl_colors.RED)))
         end
 	end,
