@@ -8,7 +8,10 @@ pala_server = {}
 dofile(modpath.."/utils.lua")
 dofile(modpath.."/msg.lua")
 dofile(modpath.."/spawn.lua")
-dofile(modpath.."/palalag.lua")
+
+if minetest.settings:get_bool("pala_server.clear_lag", true) then
+	dofile(modpath.."/palalag.lua")
+end
 
 if minetest.settings:get_bool("palamod.experimental", false) then
 	dofile(modpath.."/home.lua")
