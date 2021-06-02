@@ -1,4 +1,4 @@
-# mt_palamod
+# Minetest Palamod
 ![Discord](https://img.shields.io/discord/816629552897196074)
 ![GitHub](https://img.shields.io/github/license/minetest-palamod/palamod)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/minetest-palamod/palamod)
