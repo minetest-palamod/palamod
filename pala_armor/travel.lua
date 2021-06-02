@@ -27,7 +27,8 @@ mcl_damage.register_modifier(function(obj, damage, reason)
 	if reason.type == "fall" then
 		local inv = obj:get_inventory()
 		local stack = inv:get_stack("armor", 2)
-		if stack:get_name() == "pala_armor:helmet_slimy" then
+		local name = stack:get_name()
+		if name == "pala_armor:helmet_slimy" or name == "pala_armor:helmet_slimy_enchanted" then
 			if obj:is_player() and not minetest.is_creative_enabled(obj:get_player_name()) then
 				mcl_util.use_item_durability(stack, 1)
 			end
@@ -97,7 +98,8 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		if time >= 15 then
 			for _,player in pairs(minetest.get_connected_players()) do
 				local inv = player:get_inventory()
-				if inv:get_stack("armor", 2):get_name() == "pala_armor:helmet_scuba" then --Helmet
+				local name = inv:get_stack("armor", 2):get_name()
+				if name == "pala_armor:helmet_scuba" or name == "pala_armor:helmet_scuba_enchanted" then --Helmet
 					mcl_potions.water_breathing_func(player, nil, 16)
 				end
 			end
@@ -105,8 +107,8 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		end
 	end)
 	minetest.register_on_joinplayer(function(player)
-		local inv = player:get_inventory()
-		if inv:get_stack("armor", 2):get_name() == "pala_armor:helmet_scuba" then --Helmet
+		local name = player:get_inventory():get_stack("armor", 2):get_name()
+		if name == "pala_armor:helmet_scuba" or name == "pala_armor:helmet_scuba_enchanted" then --Helmet
 			mcl_potions.water_breathing_func(player, nil, 16)
 		end
 	end)
