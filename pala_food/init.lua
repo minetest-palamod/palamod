@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_food] loading...")
+
 local S = minetest.get_translator(minetest.get_current_modname())
 
 local function eat_pala_apple(itemstack, placer, pointed_thing)
@@ -123,6 +125,12 @@ minetest.register_craftitem("pala_food:marinated_ham", {
 	_mcl_saturation = 0.4,
 })
 
-
 --Clear Golden Apple
-minetest.clear_craft({output = "mcl_core:apple_gold"})
+if minetest.settings:get_bool("pala_food.clear_golden_apples", true) then
+	minetest.clear_craft({output = "mcl_core:apple_gold"})
+	--[[
+	TODO: clear enchanted golden apples
+	]]
+end
+
+minetest.log("action", "[pala_food] loaded succesfully")

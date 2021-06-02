@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_job] loading...")
+
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
@@ -11,14 +13,16 @@ pala_job.levels = {480, 1195, 2476, 4710, 8327, 13792, 21597, 32262, 46328, 6435
 pala_job.default_xp = minetest.settings:get("pala_job.default_xp") or 0
 pala_job.jobs = {}
 
---TODO:real money
 if minetest.get_modpath("mc_economy") then
 	pala_job.money = "mc_economy:money"
 else
 	pala_job.money = "mcl_core:stone"
 end
 
---TODO:hammer and cobblebreaker
+--[[
+TODO:hammer, cobblebreaker and bow looting
+]]
+
 pala_job.jobs.hunter = {
 	{pala_job.money.." 2"},
 	{pala_job.money.." 3"},
@@ -36,7 +40,7 @@ pala_job.jobs.hunter = {
 	{pala_job.money.." 14"},
 	{pala_job.money.." 15"},
 	{{itemstring = "pala_tools:sword_paladium", enchantments = {sharpness = 5, unbreaking = 4}},
-		"pala_tools:broadsword_paladium"}, --TODO:bow
+		"pala_tools:broadsword_paladium"},
 	{pala_job.money.." 17"},
 	{pala_job.money.." 18"},
 	{pala_job.money.." 19"},
@@ -72,7 +76,7 @@ pala_job.jobs.miner = {
 }
 
 function pala_job.init_player(player)
-	for _,job in pairs(pala_job.jobs) do
+	for job,_ in pairs(pala_job.jobs) do
 		player:get_meta():set_int("pala_job_xp_"..job, pala_job.default_xp)
 	end
 end
@@ -122,7 +126,7 @@ function pala_job.set_xp(player, job, amount)
 	--end
 end
 
---RAW:formspec_version[3]
+--RAW:formspec_version[4]
 --size[9,5.5]
 --label[3.5,0.5;FARMER]
 --label[3,2;You pass level 19]
@@ -145,7 +149,10 @@ function pala_job.get_loot_item(def)
 	end
 end
 
---TODO: better styling
+--[[
+TODO: better styling and formspec layout
+]]
+
 function pala_job.show_win_level(player, job, level, loot)
 	local loot1 = pala_job.get_loot_item(loot[level][1])
 	local loot2 = pala_job.get_loot_item(loot[level][2])
@@ -236,3 +243,5 @@ end)
 
 dofile(modpath.."/update.lua")
 dofile(modpath.."/mobs.lua")
+
+minetest.log("action", "[pala_job] loaded succesfully")

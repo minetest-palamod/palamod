@@ -1,9 +1,18 @@
+[pala_food]
+
+#    Are golden apples disabled.
+#    default: true
+pala_food.clear_golden_apples (Clear golden apples) bool true
 
 [pala_grade]
 
+#    Grade to use if in singleplayer.
+#    default: none
+pala_grade.singleplayer_grade (Singleplayer grade) enum none none,chalenger,hero,legendary,youtube
+
 #    Default grade to use if not handled by other mods.
-#    default: chalenger
-pala_grade.default_grade (Default grade) enum chalenger none,chalenger,hero,legendary,youtube
+#    default: none
+pala_grade.default_grade (Default grade) enum none none,chalenger,hero,legendary,youtube
 
 [pala_job]
 
@@ -22,6 +31,12 @@ pala_server.pvp_spawn (PvP at spawn) bool false
 
 #    PvP protection radius at spawn.
 pala_server.pvp_spawn_radius (Disabled PvP radius at spawn) int 30
+
+#    Is clear lag enabled.
+pala_server.clear_lag (Clear Lag) bool true
+
+#    Clear lag interval.
+pala_server.clear_lag_interval (Clear Lag) int 300
 
 [advanced]
 

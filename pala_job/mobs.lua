@@ -1,4 +1,4 @@
-mobs:register_mob("pala_job:cavernous_zombie", {
+--[[mobs:register_mob("pala_job:cavernous_zombie", {
 	type = "monster",
 	spawn_class = "hostile",
 	hp_min = 20,
@@ -44,4 +44,4 @@ mobs:register_mob("pala_job:cavernous_zombie", {
 	attack_type = "dogfight",
 	harmed_by_heal = true,
 	on_die = function() end
-})
+})]]

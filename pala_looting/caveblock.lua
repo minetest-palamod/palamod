@@ -2,16 +2,10 @@ local S = minetest.get_translator(minetest.get_current_modname())
 
 minetest.register_node("pala_looting:caveblock", {
 	description = S("Cave Block"),
-	_doc_items_longdesc = S("Cave Block allow players to see through the blocks."),
-	drawtype = "normal",
+	_doc_items_longdesc = S("Cave Block allow players to see through blocks."),
 	tiles = {"pala_looting_caveblock.png"},
-	use_texture_alpha = true,
+	use_texture_alpha = "clip",
 	sunlight_propagates = true,
-	wield_image = minetest.inventorycube(
-		"pala_looting_caveblock.png",
-		"pala_looting_caveblock.png",
-		"pala_looting_caveblock.png"
-	),
 	groups = {pickaxey=2, building_block=1, material_stone=1}
 })
 

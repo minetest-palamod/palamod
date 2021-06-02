@@ -5,11 +5,14 @@ max_line_length = 125
 globals = {
     "minetest",
     "mcl_spawn",
+    mcl_death_messages = {fields = {"messages"}},
+	mcl_enchanting = {fields = {"enchantments"}},
 }
 
 read_globals = {
     string = {fields = {"split"}},
-    table = {fields = {"copy", "getn"}},
+    table = {fields = {"copy", "getn", "shuffle"}},
+    math = {fields = {"round"}},
 
     -- Builtin
     "vector", "ItemStack",

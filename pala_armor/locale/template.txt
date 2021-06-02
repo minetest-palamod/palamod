@@ -1,2 +1,5 @@
 # textdomain: pala_armor
 Paladium Boots=
+Slimy Helmet=
+Weighted boots=
+Negate fall damage=

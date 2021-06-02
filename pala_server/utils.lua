@@ -1,3 +1,5 @@
+local math = math
+
 --chunk handling
 
 if minetest.get_modpath("mc_faction") then

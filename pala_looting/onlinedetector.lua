@@ -1,6 +1,8 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 local F = minetest.formspec_escape
 
+local table = table
+
 local function get_detector_form(default)
 	return table.concat({
 		"formspec_version[4]",
@@ -39,10 +41,12 @@ minetest.register_node("pala_looting:online_detector_off", {
 	_doc_items_longdesc = S("Allows you to know if a player is connected."),
 	tiles = {"pala_looting_online_detector_off.png"},
 	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1},
-	mesecons = {receptor = {
-		state = mesecon.state.off,
-		rules = mesecon.rules.alldirs,
-	}},
+	mesecons = {
+		receptor = {
+			state = mesecon.state.off,
+			rules = mesecon.rules.alldirs,
+		},
+	},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", get_detector_form(meta:get_string("name")))
@@ -58,15 +62,17 @@ minetest.register_node("pala_looting:online_detector_off", {
 })
 
 minetest.register_node("pala_looting:online_detector_on", {
-	description = S("Online Detector On"),
+	description = S("Online Detector"),
 	_doc_items_longdesc = S("Allows you to know if a player is connected."),
 	tiles = {"pala_looting_online_detector_on.png"},
 	groups = {pickaxey=2, building_block=1, material_stone=1, pala_online_detector=1, not_in_creative_inventory=1},
 	drop = "pala_looting:online_detector_off",
-	mesecons = {receptor = {
-		state = mesecon.state.on,
-		rules = mesecon.rules.alldirs,
-	}},
+	mesecons = {
+		receptor = {
+			state = mesecon.state.on,
+			rules = mesecon.rules.alldirs,
+		},
+	},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
 		meta:set_string("formspec", get_detector_form(meta:get_string("name")))
@@ -99,4 +105,13 @@ minetest.register_abm({
 	action = function(pos)
 		update_detector_on(pos, minetest.get_meta(pos):get_string("name"))
 	end,
+})
+
+minetest.register_craft({
+	output = "pala_looting:online_detector_off",
+	recipe = {
+		{'mcl_dye:black', 'mcl_dye:black', 'mcl_dye:black'},
+		{'mcl_dye:black', 'pala_paladium:paladium_ingot', 'mcl_dye:black'},
+		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
+	}
 })
