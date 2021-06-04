@@ -107,6 +107,20 @@ minetest.register_abm({
 	end,
 })
 
+minetest.register_lbm({
+	label = "Update onlinedetector state",
+	name = "pala_looting:online_detector_off",
+	nodenames = {"group:pala_online_detector"},
+	run_at_every_load = true,
+	action = function(pos, node)
+		if node.name == "pala_looting:online_detector_off" then
+			update_detector_off(pos, minetest.get_meta(pos):get_string("name"))
+		else
+			update_detector_on(pos, minetest.get_meta(pos):get_string("name"))
+		end
+	end,
+})
+
 minetest.register_craft({
 	output = "pala_looting:online_detector_off",
 	recipe = {
