@@ -1,15 +1,47 @@
-@1 Ore=
-@1 ore is rare and can be found in clusters near the bottom of the world.=
-@1 Ingot=
-Molten @1. It is used to craft armor, tools, and whatnot.=
-Block of @1=
+# textdomain: pala_paladium
+
+# amethyst
 Amethyst Ore=
 Amethyst ore is rare and can be found in clusters near the bottom of the world.=
 Amethyst Ingot=
 Molten Amethyst. It is used to craft armor, tools, and whatnot.=
 Block of Amethyst=
-A block of Amethyst is mostly a shiny decorative block.=
-Amethyst=
-Titanium=
+A block of amethyst is mostly a shiny decorative block.=
+
+# titanium
+Titanium Ore=
+Titanium ore is rare and can be found in clusters near the bottom of the world.=
+Titanium Ingot=Lingot de Titane
+Molten Titanium. It is used to craft armor, tools, and whatnot.=
+Block of Titanium=
+A block of titanium is mostly a shiny decorative block.=
+
+# paladium
+Paladium Ore=
+Paladium ore is rare and can be found in clusters near the bottom of the world.=
+Paladium Ingot=
+Molten Paladium. It is used to craft armor, tools, and whatnot.=
+Block of Paladium=
+A block of paladium is mostly a shiny decorative block.=
+
+# gpaladium
+Green Paladium Ore=
+Green Paladium ore is rare and can be given inside events.=
+Green Paladium Ingot=
+Molten Green Paladium. It is used to craft armor, tools, and whatnot.=
+Block of Green Paladium=
+A block of green paladium is mostly a shiny decorative block.=
+
+# endium
+Endium Ingot=
+Endium Nugget=
+Molten Endium. It is used to craft armor, tools, and whatnot.=
+Endium nuggets are very small pieces of molten endium; the main purpose is to create endium ingots.=
+
+# findium
+Findium Ore=
+Findium ore is rare and can be found in clusters near the bottom of the world.=
 Findium Gem. It is used to craft armor, tools, and whatnot.=
 Findium Gem=
+Block of Findium=
+A block of findium is mostly a shiny decorative block.=
