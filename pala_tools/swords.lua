@@ -112,45 +112,43 @@ minetest.register_tool("pala_tools:sword_endium", {
 })
 
 --CRAFTS
-if minetest.get_modpath("pala_paladium") then
-	minetest.register_craft({
-		output = 'pala_tools:sword_amethyst',
-		recipe = {
-			{"pala_paladium:amethyst_ingot", "", ""},
-			{"pala_paladium:amethyst_ingot", "", ""},
-			{"mcl_core:stick", "", ""},
-		}
-	})
-    minetest.register_craft({
-		output = 'pala_tools:sword_titanium',
-		recipe = {
-			{"pala_paladium:titanium_ingot", "", ""},
-			{"pala_paladium:titanium_ingot", "", ""},
-			{"mcl_core:stick", "", ""},
-		}
-	})
-    minetest.register_craft({
-		output = 'pala_tools:sword_paladium',
-		recipe = {
-			{"pala_paladium:paladium_ingot", "", ""},
-			{"pala_paladium:paladium_ingot", "", ""},
-			{"mcl_core:stick", "", ""},
-		}
-	})
-    minetest.register_craft({
-		output = 'pala_tools:sword_gpaladium',
-		recipe = {
-			{"pala_paladium:gpaladium_ingot", "", ""},
-			{"pala_paladium:gpaladium_ingot", "", ""},
-			{"mcl_core:stick", "", ""},
-		}
-	})
-    minetest.register_craft({
-		output = 'pala_tools:sword_endium',
-		recipe = {
-			{"pala_paladium:endium_ingot", "", ""},
-			{"pala_paladium:endium_ingot", "", ""},
-			{"mcl_core:stick", "", ""},
-		}
-	})
-end
+minetest.register_craft({
+	output = 'pala_tools:sword_amethyst',
+	recipe = {
+		{"pala_paladium:amethyst_ingot", "", ""},
+		{"pala_paladium:amethyst_ingot", "", ""},
+		{"mcl_core:stick", "", ""},
+	}
+})
+minetest.register_craft({
+	output = 'pala_tools:sword_titanium',
+	recipe = {
+		{"pala_paladium:titanium_ingot", "", ""},
+		{"pala_paladium:titanium_ingot", "", ""},
+		{"mcl_core:stick", "", ""},
+	}
+})
+minetest.register_craft({
+	output = 'pala_tools:sword_paladium',
+	recipe = {
+		{"pala_paladium:paladium_ingot", "", ""},
+		{"pala_paladium:paladium_ingot", "", ""},
+		{"mcl_core:stick", "", ""},
+	}
+})
+minetest.register_craft({
+	output = 'pala_tools:sword_gpaladium',
+	recipe = {
+		{"pala_paladium:gpaladium_ingot", "", ""},
+		{"pala_paladium:gpaladium_ingot", "", ""},
+		{"mcl_core:stick", "", ""},
+	}
+})
+minetest.register_craft({
+	output = 'pala_tools:sword_endium',
+	recipe = {
+		{"pala_paladium:endium_ingot", "", ""},
+		{"pala_paladium:endium_ingot", "", ""},
+		{"mcl_core:stick", "", ""},
+	}
+})
