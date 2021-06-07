@@ -6,6 +6,7 @@ pala_tools = {}
 
 dofile(modpath.."/pick.lua")
 dofile(modpath.."/axe.lua")
+dofile(modpath.."/shovel.lua")
 dofile(modpath.."/swords.lua")
 dofile(modpath.."/special_swords.lua")
 dofile(modpath.."/infernalknocker.lua")
