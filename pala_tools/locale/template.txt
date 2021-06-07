@@ -1,14 +1,38 @@
+# textdomain: pala_tools
 Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles. Swords can also be used to cut down a few particular blocks, such as cobwebs.=
 Pickaxes are mining tools to mine hard blocks, such as stone. A pickaxe can also be used as weapon, but it is rather inefficient.=
-Amethyst Pickaxe=
-Titanium Pickaxe=
-Paladium Pickaxe=
-Green Paladium Pickaxe=
-Endium Pickaxe=
+
+# amethyst
+
 Amethyst Sword=
+Amethyst Pickaxe=
+Amethyst Axe=
+
+# titanium
+
 Titanium Sword=
+Titanium Pickaxe=
+Titanium Axe=
+
+# paladium
+
 Paladium Sword=
+Paladium Pickaxe=
+Paladium Axe=
+
+# green paladium
+
 Green Paladium Sword=
+Green Paladium Pickaxe=
+Green Paladium Axe=
+
+# endium
+
 Endium Sword=
+Endium Pickaxe=
+Endium Axe=
+
+# misc
+
 Infernal Knocker=
 Voidstone=

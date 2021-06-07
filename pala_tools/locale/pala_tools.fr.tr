@@ -1,14 +1,38 @@
+# textdomain: pala_tools
 Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles. Swords can also be used to cut down a few particular blocks, such as cobwebs.=Les épées sont excellentes en combat de mêlée, car elles sont rapides, infligent des dégâts élevés et peuvent supporter d'innombrables batailles. Les épées peuvent également être utilisées pour couper quelques blocs particuliers, tels que les toiles d'araignées.
 Pickaxes are mining tools to mine hard blocks, such as stone. A pickaxe can also be used as weapon, but it is rather inefficient.=Les pioches sont des outils d'extraction pour extraire des blocs durs, comme la pierre. Une pioche peut également être utilisée comme arme, mais elle est plutôt inefficace.
-Amethyst Pickaxe=Pioche en Améthyste
-Titanium Pickaxe=Pioche en Titane
-Paladium Pickaxe=Pioche en Paladium
-Green Paladium Pickaxe=Pioche en Paladium Vert
-Endium Pickaxe=Pioche en Endium
+
+# amethyst
+
 Amethyst Sword=Epée en Améthyste
+Amethyst Pickaxe=Pioche en Améthyste
+Amethyst Axe=Hache en Améthyste
+
+# titanium
+
 Titanium Sword=Epée en Titane
+Titanium Pickaxe=Pioche en Titane
+Titanium Axe=Hache en Titane
+
+# paladium
+
 Paladium Sword=Epée en Paladium
+Paladium Pickaxe=Pioche en Paladium
+Paladium Axe=Hache en Paladium
+
+# green paladium
+
 Green Paladium Sword=Epée en Paladium Vert
+Green Paladium Pickaxe=Pioche en Paladium Vert
+Green Paladium Axe=Hache en Paladium Vert
+
+# endium
+
 Endium Sword=Epée en Endium
+Endium Pickaxe=Pioche en Endium
+Endium Axe=Hache en Endium
+
+# misc
+
 Infernal Knocker=Infernal Knocker
 Voidstone=Voidstone

@@ -1,4 +1,4 @@
-# textdomain:pala_grade
+# textdomain: pala_grade
 You must have the [@1] grade to run this command.=
 You have been feed!=
 Chalenger=
