@@ -1,6 +1,7 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
 
+local math = math
 local table = table
 local ipairs = ipairs
 
