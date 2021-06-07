@@ -112,3 +112,94 @@ minetest.register_tool("pala_tools:axe_endium", {
 		axey = { speed = 9, level = 5, uses = 4999 }
 	},
 })
+
+--CRAFT
+minetest.register_craft({
+	output = "pala_tools:axe_amethyst",
+	recipe = {
+		{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
+		{"pala_paladium:amethyst_ingot", "mcl_core:stick"},
+		{"", "mcl_core:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_amethyst",
+	recipe = {
+		{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
+		{"mcl_core:stick", "pala_paladium:amethyst_ingot"},
+		{"mcl_core:stick", ""},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_titanium",
+	recipe = {
+		{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
+		{"pala_paladium:titanium_ingot", "mcl_core:stick"},
+		{"", "mcl_core:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_titanium",
+	recipe = {
+		{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
+		{"mcl_core:stick", "pala_paladium:titanium_ingot"},
+		{"mcl_core:stick", ""},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_paladium",
+	recipe = {
+		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
+		{"pala_paladium:paladium_ingot", "mcl_core:stick"},
+		{"", "mcl_core:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_paladium",
+	recipe = {
+		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
+		{"mcl_core:stick", "pala_paladium:paladium_ingot"},
+		{"mcl_core:stick", ""},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_gpaladium",
+	recipe = {
+		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
+		{"pala_paladium:gpaladium_ingot", "mcl_core:stick"},
+		{"", "mcl_core:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_gpaladium",
+	recipe = {
+		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
+		{"mcl_core:stick", "pala_paladium:gpaladium_ingot"},
+		{"mcl_core:stick", ""},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_endium",
+	recipe = {
+		{"pala_paladium:endium_ingot", "pala_paladium:endium_ingot"},
+		{"pala_paladium:endium_ingot", "mcl_core:stick"},
+		{"", "mcl_core:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:axe_endium",
+	recipe = {
+		{"pala_paladium:endium_ingot", "pala_paladium:endium_ingot"},
+		{"mcl_core:stick", "pala_paladium:endium_ingot"},
+		{"mcl_core:stick", ""},
+	},
+})
