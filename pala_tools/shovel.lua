@@ -95,3 +95,40 @@ minetest.register_tool("pala_tools:shovel_gpaladium", {
 		shovely = { speed = 9, level = 5, uses = 4999 }
 	},
 })
+
+--CRAFT
+minetest.register_craft({
+	output = "pala_tools:shovel_amethyst",
+	recipe = {
+		{"pala_paladium:amethyst_ingot"},
+		{"mcl_core:stick"},
+		{"mcl_core:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:shovel_titanium",
+	recipe = {
+		{"pala_paladium:titanium_ingot"},
+		{"mcl_core:stick"},
+		{"mcl_core:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:shovel_paladium",
+	recipe = {
+		{"pala_paladium:paladium_ingot"},
+		{"mcl_core:stick"},
+		{"mcl_core:stick"},
+	},
+})
+
+minetest.register_craft({
+	output = "pala_tools:shovel_gpaladium",
+	recipe = {
+		{"pala_paladium:gpaladium_ingot"},
+		{"mcl_core:stick"},
+		{"mcl_core:stick"},
+	},
+})
