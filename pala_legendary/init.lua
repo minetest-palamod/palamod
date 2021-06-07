@@ -24,7 +24,7 @@ function pala_legendary.register_legendary(name, def)
 		_doc_items_longdesc = def.longdesc
 		inventory_image = def.inventory_image,
 		stack_max = 1,
-		groups = {legendary_stone=1},
+		groups = {legendary_stone = 1},
 		on_use = function(itemstack, player, pointed_thing)
 			local ok
 			local last_use = itemstack:get_meta():get_int("pala_last_use")
