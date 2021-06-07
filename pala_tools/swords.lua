@@ -1,10 +1,7 @@
 local modname = minetest.get_current_modname()
 local S = minetest.get_translator(modname)
 
-local sword_longdesc = S([[
-	Swords are great in melee combat, as they are fast, deal high damage and can endure countless battles.
-	Swords can also be used to cut down a few particular blocks, such as cobwebs.
-]])
+local sword_longdesc = minetest.registered_tools["mcl_tools:sword_diamond"]._doc_items_longdesc
 
 --Amethyst
 minetest.register_tool("pala_tools:sword_amethyst", {
