@@ -29,7 +29,7 @@ minetest.register_chatcommand("feed", {
 			return true, C(mcl_colors.GREEN, S("You have been feed!"))
         else
             return false, C(mcl_colors.RED, S("You must have the [@1] grade to run this command.",
-				pala_grade.grades.hero.desc..F(mcl_colors.RED)))
+				pala_grade.grades.hero.desc))
         end
 	end,
 })
@@ -67,7 +67,7 @@ minetest.register_chatcommand("deathlocate", {
 				end
 			else
 				return false, C(mcl_colors.RED, S("You must have the [@1] grade to run this command.",
-					pala_grade.grades.hero.desc..F(mcl_colors.RED)))
+					pala_grade.grades.hero.desc))
 			end
 		else
 			return false, "Player not found"
