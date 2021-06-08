@@ -1,7 +1,7 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
 local C = minetest.colorize
-local F = minetest.get_color_escape_sequence
+--local F = minetest.get_color_escape_sequence
 
 local vector = vector
 
