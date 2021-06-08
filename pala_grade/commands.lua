@@ -7,13 +7,13 @@ local vector = vector
 
 local mcl_colors = mcl_colors
 
-local serialize = minetest.serialize
-local deserialize = minetest.deserialize
+--local serialize = minetest.serialize
+--local deserialize = minetest.deserialize
 local pos_to_string = minetest.pos_to_string
 local string_to_pos = minetest.string_to_pos
 local get_player_by_name = minetest.get_player_by_name
 
-local storage = minetest.get_mod_storage()
+--local storage = minetest.get_mod_storage()
 
 minetest.register_chatcommand("feed", {
 	params = "",
