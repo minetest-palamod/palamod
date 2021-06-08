@@ -1,3 +1,6 @@
+# test world
+.tools/testing/testworld
+
 # Compiled Lua sources
 luac.out
 
