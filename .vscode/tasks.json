@@ -1,9 +1,0 @@
-{
-    "version": "2.0.0",
-    "tasks": [{
-        "label": "minetest",
-        "command": "minetest --config ~/dev/minetest/mc_minetest.conf --go --worldname tpala",
-        //"args": ["test"],
-        "type": "shell"
-    }]
-}
