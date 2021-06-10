@@ -48,5 +48,3 @@ luac.out
 *.ods
 *.zip
 *.blend
-
-.tools/testing/testworld/world.mt

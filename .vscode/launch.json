@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
 		{
-			"command": "minetest --config ${workspaceFolder}/.tools/testing/minetest.conf --go --world ${workspaceFolder}/.tools/testing/testworld",
+			"command": "cp -f ${workspaceFolder}/.tools/testing/world.mt.example ${workspaceFolder}/.tools/testing/testworld/world.mt && minetest --config ${workspaceFolder}/.tools/testing/minetest.conf --go --world ${workspaceFolder}/.tools/testing/testworld",
 			"name": "Start Minetest",
 			"request": "launch",
 			"type": "node-terminal"
