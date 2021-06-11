@@ -5,7 +5,6 @@ TODO: item description and translation
 ]]
 
 local S = minetest.get_translator(minetest.get_current_modname())
-local get_itemslot_bg = mcl_formspec.get_itemslot_bg_v4
 
 --[[formspec_version[4]
 	size[12,7]
