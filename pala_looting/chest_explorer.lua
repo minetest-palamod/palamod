@@ -1,10 +1,13 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
+local function enpty_func() return 0 end
+
 local callbacks = {
-	allow_move = function() return 0 end,
-	allow_put = function() return 0 end,
-	allow_take = function() return 0 end,
+	allow_move = enpty_func,
+	allow_put = enpty_func,
+	allow_take = enpty_func,
 }
+
 local tmp_inventories = {}
 
 minetest.register_on_joinplayer(function(player)
@@ -20,6 +23,7 @@ minetest.register_on_leaveplayer(function(player)
 end)
 
 --Chest Explorer
+--https://youtu.be/5dVaCMRR8JY&t=970
 minetest.register_craftitem("pala_looting:chest_explorer", {
 	description = S("Chest Explorer"),
 	inventory_image = "pala_looting_chest_explorer.png",
