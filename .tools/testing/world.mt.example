@@ -14,6 +14,7 @@ load_mod_pala_server = true
 load_mod_pala_legendary = true
 load_mod_pala_obsidian = true
 load_mod_pala_tools = true
+load_mod_pala_looting = true
 load_mod_pala_backpack = true
 load_mod_pala_decoblock = true
 load_mod_pala_paladium = true
