@@ -12,8 +12,27 @@ function pala_obsidian.register_custom_obsidian(name, def)
 		overlay=def.overlay,
 		color=def.color,
 		miner_level=def.miner_level,
-		after_dig=def.after_dig
+		after_dig=def.after_dig,
+		groups = def.groups,
 	}
+	local after_dig_node
+	if def.after_dig then
+		function after_dig_node(pos, oldnode, oldmetadata, digger)
+			if digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" then
+				return
+			else
+				def.after_dig(pos, oldnode, oldmetadata, digger)
+			end
+		end
+	else
+		after_dig_node = nil
+	end
+	local groups
+	if def.groups then
+		groups = def.groups
+	else
+		groups = {pickaxey=5, building_block=1, material_stone=1, miner_level=def.miner_level, pickaxey_obsidian=5}
+	end
 	minetest.register_node(newname, {
 		description = def.desc,
 		_doc_items_longdesc = (
@@ -25,16 +44,11 @@ function pala_obsidian.register_custom_obsidian(name, def)
 		is_ground_content = true,
 		stack_max = 64,
 		sounds = mcl_sounds.node_sound_stone_defaults(),
-		groups = {pickaxey=5, building_block=1, material_stone=1, miner_level=def.miner_level, pickaxey_obsidian=5},
+		groups = groups,
 		_mcl_blast_resistance = 1200,
 		_mcl_hardness = 50,
-		after_dig_node = function(pos, oldnode, oldmetadata, digger)
-			if digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" then
-				return
-			else
-				def.after_dig(pos, oldnode, oldmetadata, digger)
-			end
-		end,
+		after_dig_node = after_dig_node,
+		mesecons = def.mesecons,
 	})
 end
 
