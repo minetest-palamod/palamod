@@ -1,15 +1,47 @@
-@1 Ore=Minerai de @1
-@1 ore is rare and can be found in clusters near the bottom of the world.=Le minerai de @1 est rare et peut être trouvé en filons près du fond du monde.
-@1 Ingot=Lingot de @1
-Molten @1. It is used to craft armor, tools, and whatnot.=Le @1. Il est utilisé pour fabriquer des armures, des outils et ainsi de suite.
-Block of @1=Block de @1
+# textdomain: pala_paladium
+
+# amethyst
 Amethyst Ore=Minerai d'Améthyste
 Amethyst ore is rare and can be found in clusters near the bottom of the world.=Le minerai d'Améthyste est rare et peut être trouvé en filons près du fond du monde.
 Amethyst Ingot=Lingot d'Améthyste
 Molten Amethyst. It is used to craft armor, tools, and whatnot.=L'Améthyste. Il est utilisé pour fabriquer des armures, des outils et ainsi de suite.
 Block of Amethyst=Block d'Améthyste
-A block of Amethyst is mostly a shiny decorative block.=Un bloc d'améthyste est principalement un bloc décoratif brillant.
-Amethyst=Améthyste
-Titanium=Titane
+A block of amethyst is mostly a shiny decorative block.=Un bloc d'améthyste est principalement un bloc décoratif brillant.
+
+# titanium
+Titanium Ore=Minerai de Titane
+Titanium ore is rare and can be found in clusters near the bottom of the world.=Le minerai de Titane est rare et peut être trouvé en filons près du fond du monde.
+Titanium Ingot=Lingot de Titane
+Molten Titanium. It is used to craft armor, tools, and whatnot.=Le Titane. Il est utilisé pour fabriquer des armures, des outils et ainsi de suite.
+Block of Titanium=Block de Titane
+A block of titanium is mostly a shiny decorative block.=Un bloc de titane est principalement un bloc décoratif brillant.
+
+# paladium
+Paladium Ore=Minerai de Paladium
+Paladium ore is rare and can be found in clusters near the bottom of the world.=Le minerai de Paladium est rare et peut être trouvé en filons près du fond du monde.
+Paladium Ingot=Lingot de Paladium
+Molten Paladium. It is used to craft armor, tools, and whatnot.=Le Paladium. Il est utilisé pour fabriquer des armures, des outils et ainsi de suite.
+Block of Paladium=Block de Paladium
+A block of paladium is mostly a shiny decorative block.=Un bloc de paladium est principalement un bloc décoratif brillant.
+
+# gpaladium
+Green Paladium Ore=Minerai de Paladium Vert
+Green Paladium ore is rare and can be given inside events.=Le minerai de Paladium Vert est rare et peut être donné lors d'events.
+Green Paladium Ingot=Lingot de Paladium Vert
+Molten Green Paladium. It is used to craft armor, tools, and whatnot.=Le Paladium Vert. Il est utilisé pour fabriquer des armures, des outils et ainsi de suite.
+Block of Green Paladium=Block de Paladium Vert
+A block of green paladium is mostly a shiny decorative block.=Un bloc de paladium vert est principalement un bloc décoratif brillant.
+
+# endium
+Endium Ingot=Lingot d'Endium
+Endium Nugget=Pépite d'Endium
+Molten Endium. It is used to craft armor, tools, and whatnot.=L'Endium. Il est utilisé pour fabriquer des armures, des outils et ainsi de suite.
+Endium nuggets are very small pieces of molten endium; the main purpose is to create endium ingots.=Les pépites d'endium sont de très petits morceaux d'endium fondu; le but principal est de créer des lingots d'endium'.
+
+# findium
+Findium Ore=Minerai de Findium
+Findium ore is rare and can be found in clusters near the bottom of the world.=Le minerai de Findium est rare et peut être trouvé en filons près du fond du monde.
 Findium Gem. It is used to craft armor, tools, and whatnot.=Le Findium. Il est utilisé pour fabriquer des armures, des outils et ainsi de suite.
 Findium Gem=Cristal de Findium
+Block of Findium=Block de Findium
+A block of findium is mostly a shiny decorative block.=Un bloc de findium est principalement un bloc décoratif brillant.

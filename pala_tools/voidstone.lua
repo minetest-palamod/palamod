@@ -14,6 +14,16 @@ local get_itemslot_bg = mcl_formspec.get_itemslot_bg_v4
 	label[0.5,12.5;Inventory]
 	list[current_player;main;5.5,0.5;1,1;0]
 ]]
+pala_tools.voidstone_form = table.concat({
+	"formspec_version[4]",
+	"size[12,7]",
+	pala_paladium.get_itemslot_bg(0.5,2,9,4),
+	"list[current_player;main;0.5,2;9,4;0]",
+	"label[0.5,0.5;"..S("Voidstone").."]",
+	pala_paladium.get_itemslot_bg(5.5,0.5,1,1),
+	"list[detached:voidstone_trash;main;5.5,0.5;1,1;0]",
+	"listring[]",
+})
 
 local trash = minetest.create_detached_inventory("voidstone_trash", {
 	allow_put = function(inv, listname, index, stack, player)
@@ -24,18 +34,6 @@ local trash = minetest.create_detached_inventory("voidstone_trash", {
 	end,
 })
 trash:set_size("main", 1)
-
---TODO: use better inventory
-pala_tools.voidstone_form = table.concat({
-	"formspec_version[4]",
-	"size[12,7]",
-	get_itemslot_bg(0.5,2,9,4),
-	"list[current_player;main;0.5,2;9,4;0]",
-	"label[0.5,0.5;"..S("Voidstone").."]",
-	get_itemslot_bg(5.5,0.5,1,1),
-	"list[detached:trash;main;5.5,0.5;1,1;0]",
-	"listring[]",
-})
 
 minetest.register_craftitem("pala_tools:voidstone", {
 	description = S("Voidstone"),

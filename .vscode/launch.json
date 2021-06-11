@@ -4,11 +4,11 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "name": "Start Minetest",
-            "request": "launch",
-            "type": "node",
-            "preLaunchTask": "minetest",
-        }
+		{
+			"command": "\\cp -f ${workspaceFolder}/.tools/testing/world.mt.example ${workspaceFolder}/.tools/testing/testworld/world.mt && minetest --config ${workspaceFolder}/.tools/testing/minetest.conf --go --world ${workspaceFolder}/.tools/testing/testworld",
+			"name": "Start Minetest",
+			"request": "launch",
+			"type": "node-terminal"
+		},
     ]
 }

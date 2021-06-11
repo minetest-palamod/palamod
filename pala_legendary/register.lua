@@ -1,6 +1,7 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
 
+local math = math
 local table = table
 local ipairs = ipairs
 
@@ -9,18 +10,8 @@ local minerallist = {
 	"pala_paladium:titanium_ingot",
 	"pala_paladium:ametyst_ingot",
 	"mcl_core:gold_ingot",
-	"mcl_core:steel_ingot"
+	"mcl_core:steel_ingot",
 }
-
-pala_legendary.register_legendary("random", {
-	name = S("Random"),
-	longdesc = S("Basic legendary stone, it is the one that then gives one of the @1 stones.",
-		#pala_legendary.registered_stones),
-	inventory_image = "pala_legendary_legendary_random.png",
-	func = function(itemstack, player, pointed_thing)
-		return itemstack:replace({name=pala_legendary.get_random_stone()})
-	end,
-})
 
 --Fortune
 pala_legendary.register_legendary("fortune", {
@@ -85,6 +76,19 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		inventory_image = "pala_legendary_legendary_fortune.png",
 	})
 end
+
+--This stone should be registered LAST to have the right number of stones in his description
+--minetest.register_on_mods_loaded(function()
+pala_legendary.register_legendary("random", {
+	name = S("Random"),
+	longdesc = S("Basic legendary stone, it is the one that then gives one of the @1 stones.",
+		#pala_legendary.registered_stones),
+	inventory_image = "pala_legendary_legendary_random.png",
+	func = function(itemstack, player, pointed_thing)
+		return itemstack:replace({name = pala_legendary.get_random_stone()})
+	end,
+})
+--end)
 
 --[[
 TODO: every legendary stones working

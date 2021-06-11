@@ -125,6 +125,62 @@ pala_obsidian.register_custom_obsidian("poison", {
 	end,
 })
 
+
+--https://youtu.be/W1MuBf2B-U8&t=638
+--TODO: add craft
+pala_obsidian.register_custom_obsidian("redstone_off", {
+	desc = "Redstone Obsidian",
+	longdesc = "Transmits redstone power",
+	tiles = {
+		"default_obsidian.png",
+		"default_obsidian.png",
+		"default_obsidian.png^pala_obsidian_redstone_off_obsidian.png",
+		"default_obsidian.png^pala_obsidian_redstone_off_obsidian.png",
+		"default_obsidian.png^pala_obsidian_redstone_off_obsidian.png",
+		"default_obsidian.png^pala_obsidian_redstone_off_obsidian.png",
+	},
+	groups = {
+		pickaxey = 5,
+		building_block = 1,
+		material_stone = 1,
+		pickaxey_obsidian = 5,
+		mesecon_conductor_craftable = 1,
+	},
+	mesecons = {
+		conductor = {
+			state = mesecon.state.off,
+			onstate = "pala_obsidian:redstone_on_obsidian",
+		},
+	},
+})
+
+pala_obsidian.register_custom_obsidian("redstone_on", {
+	desc = "Redstone Obsidian",
+	longdesc = "Transmits redstone power",
+	tiles = {
+		"default_obsidian.png",
+		"default_obsidian.png",
+		"default_obsidian.png^pala_obsidian_redstone_on_obsidian.png",
+		"default_obsidian.png^pala_obsidian_redstone_on_obsidian.png",
+		"default_obsidian.png^pala_obsidian_redstone_on_obsidian.png",
+		"default_obsidian.png^pala_obsidian_redstone_on_obsidian.png",
+	},
+	groups = {
+		pickaxey = 5,
+		building_block = 1,
+		material_stone = 1,
+		pickaxey_obsidian = 5,
+		mesecon_conductor_craftable = 1,
+		not_in_creative_inventory = 1,
+	},
+	mesecons = {
+		conductor = {
+			state = mesecon.state.on,
+			offstate = "pala_obsidian:redstone_off_obsidian",
+		},
+	},
+})
+
 if has_mcl_core and minetest.get_modpath("mcl_potions") then
 	minetest.register_craft({
 		output = 'pala_obsidian:poison_obsidian',

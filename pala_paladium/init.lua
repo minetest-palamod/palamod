@@ -39,7 +39,7 @@ minetest.register_craftitem("pala_paladium:amethyst_ingot", {
 
 minetest.register_node("pala_paladium:amethystblock", {
 	description = S("Block of Amethyst"),
-	_doc_items_longdesc = S("A block of Amethyst is mostly a shiny decorative block."),
+	_doc_items_longdesc = S("A block of amethyst is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_amethyst_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -52,30 +52,30 @@ minetest.register_node("pala_paladium:amethystblock", {
 minetest.register_craft({
 	output = "pala_paladium:amethystblock",
 	recipe = {
-		{'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot'},
-		{'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot'},
-		{'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot'},
-	}
+		{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
+		{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
+		{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
+	},
 })
 
 minetest.register_craft({
-	output = 'pala_paladium:amethyst_ingot 9',
+	output = "pala_paladium:amethyst_ingot 9",
 	recipe = {
-		{'pala_paladium:amethystblock'},
-	}
+		{"pala_paladium:amethystblock"},
+	},
 })
 
 minetest.register_craft({
 	type = "cooking",
 	output = "pala_paladium:amethyst_ingot",
 	recipe = "pala_paladium:stone_with_amethyst",
-	cooktime = 5
+	cooktime = 5,
 })
 
 --Titanium
 minetest.register_node("pala_paladium:stone_with_titanium", {
-	description = S("@1 Ore", S("Titanium")),
-	_doc_items_longdesc = S("@1 ore is rare and can be found in clusters near the bottom of the world.", S("Titanium")),
+	description = S("Titanium Ore"),
+	_doc_items_longdesc = S("Titanium ore is rare and can be found in clusters near the bottom of the world."),
 	tiles = {"default_stone.png^pala_paladium_mineral_titanium.png"},
 	is_ground_content = true,
 	stack_max = 64,
@@ -86,16 +86,16 @@ minetest.register_node("pala_paladium:stone_with_titanium", {
 })
 
 minetest.register_craftitem("pala_paladium:titanium_ingot", {
-	description = S("@1 Ingot", S("Titanium")),
-	_doc_items_longdesc = S("Molten @1. It is used to craft armor, tools, and whatnot.", S("Titanium")),
+	description = S("Titanium Ingot"),
+	_doc_items_longdesc = S("Molten Titanium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_titanium_ingot.png",
 	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
 minetest.register_node("pala_paladium:titaniumblock", {
-	description = S("Block of @1", S("Titanium")),
-	_doc_items_longdesc = S("A block of @1 is mostly a shiny decorative block.", S("Titanium")),
+	description = S("Block of Titanium"),
+	_doc_items_longdesc = S("A block of titanium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_titanium_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -108,30 +108,30 @@ minetest.register_node("pala_paladium:titaniumblock", {
 minetest.register_craft({
 	output = "pala_paladium:titaniumblock",
 	recipe = {
-		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
-		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
-		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
-	}
+		{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
+		{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
+		{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
+	},
 })
 
 minetest.register_craft({
-	output = 'pala_paladium:titanium_ingot 9',
+	output = "pala_paladium:titanium_ingot 9",
 	recipe = {
-		{'pala_paladium:titaniumblock'},
-	}
+		{"pala_paladium:titaniumblock"},
+	},
 })
 
 minetest.register_craft({
 	type = "cooking",
 	output = "pala_paladium:titanium_ingot",
 	recipe = "pala_paladium:stone_with_titanium",
-	cooktime = 5
+	cooktime = 5,
 })
 
 --Paladium
 minetest.register_node("pala_paladium:stone_with_paladium", {
-	description = S("@1 Ore", S("Paladium")),
-	_doc_items_longdesc = S("@1 ore is rare and can be found in clusters near the bottom of the world.", S("Paladium")),
+	description = S("Paladium Ore"),
+	_doc_items_longdesc = S("Paladium ore is rare and can be found in clusters near the bottom of the world."),
 	tiles = {"pala_paladium_mineral_paladium.png"},
 	is_ground_content = true,
 	stack_max = 64,
@@ -148,16 +148,16 @@ minetest.register_node("pala_paladium:stone_with_paladium", {
 })
 
 minetest.register_craftitem("pala_paladium:paladium_ingot", {
-	description = S("@1 Ingot", S("Paladium")),
-	_doc_items_longdesc = S("Molten @1. It is used to craft armor, tools, and whatnot.", S("Paladium")),
+	description = S("Paladium Ingot"),
+	_doc_items_longdesc = S("Molten Paladium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_paladium_ingot.png",
 	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
 minetest.register_node("pala_paladium:paladiumblock", {
-	description = S("Block of @1", S("Paladium")),
-	_doc_items_longdesc = S("A block of @1 is mostly a shiny decorative block.", S("Paladium")),
+	description = S("Block of Paladium"),
+	_doc_items_longdesc = S("A block of Paladium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_paladium_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -170,30 +170,30 @@ minetest.register_node("pala_paladium:paladiumblock", {
 minetest.register_craft({
 	output = "pala_paladium:paladiumblock",
 	recipe = {
-		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
-		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
-		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
-	}
+		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
+		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
+		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
+	},
 })
 
 minetest.register_craft({
-	output = 'pala_paladium:paladium_ingot 9',
+	output = "pala_paladium:paladium_ingot 9",
 	recipe = {
-		{'pala_paladium:paladiumblock'},
-	}
+		{"pala_paladium:paladiumblock"},
+	},
 })
 
 minetest.register_craft({
 	type = "cooking",
 	output = "pala_paladium:paladium_ingot",
 	recipe = "pala_paladium:stone_with_paladium",
-	cooktime = 5
+	cooktime = 5,
 })
 
 --Green Paladium
 minetest.register_node("pala_paladium:stone_with_gpaladium", {
-	description = S("@1 Ore", S("Green Paladium")),
-	_doc_items_longdesc = S("@1 ore is rare and can be found in clusters near the bottom of the world.", S("Green Paladium")),
+	description = S("Green Paladium Ore"),
+	_doc_items_longdesc = S("Green Paladium ore is rare and can be given inside events."),
 	tiles = {"default_stone.png^pala_paladium_mineral_gpaladium.png"},
 	is_ground_content = true,
 	stack_max = 64,
@@ -204,16 +204,16 @@ minetest.register_node("pala_paladium:stone_with_gpaladium", {
 })
 
 minetest.register_craftitem("pala_paladium:gpaladium_ingot", {
-	description = S("@1 Ingot", S("Green Paladium")),
-	_doc_items_longdesc = S("Molten @1. It is used to craft armor, tools, and whatnot.", S("Green Paladium")),
+	description = S("Green Paladium Ingot"),
+	_doc_items_longdesc = S("Molten Green Paladium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_gpaladium_ingot.png",
 	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
 minetest.register_node("pala_paladium:gpaladiumblock", {
-	description = S("Block of @1", S("Green Paladium")),
-	_doc_items_longdesc = S("A block of @1 is mostly a shiny decorative block.", S("Green Paladium")),
+	description = S("Block of Green Paladium"),
+	_doc_items_longdesc = S("A block of Green Paladium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_gpaladium_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -226,30 +226,30 @@ minetest.register_node("pala_paladium:gpaladiumblock", {
 minetest.register_craft({
 	output = "pala_paladium:gpaladiumblock",
 	recipe = {
-		{'pala_paladium:gpaladium_ingot', 'pala_paladium:gpaladium_ingot', 'pala_paladium:gpaladium_ingot'},
-		{'pala_paladium:gpaladium_ingot', 'pala_paladium:gpaladium_ingot', 'pala_paladium:gpaladium_ingot'},
-		{'pala_paladium:gpaladium_ingot', 'pala_paladium:gpaladium_ingot', 'pala_paladium:gpaladium_ingot'},
-	}
+		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
+		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
+		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
+	},
 })
 
 minetest.register_craft({
-	output = 'pala_paladium:gpaladium_ingot 9',
+	output = "pala_paladium:gpaladium_ingot 9",
 	recipe = {
-		{'pala_paladium:gpaladiumblock'},
-	}
+		{"pala_paladium:gpaladiumblock"},
+	},
 })
 
 minetest.register_craft({
 	type = "cooking",
 	output = "pala_paladium:gpaladium_ingot",
 	recipe = "pala_paladium:stone_with_gpaladium",
-	cooktime = 5
+	cooktime = 5,
 })
 
 --Findium
 minetest.register_node("pala_paladium:stone_with_findium", {
-	description = S("@1 Ore", S("Findium")),
-	_doc_items_longdesc = S("@1 ore is rare and can be found in clusters near the bottom of the world.", S("Findium")),
+	description = S("Findium Ore"),
+	_doc_items_longdesc = S("Findium ore is rare and can be found in clusters near the bottom of the world."),
 	tiles = {"pala_paladium_mineral_findium.png"},
 	is_ground_content = true,
 	stack_max = 64,
@@ -274,8 +274,8 @@ minetest.register_craftitem("pala_paladium:findium_gem", {
 })
 
 minetest.register_node("pala_paladium:findiumblock", {
-	description = S("Block of @1", S("Findium")),
-	_doc_items_longdesc = S("A block of @1 is mostly a shiny decorative block.", S("Findium")),
+	description = S("Block of Findium"),
+	_doc_items_longdesc = S("A block of findium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_findiumblock.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -288,41 +288,43 @@ minetest.register_node("pala_paladium:findiumblock", {
 minetest.register_craft({
 	output = "pala_paladium:findiumblock",
 	recipe = {
-		{'pala_paladium:findium_gem', 'pala_paladium:findium_gem', 'pala_paladium:findium_gem'},
-		{'pala_paladium:findium_gem', 'pala_paladium:findium_gem', 'pala_paladium:findium_gem'},
-		{'pala_paladium:findium_gem', 'pala_paladium:findium_gem', 'pala_paladium:findium_gem'},
-	}
+		{"pala_paladium:findium_gem", "pala_paladium:findium_gem", "pala_paladium:findium_gem"},
+		{"pala_paladium:findium_gem", "pala_paladium:findium_gem", "pala_paladium:findium_gem"},
+		{"pala_paladium:findium_gem", "pala_paladium:findium_gem", "pala_paladium:findium_gem"},
+	},
 })
 
 minetest.register_craft({
-	output = 'pala_paladium:findium_gem 9',
+	output = "pala_paladium:findium_gem 9",
 	recipe = {
-		{'pala_paladium:findiumblock'},
-	}
+		{"pala_paladium:findiumblock"},
+	},
 })
 
 --Endium
 minetest.register_craftitem("pala_paladium:endium_ingot", {
-	description = ("Endium Ingot"),
-	_doc_items_longdesc = ("Molten Endium. It is used to craft armor, tools, and whatnot."),
+	description = S("Endium Ingot"),
+	_doc_items_longdesc = S("Molten Endium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_endium_ingot.png",
 	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
 minetest.register_craftitem("pala_paladium:endium_nugget", {
-	description = ("Endium Nugget"),
-	_doc_items_longdesc = ("Endium Nugget. It is used to craft armor, tools, and whatnot."),
+	description = S("Endium Nugget"),
+	_doc_items_longdesc = S([[
+		Endium nuggets are very small pieces of molten endium; the main purpose is to create endium ingots.
+	]]),
 	inventory_image = "pala_paladium_endium_nugget.png",
 	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
 minetest.register_craft({
-	output = 'pala_paladium:endium_ingot',
+	output = "pala_paladium:endium_ingot",
 	recipe = {
-		{'pala_paladium:endium_nugget 9'},
-	}
+		{"pala_paladium:endium_nugget 9"},
+	},
 })
 
 minetest.log("action", "[pala_paladium] loaded succesfully")

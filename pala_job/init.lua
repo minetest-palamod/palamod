@@ -4,6 +4,7 @@ local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
 local S = minetest.get_translator(modname)
+local F = minetest.formspec_escape
 
 local get_item_group = minetest.get_item_group
 
@@ -153,6 +154,7 @@ end
 TODO: better styling and formspec layout
 ]]
 
+local gray = mcl_colors.DARK_GRAY
 function pala_job.show_win_level(player, job, level, loot)
 	local loot1 = pala_job.get_loot_item(loot[level][1])
 	local loot2 = pala_job.get_loot_item(loot[level][2])
@@ -160,12 +162,16 @@ function pala_job.show_win_level(player, job, level, loot)
 	local form = table.concat({
 		"formspec_version[4]",
 		"size[9,5.5]",
-		"label[3.5,0.5;"..S(string.upper(job)).."]",
+		--"label[3.5,0.5;"..S(string.upper(job)).."]",
+		"hypertext[0,0;9,1.2;job;<global valign=middle halign=center size=25 color="..gray..">"..S(string.upper(job)).."]",
 		"label[3,2;You pass level "..level.."]",
 		"label[3,3.5;You receive :]",
 		"item_image[1,4;1,1;"..loot1:get_name().." "..loot1:get_count().."]",
+		"tooltip[1,4;1,1;"..F(loot1:get_description()).."]",
 		"item_image[4,4;1,1;"..loot2:get_name().." "..loot2:get_count().."]",
+		"tooltip[4,4;1,1;"..F(loot1:get_description()).."]",
 		"item_image[7,4;1,1;"..loot3:get_name().." "..loot3:get_count().."]",
+		"tooltip[7,4;1,1;"..F(loot1:get_description()).."]",
 		"image[0,2.25;9,1;pala_job_level_up_border.png]"
 	})
 	minetest.show_formspec(player:get_player_name(), "pala_job:level_up", form)
@@ -242,6 +248,9 @@ minetest.register_craft_predict(function(itemstack, player, old_craft_grid, craf
 end)
 
 dofile(modpath.."/update.lua")
-dofile(modpath.."/mobs.lua")
+
+if minetest.settings:get_bool("palamod.experimental", false) then
+	dofile(modpath.."/mobs.lua")
+end
 
 minetest.log("action", "[pala_job] loaded succesfully")

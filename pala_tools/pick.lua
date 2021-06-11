@@ -114,46 +114,44 @@ minetest.register_tool("pala_tools:pick_endium", {
     },
 })
 
-
-if minetest.get_modpath("pala_paladium") then
-    minetest.register_craft({
-		output = 'pala_tools:pick_amethyst',
-		recipe = {
-			{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
-			{"", "mcl_core:stick", ""},
-			{"", "mcl_core:stick", ""},
-		}
-	})
-    minetest.register_craft({
-		output = 'pala_tools:pick_titanium',
-		recipe = {
-			{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
-			{"", "mcl_core:stick", ""},
-			{"", "mcl_core:stick", ""},
-		}
-	})
-	minetest.register_craft({
-		output = 'pala_tools:pick_paladium',
-		recipe = {
-			{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
-			{"", "mcl_core:stick", ""},
-			{"", "mcl_core:stick", ""},
-		}
-	})
-    minetest.register_craft({
-		output = 'pala_tools:pick_gpaladium',
-		recipe = {
-			{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
-			{"", "mcl_core:stick", ""},
-			{"", "mcl_core:stick", ""},
-		}
-	})
-    minetest.register_craft({
-		output = 'pala_tools:pick_endium',
-		recipe = {
-			{"pala_paladium:endium_ingot", "pala_paladium:endium_ingot", "pala_paladium:endium_ingot"},
-			{"", "mcl_core:stick", ""},
-			{"", "mcl_core:stick", ""},
-		}
-	})
-end
+--CRAFT
+minetest.register_craft({
+	output = 'pala_tools:pick_amethyst',
+	recipe = {
+		{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
+		{"", "mcl_core:stick", ""},
+		{"", "mcl_core:stick", ""},
+	}
+})
+minetest.register_craft({
+	output = 'pala_tools:pick_titanium',
+	recipe = {
+		{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
+		{"", "mcl_core:stick", ""},
+		{"", "mcl_core:stick", ""},
+	}
+})
+minetest.register_craft({
+	output = 'pala_tools:pick_paladium',
+	recipe = {
+		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
+		{"", "mcl_core:stick", ""},
+		{"", "mcl_core:stick", ""},
+	}
+})
+minetest.register_craft({
+	output = 'pala_tools:pick_gpaladium',
+	recipe = {
+		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
+		{"", "mcl_core:stick", ""},
+		{"", "mcl_core:stick", ""},
+	}
+})
+minetest.register_craft({
+	output = 'pala_tools:pick_endium',
+	recipe = {
+		{"pala_paladium:endium_ingot", "pala_paladium:endium_ingot", "pala_paladium:endium_ingot"},
+		{"", "mcl_core:stick", ""},
+		{"", "mcl_core:stick", ""},
+	}
+})

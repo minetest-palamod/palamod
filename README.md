@@ -42,6 +42,7 @@ This target include:
 
 Additional features:
 * A good API to allow external mod to work with this modpack properly.
+* A full translation in English and French (at least for stable features).
 
 ### Features not included in this target
 

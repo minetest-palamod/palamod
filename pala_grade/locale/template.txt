@@ -1,7 +1,8 @@
-# textdomain:pala_grade
+# textdomain: pala_grade
 You must have the [@1] grade to run this command.=
 You have been feed!=
 Chalenger=
 Hero=
 Legendary=
 YouTube=
+Your last death was in: x:@1 y:@2 z:@3=

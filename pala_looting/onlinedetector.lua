@@ -1,6 +1,10 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 local F = minetest.formspec_escape
 
+local get_meta = minetest.get_meta
+--local get_connected_players = minetest.get_connected_players
+--local find_nodes_in_area = minetest.find_nodes_in_area
+
 local table = table
 
 local function get_detector_form(default)
@@ -16,6 +20,22 @@ local playerlist = {}
 
 minetest.register_on_joinplayer(function(player)
 	playerlist[player:get_player_name()] = true
+	--[[local playerlist = get_connected_players()
+	for i = 1, #playerlist do --faster than pairs() or ipairs()
+		--local nodelist = minetest.find_node_near(playerlist[i]:get_pos(), 20, "")
+		local playerpos = playerlist[i]:get_pos()
+		local nodelist = find_nodes_in_area(
+			{x=pos.x+8, y=pos.y+8, z=pos.z+8},
+			{x=pos.x-8, y=pos.y-8, z=pos.z-8}, "group:pala_online_detector")
+		for n = 1, #nodelist do
+			if node.name == "pala_looting:online_detector_off" then
+				update_detector_off(pos, get_meta(pos):get_string("name"))
+			else
+				update_detector_on(pos, get_meta(pos):get_string("name"))
+			end
+		end
+	end]]
+	--This code can cause lag if griefers put many online detectors in the same place
 end)
 
 minetest.register_on_leaveplayer(function(player)
@@ -48,12 +68,12 @@ minetest.register_node("pala_looting:online_detector_off", {
 		},
 	},
 	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
+		local meta = get_meta(pos)
 		meta:set_string("formspec", get_detector_form(meta:get_string("name")))
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
 		if fields.name then
-			local meta = minetest.get_meta(pos)
+			local meta = get_meta(pos)
 			meta:set_string("name", fields.name)
 			meta:set_string("formspec", get_detector_form(fields.name))
 			update_detector_off(pos, fields.name)
@@ -74,12 +94,12 @@ minetest.register_node("pala_looting:online_detector_on", {
 		},
 	},
 	on_construct = function(pos)
-		local meta = minetest.get_meta(pos)
+		local meta = get_meta(pos)
 		meta:set_string("formspec", get_detector_form(meta:get_string("name")))
 	end,
 	on_receive_fields = function(pos, formname, fields, sender)
 		if fields.name then
-			local meta = minetest.get_meta(pos)
+			local meta = get_meta(pos)
 			meta:set_string("name", fields.name)
 			meta:set_string("formspec", get_detector_form(fields.name))
 			update_detector_on(pos, fields.name)
@@ -93,7 +113,7 @@ minetest.register_abm({
 	interval = 30,
 	chance = 1,
 	action = function(pos)
-		update_detector_off(pos, minetest.get_meta(pos):get_string("name"))
+		update_detector_off(pos, get_meta(pos):get_string("name"))
 	end,
 })
 
@@ -103,9 +123,25 @@ minetest.register_abm({
 	interval = 30,
 	chance = 1,
 	action = function(pos)
-		update_detector_on(pos, minetest.get_meta(pos):get_string("name"))
+		update_detector_on(pos, get_meta(pos):get_string("name"))
 	end,
 })
+
+minetest.register_lbm({
+	label = "Update onlinedetector state",
+	name = "pala_looting:online_detector_off",
+	nodenames = {"group:pala_online_detector"},
+	run_at_every_load = true,
+	action = function(pos, node)
+		if node.name == "pala_looting:online_detector_off" then
+			update_detector_off(pos, get_meta(pos):get_string("name"))
+		else
+			update_detector_on(pos, get_meta(pos):get_string("name"))
+		end
+	end,
+})
+
+
 
 minetest.register_craft({
 	output = "pala_looting:online_detector_off",
