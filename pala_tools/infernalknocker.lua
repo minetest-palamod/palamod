@@ -23,7 +23,7 @@ minetest.register_tool("pala_tools:infernal_knocker", {
 		punch_attack_uses = 59,
 	},
 	sound = { breaks = "default_tool_breaks" },
-	_repair_material = "group:wood",
+	_mcl_toollike_wield = true,
 })
 
 minetest.register_on_craft(function(itemstack, player, old_craft_grid, craft_inv)
