@@ -144,7 +144,7 @@ function pala_dynamite.register_dynamite(name, def)
 			dynamite.thrower_name = player_name
 
 			if not minetest.settings:get_bool("creative_mode") then
-				itemstack = ""
+				itemstack:take_item()
 			end
 		end
 
