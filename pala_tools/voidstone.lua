@@ -16,10 +16,10 @@ local S = minetest.get_translator(minetest.get_current_modname())
 pala_tools.voidstone_form = table.concat({
 	"formspec_version[4]",
 	"size[12,7]",
-	pala_paladium.get_itemslot_bg(0.5,2,9,4),
+	pala_core.get_itemslot_bg(0.5,2,9,4),
 	"list[current_player;main;0.5,2;9,4;0]",
 	"label[0.5,0.5;"..S("Voidstone").."]",
-	pala_paladium.get_itemslot_bg(5.5,0.5,1,1),
+	pala_core.get_itemslot_bg(5.5,0.5,1,1),
 	"list[detached:voidstone_trash;main;5.5,0.5;1,1;0]",
 	"listring[]",
 })

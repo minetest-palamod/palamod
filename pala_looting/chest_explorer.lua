@@ -57,7 +57,7 @@ minetest.register_craftitem("pala_looting:chest_explorer", {
 			local form = table.concat({
 				"formspec_version[4]",
 				"size[11.50,"..(width+width*0.25)+0.25 .."]",
-				pala_paladium.get_itemslot_bg(0.25,0.25, 9, width),
+				pala_core.get_itemslot_bg(0.25,0.25, 9, width),
 				"list[detached:pala_looting:chest_explorer_"..playername..";main;0.25,0.25;9,"..width..";]"
 			})
 				--mcl_formspec.get_itemslot_bg(0,4.5, width, size/width)
