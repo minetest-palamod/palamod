@@ -1,7 +1,5 @@
 minetest.log("action", "[pala_paladium] loading...")
 
-pala_paladium = {}
-
 local S = minetest.get_translator(minetest.get_current_modname())
 
 --Amethyst
