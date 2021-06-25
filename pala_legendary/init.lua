@@ -49,6 +49,7 @@ function pala_legendary.register_legendary(name, def)
 	})
 	pala_legendary.registered_stones[name] = {
 		name = def.name,
+		color = def.color,
 		longdesc = def.longdesc,
 		inventory_image = def.inventory_image,
 		func = def.func,

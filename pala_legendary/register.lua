@@ -16,6 +16,7 @@ local minerallist = {
 --Fortune
 pala_legendary.register_legendary("fortune", {
 	name = S("Fortune"),
+	color = mcl_colors.YELLOW,
 	longdesc = S("Gives a random number of a random ore (this can be coal such as palladium)."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 	func = function(itemstack, player, pointed_thing)
@@ -33,6 +34,7 @@ pala_legendary.register_legendary("fortune", {
 --Chaos
 pala_legendary.register_legendary("chaos", {
 	name = S("Chaos"),
+	color = mcl_colors.DARK_PURPLE,
 	longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 	inventory_image = "pala_legendary_legendary_fortune.png",
 	func = function(itemstack, player, pointed_thing)
@@ -53,6 +55,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 	--Jobs
 	pala_legendary.register_legendary("jobs", {
 		name = S("Jobs"),
+		color = mcl_colors.GREEN,
 		longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 		inventory_image = "pala_legendary_legendary_fortune.png",
 	})
@@ -60,6 +63,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 	--Power
 	pala_legendary.register_legendary("power", {
 		name = S("Power"),
+		color = mcl_colors.RED,
 		longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 		inventory_image = "pala_legendary_legendary_fortune.png",
 	})
@@ -72,6 +76,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 	--Invisibility
 	pala_legendary.register_legendary("invisibility", {
 		name = S("Invisibility"),
+		color = mcl_colors.AQUA,
 		longdesc = S("Basic legendary stone, it is the one that then gives one of the six stones."),
 		inventory_image = "pala_legendary_legendary_fortune.png",
 	})

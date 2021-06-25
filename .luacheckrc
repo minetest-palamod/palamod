@@ -27,9 +27,9 @@ read_globals = {
     -- ENVIRONNEMENT
     "lightning", "mcl_weather",
     -- HELP
-    "mcl_craftguide",
+    "mcl_craftguide", "tt",
     -- HUD
-    "awards", "mcl_death_messages", "mcl_experience", "mcl_formspec",
+    "awards", "mcl_death_messages", "mcl_experience", "mcl_formspec", "mcl_tmp_message",
     -- ITEMS
     "mcl_armor", "mcl_crafting_table", "mcl_buckets", "mcl_doors", "mcl_enchanting", "mcl_fire",
 	"mcl_potions", "mcl_throwing", "mcl_stairs", "screwdriver", "mesecon", "tnt",
