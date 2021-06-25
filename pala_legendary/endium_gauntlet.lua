@@ -23,7 +23,7 @@ end
 
 function pala_legendary.gauntlet.add_stone(itemstack, name)
 	local stones = pala_legendary.gauntlet.get_stones(itemstack)
-	stones[name] = true
+	stones[name] = 0
 	itemstack:get_meta():set_string("pala_legendary:stones", serialize(stones))
 	tt.reload_itemstack_description(itemstack)
 	return itemstack
@@ -63,27 +63,27 @@ minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 	on_place = function(itemstack, player, pointed_thing)
 		local playername = player:get_player_name()
 		local stones = pala_legendary.gauntlet.get_stones(itemstack)
-		if stones == {} then
+		local meta = itemstack:get_meta()
+		local selected = meta:get_string("selected")
+
+		if not stones or stones == {} then
 			minetest.chat_send_player(playername, S(C(mcl_colors.RED, "There is no stone in the gauntlet.")))
 			return itemstack
 		else
-			local meta = itemstack:get_meta()
-			local selected = meta:get_string("selected")
 			if player:get_player_control().sneak then
 				if selected == "" then
 					local newstone = next(stones)
-					meta:set_string("selected", next(stones))
+					selected = newstone
 					mcl_tmp_message.message(player, string.format("Endium Gauntlet (%s)",
 						pala_legendary.registered_stones[newstone].name)
 					)
 				else
 					local newstone = next(stones, selected) or next(stones)
-					meta:set_string("selected", newstone)
+					selected = newstone
 					mcl_tmp_message.message(player, string.format("Endium Gauntlet (%s)",
 						pala_legendary.registered_stones[newstone].name)
 					)
 				end
-				return itemstack
 			else
 				if selected == "" then
 					minetest.chat_send_player(playername, S("No stone is selected!"))
@@ -91,33 +91,42 @@ minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 					if stones[selected] then
 						local stonedef = pala_legendary.registered_stones[selected]
 						if stonedef then
-							pala_legendary.spawn_particle(player:get_pos())
-							stonedef.func(itemstack, player, pointed_thing)
+							if os.time()-43200 >= stones[selected] then --12h
+								pala_legendary.spawn_particle(player:get_pos())
+								stonedef.func(itemstack, player, pointed_thing)
+								stones[selected] = os.time()
+							else
+								local nbhour = (last_use-(os.time()-86400))/3600
+								minetest.chat_send_player(player:get_player_name(),
+									C(mcl_colors.GRAY, S("You must wait @1 hours before you can use it.",
+									math.floor(nbhour)))
+								)
+							end
 						else
 							minetest.log("warning",
 								string.format("[pala_legendary] player [%s] used a gauntlet with a wrong stone inside!",
 									playername)
 							)
 						end
-						return itemstack
 					else
 						minetest.log("warning",
 							string.format("[pala_legendary] player [%s] used a gauntlet with a wrong selected stone!",
 								playername)
 						)
-						meta:set_string("selected", next(stones))
-						return itemstack
+						selected = next(stones)
 					end
 				end
 			end
 		end
 		--return pala_legendary.gauntlet.add_stone(itemstack, "fortune")
-		return pala_legendary.gauntlet.set_stones(itemstack, {
-			fortune = true,
-			chaos = true,
-			jobs = true,
-			power = true,
-			invisibility = true,
-		})
+		meta:get_string("selected", selected)
+		return pala_legendary.gauntlet.set_stones(itemstack, stones)
+		--[[return pala_legendary.gauntlet.set_stones(itemstack, {
+			fortune = 0,
+			chaos = 0,
+			jobs = 0,
+			power = 0,
+			invisibility = 0,
+		})]]
 	end,
 })
