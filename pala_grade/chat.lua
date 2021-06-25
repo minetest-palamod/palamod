@@ -8,6 +8,7 @@ local get_color_escape_sequence = minetest.get_color_escape_sequence
 
 local GRAY = mcl_colors.GRAY
 local YELLOW = mcl_colors.YELLOW
+local WHITE = mcl_colors.WHITE
 
 --[[
 TODO: add exactly like mc colored chat handling
@@ -59,9 +60,9 @@ function minetest.format_chat_message(name, message)
 			end
 		else
 			if desc then
-				return C(YELLOW, "<BlackOld> ")..desc.." "..C(GRAY, name..": "..message)
+				return C(YELLOW, "<BlackOld> ")..desc.." "..name..C(GRAY, " : "..message)
 			else
-				return C(YELLOW, "<BlackOld> ")..C(GRAY, name..": "..message)
+				return C(YELLOW, "<BlackOld> ")..name..C(GRAY, " : "..message)
 			end
 		end
 	else
