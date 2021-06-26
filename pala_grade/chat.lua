@@ -4,11 +4,11 @@ local has_mc_faction = minetest.get_modpath("mc_faction")
 
 local string = string
 
-local get_color_escape_sequence = minetest.get_color_escape_sequence
+local CE = minetest.get_color_escape_sequence
 
-local GRAY = mcl_colors.GRAY
-local YELLOW = mcl_colors.YELLOW
---local WHITE = mcl_colors.WHITE
+local GRAY = CE(mcl_colors.GRAY)
+local YELLOW = CE(mcl_colors.YELLOW)
+local WHITE = CE(mcl_colors.WHITE)
 
 --[[
 TODO: add exactly like mc colored chat handling
@@ -37,7 +37,7 @@ function minetest.format_chat_message(name, message)
 			message = string.gsub(message, "(&[%a%d])", function(color)
 				--if pala_grade.chat.colors[color] and pala_grade.chat.colors[color][2] then
 				if pala_grade.chat.colors[color] then --re enable last line then every colors implemented
-					return get_color_escape_sequence(pala_grade.chat.colors[color][1])
+					return CE(pala_grade.chat.colors[color][1])
 				else
 					return ""
 				end
@@ -60,9 +60,9 @@ function minetest.format_chat_message(name, message)
 			end
 		else
 			if desc then
-				return C(YELLOW, "<BlackOld> ")..desc.." "..name..C(GRAY, " : "..message)
+				return YELLOW.."<BlackOld> "..desc.." "..WHITE..name..GRAY.." : "..message
 			else
-				return C(YELLOW, "<BlackOld> ")..name..C(GRAY, " : "..message)
+				return YELLOW.."<BlackOld> "..WHITE..name..GRAY.." : "..message
 			end
 		end
 	else
