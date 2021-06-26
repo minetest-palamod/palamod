@@ -8,7 +8,7 @@ local get_color_escape_sequence = minetest.get_color_escape_sequence
 
 local GRAY = mcl_colors.GRAY
 local YELLOW = mcl_colors.YELLOW
-local WHITE = mcl_colors.WHITE
+--local WHITE = mcl_colors.WHITE
 
 --[[
 TODO: add exactly like mc colored chat handling
