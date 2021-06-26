@@ -54,7 +54,7 @@ tt.register_priority_snippet(snippet)
 
 minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 	description = S("Endium Gauntlet"),
-	_doc_items_longdesc = ("Just right-click to use it."),
+	_doc_items_longdesc = S("Just right-click to use it."),
 	inventory_image = "pala_legendary_endium_gauntlet.png",
 	stack_max = 1,
 	groups = {},
@@ -67,7 +67,7 @@ minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 		local selected = meta:get_string("selected")
 
 		if not stones or stones == {} then
-			minetest.chat_send_player(playername, S(C(mcl_colors.RED, "There is no stone in the gauntlet.")))
+			minetest.chat_send_player(playername, C(mcl_colors.RED, S("There is no stone in the gauntlet.")))
 			return itemstack
 		else
 			if player:get_player_control().sneak then
