@@ -6,6 +6,7 @@ player_backend = sqlite3
 auth_backend = sqlite3
 creative_mode = true
 server_announce = false
+load_mod_pala_core = true
 load_mod_pala_dynamite = true
 load_mod_pala_furnace = true
 load_mod_pala_fakewater = true
