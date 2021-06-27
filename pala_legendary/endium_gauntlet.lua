@@ -130,3 +130,18 @@ minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 		})]]
 	end,
 })
+
+minetest.register_chatcommand("pala_endium", {
+	func = function(name)
+		local player = minetest.get_player_by_name(name)
+		player:set_wielded_item(
+			pala_legendary.gauntlet.set_stones(player:get_wielded_item(), {
+				fortune = 0,
+				chaos = 0,
+				jobs = 0,
+				power = 0,
+				invisibility = 0,
+			})
+		)
+	end,
+})
