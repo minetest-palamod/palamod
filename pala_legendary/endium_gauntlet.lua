@@ -119,7 +119,7 @@ minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 			end
 		end
 		--return pala_legendary.gauntlet.add_stone(itemstack, "fortune")
-		meta:get_string("selected", selected)
+		meta:set_string("selected", selected)
 		return pala_legendary.gauntlet.set_stones(itemstack, stones)
 		--[[return pala_legendary.gauntlet.set_stones(itemstack, {
 			fortune = 0,
