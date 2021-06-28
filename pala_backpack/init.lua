@@ -86,31 +86,33 @@ local form = table.concat({
 minetest.register_cheat("PalaBackpack", "Inventory", function() minetest.show_formspec("df_pala:pala_backpack", form) end)
 ]]
 
-local cheat_log = "[pala_backpack] Player [%s] tried to interact with backpack inventory without using a backpack!"
+if minetest.settings:get_bool("disable_anticheat", false) then
+	local cheat_log = "[pala_backpack] Player [%s] tried to interact with backpack inventory without using a backpack!"
 
-minetest.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
-	if action == "move" or action == "take" then
-		if inventory_info.from_list == "backpack" then
-			local backpack = backpack_widths[player:get_wielded_item():get_name()]
-			if not backpack or inventory_info.from_index > backpack then
-				minetest.log("action", string.format(cheat_log, player:get_player_name())
-				return 0
+	minetest.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
+		if action == "move" or action == "take" then
+			if inventory_info.from_list == "backpack" then
+				local backpack = backpack_widths[player:get_wielded_item():get_name()]
+				if not backpack or inventory_info.from_index > backpack then
+					minetest.log("action", string.format(cheat_log, player:get_player_name()))
+					return 0
+				end
+			elseif inventory_info.to_list == "backpack" then
+				local backpack = backpack_widths[player:get_wielded_item():get_name()]
+				if not backpack or inventory_info.to_index > backpack then
+					minetest.log("action", string.format(cheat_log, player:get_player_name()))
+					return 0
+				end
 			end
-		elseif inventory_info.to_list == "backpack" then
+		elseif action == "put" and inventory_info.listname == "backpack" then
 			local backpack = backpack_widths[player:get_wielded_item():get_name()]
-			if not backpack or inventory_info.to_index > backpack then
-				minetest.log("action", string.format(cheat_log, player:get_player_name())
+			if not backpack or inventory_info.index > backpack then
+				minetest.log("action", string.format(cheat_log, player:get_player_name()))
 				return 0
 			end
 		end
-	elseif action == "put" and inventory_info.listname == "backpack" then
-		local backpack = backpack_widths[player:get_wielded_item():get_name()]
-		if not backpack or inventory_info.index > backpack then
-			minetest.log("action", string.format(cheat_log, player:get_player_name())
-			return 0
-		end
-	end
-end)
+	end)
+end
 
 --Backpack------------------------------
 --Amethyst
