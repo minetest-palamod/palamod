@@ -7,7 +7,7 @@ local table = table
 
 local get_group = minetest.get_item_group
 
-local function active_formspec(item_percent)
+--[[local function active_formspec(item_percent)
 	return table.concat({
 		--[["size[9,8.75]"..
 		"label[0,4;"..F(C("#313131", S("Inventory"))).."]"..
@@ -33,7 +33,7 @@ local function active_formspec(item_percent)
 		"listring[current_name;src]"..
 		"listring[current_player;main]"..
 		"listring[current_name;fuel]"..
-		"listring[current_player;main]"]]
+		"listring[current_player;main]"
 
 		"size[9,8.75]",
 		"background[-0.19,-0.25;9.41,9.49;mcl_anvils_inventory.png]",
@@ -54,7 +54,7 @@ local function active_formspec(item_percent)
 		"listring[context;input]",
 		"listring[current_player;main]",
 	})
-end
+end]]
 
 local inactive_formspec = table.concat({
 	"size[9,8.75]",
