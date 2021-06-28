@@ -63,6 +63,55 @@ pala_backpack.form.endium = table.concat({
 	"label[0.5,12.5;"..C("#313131", S("Inventory")).."]",
 })
 
+local backpack_widths = {
+	["pala_backpack:amethyste_backpack"] = 9,
+	["pala_backpack:titanium_backpack"] = 27,
+	["pala_backpack:paladium_backpack"] = 56,
+	["pala_backpack:endium_backpack"] = 81,
+}
+
+--Disallow accessing to inventory if player hasn't the right backpack to avoid cheating
+
+--Test using this dragonfire script:
+--[[
+local form = table.concat({
+	"formspec_version[4]",
+	"size[12,18]",
+	"list[current_player;backpack;0.5,1;9,9;]", 
+	"list[current_player;main;0.5,13;9,4;]",
+	"listring[]",
+	"label[0.5,0.5;Backpack]",
+	"label[0.5,12.5;Inventory]",
+})
+minetest.register_cheat("PalaBackpack", "Inventory", function() minetest.show_formspec("df_pala:pala_backpack", form) end)
+]]
+
+local cheat_log = "[pala_backpack] Player [%s] tried to interact with backpack inventory without using a backpack!"
+
+minetest.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
+	if action == "move" or action == "take" then
+		if inventory_info.from_list == "backpack" then
+			local backpack = backpack_widths[player:get_wielded_item():get_name()]
+			if not backpack or inventory_info.from_index > backpack then
+				minetest.log("action", string.format(cheat_log, player:get_player_name())
+				return 0
+			end
+		elseif inventory_info.to_list == "backpack" then
+			local backpack = backpack_widths[player:get_wielded_item():get_name()]
+			if not backpack or inventory_info.to_index > backpack then
+				minetest.log("action", string.format(cheat_log, player:get_player_name())
+				return 0
+			end
+		end
+	elseif action == "put" and inventory_info.listname == "backpack" then
+		local backpack = backpack_widths[player:get_wielded_item():get_name()]
+		if not backpack or inventory_info.index > backpack then
+			minetest.log("action", string.format(cheat_log, player:get_player_name())
+			return 0
+		end
+	end
+end)
+
 --Backpack------------------------------
 --Amethyst
 minetest.register_craftitem("pala_backpack:amethyste_backpack", {
