@@ -1,7 +1,79 @@
 local S = minetest.get_translator(minetest.get_current_modname())
+
 local C = minetest.colorize
 local F = minetest.formspec_escape
+
+local table = table
+
 local get_group = minetest.get_item_group
+
+local function active_formspec(item_percent)
+	return table.concat({
+		--[["size[9,8.75]"..
+		"label[0,4;"..F(C("#313131", S("Inventory"))).."]"..
+		"list[current_player;main;0,4.5;9,3;9]"..
+		mcl_formspec.get_itemslot_bg(0,4.5,9,3)..
+		"list[current_player;main;0,7.74;9,1;]"..
+		mcl_formspec.get_itemslot_bg(0,7.74,9,1)..
+		"label[2.75,0;"..minetest.formspec_escape(minetest.colorize("#313131", S("Furnace"))).."]"..
+		"list[current_name;src;2.75,0.5;1,1;]"..
+		mcl_formspec.get_itemslot_bg(2.75,0.5,1,1)..
+		"list[current_name;fuel;2.75,2.5;1,1;]"..
+		mcl_formspec.get_itemslot_bg(2.75,2.5,1,1)..
+		"list[current_name;dst;5.75,1.5;1,1;]"..
+		mcl_formspec.get_itemslot_bg(5.75,1.5,1,1)..
+		"image[2.75,1.5;1,1;default_furnace_fire_bg.png^[lowpart:"..
+		(100-fuel_percent)..":default_furnace_fire_fg.png]"..
+
+		-- Craft guide button temporarily removed due to Minetest bug.
+		--"image_button[8,0;1,1;craftguide_book.png;craftguide;]"..
+		--"tooltip[craftguide;"..minetest.formspec_escape(S("Recipe book")).."]"..
+		"listring[current_name;dst]"..
+		"listring[current_player;main]"..
+		"listring[current_name;src]"..
+		"listring[current_player;main]"..
+		"listring[current_name;fuel]"..
+		"listring[current_player;main]"]]
+
+		"size[9,8.75]",
+		"background[-0.19,-0.25;9.41,9.49;mcl_anvils_inventory.png]",
+		"label[0,4.0;"..F(C(mcl_colors.DARK_GRAY, S("Inventory"))).."]",
+		"list[current_player;main;0,4.5;9,3;9]",
+		mcl_formspec.get_itemslot_bg(0,4.5,9,3),
+		"list[current_player;main;0,7.74;9,1;]",
+		mcl_formspec.get_itemslot_bg(0,7.74,9,1),
+		"list[context;input;1,2.5;1,1;]",
+		mcl_formspec.get_itemslot_bg(1,2.5,1,1),
+		"list[context;output;8,2.5;1,1;]",
+		mcl_formspec.get_itemslot_bg(8,2.5,1,1),
+		"image[4.1,1.5;1.5,1;gui_furnace_arrow_bg.png^[lowpart:"..
+		(item_percent)..":gui_furnace_arrow_fg.png^[transformR270]"..
+		"label[3,0.1;"..F(C(mcl_colors.DARK_GRAY, S("Stack potions"))).."]",
+		"listring[context;output]",
+		"listring[current_player;main]",
+		"listring[context;input]",
+		"listring[current_player;main]",
+	})
+end
+
+local inactive_formspec = table.concat({
+	"size[9,8.75]",
+	"background[-0.19,-0.25;9.41,9.49;mcl_anvils_inventory.png]",
+	"label[0,4.0;"..F(C(mcl_colors.DARK_GRAY, S("Inventory"))).."]",
+	"list[current_player;main;0,4.5;9,3;9]",
+	mcl_formspec.get_itemslot_bg(0,4.5,9,3),
+	"list[current_player;main;0,7.74;9,1;]",
+	mcl_formspec.get_itemslot_bg(0,7.74,9,1),
+	"list[context;input;1,2.5;1,1;]",
+	mcl_formspec.get_itemslot_bg(1,2.5,1,1),
+	"list[context;output;8,2.5;1,1;]",
+	mcl_formspec.get_itemslot_bg(8,2.5,1,1),
+	"label[3,0.1;"..F(C(mcl_colors.DARK_GRAY, S("Stack potions"))).."]",
+	"listring[context;output]",
+	"listring[current_player;main]",
+	"listring[context;input]",
+	"listring[current_player;main]",
+})
 
 --local function update_inventory()
 --end
@@ -49,9 +121,9 @@ local function allow_metadata_inventory_take(pos, listname, index, stack, player
 	end
 end
 
-minetest.register_node("pala_machines:potionstacker", {
+minetest.register_node("pala_machines:potionstacker_off", {
     description = S("Potion Stacker"),
-	groups = {pickaxey=1, deco_block=1},
+	groups = {pickaxey = 1, deco_block = 1},
 	tiles = {"default_stone.png"},
 	_tt_help = S("Allow you to stack potions"),
 	sounds = mcl_sounds.node_sound_metal_defaults(),
@@ -118,31 +190,15 @@ minetest.register_node("pala_machines:potionstacker", {
 		inv:set_size("input", 1)
 		inv:set_size("output", 1)
 		--TODO: better form
-		meta:set_string("formspec",
-            "size[9,8.75]"..
-            "background[-0.19,-0.25;9.41,9.49;mcl_anvils_inventory.png]"..
-            "label[0,4.0;"..F(C(mcl_colors.DARK_GRAY, S("Inventory"))).."]"..
-            "list[current_player;main;0,4.5;9,3;9]"..
-            mcl_formspec.get_itemslot_bg(0,4.5,9,3)..
-            "list[current_player;main;0,7.74;9,1;]"..
-            mcl_formspec.get_itemslot_bg(0,7.74,9,1)..
-            "list[context;input;1,2.5;1,1;]"..
-            mcl_formspec.get_itemslot_bg(1,2.5,1,1)..
-            "list[context;output;8,2.5;1,1;]"..
-            mcl_formspec.get_itemslot_bg(8,2.5,1,1)..
-            "label[3,0.1;"..F(C(mcl_colors.DARK_GRAY, S("Stack potions"))).."]"..
-            "listring[context;output]"..
-            "listring[current_player;main]"..
-            "listring[context;input]"..
-            "listring[current_player;main]"
-        )
+		meta:set_string("formspec", inactive_formspec)
 	end,
 })
 
 minetest.register_node("pala_machines:potionstacker_on", {
     description = S("Potion Stacker"),
-	groups = {pickaxey=1, deco_block=1},
+	groups = {pickaxey = 1, deco_block = 1, not_in_creative_inventory = 1},
 	tiles = {"default_stone.png"},
+	drop = "pala_machines:potionstacker_off",
 	_tt_help = S("Allow you to stack potions"),
 	sounds = mcl_sounds.node_sound_metal_defaults(),
 	_mcl_blast_resistance = 1200,
@@ -203,24 +259,7 @@ minetest.register_node("pala_machines:potionstacker_on", {
 		local inv = meta:get_inventory()
 		inv:set_size("input", 1)
 		inv:set_size("output", 1)
-		meta:set_string("formspec",
-            "size[9,8.75]"..
-            "background[-0.19,-0.25;9.41,9.49;mcl_anvils_inventory.png]"..
-            "label[0,4.0;"..F(C(mcl_colors.DARK_GRAY, S("Inventory"))).."]"..
-            "list[current_player;main;0,4.5;9,3;9]"..
-            mcl_formspec.get_itemslot_bg(0,4.5,9,3)..
-            "list[current_player;main;0,7.74;9,1;]"..
-            mcl_formspec.get_itemslot_bg(0,7.74,9,1)..
-            "list[context;input;1,2.5;1,1;]"..
-            mcl_formspec.get_itemslot_bg(1,2.5,1,1)..
-            "list[context;output;8,2.5;1,1;]"..
-            mcl_formspec.get_itemslot_bg(8,2.5,1,1)..
-            "label[3,0.1;"..F(C(mcl_colors.DARK_GRAY, S("Stack potions"))).."]"..
-            "listring[context;output]"..
-            "listring[current_player;main]"..
-            "listring[context;input]"..
-            "listring[current_player;main]"
-        )
+		meta:set_string("formspec", inactive_formspec)
 	end,
 	on_timer = function(pos, elapsed)
 		update_slots(minetest.get_meta(pos))
