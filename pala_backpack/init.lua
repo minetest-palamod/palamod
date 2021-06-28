@@ -5,50 +5,62 @@ local S = minetest.get_translator(minetest.get_current_modname())
 
 minetest.register_on_joinplayer(function(player)
 	local inv = player:get_inventory()
-	inv:set_size('backpack', 81) -- 9*9
+	inv:set_size("backpack", 81) -- 9*9
 end)
+
+--[[
+TODO: separate properly the hotbar from the other inventory slots
+TODO: use the exact mcl2 values for spacing/pading/color
+]]
 
 pala_backpack = {}
 pala_backpack.form = {}
 pala_backpack.form.amethyst = table.concat({
 	"formspec_version[4]",
 	"size[12,8]",
-	--mcl_formspec.get_itemslot_bg(0.5,1,9,1),
-	"list[current_player;backpack;0.5,1;9,1;]", --9
+	pala_core.get_itemslot_bg(0.5, 1, 9, 1),
+	"list[current_player;backpack;0.5,1;9,1;]", --9 slots
+	pala_core.get_itemslot_bg(0.5, 3, 9, 4),
 	"list[current_player;main;0.5,3;9,4;]",
 	"listring[]",
-	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
-	"label[0.5,2.5;"..C(mcl_colors.GRAY, S("Inventory")).."]",
+	"label[0.5,0.5;"..C("#313131", S("Backpack")).."]",
+	"label[0.5,2.5;"..C("#313131", S("Inventory")).."]",
 })
 
 pala_backpack.form.titanium = table.concat({
 	"formspec_version[4]",
 	"size[12,10.5]",
-	"list[current_player;backpack;0.5,1;9,3;]", --27
+	pala_core.get_itemslot_bg(0.5, 1, 9, 3),
+	"list[current_player;backpack;0.5,1;9,3;]", --27 slots
+	pala_core.get_itemslot_bg(0.5, 5.5, 9, 4),
 	"list[current_player;main;0.5,5.5;9,4;]",
 	"listring[]",
-	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
-	"label[0.5,5;"..C(mcl_colors.GRAY, S("Inventory")).."]",
+	"label[0.5,0.5;"..C("#313131", S("Backpack")).."]",
+	"label[0.5,5;"..C("#313131", S("Inventory")).."]",
 })
 
 pala_backpack.form.paladium = table.concat({
 	"formspec_version[4]",
 	"size[12,14.5]",
-	"list[current_player;backpack;0.5,1;9,6;]", --56
+	pala_core.get_itemslot_bg(0.5, 1, 9, 6),
+	"list[current_player;backpack;0.5,1;9,6;]", --56 slots
+	pala_core.get_itemslot_bg(0.5, 9.5, 9, 4),
 	"list[current_player;main;0.5,9.5;9,4;]",
 	"listring[]",
-	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
-	"label[0.5,9;"..C(mcl_colors.GRAY, S("Inventory")).."]",
+	"label[0.5,0.5;"..C("#313131", S("Backpack")).."]",
+	"label[0.5,9;"..C("#313131", S("Inventory")).."]",
 })
 
 pala_backpack.form.endium = table.concat({
 	"formspec_version[4]",
 	"size[12,18]",
-	"list[current_player;backpack;0.5,1;9,9;]", --81
+	pala_core.get_itemslot_bg(0.5, 1, 9, 9),
+	"list[current_player;backpack;0.5,1;9,9;]", --81 slots
+	pala_core.get_itemslot_bg(0.5, 13, 9, 4),
 	"list[current_player;main;0.5,13;9,4;]",
 	"listring[]",
-	"label[0.5,0.5;"..C(mcl_colors.GRAY, S("Backpack")).."]",
-	"label[0.5,12.5;"..C(mcl_colors.GRAY, S("Inventory")).."]",
+	"label[0.5,0.5;"..C("#313131", S("Backpack")).."]",
+	"label[0.5,12.5;"..C("#313131", S("Inventory")).."]",
 })
 
 --Backpack------------------------------
