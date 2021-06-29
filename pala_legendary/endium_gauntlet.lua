@@ -39,8 +39,11 @@ local function snippet(_, _, itemstack)
 	end
 	local stones = pala_legendary.gauntlet.get_stones(itemstack)
 	local text = ""
+	if stones ~= {} then
+		text = text..C(mcl_colors.GOLD, "Stones:\n")
+	end
 	for stone, _ in pairs(stones) do
-		text = text..get_colored_desc(stone).."\n"
+		text = text.." "..get_colored_desc(stone).."\n"
 	end
 	if text ~= "" then
 		if not itemstack:get_definition()._tt_original_description then
