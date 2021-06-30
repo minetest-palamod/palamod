@@ -88,6 +88,7 @@ pala_legendary.register_legendary("random", {
 	name = S("Random"),
 	longdesc = S("Basic legendary stone, it is the one that then gives one of the @1 stones.",
 		#pala_legendary.registered_stones),
+	tt_help = C(mcl_colors.GRAY, S("Surprise. What will be inside?")),
 	inventory_image = "pala_legendary_legendary_random.png",
 	func = function(itemstack, player, pointed_thing)
 		return itemstack:replace({name = pala_legendary.get_random_stone()})
