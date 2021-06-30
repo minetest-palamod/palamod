@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+scr	export-ignore
+*.ods	export-ignore
+*.xcf	export-ignore
