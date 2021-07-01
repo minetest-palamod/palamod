@@ -1,7 +1,8 @@
 # textdomain: pala_legendary
-Legendary Stone @1=Pierre Légendaire @1
-Random=Aléatoire
+LegendaryStone @1=LegendaryStone @1
+Random=Random
 Fortune=Fortune
+Jobs=Jobs
 You must wait @1 hours before you can use it.=Tu dois encore attendre @1 heures, avant de pouvoir l'utiliser.
 Fortune has fallen upon you!=Une fortune est tombée sur toi :o
 You worked hard. You earned a lot of xp. Congratulations!=Tu as beaucoup travaillé. Tu as gagné beaucoup d'xp, Bravo !

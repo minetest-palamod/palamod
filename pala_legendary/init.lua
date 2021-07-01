@@ -19,7 +19,7 @@ function pala_legendary.register_legendary(name, def)
 	local tempname = "pala_legendary:legendary_"..name
 	if not def.func then def.func = function() end end
 	minetest.register_craftitem(tempname, {
-		description = S("Legendary Stone @1", def.name),
+		description = S("LegendaryStone @1", def.name),
 		_tt_help = def.tt_help or C(mcl_colors.GREEN, S("Just right-click to use it.")),
 		_doc_items_longdesc = def.longdesc,
 		inventory_image = def.inventory_image,
