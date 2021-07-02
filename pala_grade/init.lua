@@ -4,6 +4,7 @@ local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 local S = minetest.get_translator(modname)
 local C = minetest.colorize
+local CE = minetest.get_color_escape_sequence
 
 local GRAY = mcl_colors.GRAY
 local RED = mcl_colors.RED
@@ -35,26 +36,26 @@ pala_grade.grades = {
 	chalenger = {
 		rank = 1,
 		color = GRAY,
-		desc = C(GRAY, "["..S("Chalenger").."]"),
-		prefix = C(GRAY, S("CH")),
+		desc = CE(GRAY).."["..S("Chalenger").."]",
+		prefix = CE(GRAY)..S("CH"),
 	},
 	hero = {
 		rank = 2,
 		color = GOLD,
-		desc = C(GOLD, "["..S("Hero").."]"),
-		prefix = C(GOLD, S("HR")),
+		desc = CE(GOLD).."["..S("Hero").."]",
+		prefix = CE(GOLD)..S("HR"),
 	},
 	legendary = {
 		rank = 3,
 		color = DARK_PURPLE,
-		desc = C(DARK_PURPLE, "["..S("Legendary").."]"),
-		prefix = C(DARK_PURPLE, S("LG")),
+		desc = CE(DARK_PURPLE).."["..S("Legendary").."]",
+		prefix = CE(DARK_PURPLE)..S("LG"),
 	},
 	youtube = {
 		rank = 3,
 		color = nil,
-		desc = C(RED, "[You")..C(WHITE, "Tube]"),
-		prefix = C(RED, S("YT")),
+		desc = CE(RED).."[You"..CE(WHITE).."Tube]",
+		prefix = CE(RED)..S("YT"),
 	},
 }
 

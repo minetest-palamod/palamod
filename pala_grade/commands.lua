@@ -3,6 +3,8 @@ local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
 --local F = minetest.get_color_escape_sequence
 
+local ce_RED = minetest.get_color_escape_sequence(mcl_colors.RED)
+
 local vector = vector
 
 local mcl_colors = mcl_colors
@@ -54,8 +56,8 @@ minetest.register_chatcommand("feed", {
 			mcl_hunger.set_hunger(player, 20)
 			return true, C(mcl_colors.GREEN, S("You have been feed!"))
 		else
-			return false, C(mcl_colors.RED, S("You must have the [@1] grade to run this command.",
-				pala_grade.grades.hero.desc))
+			return false, ce_RED..S("You must have the @1 grade to run this command.",
+				pala_grade.grades.hero.desc)
 		end
 	end,
 })
