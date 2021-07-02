@@ -34,6 +34,7 @@ minetest.register_chatcommand("set_grade", {
 				return false, S("Invalid Grade")
 			end
 			pala_grade.set_grade(target, sparam[2])
+			return true, C(mcl_colors.GREEN, "Grade succesfully given")
 		else
 			return false, C(mcl_colors.RED, "Invalid params")
 		end
