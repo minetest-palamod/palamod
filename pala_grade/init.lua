@@ -3,7 +3,7 @@ minetest.log("action", "[pala_grade] loading...")
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 local S = minetest.get_translator(modname)
-local C = minetest.colorize
+--local C = minetest.colorize
 local CE = minetest.get_color_escape_sequence
 
 local GRAY = mcl_colors.GRAY
@@ -14,8 +14,6 @@ local GOLD = mcl_colors.GOLD
 local DARK_PURPLE = mcl_colors.DARK_PURPLE
 
 local default_grade = minetest.settings:get("pala_grade.default_grade") or "none"
-
-local is_singleplayer = minetest.is_singleplayer()
 
 --[[
 TODO: like mc colored chat handling
