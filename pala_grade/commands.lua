@@ -15,6 +15,31 @@ local get_player_by_name = minetest.get_player_by_name
 
 --local storage = minetest.get_mod_storage()
 
+--[[
+TODO: use the upcomming mcl2 command API
+TODO: be sure the command is exactly mc like
+]]
+minetest.register_chatcommand("set_grade", {
+	params = "<player> <grade>",
+	description = "Allows you to change the grade of a player",
+	privs = {server = true},
+	func = function(name, param)
+		local sparam = param:split(" ")
+		if sparam[1] and sparam[2] then
+			local target = minetest.get_player_by_name(sparam[1])
+			if not target then
+				return false, S("Player '@1' cannot be found.", sparam[1])
+			end
+			if not pala_grade.grades[sparam[2]] then
+				return false, S("Invalid Grade")
+			end
+			pala_grade.set_grade(target, sparam[2])
+		else
+			return false, C(mcl_colors.RED, "Invalid params")
+		end
+	end,
+})
+
 minetest.register_chatcommand("feed", {
 	params = "",
 	description = "Allows you to completely fill your food bar",
@@ -24,13 +49,13 @@ minetest.register_chatcommand("feed", {
 		if not player then
 			return false, "Player not found"
 		end
-        if pala_grade.can_execute(player, 2) then
-		    mcl_hunger.set_hunger(player, 20)
+		if pala_grade.can_execute(player, 2) then
+			mcl_hunger.set_hunger(player, 20)
 			return true, C(mcl_colors.GREEN, S("You have been feed!"))
-        else
-            return false, C(mcl_colors.RED, S("You must have the [@1] grade to run this command.",
+		else
+			return false, C(mcl_colors.RED, S("You must have the [@1] grade to run this command.",
 				pala_grade.grades.hero.desc))
-        end
+		end
 	end,
 })
 
