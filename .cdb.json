@@ -23,7 +23,7 @@
 		"* ores, weapons, armors, machines, tools and basic storage systems",
 		"* plants and farming related stuff",
 		"* job system",
-		"* grade system (WARNING: If you really want to use it on servers, you should write retriving and optention system yourself. But by default, you can just configure a grade who is aplied for every player)",
+		"* grade system",
 		"* server commands",
 		"",
 		"Additional features:",
