@@ -37,19 +37,21 @@ local function snippet(_, _, itemstack)
 	if not itemstack then
 		return
 	end
-	local stones = pala_legendary.gauntlet.get_stones(itemstack)
-	local text = ""
-	if stones ~= {} then
-		text = text..C(mcl_colors.GOLD, "Stones:\n")
-	end
-	for stone, _ in pairs(stones) do
-		text = text.." "..get_colored_desc(stone).."\n"
-	end
-	if text ~= "" then
-		if not itemstack:get_definition()._tt_original_description then
-			text = text:sub(1, text:len() - 1)
+	if itemstack:get_name() == "pala_legendary:endium_gauntlet" then
+		local stones = pala_legendary.gauntlet.get_stones(itemstack)
+		local text = ""
+		if next(stones) then
+			text = text..C(mcl_colors.GOLD, "Stones:\n")
 		end
-		return text, false
+		for stone in pairs(stones) do
+			text = text.." "..get_colored_desc(stone).."\n"
+		end
+		if text ~= "" then
+			if not itemstack:get_definition()._tt_original_description then
+				text = text:sub(1, text:len() - 1)
+			end
+			return text, false
+		end
 	end
 end
 

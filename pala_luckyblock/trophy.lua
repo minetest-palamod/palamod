@@ -1,7 +1,23 @@
 local S = minetest.get_translator(minetest.get_current_modname())
+local C = minetest.colorize
+local CE = minetest.get_color_escape_sequence
+
+--https://youtu.be/nvyPOKz37pE?t=66
+
+local function preserve_metadata(pos, oldnode, oldmeta, drops)
+	drops[1]:get_meta():set_string("pala_luckyblock:owner", oldmeta["pala_luckyblock:owner"] or "")
+	tt.reload_itemstack_description(drops[1])
+end
+
+local function after_place_node(pos, placer, itemstack, pointed_thing)
+	local node_meta = minetest.get_meta(pos)
+	local item_meta = itemstack:get_meta()
+	node_meta:set_string("pala_luckyblock:owner", item_meta:get_string("pala_luckyblock:owner"))
+	node_meta:set_string("infotext", S("@1's Trophy", placer:get_player_name() or "somebody"))
+end
 
 minetest.register_node("pala_luckyblock:trophy_25", {
-	description = S("Trophy 25%"),
+	description = CE(mcl_colors.YELLOW)..S("Trophy @1", CE(mcl_colors.AQUA).."25%"),
 	stack_max = 1,
 	tiles = {
 		"pala_luckyblock_trophy_25_top.png",
@@ -11,6 +27,7 @@ minetest.register_node("pala_luckyblock:trophy_25", {
 		"pala_luckyblock_trophy_25_side.png",
 		"pala_luckyblock_trophy_25_side.png"
 	},
+	use_texture_alpha = "opaque",
 	drawtype = "nodebox",
 	paramtype = "light",
 	node_box = {
@@ -26,10 +43,13 @@ minetest.register_node("pala_luckyblock:trophy_25", {
 		}
 	},
 	groups = {building_block = 1},
+	preserve_metadata = preserve_metadata,
+	after_place_node = after_place_node,
+	_pala_luckyblock_percentage_desc = "25%",
 })
 
 minetest.register_node("pala_luckyblock:trophy_50", {
-	description = S("Trophy 50%"),
+	description = CE(mcl_colors.YELLOW)..S("Trophy @1", CE(mcl_colors.AQUA).."50%"),
 	stack_max = 1,
 	tiles = {
 		"pala_luckyblock_trophy_50_top.png",
@@ -39,6 +59,7 @@ minetest.register_node("pala_luckyblock:trophy_50", {
 		"pala_luckyblock_trophy_50_side1.png",
 		"pala_luckyblock_trophy_50_side1.png"
 	},
+	use_texture_alpha = "opaque",
 	drawtype = "nodebox",
 	paramtype = "light",
 	node_box = {
@@ -57,11 +78,14 @@ minetest.register_node("pala_luckyblock:trophy_50", {
 		}
 	},
 	groups = {building_block = 1},
+	preserve_metadata = preserve_metadata,
+	after_place_node = after_place_node,
+	_pala_luckyblock_percentage_desc = "50%",
 })
 
 
 minetest.register_node("pala_luckyblock:trophy_75", {
-	description = S("Trophy 75%"),
+	description = CE(mcl_colors.YELLOW)..S("Trophy @1", CE(mcl_colors.AQUA).."75%"),
 	stack_max = 1,
 	tiles = {
 		"pala_luckyblock_trophy_75_top.png",
@@ -71,6 +95,7 @@ minetest.register_node("pala_luckyblock:trophy_75", {
 		"pala_luckyblock_trophy_75_side1.png",
 		"pala_luckyblock_trophy_75_side1.png"
 	},
+	use_texture_alpha = "opaque",
 	drawtype = "nodebox",
 	paramtype = "light",
 	node_box = {
@@ -91,10 +116,13 @@ minetest.register_node("pala_luckyblock:trophy_75", {
 		}
 	},
 	groups = {building_block = 1},
+	preserve_metadata = preserve_metadata,
+	after_place_node = after_place_node,
+	_pala_luckyblock_percentage_desc = "75%",
 })
 
 minetest.register_node("pala_luckyblock:trophy_100", {
-	description = S("Trophy 100%"),
+	description = CE(mcl_colors.YELLOW)..S("Trophy @1", CE(mcl_colors.AQUA).."100%"),
 	stack_max = 1,
 	tiles = {
 		"pala_luckyblock_trophy_100_top.png",
@@ -104,6 +132,7 @@ minetest.register_node("pala_luckyblock:trophy_100", {
 		"pala_luckyblock_trophy_100_side.png",
 		"pala_luckyblock_trophy_100_side.png"
 	},
+	use_texture_alpha = "opaque",
 	drawtype = "nodebox",
 	paramtype = "light",
 	node_box = {
@@ -136,4 +165,46 @@ minetest.register_node("pala_luckyblock:trophy_100", {
 		}
 	},
 	groups = {building_block = 1},
+	preserve_metadata = preserve_metadata,
+	after_place_node = after_place_node,
+	_pala_luckyblock_percentage_desc = "100%",
 })
+
+tt.register_priority_snippet(function(_, _, itemstack)
+	if not itemstack then
+		return
+	end
+	local owner = itemstack:get_meta():get_string("pala_luckyblock:owner")
+	local text = ""
+	if owner ~= "" then
+		text = text..
+			C(mcl_colors.YELLOW,
+				S("This trophy was awarded to @1",
+					C(mcl_colors.BLUE, owner)
+				).."\n"..
+				S("for getting @1",
+					C(mcl_colors.GREEN, itemstack:get_definition()._pala_luckyblock_percentage_desc)
+				).."\n"..
+				S("of all Luckyblocks events")
+			)
+	end
+	if text ~= "" then
+		if not itemstack:get_definition()._tt_original_description then
+			text = text:sub(1, text:len() - 1)
+		end
+		return text, false
+	end
+end)
+
+if minetest.settings:get("palamod.debug", false) then
+	--TESTING COMMAND
+	minetest.register_chatcommand("pala_luckyblock:trophy", {
+		func = function(name)
+			local player = minetest.get_player_by_name(name)
+			local itemstack = player:get_wielded_item()
+			itemstack:get_meta():set_string("pala_luckyblock:owner", "AFCM")
+			tt.reload_itemstack_description(itemstack)
+			player:set_wielded_item(itemstack)
+		end,
+	})
+end

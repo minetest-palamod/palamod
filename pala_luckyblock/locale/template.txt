@@ -1,3 +1,5 @@
+# textdomain: pala_luckyblock
+
 This event is WIP=
 To serve you!=
 You will lose your xp in the next second!=
@@ -8,3 +10,10 @@ Two secondes left...=
 Are you still here?=
 Bye bye...=
 You already have the rank, so here is an endium nugget=
+
+# Trophy
+Trophy @1=
+This trophy was awarded to @1=
+for getting @1=
+of all Luckyblocks events=
+@1's Trophy=

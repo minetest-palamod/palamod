@@ -1,3 +1,5 @@
+# textdomain: pala_luckyblock
+
 This event is WIP=Cet event n'est pas encore disponible
 To serve you!=Pour vous servir !
 You will lose your xp in the next second!=Ton exp tu perdras dans l'instant qui suivra
@@ -8,3 +10,10 @@ Two secondes left...=Plus que 2 secondes :(
 Are you still here?=T'es encore là ?
 Bye bye...=Bye bye...
 You already have the rank, so here is an endium nugget=Tu as déjà le grade, du coup voilà un nugget d'endium
+
+# Trophy
+Trophy @1=Trophée des @1
+This trophy was awarded to @1=Ce trophé a été décerné à @1
+for getting @1=pour avoir obtenu @1
+of all Luckyblocks events=de tous les events des Lucky Blocks
+@1's Trophy=Trophée de @1
