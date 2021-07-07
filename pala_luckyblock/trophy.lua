@@ -44,7 +44,9 @@ minetest.register_node("pala_luckyblock:trophy_25", {
 			{-0.1875, 0.125, 0.125, 0.1875, 0.5, 0.1875}, -- NodeBox7
 		}
 	},
-	groups = {building_block = 1},
+	groups = {pickaxey = 1, building_block = 1, deco_block = 1},
+	_mcl_blast_resistance = 6,
+	_mcl_hardness = 1.5,
 	preserve_metadata = preserve_metadata,
 	after_place_node = after_place_node,
 	_pala_luckyblock_percentage_desc = "25%",
@@ -81,7 +83,9 @@ minetest.register_node("pala_luckyblock:trophy_50", {
 			{-0.125, -0.4375, -0.125, 0.125, -0.375, 0.125}, -- NodeBox10
 		}
 	},
-	groups = {building_block = 1},
+	groups = {pickaxey = 1, building_block = 1, deco_block = 1},
+	_mcl_blast_resistance = 6,
+	_mcl_hardness = 1.5,
 	preserve_metadata = preserve_metadata,
 	after_place_node = after_place_node,
 	_pala_luckyblock_percentage_desc = "50%",
@@ -121,7 +125,9 @@ minetest.register_node("pala_luckyblock:trophy_75", {
 			{-0.375, 0.25, -0.0625, -0.3125, 0.4375, 0.0625}, -- NodeBox12
 		}
 	},
-	groups = {building_block = 1},
+	groups = {pickaxey = 1, building_block = 1, deco_block = 1},
+	_mcl_blast_resistance = 6,
+	_mcl_hardness = 1.5,
 	preserve_metadata = preserve_metadata,
 	after_place_node = after_place_node,
 	_pala_luckyblock_percentage_desc = "75%",
@@ -172,7 +178,9 @@ minetest.register_node("pala_luckyblock:trophy_100", {
 			{0.1875, 0.375, 0.1875, 0.25, 0.5, 0.25}, -- NodeBox24
 		}
 	},
-	groups = {building_block = 1},
+	groups = {pickaxey = 1, building_block = 1, deco_block = 1},
+	_mcl_blast_resistance = 6,
+	_mcl_hardness = 1.5,
 	preserve_metadata = preserve_metadata,
 	after_place_node = after_place_node,
 	_pala_luckyblock_percentage_desc = "100%",
