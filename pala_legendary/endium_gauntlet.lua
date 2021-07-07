@@ -101,7 +101,7 @@ minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 								stonedef.func(itemstack, player, pointed_thing)
 								stones[selected] = os.time()
 							else
-								local nbhour = (stones[selected]-(os.time()-86400))/3600
+								local nbhour = (stones[selected]-(os.time()-43200))/3600
 								minetest.chat_send_player(player:get_player_name(),
 									C(mcl_colors.GRAY, S("You must wait @1 hours before you can use it.",
 									math.floor(nbhour)))
