@@ -30,6 +30,7 @@ minetest.register_node("pala_luckyblock:trophy_25", {
 	use_texture_alpha = "opaque",
 	drawtype = "nodebox",
 	paramtype = "light",
+	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -62,6 +63,7 @@ minetest.register_node("pala_luckyblock:trophy_50", {
 	use_texture_alpha = "opaque",
 	drawtype = "nodebox",
 	paramtype = "light",
+	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -98,6 +100,7 @@ minetest.register_node("pala_luckyblock:trophy_75", {
 	use_texture_alpha = "opaque",
 	drawtype = "nodebox",
 	paramtype = "light",
+	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -135,6 +138,7 @@ minetest.register_node("pala_luckyblock:trophy_100", {
 	use_texture_alpha = "opaque",
 	drawtype = "nodebox",
 	paramtype = "light",
+	paramtype2 = "facedir",
 	node_box = {
 		type = "fixed",
 		fixed = {
