@@ -11,9 +11,9 @@ end
 
 local function after_place_node(pos, placer, itemstack, pointed_thing)
 	local node_meta = minetest.get_meta(pos)
-	local item_meta = itemstack:get_meta()
-	node_meta:set_string("pala_luckyblock:owner", item_meta:get_string("pala_luckyblock:owner"))
-	node_meta:set_string("infotext", S("@1's Trophy", placer:get_player_name() or "somebody"))
+	local owner = itemstack:get_meta():get_string("pala_luckyblock:owner")
+	node_meta:set_string("pala_luckyblock:owner", owner)
+	node_meta:set_string("infotext", S("@1's Trophy", owner or "somebody"))
 end
 
 minetest.register_node("pala_luckyblock:trophy_25", {
