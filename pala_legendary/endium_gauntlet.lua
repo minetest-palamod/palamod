@@ -79,15 +79,19 @@ minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 				if selected == "" then
 					local newstone = next(stones)
 					selected = newstone
-					mcl_tmp_message.message(player, string.format("Endium Gauntlet (%s)",
-						pala_legendary.registered_stones[newstone].name)
-					)
+					mcl_title.set(player, "actionbar", {
+						stay = 3,
+						text = string.format("Endium Gauntlet (%s)",
+							pala_legendary.registered_stones[newstone].name)
+					})
 				else
 					local newstone = next(stones, selected) or next(stones)
 					selected = newstone
-					mcl_tmp_message.message(player, string.format("Endium Gauntlet (%s)",
-						pala_legendary.registered_stones[newstone].name)
-					)
+					mcl_title.set(player, "actionbar", {
+						stay = 3,
+						text = string.format("Endium Gauntlet (%s)",
+							pala_legendary.registered_stones[newstone].name)
+					})
 				end
 			else
 				if selected == "" then
