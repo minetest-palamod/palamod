@@ -10,6 +10,8 @@ Two secondes left...=
 Are you still here?=
 Bye bye...=
 You already have the rank, so here is an endium nugget=
+Fake Block of Paladium=
+When it is broken, disappears and reappears in another place, you have to keep breaking it to receive a reward=
 
 # Trophy
 Trophy @1=

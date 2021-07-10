@@ -1,3 +1,5 @@
+local S = minetest.get_translator(minetest.get_current_modname())
+
 --[[local function placefakepala(pos, player)
 	local x = math.random(pos.x-10,pos.x+10)
 	local z = math.random(pos.z-10,pos.z+10)
@@ -29,8 +31,9 @@
 end]]
 
 minetest.register_node("pala_luckyblock:fakepaladiumblock", {
-	description = ("Fake Block of Paladium"),
-	_doc_items_longdesc = ("Strange Block"),
+	description = S("Fake Block of Paladium"),
+	_doc_items_longdesc =
+		S("When it is broken, disappears and reappears in another place, you have to keep breaking it to receive a reward"),
 	tiles = {"pala_paladium_paladium_block.png"},
 	is_ground_content = false,
 	stack_max = 64,
@@ -44,7 +47,7 @@ minetest.register_node("pala_luckyblock:fakepaladiumblock", {
 })
 --Because no check of protection (reduce lag)
 minetest.register_node("pala_luckyblock:luckyblockfakepaladium", {
-	description = ("Fake Paladium LuckyBlock"),
+	description = S("Fake Paladium LuckyBlock"),
 	_doc_items_longdesc = ("Fake Paladium LuckyBlock : use fur visuals"),
 	tiles = {"pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png"},
 	is_ground_content = false,
@@ -54,8 +57,8 @@ minetest.register_node("pala_luckyblock:luckyblockfakepaladium", {
 })
 
 minetest.register_node("pala_luckyblock:luckyblockfakeendium", {
-	description = ("Fake Endium LuckyBlock"),
-	_doc_items_longdesc = ("Fake Endium LuckyBlock : use fur visuals"),
+	description = S("Fake Endium LuckyBlock"),
+	_doc_items_longdesc = S("Fake Endium LuckyBlock : use fur visuals"),
 	tiles = {"pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png"},
 	is_ground_content = false,
 	stack_max = 64,
