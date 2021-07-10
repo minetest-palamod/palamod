@@ -8,3 +8,8 @@ Fortune has fallen upon you!=
 You worked hard. You earned a lot of xp. Congratulations!=
 You just put chaos around you!=
 Surprise. What will be inside?=
+
+# Gauntlet
+Allows you to wear the 6 legendary stones (in the same way as the gauntlet of Thanos (MUC)).=
+Note: You must have the 6 stones, they do not come with the gauntlet.=
+Reduces the cooldown of the stones by 12 hours.=

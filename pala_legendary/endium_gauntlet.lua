@@ -59,7 +59,12 @@ tt.register_priority_snippet(snippet)
 
 minetest.register_craftitem("pala_legendary:endium_gauntlet", {
 	description = S("Endium Gauntlet"),
-	_doc_items_longdesc = S("Just right-click to use it."),
+	_doc_items_usagehelp = S("Just right-click to use it."),
+	_doc_items_longdesc =
+		"\n"..
+		S("Allows you to wear the 6 legendary stones (in the same way as the glove of Thanos (MUC)).").."\n"..
+		S("Note: You must have the 6 stones, they do not come with the gauntlet.").."\n"..
+		S("Reduces the cooldown of the stones by 12 hours."),
 	inventory_image = "pala_legendary_endium_gauntlet.png",
 	stack_max = 1,
 	groups = {},
