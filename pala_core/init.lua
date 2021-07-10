@@ -1,3 +1,5 @@
+minetest.log("action", "[pala_core] loading...")
+
 pala_core = {}
 
 --TEMP FUNCTION
@@ -12,3 +14,5 @@ function pala_core.get_itemslot_bg(x, y, w, h)
 	end
 	return out
 end
+
+minetest.log("action", "[pala_core] loaded succesfully")
