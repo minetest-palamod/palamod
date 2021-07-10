@@ -40,16 +40,15 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
             mcl_util.deal_damage(player, damage, {type = "spike_floor"})
 		end,
 	})
-	minetest.register_alias("#"..tostring(id), newname)
 end
 
-pala_spikes.register_spike("wood", S("Wood"), "#b59246", 2, 438)
-pala_spikes.register_spike("iron", S("Iron"), "#f4f4f4", 5, 439)
-pala_spikes.register_spike("gold", S("Gold"), "#fcfc07", 7, 440)
-pala_spikes.register_spike("diamond", S("Diamond"), "#0af0fc", 10, 441)
-pala_spikes.register_spike("amethyst", S("Amethyst"), "#a43afc", 10, 442)
-pala_spikes.register_spike("titanium", S("Titanium"), "#777777", 12, 443)
-pala_spikes.register_spike("paladium", S("Paladium"), "#fc552f", 14, 444)
+pala_spikes.register_spike("wood", S("Wood"), "#b59246", 2)
+pala_spikes.register_spike("iron", S("Iron"), "#f4f4f4", 5)
+pala_spikes.register_spike("gold", S("Gold"), "#fcfc07", 7)
+pala_spikes.register_spike("diamond", S("Diamond"), "#0af0fc", 10)
+pala_spikes.register_spike("amethyst", S("Amethyst"), "#a43afc", 10)
+pala_spikes.register_spike("titanium", S("Titanium"), "#777777", 12)
+pala_spikes.register_spike("paladium", S("Paladium"), "#fc552f", 14)
 
 --Craft
 minetest.register_craft({
