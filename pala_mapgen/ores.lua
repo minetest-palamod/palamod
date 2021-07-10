@@ -1,4 +1,4 @@
-local stonelike = "mcl_core:stone"
+local stonelike = {"mcl_core:stone", "mcl_core:diorite", "mcl_core:andesite", "mcl_core:granite"}
 
 --Amethyst
 -- Common spawn
