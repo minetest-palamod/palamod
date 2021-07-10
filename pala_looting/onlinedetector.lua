@@ -146,8 +146,8 @@ minetest.register_lbm({
 minetest.register_craft({
 	output = "pala_looting:online_detector_off",
 	recipe = {
-		{'mcl_dye:black', 'mcl_dye:black', 'mcl_dye:black'},
-		{'mcl_dye:black', 'pala_paladium:paladium_ingot', 'mcl_dye:black'},
-		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
+		{"mcl_dye:black", "mcl_dye:black", "mcl_dye:black"},
+		{"mcl_dye:black", "pala_paladium:paladium_ingot", "mcl_dye:black"},
+		{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
 	}
 })
