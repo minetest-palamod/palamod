@@ -26,10 +26,10 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 		_doc_items_longdesc = S([[Deals @1 damage to people without armor.
 			Destroy items thrown on the spike.
 			]], damage),
-		drawtype="mesh",
-		mesh="pala_spikes_pyramid_spike.obj",
-		visual_scale=1.0,
-		tiles={"pala_spikes_wood_base.png"},
+		drawtype = "mesh",
+		mesh = "pala_spikes_pyramid_spike.obj",
+		visual_scale = 1.0,
+		tiles = {"pala_spikes_wood_base.png"},
 		color = color,
 		groups = {pickaxey=2, building_block=1, pala_spikes=1},
 		on_walk_over = function(loc, nodeiamon, player)
@@ -54,64 +54,64 @@ pala_spikes.register_spike("paladium", S("Paladium"), "#fc552f", 14)
 minetest.register_craft({
 	output = "pala_spike:wood_spike",
 	recipe = {
-		{'', 'mcl_tools:sword_wood', ''},
-		{'mcl_tools:sword_wood', 'group:wood', 'mcl_tools:sword_wood'},
-		{'group:wood', 'group:wood', 'group:wood'},
-	}
+		{"", "mcl_tools:sword_wood", ""},
+		{"mcl_tools:sword_wood", "group:wood", "mcl_tools:sword_wood"},
+		{"group:wood", "group:wood", "group:wood"},
+	},
 })
 
 minetest.register_craft({
 	output = "pala_spike:iron_spike",
 	recipe = {
-		{'', 'mcl_tools:sword_wood', ''},
-		{'mcl_tools:sword_wood', 'mcl_core:iron_ingot', 'mcl_tools:sword_wood'},
-		{'mcl_core:iron_ingot', 'mcl_core:iron_ingot', 'mcl_core:iron_ingot'},
-	}
+		{"", "mcl_tools:sword_wood", ""},
+		{"mcl_tools:sword_wood", "mcl_core:iron_ingot", "mcl_tools:sword_wood"},
+		{"mcl_core:iron_ingot", "mcl_core:iron_ingot", "mcl_core:iron_ingot"},
+	},
 })
 
 minetest.register_craft({
 	output = "pala_spike:gold_spike",
 	recipe = {
-		{'', 'mcl_tools:sword_gold', ''},
-		{'mcl_tools:sword_gold', 'mcl_core:gold_ingot', 'mcl_tools:sword_gold'},
-		{'mcl_core:gold_ingot', 'mcl_core:gold_ingot', 'mcl_core:gold_ingot'},
-	}
+		{"", "mcl_tools:sword_gold", ""},
+		{"mcl_tools:sword_gold", "mcl_core:gold_ingot", "mcl_tools:sword_gold"},
+		{"mcl_core:gold_ingot", "mcl_core:gold_ingot", "mcl_core:gold_ingot"},
+	},
 })
 
 minetest.register_craft({
 	output = "pala_spike:gold_spike",
 	recipe = {
-		{'', 'mcl_tools:sword_gold', ''},
-		{'mcl_tools:sword_gold', 'mcl_core:diamond', 'mcl_tools:sword_gold'},
-		{'mcl_core:diamond', 'mcl_core:diamond', 'mcl_core:diamond'},
-	}
+		{"", "mcl_tools:sword_gold", ""},
+		{"mcl_tools:sword_gold", "mcl_core:diamond", "mcl_tools:sword_gold"},
+		{"mcl_core:diamond", "mcl_core:diamond", "mcl_core:diamond"},
+	},
 })
 
 minetest.register_craft({
 	output = "pala_spike:amethyst_spike",
 	recipe = {
-		{'', 'mcl_tools:sword_diamond', ''},
-		{'mcl_tools:sword_diamond', 'pala_paladium:amethyst_ingot', 'mcl_tools:sword_diamond'},
-		{'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot', 'pala_paladium:amethyst_ingot'},
-	}
+		{"", "mcl_tools:sword_diamond", ""},
+		{"mcl_tools:sword_diamond", "pala_paladium:amethyst_ingot", "mcl_tools:sword_diamond"},
+		{"pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot", "pala_paladium:amethyst_ingot"},
+	},
 })
 
 minetest.register_craft({
 	output = "pala_spike:titanium_spike",
 	recipe = {
-		{'', 'pala_tools:sword_amethyst', ''},
-		{'pala_tools:sword_amethyst', 'pala_paladium:titanium_ingot', 'pala_tools:sword_amethyst'},
-		{'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot', 'pala_paladium:titanium_ingot'},
-	}
+		{"", "pala_tools:sword_amethyst", ""},
+		{"pala_tools:sword_amethyst", "pala_paladium:titanium_ingot", "pala_tools:sword_amethyst"},
+		{"pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot", "pala_paladium:titanium_ingot"},
+	},
 })
 
 minetest.register_craft({
 	output = "pala_spike:paladium_spike",
 	recipe = {
-		{'', 'pala_tools:sword_titanium', ''},
-		{'pala_tools:sword_titanium', 'pala_paladium:paladium_ingot', 'pala_tools:sword_titanium'},
-		{'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot', 'pala_paladium:paladium_ingot'},
-	}
+		{"", "pala_tools:sword_titanium", ""},
+		{"pala_tools:sword_titanium", "pala_paladium:paladium_ingot", "pala_tools:sword_titanium"},
+		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
+	},
 })
 
 minetest.register_abm({
@@ -128,7 +128,7 @@ minetest.register_abm({
                 return
             end
             for _,object in pairs(minetest.get_objects_inside_radius(pos, 2)) do
-                if not object:is_player() and object:get_luaentity() and object:get_luaentity().name == "__builtin:item" then
+                if object:get_luaentity() and object:get_luaentity().name == "__builtin:item" then
                     local posob = object:get_pos()
                     local posob_miny = posob.y + object:get_properties().collisionbox[2]
                     if math.abs(posob.x-pos.x) <= 0.5 and (posob_miny-pos.y < 1.5 and posob.y-pos.y >= 0.3) then
