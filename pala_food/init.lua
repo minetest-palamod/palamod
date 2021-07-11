@@ -38,12 +38,12 @@ minetest.register_craft({
 		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"},
 		{"pala_paladium:paladium_ingot", "mcl_core:apple", "pala_paladium:paladium_ingot"},
 		{"pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot", "pala_paladium:paladium_ingot"}
-	}
+	},
 })
 
 minetest.register_craftitem("pala_food:marinated_steak", {
-	description = ("Marinated Steak"),
-	_doc_items_longdesc = ([[
+	description = S("Marinated Steak"),
+	_doc_items_longdesc = S([[
 		Marinated Steak is obtained by hunting and is a food item which can be eaten safely.
 		Cooking it improves its nutritional value.
 		]]),
@@ -56,8 +56,8 @@ minetest.register_craftitem("pala_food:marinated_steak", {
 })
 
 minetest.register_craftitem("pala_food:marinated_rottenflesh", {
-	description = ("Marinated Rotten Flesh"),
-	_doc_items_longdesc = ([[
+	description = S("Marinated Rotten Flesh"),
+	_doc_items_longdesc = S([[
 		Marinated Rotten Flesh is obtained by hunting and is a food item which can be eaten safely.
 		Cooking it improves its nutritional value.
 		]]),
@@ -70,8 +70,8 @@ minetest.register_craftitem("pala_food:marinated_rottenflesh", {
 })
 
 minetest.register_craftitem("pala_food:marinated_porkshop", {
-	description = ("Marinated Porkshop"),
-	_doc_items_longdesc = ([[
+	description = S("Marinated Porkshop"),
+	_doc_items_longdesc = S([[
 		Marinated Porkshop is obtained by hunting and is a food item which can be eaten safely.
 		Cooking it improves its nutritional value.
 		]]),
@@ -84,8 +84,8 @@ minetest.register_craftitem("pala_food:marinated_porkshop", {
 })
 
 minetest.register_craftitem("pala_food:marinated_mutton", {
-	description = ("Marinated Mutton"),
-	_doc_items_longdesc = ([[
+	description = S("Marinated Mutton"),
+	_doc_items_longdesc = S([[
 		Marinated Mutton is obtained by hunting and is a food item which can be eaten safely.
 		Cooking it improves its nutritional value.
 		]]),
@@ -98,8 +98,8 @@ minetest.register_craftitem("pala_food:marinated_mutton", {
 })
 
 minetest.register_craftitem("pala_food:marinated_chicken", {
-	description = ("Marinated Chicken"),
-	_doc_items_longdesc = ([[
+	description = S("Marinated Chicken"),
+	_doc_items_longdesc = S([[
 		Marinated Chicken is obtained by hunting and is a food item which can be eaten safely.
 		Cooking it improves its nutritional value.
 		]]),
@@ -112,8 +112,8 @@ minetest.register_craftitem("pala_food:marinated_chicken", {
 })
 
 minetest.register_craftitem("pala_food:marinated_ham", {
-	description = ("Marinated Ham"),
-	_doc_items_longdesc = ([[
+	description = S("Marinated Ham"),
+	_doc_items_longdesc = S([[
 		Marinated Ham is obtained by hunting and is a food item which can be eaten safely.
 		Cooking it improves its nutritional value.
 		]]),
