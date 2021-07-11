@@ -1,5 +1,36 @@
 # textdomain: pala_armor
+
+# amethyst
+Amethyst Helmet=
+Amethyst Chestplate=
+Amethyst Leggings=
+Amethyst Boots=
+
+# titanium
+Titanium Helmet=
+Titanium Chestplate=
+Titanium Leggings=
+Titanium Boots=
+
+# paladium
+Paladium Helmet=
+Paladium Chestplate=
+Paladium Leggings=
 Paladium Boots=
+
+# paladium vert
+Green Paladium Helmet=
+Green Paladium Chestplate=
+Green Paladium Leggings=
+Green Paladium Boots=
+
+# endium
+Endium Helmet=
+Endium Chestplate=
+Endium Leggings=
+Endium Boots=
+
+# special
 Slimy Helmet=
 Weighted boots=
 Negate fall damage=

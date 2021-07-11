@@ -1,5 +1,36 @@
 # textdomain: pala_armor
+
+# amethyst
+Amethyst Helmet=Casque en Améthyste
+Amethyst Chestplate=Plastron en Améthyste
+Amethyst Leggings=Jambières en Améthyste
+Amethyst Boots=Bottes en Améthyste
+
+# titanium
+Titanium Helmet=Casque en Titane
+Titanium Chestplate=Plastron en Titane
+Titanium Leggings=Jambières en Titane
+Titanium Boots=Bottes en Titane
+
+# paladium
+Paladium Helmet=Casque en Paladium
+Paladium Chestplate=Plastron en Paladium
+Paladium Leggings=Jambières en Paladium
 Paladium Boots=Bottes en Paladium
+
+# paladium vert
+Green Paladium Helmet=Casque en Paladium Vert
+Green Paladium Chestplate=Plastron en Paladium Vert
+Green Paladium Leggings=Jambières en Paladium Vert
+Green Paladium Boots=Bottes en Paladium Vert
+
+# endium
+Endium Helmet=Casque en Endium
+Endium Chestplate=Plastron en Endium
+Endium Leggings=Jambières en Endium
+Endium Boots=Bottes en Endium
+
+# special
 Slimy Helmet=Slimy Helmet
 Weighted boots=Bottes Lestées
 Negate fall damage=Annule les dégâts de chute
