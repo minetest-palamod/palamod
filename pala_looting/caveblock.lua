@@ -6,7 +6,7 @@ minetest.register_node("pala_looting:caveblock", {
 	tiles = {"pala_looting_caveblock.png"},
 	use_texture_alpha = "clip",
 	sunlight_propagates = true,
-	groups = {pickaxey=2, building_block=1, material_stone=1}
+	groups = {pickaxey = 2, building_block = 1, material_stone = 1},
 })
 
 if minetest.get_modpath("mcl_core") then
@@ -14,10 +14,10 @@ if minetest.get_modpath("mcl_core") then
 		minetest.register_craft({
 			output = "pala_looting:caveblock",
 			recipe = {
-				{'mcl_core:glass', 'mcl_core:glass', 'mcl_core:glass'},
-				{'mcl_core:glass', 'pala_paladium:findium', 'mcl_core:glass'},
-				{'mcl_core:glass', 'mcl_core:glass', 'mcl_core:glass'},
-			}
+				{"mcl_core:glass", "mcl_core:glass", "mcl_core:glass"},
+				{"mcl_core:glass", "pala_paladium:findium", "mcl_core:glass"},
+				{"mcl_core:glass", "mcl_core:glass", "mcl_core:glass"},
+			},
 		})
 	end
 end
