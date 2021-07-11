@@ -1,0 +1,5 @@
+# textdomain: pala_craftitems
+Paladium Stick=
+Titanium Stick=
+Amethyst Stick=
+Useful in many crafts=
