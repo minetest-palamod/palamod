@@ -5,7 +5,6 @@ local S = minetest.get_translator(minetest.get_current_modname())
 local has_pala_grade = minetest.get_modpath("pala_grade")
 
 local vector = vector
-local string = string
 local pairs = pairs
 local serialize = minetest.serialize
 local deserialize = minetest.deserialize
@@ -45,12 +44,7 @@ end
 function pala_server.homes.can_create(player, name, homes)
 	if has_pala_grade then
 		local grade = pala_grade.get_grade(player)
-		local max = pala_server.homes.grade[grade]
-		if not max then
-			minetest.log("error", string.format("[pala_server] Player [%s]'s grade has no valid home count!",
-				player:get_player_name()))
-			max = 3
-		end
+		local max = pala_server.homes.grade[grade] or 3
 		local count = count_homes(homes)
 		if not count < max or homes[name] then
 			return false
