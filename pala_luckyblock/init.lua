@@ -2,19 +2,21 @@ minetest.log("action", "[pala_luckyblock] loading...")
 
 local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
+
 --local vector = vector
 local math = math
 
-function randomFloat(lower, greater)
+local modpath = minetest.get_modpath(minetest.get_current_modname())
+
+local function randomFloat(lower, greater)
     return lower + math.random()  * (greater - lower);
 end
 
 pala_luckyblock = {}
-pala_luckyblock.modpath = minetest.get_modpath(minetest.get_current_modname())
 
-dofile(pala_luckyblock.modpath.."/node.lua")
-dofile(pala_luckyblock.modpath.."/mobs.lua")
-dofile(pala_luckyblock.modpath.."/trophy.lua")
+dofile(modpath.."/node.lua")
+dofile(modpath.."/mobs.lua")
+dofile(modpath.."/trophy.lua")
 
 function pala_luckyblock.wip_event(pos, player)
 	minetest.chat_send_player(player:get_player_name(), C(mcl_colors.RED, S("This event is WIP")))
