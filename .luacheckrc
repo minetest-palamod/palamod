@@ -38,10 +38,6 @@ read_globals = {
     
     --OTHER
     "mcl_vars",
-	
-	-- PALAMOD
-	--------------------------------------------
-	"pala_dynamite",
 
     -- Mods
     "mc_economy", "mc_faction",
