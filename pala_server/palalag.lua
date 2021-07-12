@@ -1,5 +1,6 @@
 local S = minetest.get_translator(minetest.get_current_modname())
-local C = minetest.colorize
+--local C = minetest.colorize
+local CE = minetest.get_color_escape_sequence
 
 local math = math
 --local string = string
@@ -11,9 +12,9 @@ local log = minetest.log
 local chat_send_all = minetest.chat_send_all
 local after = minetest.after
 
-local msg_base = C(mcl_colors.GOLD, "[PalaLag] ")
-local msg1 = msg_base..C(mcl_colors.RED, S("Entities will be deleted in 30s!"))
-local msg2 = msg_base..C(mcl_colors.RED, S("Entities have been deleted!"))
+local msg_base = CE(mcl_colors.GOLD).."[PalaLag] "
+local msg1 = msg_base..CE(mcl_colors.RED)..S("Entities will be deleted in 30s!")
+local msg2 = msg_base..CE(mcl_colors.RED)..S("Entities have been deleted!")
 local CLEAR_INTERVAL = tonumber(minetest.settings:get("pala_server.clear_lag_interval") or 300)
 --CLEAR_INTERVAL = 31
 local time = 0
@@ -50,6 +51,6 @@ minetest.register_chatcommand("palalagtime", {
 	params = "",
 	description = S("Allow you to show next clearlag"),
 	func = function(name, param)
-		return true, C(mcl_colors.GOLD, S("Next clearlag in @1s", math.floor(CLEAR_INTERVAL - time + 30)))
+		return true, CE(mcl_colors.GOLD)..S("Next clearlag in @1s", math.floor(CLEAR_INTERVAL - time + 30))
 	end,
 })
