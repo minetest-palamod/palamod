@@ -80,7 +80,7 @@ minetest.register_node("pala_fakewater:fakewater_flowing", {
 mcl_buckets.register_liquid({
 	source_place = "pala_fakewater:fakewater_source",
 	source_take = {"pala_fakewater:fakewater_source"},
-	bucketname = "pala_fakewater:bucket_fakewater",
+	itemname = "pala_fakewater:bucket_fakewater",
 	inventory_image = "bucket_water.png^pala_fakewater_overlay.png",
 	name = S("Sulfuric Water Bucket"),
 	longdesc = S("A bucket can be used to collect and release liquids. This one is filled with water."),
@@ -192,7 +192,7 @@ minetest.register_node("pala_fakewater:angelicwater_flowing", {
 mcl_buckets.register_liquid({
 	source_place = "pala_fakewater:angelicwater_source",
 	source_take = {"pala_fakewater:angelicwater_source"},
-	bucketname = "pala_fakewater:bucket_angelicwater",
+	itemname = "pala_fakewater:bucket_angelicwater",
 	inventory_image = "pala_fakewater_angelic_water_bucket.png",
 	name = S("Angelic Water Bucket"),
 	longdesc = S("A bucket can be used to collect and release liquids. This one is filled with water."),
