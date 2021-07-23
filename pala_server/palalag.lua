@@ -28,7 +28,7 @@ minetest.register_globalstep(function(dtime)
 			log("info", "[pala_server] Palalag starting...")
 			local count = 0
 			for id, val in pairs(minetest.luaentities) do
-				if val.name == "__builtin:item" then
+				if val.name == "__builtin:item" or val.name == "mcl_experience:orb" then
 					val.object:remove()
 					count = count + 1
 				else
