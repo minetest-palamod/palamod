@@ -225,7 +225,7 @@ pala_luckyblock.event_positive = {
 		name = "analyser",
 		description = S("Analyser"),
 		rarity = 150,
-		texture = "default_stone.png",
+		texture = "pala_luckyblock_analyste.png",
 		func = pala_luckyblock.wip_event,
 	},
 	{
@@ -240,6 +240,144 @@ pala_luckyblock.event_positive = {
 					minetest.add_item(pos2, {"pala_paladium:paladium_ingot"})
 				end
 			end)
+		end,
+	},
+	{
+		name = "fake-tnt",
+		description = S("Fake TNT"),
+		rarity = 100,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "hook-hook-jab",
+		description = S("Hook hook jab"),
+		rarity = 150,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "lead",
+		description = S("Lead"),
+		rarity = 150,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "roller",
+		description = S("Roller"),
+		rarity = 150,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "fly-me",
+		description = S("Fly me"), --TODO: french translation?
+		rarity = 150,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "magical-potion",
+		description = S("Magical Potion"),
+		rarity = 150,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "wifi",
+		description = S("Wi-Fi"),
+		rarity = 150,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "incendiary",
+		description = S("Incendiary"),
+		rarity = 150,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "horse-of-the-death",
+		description = S("The Horse of the death"),
+		rarity = 200,
+		texture = "default_stone.png",
+		func = function(pos, player)
+			minetest.add_entity(pos, "mobs_mc:skeleton_horse")
+		end,
+	},
+	{
+		name = "diamond-beacon",
+		description = S("Diamond Beacon"),
+		rarity = 200,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "princess",
+		description = S("Princess"),
+		rarity = 200,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "coloring",
+		description = S("Coloring"),
+		rarity = 200,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "palachat",
+		description = S("Palachat"),
+		rarity = 300,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "biome-painter",
+		description = S("Biome Painter"),
+		rarity = 300,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "amethyst-beacon",
+		description = S("Amethyst Beacon"),
+		rarity = 400,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "endium-beacon",
+		description = S("Endium Beacon"),
+		rarity = 400,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "fast-learner",
+		description = S("Fast Learner"),
+		rarity = 500,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "titanium-beacon",
+		description = S("Titanium Beacon"),
+		rarity = 800,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "explosive",
+		description = S("Explosive"),
+		rarity = 900,
+		texture = "default_stone.png",
+		func = function(pos, player)
+			minetest.set_node(pos, {name="mcl_core:obsidian"})
+			minetest.add_item(pos, "pala_dynamite:dynamite_endium")
 		end,
 	},
 }

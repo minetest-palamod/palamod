@@ -137,7 +137,7 @@ pala_luckyblock.event_positive = {
 	{"Titane Beacon", 800, "default_stone.png", pala_luckyblock.wip_event},
 	{"Explosif", 900, "default_stone.png", function(pos, player)
 		minetest.set_node(pos, {name="mcl_core:obsidian"})
-		minetest.add_item(pos, "pala_dynamite:dynamite_endium") --TODO:replace stone by endium dyna
+		minetest.add_item(pos, "pala_dynamite:dynamite_endium")
 	end},
 	{"T’es chanceux wesh", 900, "default_stone.png", pala_luckyblock.wip_event},
 	{"Base déco", 1000, "default_stone.png", pala_luckyblock.wip_event},
@@ -248,9 +248,12 @@ pala_luckyblock.event_negative = {
 				pos2,
 				{"group:building_block"}
 			)
-			--for _,node in pairs(positions) do
-			--	node = vector.add(node, {x=0, y=1, z=0})
-			--end
+			for _,node in pairs(positions) do
+				node = vector.add(node, {x=0, y=1, z=0})
+			end
+			for i = 1, #positions do
+				positions[i] = {x=positions[i].x, y=positions[i].y+1 , z=positions[i].z}
+			end
 			minetest.bulk_set_node(positions, {name="mcl_fire:fire"})
 		end
 	end},
