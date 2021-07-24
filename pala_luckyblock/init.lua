@@ -143,7 +143,6 @@ pala_luckyblock.event_positive = {
 	{"Base déco", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Less pretty TNT", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Be deaf", 1000, "default_stone.png", pala_luckyblock.wip_event},
-	{"Deviens sourd", 1000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Legendary StF", 1000, "default_stone.png", function(pos, player)
 		minetest.add_item(pos, "pala_legendary:legendary_random")
 	end},
@@ -248,9 +247,6 @@ pala_luckyblock.event_negative = {
 				pos2,
 				{"group:building_block"}
 			)
-			for _,node in pairs(positions) do
-				node = vector.add(node, {x=0, y=1, z=0})
-			end
 			for i = 1, #positions do
 				positions[i] = {x=positions[i].x, y=positions[i].y+1 , z=positions[i].z}
 			end

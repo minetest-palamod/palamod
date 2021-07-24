@@ -15,12 +15,6 @@ pala_grade.default_grade (Default grade) enum none none,chalenger,hero,legendary
 #    Default xp amount per job.
 pala_job.default_xp (Default XP) int 0
 
-[pala_luckyblock]
-
-#    Is luckystat enabled.
-#    WARNING: you will need db_manager to be installed
-pala_luckyblock.luckystat (Luckystat) bool false
-
 [pala_mapgen]
 
 #    If disabled, no custom ores will be generated.

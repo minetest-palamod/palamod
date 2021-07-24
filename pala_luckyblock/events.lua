@@ -4,7 +4,7 @@ local C = minetest.colorize
 local math = math
 local table = table
 
---[[
+
 local function give_item(player, item)
 	if player:get_inventory():add_item("main", item) then
 		return
@@ -12,7 +12,7 @@ local function give_item(player, item)
 		minetest.add_item(player:get_pos(), item)
 		return
 	end
-end]]
+end
 
 local mobs = {
 	"mobs_mc:zombie",
@@ -219,7 +219,9 @@ pala_luckyblock.event_positive = {
 		description = S("20 000 places"),
 		rarity = 150,
 		texture = "default_stone.png",
-		func = pala_luckyblock.wip_event,
+		func = function(pos, player)
+			give_item(player, "pala_armor:boots_weighted")
+		end,
 	},
 	{
 		name = "analyser",
@@ -378,6 +380,132 @@ pala_luckyblock.event_positive = {
 		func = function(pos, player)
 			minetest.set_node(pos, {name="mcl_core:obsidian"})
 			minetest.add_item(pos, "pala_dynamite:dynamite_endium")
+		end,
+	},
+	{
+		name = "too-lucky-for-this-world",
+		description = S("Too lucky for this world..."),
+		rarity = 900,
+		texture = "default_stone.png",
+		func = function(pos, player)
+			minetest.set_node(pos, {name="mcl_chests:chest_small"})
+			minetest.get_meta(pos):get_inventory():set_stack("main", 14, ItemStack("pala_paladium:endium_nugget"))
+		end,
+	},
+	{
+		name = "pretty-base",
+		description = S("Pretty Base"),
+		rarity = 1000,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "less-pretty-tnt",
+		description = S("Less Pretty TNT"),
+		rarity = 1000,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "become-deaf",
+		description = S("Become Deaf"),
+		rarity = 1000,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "legendary-stf",
+		description = S("Legendary StF"),
+		rarity = 1000,
+		texture = "pala_legendary_legendary_random.png",
+		func = function(pos, player)
+			minetest.add_item(pos, "pala_legendary:legendary_random")
+		end,
+	},
+	{
+		name = "rodshild",
+		description = S("Rodshild"),
+		rarity = 1000,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "camouflage",
+		description = S("Camouflage"),
+		rarity = 1200,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "paladium-beacon",
+		description = S("Paladium Beacon"),
+		rarity = 1200,
+		texture = "pala_luckyblock_pala_beacon.png",
+		func = function(pos, player)
+			--TODO: add beacon at the structure top
+			minetest.place_schematic({x=pos.x-3,y=pos.y,z=pos.z-3},
+				pala_luckyblock.modpath .. "/schematics/pala_luckyblock_paladiumbeacon.mts", 0, nil, true)
+		end,
+	},
+	{
+		name = "mega-fast-learner",
+		description = S("Mega Fast Learner"),
+		rarity = 2400,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "inevitable",
+		description = S("Inevitable"),
+		rarity = 5000,
+		texture = "pala_legendary_endium_gauntlet.png",
+		func = function(pos, player)
+			give_item(player, "pala_legendary:endium_gauntlet")
+		end,
+	},
+	{
+		name = "more-money",
+		description = S("+ Money"),
+		rarity = 5000,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "endium-grade",
+		description = S("Endium Grade"),
+		rarity = 10000,
+		texture = "pala_paladium_endium_nugget.png",
+		func = function(pos, player)
+			if pala_grade.can_execute(player, 3) then
+				minetest.chat_send_player(player:get_player_name(),
+					C(mcl_colors.GRAY, S("You already have the rank, so here is an endium nugget")))
+				give_item(player, "pala_paladium:endium_nugget")
+			else
+				pala_grade.set_grade(player, "legendary")
+			end
+		end,
+	},
+	{
+		name = "wuzzy-afcms",
+		description = S("Wuzzyyyy/AFCMMMMMMMMMMMMS"),
+		rarity = 10000,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "big-inevitable",
+		description = S("Big Inevitable"),
+		rarity = 12500,
+		texture = "pala_luckyblock_mega_ineluctable.png",
+		func = function(pos, player)
+			local item = pala_legendary.gauntlet.set_stones(ItemStack("pala_legendary:endium_gauntlet"), {
+				fortune = 0,
+				chaos = 0,
+				jobs = 0,
+				power = 0,
+				invisibility = 0,
+			})
+			give_item(player, item)
 		end,
 	},
 }
