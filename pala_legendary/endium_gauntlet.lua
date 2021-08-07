@@ -33,7 +33,7 @@ local function get_colored_desc(name)
 	return C(pala_legendary.registered_stones[name].color or mcl_colors.GRAY, pala_legendary.registered_stones[name].name)
 end
 
-local function snippet(_, _, itemstack)
+tt.register_priority_snippet(function(_, _, itemstack)
 	if not itemstack then
 		return
 	end
@@ -44,7 +44,7 @@ local function snippet(_, _, itemstack)
 			text = text..C(mcl_colors.GOLD, "Stones:\n")
 		end
 		for stone in pairs(stones) do
-			text = text.." "..get_colored_desc(stone).."\n"
+			text = text.." "..get_colored_desc(stone)..(next(stones, stone) and "\n" or "")
 		end
 		if text ~= "" then
 			if not itemstack:get_definition()._tt_original_description then
@@ -53,9 +53,7 @@ local function snippet(_, _, itemstack)
 			return text, false
 		end
 	end
-end
-
-tt.register_priority_snippet(snippet)
+end)
 
 local function place_function(itemstack, player, pointed_thing)
 	if not player then return itemstack end
