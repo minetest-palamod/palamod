@@ -16,13 +16,13 @@ pala_job.jobs = {}
 
 if minetest.get_modpath("mc_economy") then
 	pala_job.money = "mc_economy:money"
+	minetest.log("action", "[pala_job] 'mc_economy' was found, using 'mc_economy:money' as money item")
 else
 	pala_job.money = "mcl_core:stone"
+	minetest.log("action", "[pala_job] no supported economy mod was found, using no money item")
 end
 
---[[
-TODO:hammer, cobblebreaker and bow looting
-]]
+--TODO: hammer, cobblebreaker and bow looting
 
 pala_job.jobs.hunter = {
 	{pala_job.money.." 2"},
