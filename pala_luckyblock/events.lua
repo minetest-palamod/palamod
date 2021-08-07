@@ -194,7 +194,7 @@ pala_luckyblock.event_positive = {
 		rarity = 50,
 		texture = "default_stone.png",
 		func = function(pos, player)
-			minetest.place_schematic({x=pos.x-2, y=pos.y, z=pos.z-2},
+			minetest.place_schematic({x=pos.x-1, y=pos.y, z=pos.z-1},
 				modpath .. "/schematics/pala_luckyblock_endium_piramid.mts", 0, nil, true)
 		end,
 	},
