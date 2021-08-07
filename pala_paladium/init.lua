@@ -237,6 +237,7 @@ minetest.register_node("pala_paladium:stone_with_findium", {
 	description = S("Findium Ore"),
 	_doc_items_longdesc = S("Findium ore is rare and can be found in clusters near the bottom of the world."),
 	tiles = {"pala_paladium_mineral_findium.png"},
+	drop = "pala_paladium:findium_gem",
 	is_ground_content = true,
 	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},
@@ -304,6 +305,19 @@ minetest.register_craftitem("pala_paladium:endium_nugget", {
 	inventory_image = "pala_paladium_endium_nugget.png",
 	stack_max = 64,
 	groups = { craftitem=1 },
+})
+
+minetest.register_node("pala_paladium:stone_with_endium", { --Added by palamod V7.5
+	description = S("Endium Ore"),
+	_doc_items_longdesc = S("Endium ore is rare and can be given inside events."),
+	tiles = {"pala_paladium_mineral_endium.png"},
+	drop = "pala_paladium:endium_nugget",
+	is_ground_content = true,
+	stack_max = 64,
+	groups = {pickaxey=4, building_block=1, material_stone=1},
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	_mcl_blast_resistance = 3,
+	_mcl_hardness = 3,
 })
 
 minetest.register_craft({
