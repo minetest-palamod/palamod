@@ -31,7 +31,7 @@ Gameplay
 
 ### Features
 
-This modpack aim to recreate the main features of the original server.
+This modpack aims to recreate the main features of the original server.
 
 This target include:
 * ores, weapons, armors, machines, tools and basic storage systems
