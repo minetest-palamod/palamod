@@ -21,6 +21,9 @@ of all Luckyblocks events=
 @1's Trophy=
 
 # EVENTS
+# ------
+
+# POSITIVE
 Body Guard=
 Wesh you're suck=
 Paladium Tower=
@@ -78,3 +81,25 @@ Inevitable=
 Endium Grade=
 Wuzzyyyy/AFCMMMMMMMMMMMMS=
 Big Inevitable=
+
+# NEGATIVE
+Enclosed=
+Cow Player=
+Geyser=
+StarFish=
+Over there=
+Inversion=
+Slime Tower=
+Are u ok?=
+Army Mission=
+BOOM=
+Piggy Rodeo=
+Boom=
+Pssssssss=
+Rush to the minerals=
+Thats a trap=
+Shot the pigeons=
+No XP=
+Light the fire=
+Instant break up=
+On the moon=

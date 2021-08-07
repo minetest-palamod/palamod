@@ -1,7 +1,7 @@
 minetest.log("action", "[pala_luckyblock] loading...")
 
-local S = minetest.get_translator(minetest.get_current_modname())
-local C = minetest.colorize
+--local S = minetest.get_translator(minetest.get_current_modname())
+--local C = minetest.colorize
 
 --local vector = vector
 local math = math
@@ -17,29 +17,11 @@ pala_luckyblock = {}
 dofile(modpath.."/node.lua")
 dofile(modpath.."/mobs.lua")
 dofile(modpath.."/trophy.lua")
-
-function pala_luckyblock.wip_event(pos, player)
-	minetest.chat_send_player(player:get_player_name(), C(mcl_colors.RED, S("This event is WIP")))
-end
-
-pala_luckyblock.minerallist = {
-	"pala_paladium:paladium_ingot",
-	"pala_paladium:titanium_ingot",
-	"pala_paladium:ametyst_ingot",
-	"mcl_core:gold_ingot",
-	"mcl_core:steel_ingot"
-}
-
-local function give_item(player, item)
-	if player:get_inventory():add_item("main", item) then
-		return
-	else
-		minetest.add_item(player:get_pos(), item)
-		return
-	end
-end
+dofile(modpath.."/events.lua")
+dofile(modpath.."/luckystat.lua")
 
 --60
+--[==[
 pala_luckyblock.event_positive = {
 	{"Body Guard", 10, "pala_luckyblock_body_guard.png", function(pos, player)
 		local name = player:get_player_name()
@@ -337,38 +319,18 @@ pala_luckyblock.event_negative = {
 	{"Good Bye have a great time!", 2000, "default_stone.png", pala_luckyblock.wip_event},
 	{"Silence, ça tourne", 2000, "default_stone.png", pala_luckyblock.wip_event},
 }
-
-pala_luckyblock.positive_somme = 0
-for k, v in ipairs(pala_luckyblock.event_positive) do
-	local inverse = 1/v[2]
-	pala_luckyblock.positive_somme = pala_luckyblock.positive_somme + inverse
-	v[2] = inverse
-end
-
-pala_luckyblock.negative_somme = 0
-for k, v in ipairs(pala_luckyblock.event_negative) do
-	local inverse = 1/v[2]
-	pala_luckyblock.negative_somme = pala_luckyblock.negative_somme + inverse
-	v[2] = inverse
-end
-
-
-pala_luckyblock.event_all = {unpack(pala_luckyblock.event_positive)}
-for i = 1,#pala_luckyblock.event_negative do
-    pala_luckyblock.event_all[#pala_luckyblock.event_positive+i] = pala_luckyblock.event_negative[i]
-end
+]==]
 
 --Store table lenth of events to avoid multiple call to #pala_luckyblock.event_all
 local number_images_pala = #pala_luckyblock.event_all
 local number_images_endium = #pala_luckyblock.event_positive
-pala_luckyblock.somme = pala_luckyblock.positive_somme + pala_luckyblock.negative_somme
 
 function pala_luckyblock.get_random_positive()
 	local rnd = randomFloat(0, pala_luckyblock.positive_somme)
 	local somme = 0
 	local hit = nil
 	for k, v in ipairs(pala_luckyblock.event_positive) do
-		somme = somme + v[2]
+		somme = somme + v.rarity
 		hit = k
 		if rnd < somme then
 			break
@@ -384,7 +346,7 @@ function pala_luckyblock.get_random_all()
 	local somme = 0
 	local hit = nil
 	for k, v in ipairs(pala_luckyblock.event_all) do
-		somme = somme + v[2]
+		somme = somme + v.rarity
 		hit = k
 		if rnd < somme then
 			break
@@ -399,10 +361,10 @@ function pala_luckyblock.get_open_formspec(def, nbimg, texture)
 	local form = table.concat({
 		"formspec_version[4]",
 		"size[17,11]",
-		"image_button[1,4;1.9,1.9;"..def[3]..";img1;;false;true;]",
-		"image_button[5,4;1.9,1.9;"..def[3]..";img2;;false;true;]",
-		"image_button[9,4;1.9,1.9;"..def[3]..";;;false;true;]",
-		"button_exit[1,9;10,1.5;event;"..def[1].."]",
+		"image_button[1,4;1.9,1.9;"..def.texture..";img1;;false;true;]",
+		"image_button[5,4;1.9,1.9;"..def.texture..";img2;;false;true;]",
+		"image_button[9,4;1.9,1.9;"..def.texture..";;;false;true;]",
+		"button_exit[1,9;10,1.5;event;"..def.description.."]",
 		"label[6,1;Lucky Block]",
 		"image[13,3;3,3;"..texture.."]",
 		"image[1,6;1.9,1.9;"..pala_luckyblock.get_random_img(nbimg).."]",
@@ -417,7 +379,7 @@ end
 
 function pala_luckyblock.get_random_img(nb)
 	local rnd = math.random(1,nb)
-	return pala_luckyblock.event_all[rnd][3]
+	return pala_luckyblock.event_all[rnd].texture
 end
 
 function pala_luckyblock.get_paladium_form()
@@ -488,7 +450,9 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 		elseif fields.quit and meta:get_string("is_open") == "true" then
 			local hit = meta:get_int("hit")
 			minetest.set_node(pos, {name="air"})
-			pala_luckyblock.event_all[hit][4](pos, sender)
+			local event = pala_luckyblock.event_all[hit]
+			event.func(pos, sender)
+			pala_luckyblock.luckystat.unlock(sender, event.name)
 		end
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
@@ -528,7 +492,9 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
 		elseif fields.quit and meta:get_string("is_open") == "true" then
 			local hit = meta:get_int("hit")
 			minetest.set_node(pos, {name="air"})
-			pala_luckyblock.event_positive[hit][4](pos, sender)
+			local event = pala_luckyblock.event_positive[hit]
+			event.func(pos, sender)
+			pala_luckyblock.luckystat.unlock(sender, event.name)
 		end
 	end,
 	_mcl_blast_resistance = 1200,

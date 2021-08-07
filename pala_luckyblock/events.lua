@@ -1,10 +1,13 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 local C = minetest.colorize
 
+local modpath = minetest.get_modpath(minetest.get_current_modname())
+
+--Cache often used functions for better performances
 local math = math
 local table = table
 
-
+--Utility function used to give player an item
 local function give_item(player, item)
 	if player:get_inventory():add_item("main", item) then
 		return
@@ -14,6 +17,7 @@ local function give_item(player, item)
 	end
 end
 
+--list of availlable spawners (for the 'spawner' event)
 local mobs = {
 	"mobs_mc:zombie",
 	"mobs_mc:witch",
@@ -21,6 +25,21 @@ local mobs = {
 	"mobs_mc:skeleton",
 }
 
+--List of availlable minerals
+pala_luckyblock.minerallist = {
+	"pala_paladium:paladium_ingot",
+	"pala_paladium:titanium_ingot",
+	"pala_paladium:ametyst_ingot",
+	"mcl_core:gold_ingot",
+	"mcl_core:steel_ingot"
+}
+
+--Fallback function for WIP events
+function pala_luckyblock.wip_event(pos, player)
+	minetest.chat_send_player(player:get_player_name(), C(mcl_colors.RED, S("This event is WIP")))
+end
+
+--EVENTS DEFINITION
 pala_luckyblock.event_positive = {
 	{
 		name = "body-guard",
@@ -176,7 +195,7 @@ pala_luckyblock.event_positive = {
 		texture = "default_stone.png",
 		func = function(pos, player)
 			minetest.place_schematic({x=pos.x-2, y=pos.y, z=pos.z-2},
-				pala_luckyblock.modpath .. "/schematics/pala_luckyblock_endium_piramid.mts", 0, nil, true)
+				modpath .. "/schematics/pala_luckyblock_endium_piramid.mts", 0, nil, true)
 		end,
 	},
 	{
@@ -509,3 +528,243 @@ pala_luckyblock.event_positive = {
 		end,
 	},
 }
+
+pala_luckyblock.event_negative = {
+	{
+		name = "enclosed",
+		description = S("Enclosed"),
+		rarity = 20,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "cow-player",
+		description = S("Cow Player"),
+		rarity = 20,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "geyser",
+		description = S("Geyser"),
+		rarity = 20,
+		texture = "pala_luckyblock_geyser.png",
+		func = function(pos, player)
+			local playerpos = player:get_pos()
+			minetest.add_particlespawner({
+				amount = 1000,
+				time = 2,
+				minpos = {x=playerpos.x-0.1, y=playerpos.y, z=playerpos.z-0.1},
+				maxpos = {x=playerpos.x+0.1, y=playerpos.y+30, z=playerpos.z+0.1},
+				minvel = {x=-0.5, y=5, z=-0.5},
+				maxvel = {x=0.5, y=10, z=0.5},
+				--minacc = {x=0, y=0, z=0},
+				--maxacc = {x=0, y=0, z=0},
+				minexptime = 1,
+				maxexptime = 3,
+				minsize = 2,
+				maxsize = 3,
+				collisiondetection = true,
+				collision_removal = false,
+				object_collision = false,
+				vertical = true,
+				texture = mcl_weather.rain.get_texture(),
+				-- playername = "singleplayer",
+				--animation = {Tile Animation definition},
+				--node = {name = "ignore", param2 = 0},
+				--node_tile = 0,
+			})
+			player:add_player_velocity({x=0,y=30,z=0})
+		end,
+	},
+	{
+		name = "starfish",
+		description = S("StarFish"),
+		rarity = 20,
+		texture = "pala_luckyblock_starfish.png",
+		func = function(pos, player)
+			for i = 1, 3, 1 do
+				minetest.add_entity(pos, "mobs_mc:silverfish")
+			end
+		end,
+	},
+	{
+		name = "over-there",
+		description = S("Over there"),
+		rarity = 20,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "inversion",
+		description = S("Inversion"),
+		rarity = 20,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "slime-tower",
+		description = S("Slime Tower"),
+		rarity = 20,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "are-u-ok",
+		description = S("Are u ok?"),
+		rarity = 20,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "army-mission",
+		description = S("Army Mission"),
+		rarity = 20,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "boom1",
+		description = S("BOOM"),
+		rarity = 20,
+		texture = "pala_dynamite_big_dynamite_inv.png",
+		func = function(pos, player)
+			local obj = minetest.add_entity(pos, "pala_dynamite:dynamite")
+			if obj then
+				obj:get_luaentity().thrower_name = player:get_player_name()
+			end
+		end,
+	},
+	{
+		name = "piggy-rodeo",
+		description = S("Piggy Rodeo"),
+		rarity = 30,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "boom2",
+		description = S("Boom"),
+		rarity = 30,
+		texture = "pala_luckyblock_boom.png",
+		func = function(pos, player)
+			mcl_explosions.explode(pos, 5, { drop_chance = 1.0 }, player)
+		end,
+	},
+	{
+		name = "pssssssss",
+		description = S("Pssssssss"),
+		rarity = 30,
+		texture = "pala_luckyblock_psss.png",
+		func = function(pos, player)
+			for i = 1, 4, 1 do
+				--TODO: use special creeper not exploding
+				--minetest.add_entity(pos, "pala_luckyblock:fake_creeper_charged")
+				minetest.add_entity(pos, "mobs_mc:creeper")
+			end
+		end,
+	},
+	{
+		name = "rush-to-the-minerals",
+		description = S("Rush to the minerals"),
+		rarity = 30,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "shot-the-pigeons",
+		description = S("Shot the pigeons"),
+		rarity = 30,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	{
+		name = "no-xp",
+		description = S("No XP"),
+		rarity = 40,
+		texture = "default_stone.png",
+		func = function(pos, player)
+			minetest.chat_send_player(player:get_player_name(), C(mcl_colors.RED, S("You will lose your xp in the next second!")))
+			mcl_experience.set_player_xp_level(player, 0)
+		end,
+	},
+	{
+		name = "light-the-fire",
+		description = S("Light the fire"),
+		rarity = 40,
+		texture = "default_stone.png",
+		func = function(pos, player)
+			local playername = player:get_player_name()
+			local pos1 = {x=pos.x-6, y=pos.y-2, z=pos.z-6}
+			local pos2 = {x=pos.x+6, y=pos.y+2, z=pos.z+6}
+			if minetest.is_area_protected(pos1, pos2, playername, 2) then
+				minetest.record_protection_violation(pos, playername)
+			else
+				local positions = minetest.find_nodes_in_area_under_air(
+					pos1,
+					pos2,
+					{"group:building_block"}
+				)
+				for i = 1, #positions do
+					positions[i] = {x=positions[i].x, y=positions[i].y+1 , z=positions[i].z}
+				end
+				minetest.bulk_set_node(positions, {name="mcl_fire:fire"})
+			end
+		end,
+	},
+	{
+		name = "instant-breakup",
+		description = S("Instant break up"),
+		rarity = 40,
+		texture = "pala_luckyblock_instant_break_up.png",
+		func = function(pos, player)
+			local inv = player:get_inventory()
+			local oldstack = inv:get_stack("main", 1)
+			minetest.chat_send_player(player:get_player_name(),
+				S("It seems to me you had @1", C(mcl_colors.AQUA, oldstack:get_count().."x"..oldstack:get_name())))
+			inv:set_stack("main", 1, ItemStack())
+		end,
+	},
+	{
+		name = "on-the-moon",
+		description = S("On the moon"),
+		rarity = 40,
+		texture = "default_stone.png",
+		func = pala_luckyblock.wip_event,
+	},
+	--TODO: add definition of other events
+}
+
+--Calculate some useful values
+----------------------------------
+pala_luckyblock.positive_somme = 0
+for k, v in ipairs(pala_luckyblock.event_positive) do
+	local inverse = 1/v.rarity
+	pala_luckyblock.positive_somme = pala_luckyblock.positive_somme + inverse
+	v.rarity = inverse
+end
+
+pala_luckyblock.negative_somme = 0
+for k, v in ipairs(pala_luckyblock.event_negative) do
+	local inverse = 1/v.rarity
+	pala_luckyblock.negative_somme = pala_luckyblock.negative_somme + inverse
+	v.rarity = inverse
+end
+
+pala_luckyblock.somme = pala_luckyblock.positive_somme + pala_luckyblock.negative_somme
+----------------------------------
+
+--Get all events in a single table
+pala_luckyblock.event_all = {unpack(pala_luckyblock.event_positive)}
+for i = 1,#pala_luckyblock.event_negative do
+    pala_luckyblock.event_all[#pala_luckyblock.event_positive+i] = pala_luckyblock.event_negative[i]
+end
+
+minetest.log("action", string.format("[pala_luckyblock] loaded %s positive luckyblock events",
+	#pala_luckyblock.event_positive))
+
+minetest.log("action", string.format("[pala_luckyblock] loaded %s negative luckyblock events",
+	#pala_luckyblock.event_negative))
+
+minetest.log("action", string.format("[pala_luckyblock] loaded %s luckyblock events",
+	#pala_luckyblock.event_all))
