@@ -32,6 +32,7 @@ load_mod_pala_sticks = true
 load_mod_pala_mapgen = true
 load_mod_pala_storage = true
 
+load_mod_db_manager = true
 load_mod_mc_faction = false
 load_mod_mc_economy = false
 load_mod_drawers = false

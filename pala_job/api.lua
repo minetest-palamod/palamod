@@ -1,52 +1,46 @@
---TEMP TESTING STUFF
-
-minetest.log("action", "[pala_job] loading...")
-
---local modname = minetest.get_current_modname()
---local modpath = minetest.get_modpath(modname)
-
 --local S = minetest.get_translator(modname)
 --local F = minetest.formspec_escape
+
+--localize some commun functions (for performances)
+local pairs = pairs
 
 local string = string
 local table = table
 
 local sf = string.format
 
-pala_job = {}
-
-local db
-if minetest.get_modpath("db_manager") then
-	db = db_manager.database("pala_job:job_xp", db_manager.get_schemat("pala_job:sql/xp_storage"))
-end
+--create database object for storage use
+local db = db_manager.database("pala_job:job_xp", db_manager.get_schemat("pala_job:sql/xp_storage.sql"))
 
 local pool = {}
 --local levels = {}
 
 local function get_xp_raw(playername, job)
 	return db:get_rows(
-		string.format(
+		sf(
 			"SELECT * FROM xp WHERE player = '%s' LIMIT 1",
 			playername
 		)
 	)[1]
 end
 
-function pala_job.get_xp(playername, job)
-	return pool[playername][job] or get_xp_raw(playername, job)
-end
-
 local function set_xp_raw(playername, job, amount)
-	return db:exec(
-		string.format(
+	db:exec(
+		sf(
 			"UPDATE xp SET %s=%s WHERE player='%s'",
 			job,
 			amount,
 			playername
 		)
-	)[1]
+	)
 end
 
+--get xp in specified job for playername
+function pala_job.get_xp(playername, job)
+	return pool[playername][job] or get_xp_raw(playername, job)
+end
+
+--set xp in specified job for playername
 function pala_job.set_xp(playername, job, amount)
 	if pool[playername] then
 		pool[playername][job] = amount
@@ -57,7 +51,7 @@ end
 
 function pala_job.init_player(playername)
 	db:exec(
-		string.format(
+		sf(
 			"INSERT INTO xp VALUES ('%s', %s, %s, %s, %s)",
 			playername,
 			pala_job.default_xp,
