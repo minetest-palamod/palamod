@@ -36,7 +36,7 @@ This modpack aims to recreate the main features of the original server.
 This target include:
 * ores, weapons, armors, machines, tools and basic storage systems
 * plants and farming related stuff
-* job system
+* job system (optional, require [minetest-palamod/db_manager](https://github.com/minetest-palamod/db_manager))
 * grade system
 * server commands
 

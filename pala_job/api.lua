@@ -9,6 +9,12 @@ local table = table
 
 local sf = string.format
 
+
+--vars---------
+local levels_mapping = {480, 1195, 2476, 4710, 8327, 13792, 21597, 32262, 46328, 64357,
+	86931, 114649, 148126, 187995, 234901, 289504, 352478, 424509, 506296, 598549}
+---------------
+
 --create database object for storage use
 local db = db_manager.database("pala_job:job_xp", db_manager.get_schemat("pala_job:sql/xp_storage.sql"))
 
@@ -37,16 +43,12 @@ end
 
 --get xp in specified job for playername
 function pala_job.get_xp(playername, job)
-	return pool[playername][job] or get_xp_raw(playername, job)
+	return pool[playername][job]
 end
 
 --set xp in specified job for playername
 function pala_job.set_xp(playername, job, amount)
-	if pool[playername] then
-		pool[playername][job] = amount
-	else
-		set_xp_raw(playername, job, amount)
-	end
+	pool[playername][job] = amount
 end
 
 function pala_job.init_player(playername)
@@ -62,7 +64,14 @@ function pala_job.init_player(playername)
 	)
 end
 
+--FIXME
 function pala_job.calculate_level(amount)
+	for level, val in pairs(levels_mapping) do
+		if amount >= val then
+			return level + 1
+		end
+	end
+	return 0
 end
 
 local function save_data(playername)
@@ -106,4 +115,19 @@ end)
 minetest.register_on_newplayer(function(player)
 	local playername = player:get_player_name()
 	pala_job.init_player(playername)
+end)
+
+--save xp periodicaly every 10mn
+local time = 0
+minetest.register_globalstep(function(dtime)
+	time = time + dtime;
+	if time >= 600 then
+		for _,player in pairs(minetest.get_connected_players()) do
+			local playername = player:get_player_name()
+			if pool[playername] then --it should ALWAYS be true
+				save_data(playername)
+			end
+		end
+		time = 0
+	end
 end)
