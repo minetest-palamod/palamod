@@ -2,6 +2,11 @@ local C = minetest.colorize
 local S = minetest.get_translator(minetest.get_current_modname())
 --local F = minetest.formspec_escape
 
+local math = math
+local string = string
+
+local next = next
+
 local serialize = minetest.serialize
 local deserialize = minetest.deserialize
 
@@ -70,15 +75,17 @@ local function place_function(itemstack, player, pointed_thing)
 			if selected == "" then
 				local newstone = next(stones)
 				selected = newstone
-				mcl_tmp_message.message(player, string.format("Endium Gauntlet (%s)",
-					pala_legendary.registered_stones[newstone].name)
-				)
+				mcl_title.set(player, "actionbar", {
+					text = string.format("Endium Gauntlet (%s)",
+						pala_legendary.registered_stones[newstone].name)
+				})
 			else
 				local newstone = next(stones, selected) or next(stones)
 				selected = newstone
-				mcl_tmp_message.message(player, string.format("Endium Gauntlet (%s)",
-					pala_legendary.registered_stones[newstone].name)
-				)
+				mcl_title.set(player, "actionbar", {
+					text = string.format("Endium Gauntlet (%s)",
+						pala_legendary.registered_stones[newstone].name)
+				})
 			end
 		else
 			if selected == "" then
