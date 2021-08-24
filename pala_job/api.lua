@@ -22,12 +22,12 @@ local pool = {}
 --local levels = {}
 
 local function get_xp_raw(playername, job)
-	return db:get_rows(
+	print(dump(db:get_rows(
 		sf(
 			"SELECT * FROM xp WHERE player = '%s' LIMIT 1",
 			playername
 		)
-	)[1]
+	)[1]))
 end
 
 local function set_xp_raw(playername, job, amount)
@@ -99,22 +99,36 @@ local function free_pool(playername)
 	pool[playername] = nil
 end
 
+local function entry_exist(playername)
+	local tb = db:get_rows(
+		sf(
+			"SELECT * FROM xp WHERE player = '%s' LIMIT 1",
+			playername
+		)
+	)
+	if next(tb) then
+		return true
+	else
+		return false
+	end
+end
+
 --cache xp level
 minetest.register_on_joinplayer(function(player)
 	local playername = player:get_player_name()
-	create_pool(playername)
+	--check if player database entry exist and create it is false
+	if entry_exist(playername) then
+		create_pool(playername)
+	else
+		pala_job.init_player(playername)
+		create_pool(playername)
+	end
 end)
 
 --free cache
 minetest.register_on_leaveplayer(function(player)
 	local playername = player:get_player_name()
 	free_pool(playername)
-end)
-
---init player xp
-minetest.register_on_newplayer(function(player)
-	local playername = player:get_player_name()
-	pala_job.init_player(playername)
 end)
 
 --save xp periodicaly every 10mn
