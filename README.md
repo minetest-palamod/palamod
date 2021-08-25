@@ -3,7 +3,8 @@
 ![GitHub](https://img.shields.io/github/license/minetest-palamod/palamod)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/minetest-palamod/palamod)
 ![GitHub all releases](https://img.shields.io/github/downloads/minetest-palamod/palamod/total)
-![ContentDB](https://content.minetest.net/packages/minetest-palamod/palamod/shields/title/)
+[![ContentDB](https://content.minetest.net/packages/AFCM/palamod/shields/title/)](https://content.minetest.net/packages/AFCM/palamod/)
+[![ContentDB](https://content.minetest.net/packages/AFCM/palamod/shields/downloads/)](https://content.minetest.net/packages/AFCM/palamod/)
 
 
 Why this project?
