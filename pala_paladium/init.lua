@@ -9,7 +9,6 @@ minetest.register_node("pala_paladium:stone_with_amethyst", {
 	_doc_items_longdesc = S("Amethyst ore is rare and can be found in clusters near the bottom of the world."),
 	tiles = {"default_stone.png^pala_paladium_mineral_amethyst.png"},
 	is_ground_content = true,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 3,
@@ -20,7 +19,6 @@ minetest.register_craftitem("pala_paladium:amethyst_ingot", {
 	description = S("Amethyst Ingot"),
 	_doc_items_longdesc = S("Molten Amethyst. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "default_steel_ingot.png^[colorize:#944dc7:150",
-	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
@@ -29,7 +27,6 @@ minetest.register_node("pala_paladium:amethystblock", {
 	_doc_items_longdesc = S("A block of amethyst is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_amethyst_block.png"},
 	is_ground_content = false,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 6,
@@ -65,7 +62,6 @@ minetest.register_node("pala_paladium:stone_with_titanium", {
 	_doc_items_longdesc = S("Titanium ore is rare and can be found in clusters near the bottom of the world."),
 	tiles = {"default_stone.png^pala_paladium_mineral_titanium.png"},
 	is_ground_content = true,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 3,
@@ -76,7 +72,6 @@ minetest.register_craftitem("pala_paladium:titanium_ingot", {
 	description = S("Titanium Ingot"),
 	_doc_items_longdesc = S("Molten Titanium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_titanium_ingot.png",
-	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
@@ -85,7 +80,6 @@ minetest.register_node("pala_paladium:titaniumblock", {
 	_doc_items_longdesc = S("A block of titanium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_titanium_block.png"},
 	is_ground_content = false,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 6,
@@ -121,7 +115,6 @@ minetest.register_node("pala_paladium:stone_with_paladium", {
 	_doc_items_longdesc = S("Paladium ore is rare and can be found in clusters near the bottom of the world."),
 	tiles = {"pala_paladium_mineral_paladium.png"},
 	is_ground_content = true,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 3,
@@ -138,7 +131,6 @@ minetest.register_craftitem("pala_paladium:paladium_ingot", {
 	description = S("Paladium Ingot"),
 	_doc_items_longdesc = S("Molten Paladium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_paladium_ingot.png",
-	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
@@ -147,7 +139,6 @@ minetest.register_node("pala_paladium:paladiumblock", {
 	_doc_items_longdesc = S("A block of Paladium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_paladium_block.png"},
 	is_ground_content = false,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 6,
@@ -183,7 +174,6 @@ minetest.register_node("pala_paladium:stone_with_gpaladium", {
 	_doc_items_longdesc = S("Green Paladium ore is rare and can be given inside events."),
 	tiles = {"default_stone.png^pala_paladium_mineral_gpaladium.png"},
 	is_ground_content = true,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 3,
@@ -194,7 +184,6 @@ minetest.register_craftitem("pala_paladium:gpaladium_ingot", {
 	description = S("Green Paladium Ingot"),
 	_doc_items_longdesc = S("Molten Green Paladium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_gpaladium_ingot.png",
-	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
@@ -203,7 +192,6 @@ minetest.register_node("pala_paladium:gpaladiumblock", {
 	_doc_items_longdesc = S("A block of Green Paladium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_gpaladium_block.png"},
 	is_ground_content = false,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 6,
@@ -240,7 +228,6 @@ minetest.register_node("pala_paladium:stone_with_findium", {
 	tiles = {"pala_paladium_mineral_findium.png"},
 	drop = "pala_paladium:findium_gem",
 	is_ground_content = true,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 3,
@@ -257,7 +244,6 @@ minetest.register_craftitem("pala_paladium:findium_gem", {
 	description = S("Findium Gem"),
 	_doc_items_longdesc = S("Findium Gem. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_findium_gem.png",
-	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
@@ -266,7 +252,6 @@ minetest.register_node("pala_paladium:findiumblock", {
 	_doc_items_longdesc = S("A block of findium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_findiumblock.png"},
 	is_ground_content = false,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 6,
@@ -294,7 +279,6 @@ minetest.register_craftitem("pala_paladium:endium_ingot", {
 	description = S("Endium Ingot"),
 	_doc_items_longdesc = S("Molten Endium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_endium_ingot.png",
-	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
@@ -304,7 +288,6 @@ minetest.register_craftitem("pala_paladium:endium_nugget", {
 		Endium nuggets are very small pieces of molten endium; the main purpose is to create endium ingots.
 	]]),
 	inventory_image = "pala_paladium_endium_nugget.png",
-	stack_max = 64,
 	groups = { craftitem=1 },
 })
 
@@ -314,7 +297,6 @@ minetest.register_node("pala_paladium:stone_with_endium", { --Added by palamod V
 	tiles = {"pala_paladium_mineral_endium.png"},
 	drop = "pala_paladium:endium_nugget",
 	is_ground_content = true,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1, material_stone=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 3,
@@ -334,7 +316,6 @@ minetest.register_node("pala_paladium:endiumblock", {
 	_doc_items_longdesc = S("A block of Endium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_endium_block.png"},
 	is_ground_content = false,
-	stack_max = 64,
 	groups = {pickaxey=4, building_block=1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	_mcl_blast_resistance = 6,
