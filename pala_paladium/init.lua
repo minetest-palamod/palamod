@@ -189,6 +189,7 @@ minetest.register_craftitem("pala_paladium:gpaladium_ingot", {
 
 minetest.register_node("pala_paladium:gpaladiumblock", {
 	description = S("Block of Green Paladium"),
+	_tt_help = C(mcl_colors.RED, S("Can't be decrafted")),
 	_doc_items_longdesc = S("A block of Green Paladium is mostly a shiny decorative block."),
 	tiles = {"pala_paladium_gpaladium_block.png"},
 	is_ground_content = false,
@@ -204,13 +205,6 @@ minetest.register_craft({
 		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
 		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
 		{"pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot", "pala_paladium:gpaladium_ingot"},
-	},
-})
-
-minetest.register_craft({
-	output = "pala_paladium:gpaladium_ingot 9",
-	recipe = {
-		{"pala_paladium:gpaladiumblock"},
 	},
 })
 
