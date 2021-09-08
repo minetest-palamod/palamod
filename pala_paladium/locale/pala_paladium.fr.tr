@@ -39,6 +39,9 @@ Endium Ore=Minerai d'Endium
 Endium ore is rare and can be given inside events.=Le minerai d'Endium est rare et peut être donné lors d'events.
 Molten Endium. It is used to craft armor, tools, and whatnot.=L'Endium. Il est utilisé pour fabriquer des armures, des outils et ainsi de suite.
 Endium nuggets are very small pieces of molten endium; the main purpose is to create endium ingots.=Les pépites d'endium sont de très petits morceaux d'endium fondu; le but principal est de créer des lingots d'endium'.
+Block of Endium=Block d'Endium
+A block of Endium is mostly a shiny decorative block.=Un bloc d'endium est principalement un bloc décoratif brillant.
+Can't be decrafted=Ne peut pas être décrafté
 
 # findium
 Findium Ore=Minerai de Findium

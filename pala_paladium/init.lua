@@ -1,6 +1,7 @@
 minetest.log("action", "[pala_paladium] loading...")
 
 local S = minetest.get_translator(minetest.get_current_modname())
+local C = minetest.colorize
 
 --Amethyst
 minetest.register_node("pala_paladium:stone_with_amethyst", {
@@ -324,6 +325,28 @@ minetest.register_craft({
 	output = "pala_paladium:endium_ingot",
 	recipe = {
 		{"pala_paladium:endium_nugget 9"},
+	},
+})
+
+minetest.register_node("pala_paladium:endiumblock", {
+	description = S("Block of Endium"),
+	_tt_help = C(mcl_colors.RED, S("Can't be decrafted")),
+	_doc_items_longdesc = S("A block of Endium is mostly a shiny decorative block."),
+	tiles = {"pala_paladium_endium_block.png"},
+	is_ground_content = false,
+	stack_max = 64,
+	groups = {pickaxey=4, building_block=1},
+	sounds = mcl_sounds.node_sound_stone_defaults(),
+	_mcl_blast_resistance = 6,
+	_mcl_hardness = 5,
+})
+
+minetest.register_craft({
+	output = "pala_paladium:endiumblock",
+	recipe = {
+		{"pala_paladium:endium_ingot", "pala_paladium:endium_ingot", "pala_paladium:endium_ingot"},
+		{"pala_paladium:endium_ingot", "pala_paladium:endium_ingot", "pala_paladium:endium_ingot"},
+		{"pala_paladium:endium_ingot", "pala_paladium:endium_ingot", "pala_paladium:endium_ingot"},
 	},
 })
 

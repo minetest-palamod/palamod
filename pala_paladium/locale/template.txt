@@ -39,6 +39,9 @@ Endium Ore=
 Endium ore is rare and can be given inside events.=
 Molten Endium. It is used to craft armor, tools, and whatnot.=
 Endium nuggets are very small pieces of molten endium; the main purpose is to create endium ingots.=
+Block of Endium=
+A block of Endium is mostly a shiny decorative block.=
+Can't be decrafted=
 
 # findium
 Findium Ore=
