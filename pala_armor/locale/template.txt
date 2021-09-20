@@ -30,6 +30,12 @@ Endium Chestplate=
 Endium Leggings=
 Endium Boots=
 
+# invisible
+Invisible Helmet=
+Invisible Chestplate=
+Invisible Leggings=
+Invisible Boots=
+
 # special
 Slimy Helmet=
 Weighted boots=

@@ -1,5 +1,30 @@
 local S = minetest.get_translator(minetest.get_current_modname())
 
+--Invisible
+mcl_armor.register_set({
+	name = "invisible",
+	description = "Invisible",
+	durabilities = {
+		head = 1760,
+		torso = 2560,
+		legs = 2400,
+		feet = 2080,
+	},
+	enchantability = 25,
+	points = {
+		head = 4.5,
+		torso = 6.5,
+		legs = 5.5,
+		feet = 5,
+	},
+	textures = {
+		head = "blank.png",
+		torso = "blank.png",
+		legs = "blank.png",
+		feet = "blank.png",
+	},
+})
+
 --Weighted boots
 --[[
 TODO: increase gravity then wearing
