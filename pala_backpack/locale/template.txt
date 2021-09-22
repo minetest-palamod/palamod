@@ -7,3 +7,5 @@ Amethyste=
 Titanium=
 Paladium=
 Endium=
+Available from level @1 hunter=
+To use it, you just need to rightclick it and the interface will open exactly like a chest.

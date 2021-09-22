@@ -3,6 +3,8 @@ minetest.log("action", "[pala_backpack] loading...")
 local C = minetest.colorize
 local S = minetest.get_translator(minetest.get_current_modname())
 
+local string = string
+
 minetest.register_on_joinplayer(function(player)
 	local inv = player:get_inventory()
 	inv:set_size("backpack", 81) -- 9*9
@@ -72,19 +74,8 @@ local backpack_widths = {
 
 --Disallow accessing to inventory if player hasn't the right backpack to avoid cheating
 
---Test using this dragonfire script:
---[[
-local form = table.concat({
-	"formspec_version[4]",
-	"size[12,18]",
-	"list[current_player;backpack;0.5,1;9,9;]",
-	"list[current_player;main;0.5,13;9,4;]",
-	"listring[]",
-	"label[0.5,0.5;Backpack]",
-	"label[0.5,12.5;Inventory]",
-})
-minetest.register_cheat("PalaBackpack", "Inventory", function() minetest.show_formspec("df_pala:pala_backpack", form) end)
-]]
+--You can test with anticheat disabled and the official palamod dragonfire test mod
+--https://github.com/minetest-palamod/palamod-test-dragonfire
 
 if minetest.settings:get_bool("disable_anticheat", false) then
 	local cheat_log = "[pala_backpack] Player [%s] tried to interact with backpack inventory without using a backpack!"
@@ -115,15 +106,18 @@ if minetest.settings:get_bool("disable_anticheat", false) then
 end
 
 --Backpack------------------------------
+
+local generic_doc = S("To use it, you just need to rightclick it and the interface will open exactly like a chest.")
+
 --Amethyst
 minetest.register_craftitem("pala_backpack:amethyste_backpack", {
 	description = S("@1 Backpack", C(mcl_colors.DARK_PURPLE, S("Amethyste"))),
-	_doc_items_longdesc = S("Offers @1 storage slots", 9),
+	_doc_items_longdesc = S("Offers @1 storage slots", 9).."\n"..generic_doc.."\n"..S("Available from level @1 hunter", 5),
 	inventory_image = "pala_backpack_ametyst.png",
 	stack_max = 1,
-	groups = {miner_level=5},
+	groups = {miner_level = 5},
 	on_use = function(itemstack, player, pointed_thing)
-		minetest.show_formspec(player:get_player_name(), "amethyste_backpack", pala_backpack.form.amethyst)
+		minetest.show_formspec(player:get_player_name(), "pala_backpack:amethyste", pala_backpack.form.amethyst)
 	end,
 })
 
@@ -131,36 +125,36 @@ minetest.register_craftitem("pala_backpack:amethyste_backpack", {
 --Titanium
 minetest.register_craftitem("pala_backpack:titanium_backpack", {
 	description = S("@1 Backpack", C(mcl_colors.DARK_GRAY, S("Titanium"))),
-	_doc_items_longdesc = S("Offers @1 storage slots", 27),
+	_doc_items_longdesc = S("Offers @1 storage slots", 27).."\n"..generic_doc.."\n"..S("Available from level @1 hunter", 10),
 	inventory_image = "pala_backpack_titanium.png",
 	stack_max = 1,
-	groups = {miner_level=10},
+	groups = {miner_level = 10},
 	on_use = function(itemstack, player, pointed_thing)
-		minetest.show_formspec(player:get_player_name(), "titanium_backpack", pala_backpack.form.titanium)
+		minetest.show_formspec(player:get_player_name(), "pala_backpack:titanium", pala_backpack.form.titanium)
 	end,
 })
 
 --Paladium
 minetest.register_craftitem("pala_backpack:paladium_backpack", {
 	description = S("@1 Backpack", C(mcl_colors.RED, S("Paladium"))),
-	_doc_items_longdesc = S("Offers @1 storage slots", 56),
+	_doc_items_longdesc = S("Offers @1 storage slots", 56).."\n"..generic_doc.."\n"..S("Available from level @1 hunter", 15),
 	inventory_image = "pala_backpack_paladium.png",
 	stack_max = 1,
-	groups = {miner_level=15},
+	groups = {miner_level = 15},
 	on_use = function(itemstack, player, pointed_thing)
-		minetest.show_formspec(player:get_player_name(), "paladium_backpack", pala_backpack.form.paladium)
+		minetest.show_formspec(player:get_player_name(), "pala_backpack:paladium", pala_backpack.form.paladium)
 	end,
 })
 
 --Endium
 minetest.register_craftitem("pala_backpack:endium_backpack", {
 	description = S("@1 Backpack", C(mcl_colors.BLUE, S("Endium"))),
-	_doc_items_longdesc = S("Offers @1 storage slots", 81),
+	_doc_items_longdesc = S("Offers @1 storage slots", 81).."\n"..generic_doc.."\n"..S("Available from level @1 hunter", 20),
 	inventory_image = "pala_backpack_endium.png",
 	stack_max = 1,
-	groups = {miner_level=20},
+	groups = {miner_level = 20},
 	on_use = function(itemstack, player, pointed_thing)
-		minetest.show_formspec(player:get_player_name(), "endium_backpack", pala_backpack.form.endium)
+		minetest.show_formspec(player:get_player_name(), "pala_backpack:endium", pala_backpack.form.endium)
 	end,
 })
 
@@ -175,7 +169,7 @@ if minetest.get_modpath("mcl_mobitems") and minetest.get_modpath("pala_paladium"
 			{"pala_paladium:amethyst_ingot", "mcl_chests:chest", "pala_paladium:amethyst_ingot"},
 			{"pala_paladium:amethyst_ingot", "mcl_hoppers:hopper", "pala_paladium:amethyst_ingot"},
 			{"mcl_mobitems:leather", "pala_paladium:amethyst_ingot", "mcl_mobitems:leather"}
-		}
+		},
 	})
 	minetest.register_craft({
 		output = "pala_backpack:titanium_backpack",
@@ -183,7 +177,7 @@ if minetest.get_modpath("mcl_mobitems") and minetest.get_modpath("pala_paladium"
 			{"pala_paladium:titanium_ingot", "mcl_chests:chest", "pala_paladium:titanium_ingot"},
 			{"pala_paladium:titanium_ingot", "mcl_hoppers:hopper", "pala_paladium:titanium_ingot"},
 			{"mcl_mobitems:leather", "pala_paladium:titanium_ingot", "mcl_mobitems:leather"}
-		}
+		},
 	})
 	minetest.register_craft({
 		output = "pala_backpack:paladium_backpack",
@@ -191,7 +185,7 @@ if minetest.get_modpath("mcl_mobitems") and minetest.get_modpath("pala_paladium"
 			{"pala_paladium:paladium_ingot", "mcl_chests:chest", "pala_paladium:paladium_ingot"},
 			{"pala_paladium:paladium_ingot", "mcl_hoppers:hopper", "pala_paladium:paladium_ingot"},
 			{"mcl_mobitems:leather", "pala_paladium:paladium_ingot", "mcl_mobitems:leather"}
-		}
+		},
 	})
 	minetest.register_craft({
 		output = "pala_backpack:endium_backpack",
@@ -199,7 +193,7 @@ if minetest.get_modpath("mcl_mobitems") and minetest.get_modpath("pala_paladium"
 			{"pala_paladium:paladium_ingot", "mcl_chests:chest", "pala_paladium:paladium_ingot"},
 			{"pala_paladium:paladium_ingot", "mcl_hoppers:hopper", "pala_paladium:paladium_ingot"},
 			{"mcl_mobitems:leather", "pala_paladium:endium_nugget", "mcl_mobitems:leather"}
-		}
+		},
 	})
 end
 
