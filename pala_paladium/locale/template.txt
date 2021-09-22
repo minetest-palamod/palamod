@@ -50,3 +50,11 @@ Findium Gem. It is used to craft armor, tools, and whatnot.=
 Findium Gem=
 Block of Findium=
 A block of findium is mostly a shiny decorative block.=
+
+# trixium
+Trixium Ore=
+Trixium ore is rare and can be found in clusters near the bottom of the world.=
+Trixium Gem. It's a competitive mineral.=
+Trixium Gem=
+Block of Trixium=
+A block of trixium is mostly a shiny decorative block.=
