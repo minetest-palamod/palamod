@@ -3,10 +3,7 @@ local S = minetest.get_translator(minetest.get_current_modname())
 local has_pala_paladium = minetest.get_modpath("pala_paladium")
 local has_pala_craftitems = minetest.get_modpath("pala_craftitems")
 
-local pickaxe_longdesc = [[
-	Pickaxes are mining tools to mine hard blocks, such as stone.
-	A pickaxe can also be used as weapon, but it is rather inefficient.
-]]
+local pickaxe_longdesc = minetest.registered_tools["mcl_tools:pick_diamond"]._doc_items_longdesc
 
 local get_node = minetest.get_node
 local dig_node = minetest.dig_node
@@ -22,12 +19,12 @@ minetest.register_tool("pala_obsidian:obsidian_pick", {
 		full_punch_interval = 0.83333333,
 		max_drop_level=5,
 		damage_groups = {fleshy=5},
-		punch_attack_uses = 781,
+		punch_attack_uses = 5000,
 	},
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey_obsidian = { speed = 10, level = 5, uses = 4999 },
+        pickaxey_obsidian = {speed = 10, level = 5, uses = 5000},
     },
 })
 
