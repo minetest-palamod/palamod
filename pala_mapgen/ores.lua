@@ -1,11 +1,11 @@
 local stonelike = {"mcl_core:stone", "mcl_core:diorite", "mcl_core:andesite", "mcl_core:granite"}
 
 --Amethyst
--- Common spawn
+--Common spawn
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_amethyst",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 10000,
 	clust_num_ores = 4,
 	clust_size     = 3,
@@ -15,7 +15,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_amethyst",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 5000,
 	clust_num_ores = 2,
 	clust_size     = 2,
@@ -25,7 +25,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_amethyst",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 10000,
 	clust_num_ores = 8,
 	clust_size     = 3,
@@ -33,11 +33,11 @@ minetest.register_ore({
 	y_max          = mcl_worlds.layer_to_y(pala_mapgen.AMETHYST_LAYER),
 })
 
--- Rare spawn
+--Rare spawn
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_amethyst",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 20000,
 	clust_num_ores = 1,
 	clust_size     = 1,
@@ -47,7 +47,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_amethyst",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 20000,
 	clust_num_ores = 2,
 	clust_size     = 2,
@@ -56,11 +56,11 @@ minetest.register_ore({
 })
 
 --Titanium
--- Common spawn
+--Common spawn
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_titanium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 10000,
 	clust_num_ores = 4,
 	clust_size     = 3,
@@ -70,7 +70,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_titanium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 5000,
 	clust_num_ores = 2,
 	clust_size     = 2,
@@ -80,7 +80,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_titanium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 10000,
 	clust_num_ores = 8,
 	clust_size     = 3,
@@ -88,11 +88,11 @@ minetest.register_ore({
 	y_max          = mcl_worlds.layer_to_y(pala_mapgen.TITANIUM_LAYER),
 })
 
--- Rare spawn
+--Rare spawn
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_titanium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 20000,
 	clust_num_ores = 1,
 	clust_size     = 1,
@@ -102,7 +102,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_titanium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 20000,
 	clust_num_ores = 2,
 	clust_size     = 2,
@@ -111,11 +111,11 @@ minetest.register_ore({
 })
 
 --Paladium
--- Common spawn
+--Common spawn
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_paladium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 10000,
 	clust_num_ores = 4,
 	clust_size     = 3,
@@ -125,7 +125,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_paladium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 5000,
 	clust_num_ores = 2,
 	clust_size     = 2,
@@ -135,7 +135,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_paladium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 10000,
 	clust_num_ores = 8,
 	clust_size     = 3,
@@ -143,11 +143,11 @@ minetest.register_ore({
 	y_max          = mcl_worlds.layer_to_y(pala_mapgen.PALADIUM_LAYER),
 })
 
--- Rare spawn
+--Rare spawn
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_paladium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 20000,
 	clust_num_ores = 1,
 	clust_size     = 1,
@@ -157,7 +157,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_paladium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 20000,
 	clust_num_ores = 2,
 	clust_size     = 2,
@@ -166,11 +166,11 @@ minetest.register_ore({
 })
 
 --Findium
--- Common spawn
+--Common spawn
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_findium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 10000,
 	clust_num_ores = 4,
 	clust_size     = 3,
@@ -180,7 +180,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_findium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 5000,
 	clust_num_ores = 2,
 	clust_size     = 2,
@@ -190,7 +190,7 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_findium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 10000,
 	clust_num_ores = 8,
 	clust_size     = 3,
@@ -198,11 +198,11 @@ minetest.register_ore({
 	y_max          = mcl_worlds.layer_to_y(pala_mapgen.FINDIUM_LAYER),
 })
 
--- Rare spawn
+--Rare spawn
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_findium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 20000,
 	clust_num_ores = 1,
 	clust_size     = 1,
@@ -212,10 +212,70 @@ minetest.register_ore({
 minetest.register_ore({
 	ore_type       = "scatter",
 	ore            = "pala_paladium:stone_with_findium",
-	wherein         = stonelike,
+	wherein        = stonelike,
 	clust_scarcity = 20000,
 	clust_num_ores = 2,
 	clust_size     = 2,
 	y_min          = mcl_worlds.layer_to_y(13),
 	y_max          = mcl_worlds.layer_to_y(pala_mapgen.FINDIUM_LAYER),
 })
+
+
+
+--Trixium
+
+if minetest.settings:get_bool("pala_mapgen.generate_trixium", true) then
+	--Common spawn
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "pala_paladium:stone_with_trixium",
+		wherein        = stonelike,
+		clust_scarcity = 10000,
+		clust_num_ores = 2,
+		clust_size     = 3,
+		y_min          = mcl_vars.mg_overworld_min,
+		y_max          = mcl_worlds.layer_to_y(pala_mapgen.TRIXIUM_LAYER),
+	})
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "pala_paladium:stone_with_trixium",
+		wherein        = stonelike,
+		clust_scarcity = 5000,
+		clust_num_ores = 2,
+		clust_size     = 2,
+		y_min          = mcl_vars.mg_overworld_min,
+		y_max          = mcl_worlds.layer_to_y(pala_mapgen.TRIXIUM_LAYER),
+	})
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "pala_paladium:stone_with_trixium",
+		wherein        = stonelike,
+		clust_scarcity = 10000,
+		clust_num_ores = 2,
+		clust_size     = 3,
+		y_min          = mcl_vars.mg_overworld_min,
+		y_max          = mcl_worlds.layer_to_y(pala_mapgen.TRIXIUM_LAYER),
+	})
+
+	--Rare spawn
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "pala_paladium:stone_with_trixium",
+		wherein        = stonelike,
+		clust_scarcity = 20000,
+		clust_num_ores = 1,
+		clust_size     = 1,
+		y_min          = mcl_worlds.layer_to_y(13),
+		y_max          = mcl_worlds.layer_to_y(pala_mapgen.TRIXIUM_LAYER),
+	})
+	minetest.register_ore({
+		ore_type       = "scatter",
+		ore            = "pala_paladium:stone_with_trixium",
+		wherein        = stonelike,
+		clust_scarcity = 20000,
+		clust_num_ores = 2,
+		clust_size     = 2,
+		y_min          = mcl_worlds.layer_to_y(13),
+		y_max          = mcl_worlds.layer_to_y(pala_mapgen.TRIXIUM_LAYER),
+	})
+end

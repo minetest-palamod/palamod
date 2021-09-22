@@ -20,6 +20,10 @@ pala_job.default_xp (Default XP) int 0
 #    If disabled, no custom ores will be generated.
 pala_mapgen.generate_ores (Custom ores generation) bool true
 
+#    If disabled, no trixium ores will be generated.
+#    If the pala_mapgen.generate_ores is set to false, trixium will neither be generated
+pala_mapgen.generate_trixium (Trixium generation) bool true
+
 [pala_server]
 
 #    Is PvP enabled at spawn.
