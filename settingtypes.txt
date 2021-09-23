@@ -38,6 +38,12 @@ pala_server.clear_lag (Clear Lag) bool true
 #    Clear lag interval.
 pala_server.clear_lag_interval (Clear Lag interval) int 300
 
+[pala_trixium]
+
+#    If enabled, activate trixium ranking.
+#    WARNING: you need db_manager mod in order to use this feature!
+pala_trixium.ranking (Trixium ranking) bool false
+
 [advanced]
 
 #    Enable debug features
