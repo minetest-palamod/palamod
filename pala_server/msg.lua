@@ -20,7 +20,7 @@ end
 function minetest.send_join_message(player_name)
 	if not core.is_singleplayer() then
 		if minetest.get_player_privs(player_name).server == true then
-			minetest.chat_send_all(C(mcl_colors.RED, S("[Admin] @1 as joined the server")))
+			minetest.chat_send_all(C(mcl_colors.RED, S("[Admin] @1 as joined the server", player_name)))
 		else
 			minetest.chat_send_all("*** " .. player_name .. " joined the game.")
 		end
