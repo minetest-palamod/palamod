@@ -14,3 +14,5 @@ Next clearlag in @1s=
 # home
 Home deleted=
 The home has been set to your position=
+
+[Admin] @1 as joined the server=
