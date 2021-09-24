@@ -6,6 +6,7 @@ local get_node = minetest.get_node
 minetest.register_tool("pala_tools:hammer_amethyst", {
 	description = "Amethyst Hammer",
 	inventory_image = "default_stick.png",
+	groups = {tool=1},
 	_mcl_diggroups = {
 		pickaxey = { speed = 5, level = 5, uses = 4999 },
 	},
