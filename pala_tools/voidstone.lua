@@ -24,14 +24,27 @@ pala_tools.voidstone_form = table.concat({
 	"listring[]",
 })
 
-local trash = minetest.create_detached_inventory("voidstone_trash", {
-	allow_put = function(inv, listname, index, stack, player)
-		return stack:get_count()
-	end,
+local callbacks = {
 	on_put = function(inv, listname, index, stack, player)
 		inv:set_stack(listname, index, "")
 	end,
-})
+}
+
+if not minetest.settings:get_bool("disable_anticheat", false) then
+	callbacks.allow_put = function(inv, listname, index, stack, player)
+		if player:get_wielded_item():get_name() == "pala_tools:voidstone" then
+			return stack:get_count()
+		else
+			return 0
+		end
+	end
+else
+	callbacks.allow_put = function(inv, listname, index, stack, player)
+		return stack:get_count()
+	end
+end
+
+local trash = minetest.create_detached_inventory("voidstone_trash", callbacks)
 trash:set_size("main", 1)
 
 minetest.register_craftitem("pala_tools:voidstone", {
@@ -39,7 +52,7 @@ minetest.register_craftitem("pala_tools:voidstone", {
 	_doc_items_longdesc = S("Allow you to trash items"), --TODO: paladium desc
 	inventory_image = "pala_tools_voidstone.png",
 	stack_max = 1,
-	groups = {},
+	groups = {tool=1},
 	on_use = function(itemstack, user, pointed_thing)
 		if user:is_player() then
 			minetest.show_formspec(user:get_player_name(), "pala_tools:voidstone", pala_tools.voidstone_form)

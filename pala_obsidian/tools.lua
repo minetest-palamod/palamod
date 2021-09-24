@@ -14,7 +14,7 @@ minetest.register_tool("pala_obsidian:obsidian_pick", {
 	_doc_items_longdesc = pickaxe_longdesc,
 	inventory_image = "default_tool_diamondpick.png",
 	wield_scale = mcl_vars.tool_wield_scale,
-	groups = { tool=1, pickaxe=1, dig_speed_class=5, enchantability=10 },
+	groups = {tool=1, pickaxe=1, dig_speed_class=5, enchantability=10},
 	tool_capabilities = {
 		full_punch_interval = 0.83333333,
 		max_drop_level=5,
@@ -33,6 +33,7 @@ minetest.register_tool("pala_obsidian:magical_tool", {
     description = S("Magical Tool"),
     inventory_image = "pala_obsidian_magical_tool.png",
 	wield_scale = mcl_vars.tool_wield_scale,
+	groups = {tool=1},
 	on_place = function(itemstack, user, pointed_thing)
 		local pos = get_pointed_thing_position(pointed_thing)
 		if not minetest.is_protected(pos, user) and get_node(pos).name == "pala_obsidian:hardened_obsidian" then
@@ -43,11 +44,11 @@ minetest.register_tool("pala_obsidian:magical_tool", {
 
 if has_pala_paladium and has_pala_craftitems then
 	minetest.register_craft({
-		output = 'pala_obsidian:magical_tool',
+		output = "pala_obsidian:magical_tool",
 		recipe = {
 			{"", "pala_paladium:paladium_ingot", ""},
 			{"pala_paladium:paladium_ingot", "pala_paladium:paladiumblock", "pala_paladium:paladium_ingot"},
 			{"", "pala_craftitems:palastick", ""},
-		}
+		},
 	})
 end

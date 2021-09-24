@@ -19,7 +19,7 @@ minetest.register_craftitem("pala_paladium:amethyst_ingot", {
 	description = S("Amethyst Ingot"),
 	_doc_items_longdesc = S("Molten Amethyst. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "default_steel_ingot.png^[colorize:#944dc7:150",
-	groups = { craftitem=1 },
+	groups = {craftitem=1},
 })
 
 minetest.register_node("pala_paladium:amethystblock", {
@@ -72,7 +72,7 @@ minetest.register_craftitem("pala_paladium:titanium_ingot", {
 	description = S("Titanium Ingot"),
 	_doc_items_longdesc = S("Molten Titanium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_titanium_ingot.png",
-	groups = { craftitem=1 },
+	groups = {craftitem=1},
 })
 
 minetest.register_node("pala_paladium:titaniumblock", {
@@ -131,7 +131,7 @@ minetest.register_craftitem("pala_paladium:paladium_ingot", {
 	description = S("Paladium Ingot"),
 	_doc_items_longdesc = S("Molten Paladium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_paladium_ingot.png",
-	groups = { craftitem=1 },
+	groups = {craftitem=1},
 })
 
 minetest.register_node("pala_paladium:paladiumblock", {
@@ -184,7 +184,7 @@ minetest.register_craftitem("pala_paladium:gpaladium_ingot", {
 	description = S("Green Paladium Ingot"),
 	_doc_items_longdesc = S("Molten Green Paladium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_gpaladium_ingot.png",
-	groups = { craftitem=1 },
+	groups = {craftitem=1},
 })
 
 minetest.register_node("pala_paladium:gpaladiumblock", {
@@ -238,7 +238,7 @@ minetest.register_craftitem("pala_paladium:findium_gem", {
 	description = S("Findium Gem"),
 	_doc_items_longdesc = S("Findium Gem. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_findium_gem.png",
-	groups = { craftitem=1 },
+	groups = {craftitem=1},
 })
 
 minetest.register_node("pala_paladium:findiumblock", {
@@ -273,7 +273,7 @@ minetest.register_craftitem("pala_paladium:endium_ingot", {
 	description = S("Endium Ingot"),
 	_doc_items_longdesc = S("Molten Endium. It is used to craft armor, tools, and whatnot."),
 	inventory_image = "pala_paladium_endium_ingot.png",
-	groups = { craftitem=1 },
+	groups = {craftitem=1},
 })
 
 minetest.register_craftitem("pala_paladium:endium_nugget", {
@@ -282,7 +282,7 @@ minetest.register_craftitem("pala_paladium:endium_nugget", {
 		Endium nuggets are very small pieces of molten endium; the main purpose is to create endium ingots.
 	]]),
 	inventory_image = "pala_paladium_endium_nugget.png",
-	groups = { craftitem=1 },
+	groups = {craftitem=1},
 })
 
 minetest.register_node("pala_paladium:stone_with_endium", { --Added by palamod V7.5
@@ -343,7 +343,7 @@ minetest.register_craftitem("pala_paladium:trixium_gem", {
 	description = S("Trixium Gem"),
 	_doc_items_longdesc = S("Trixium Gem. It's a competitive mineral."),
 	inventory_image = "pala_paladium_trixium_gem.png",
-	groups = { craftitem=1 },
+	groups = {craftitem=1},
 })
 
 minetest.register_node("pala_paladium:trixiumblock", {
