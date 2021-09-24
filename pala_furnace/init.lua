@@ -185,7 +185,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		end
 		node.name = name
 		minetest.swap_node(pos, node)
-		if name == "mcl_furnaces:furnace_active" then
+		if name == "pala_furnace:furnace_active" then
 			spawn_flames(pos, node.param2)
 		else
 			mcl_particles.delete_node_particlespawners(pos)
@@ -363,11 +363,11 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 				fuel_percent = math.floor(fuel_time / fuel_totaltime * 100)
 			end
 			formspec = active_formspec(fuel_percent, item_percent)
-			swap_node(pos, "mcl_furnaces:furnace_active")
+			swap_node(pos, "pala_furnace:furnace_active")
 			-- make sure timer restarts automatically
 			result = true
 		else
-			swap_node(pos, "mcl_furnaces:furnace")
+			swap_node(pos, "pala_furnace:furnace")
 			-- stop timer on the inactive furnace
 			minetest.get_node_timer(pos):stop()
 		end
@@ -394,7 +394,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		after_rotate_active = function(pos)
 			local node = minetest.get_node(pos)
 			mcl_particles.delete_node_particlespawners(pos)
-			if node.name == "mcl_furnaces:furnace" then
+			if node.name == "pala_furnace:furnace" then
 				return
 			end
 			spawn_flames(pos, node.param2)
@@ -490,7 +490,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 		paramtype2 = "facedir",
 		paramtype = "light",
 		light_source = LIGHT_ACTIVE_FURNACE,
-		drop = "mcl_furnaces:furnace",
+		drop = "pala_furnace:furnace",
 		groups = {pickaxey=1, container=4, deco_block=1, not_in_creative_inventory=1, material_stone=1},
 		is_ground_content = false,
 		sounds = mcl_sounds.node_sound_stone_defaults(),
@@ -531,7 +531,7 @@ if minetest.settings:get_bool("palamod.experimental", false) then
 	})
 
 	-- minetest.register_craft({
-		-- output = "mcl_furnaces:furnace",
+		-- output = "pala_furnace:furnace",
 		-- recipe = {
 			-- { "mcl_core:cobble", "mcl_core:cobble", "mcl_core:cobble" },
 			-- { "mcl_core:cobble", "", "mcl_core:cobble" },
