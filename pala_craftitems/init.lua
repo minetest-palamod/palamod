@@ -6,18 +6,21 @@ minetest.register_craftitem("pala_craftitems:palastick", {
 	description = S("Paladium Stick"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craftitem("pala_craftitems:titaniumstick", {
 	description = S("Titanium Stick"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_titaniumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craftitem("pala_craftitems:amethyststick", {
 	description = S("Amethyst Stick"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_amethyststick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craft({
@@ -45,6 +48,7 @@ minetest.register_craftitem("pala_craftitems:orb_speed", {
 	description = S("Speed Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craft({
@@ -53,7 +57,7 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""},
 		{"pala_paladium:paladium_ingot", "mcl_core:sugar", "pala_paladium:paladium_ingot"},
 		{"", "pala_paladium:paladium_ingot", ""},
-	}
+	},
 })
 
 --heal
@@ -61,6 +65,7 @@ minetest.register_craftitem("pala_craftitems:orb_heal", {
 	description = S("Heal Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craft({
@@ -69,7 +74,7 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""},
 		{"pala_paladium:paladium_ingot", "mcl_potions:speckled_melon", "pala_paladium:paladium_ingot"},
 		{"", "pala_paladium:paladium_ingot", ""},
-	}
+	},
 })
 minetest.register_craft({
 	output = "pala_craftitems:orb_heal",
@@ -77,7 +82,7 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""},
 		{"pala_paladium:paladium_ingot", "mcl_books:book", "pala_paladium:paladium_ingot"},
 		{"", "pala_paladium:paladium_ingot", ""},
-	}
+	},
 })
 
 --jump
@@ -85,6 +90,7 @@ minetest.register_craftitem("pala_craftitems:orb_jump", {
 	description = S("Jump Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craft({
@@ -93,14 +99,15 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""},
 		{"pala_paladium:paladium_ingot", "mcl_nether:nether_wart_item", "pala_paladium:paladium_ingot"},
 		{"", "pala_paladium:paladium_ingot", ""},
-	}
+	},
 })
 
 --knockback
 minetest.register_craftitem("pala_craftitems:orb_knockback", {
 	description = S("Knockback Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
-	inventory_image = "pala_craftitems_paladiumstick.png"
+	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craft({
@@ -109,7 +116,7 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""},
 		{"pala_paladium:paladium_ingot", "mcl_mobitems:ghast_tear", "pala_paladium:paladium_ingot"},
 		{"", "pala_paladium:paladium_ingot", ""},
-	}
+	},
 })
 
 --strenght
@@ -117,6 +124,7 @@ minetest.register_craftitem("pala_craftitems:orb_strenght", {
 	description = S("Strenght Orb"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craft({
@@ -125,7 +133,7 @@ minetest.register_craft({
 		{"", "pala_paladium:paladium_ingot", ""},
 		{"pala_paladium:paladium_ingot", "mcl_mobitems:blaze_powder", "pala_paladium:paladium_ingot"},
 		{"", "pala_paladium:paladium_ingot", ""},
-	}
+	},
 })
 
 --compressed
@@ -135,18 +143,21 @@ minetest.register_craftitem("pala_craftitems:compressed_paladium", {
 	description = S("Compressed Paladium"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craftitem("pala_craftitems:compressed_titanium", {
 	description = S("Compressed Titanium"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craftitem("pala_craftitems:compressed_amethyst", {
 	description = S("Compressed Amethyst"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_paladiumstick.png",
+	groups = {craftitem=1},
 })
 
 --Wither Skull Fragment
@@ -154,26 +165,28 @@ minetest.register_craftitem("pala_craftitems:wither_skull_fragment", {
 	description = S("Wither Skull Fragment"),
 	_doc_items_longdesc = S("Useful in many crafts"),
 	inventory_image = "pala_craftitems_wither_skull_fragment.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craft({
 	type = "shapeless",
 	output = "pala_craftitems:wither_skull_fragment 9",
-	recipe = {"mcl_heads:wither_skeleton"}
+	recipe = {"mcl_heads:wither_skeleton"},
 })
 
 minetest.register_craftitem("pala_craftitems:diamondstring", {
 	description = S("Diamond String"),
 	_doc_items_longdesc = S("Allow you to craft dynamite"),
 	inventory_image = "pala_craftitems_diamondstring.png",
+	groups = {craftitem=1},
 })
 
 minetest.register_craft({
 	output = "pala_craftitems:diamondstring",
 	recipe = {
-		{'mcl_mobitems:string', 'mcl_core:diamond', 'mcl_mobitems:string'},
-		{'mcl_mobitems:string', 'mcl_core:diamond', 'mcl_mobitems:string'},
-		{'mcl_mobitems:string', 'mcl_core:diamond', 'mcl_mobitems:string'},
+		{"mcl_mobitems:string", "mcl_core:diamond", "mcl_mobitems:string"},
+		{"mcl_mobitems:string", "mcl_core:diamond", "mcl_mobitems:string"},
+		{"mcl_mobitems:string", "mcl_core:diamond", "mcl_mobitems:string"},
 	},
 })
 
