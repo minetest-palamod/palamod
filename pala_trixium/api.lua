@@ -56,6 +56,7 @@ function pala_trixium.add_amount(playername, amount)
 	pala_trixium.set_amount(playername, pala_trixium.get_amount(playername) + amount)
 end
 
+
 function pala_trixium.save_playerdata(playername, clear_cache)
 	db:exec(sf("UPDATE ranking SET amount=%s WHERE name='%s';", cached_playerdata[playername], playername))
 	if clear_cache then
