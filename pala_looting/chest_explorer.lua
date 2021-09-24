@@ -29,6 +29,7 @@ minetest.register_craftitem("pala_looting:chest_explorer", {
 	inventory_image = "pala_looting_chest_explorer.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	stack_max = 1,
+	groups = {tool=1},
 	on_place = function(itemstack, placer, pointed_thing)
 		if placer:is_player() and placer:get_player_control().sneak and pointed_thing.type == "node" then
 			--local nodename = minetest.get_node(pointed_thing.under)

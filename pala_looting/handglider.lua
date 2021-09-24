@@ -6,6 +6,7 @@ pala_looting.handglider.using = {}
 minetest.register_craftitem("pala_looting:handglider", {
 	description = S("Handglider"),
 	inventory_image = "default_stone.png",
+	groups = {tool=1},
 	on_use = function(itemstack, player, pointed_thing)
         local pname = player:get_player_name()
         if not pala_looting.handglider.using[pname] then --Equip
