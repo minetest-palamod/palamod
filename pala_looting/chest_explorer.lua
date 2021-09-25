@@ -31,6 +31,11 @@ minetest.register_craftitem("pala_looting:chest_explorer", {
 	stack_max = 1,
 	groups = {tool=1},
 	on_place = function(itemstack, placer, pointed_thing)
+		local new_stack = mcl_util.call_on_rightclick(itemstack, placer, pointed_thing)
+		if new_stack then
+			return new_stack
+		end
+
 		if placer:is_player() and placer:get_player_control().sneak and pointed_thing.type == "node" then
 			--local nodename = minetest.get_node(pointed_thing.under)
 			--if minetest.get_item_group(nodename, "container") == 0 then return end
