@@ -35,6 +35,11 @@ minetest.register_tool("pala_obsidian:magical_tool", {
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = {tool=1},
 	on_place = function(itemstack, user, pointed_thing)
+		local new_stack = mcl_util.call_on_rightclick(itemstack, user, pointed_thing)
+		if new_stack then
+			return new_stack
+		end
+
 		local pos = get_pointed_thing_position(pointed_thing)
 		if not minetest.is_protected(pos, user) and get_node(pos).name == "pala_obsidian:hardened_obsidian" then
 			dig_node(pos)

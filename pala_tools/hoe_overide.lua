@@ -68,11 +68,9 @@ if minetest.get_modpath("pala_job") then
 	local on_place = function(wear_divisor)
 		return function(itemstack, user, pointed_thing)
 			-- Call on_rightclick if the pointed node defines it
-			local node = minetest.get_node(pointed_thing.under)
-			if user and not user:get_player_control().sneak then
-				if minetest.registered_nodes[node.name] and minetest.registered_nodes[node.name].on_rightclick then
-					return minetest.registered_nodes[node.name].on_rightclick(pointed_thing.under, node, user, itemstack) or itemstack
-				end
+			local new_stack = mcl_util.call_on_rightclick(itemstack, user, pointed_thing)
+			if new_stack then
+				return new_stack
 			end
 
 			if minetest.is_protected(pointed_thing.under, user:get_player_name()) then

@@ -134,18 +134,15 @@ function pala_dynamite.register_dynamite(name, def)
 
 	newdef.description = def.description
 	newdef.stack_max = 16
-	newdef.range = 0
 	newdef.inventory_image = def.inventory_image
 	newdef.on_use = function(itemstack, user, pointed_thing)
 		local player_name = user:get_player_name()
 
-		if pointed_thing.type ~= "node" then
-			local dynamite = throw_grenade(name, user)
-			dynamite.thrower_name = player_name
+		local dynamite = throw_grenade(name, user)
+		dynamite.thrower_name = player_name
 
-			if not minetest.settings:get_bool("creative_mode") then
-				itemstack:take_item()
-			end
+		if not minetest.settings:get_bool("creative_mode") then
+			itemstack:take_item()
 		end
 
 		return itemstack

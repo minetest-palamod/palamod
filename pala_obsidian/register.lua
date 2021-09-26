@@ -1,6 +1,8 @@
 --local S = minetest.get_translator(minetest.get_current_modname())
 local has_mcl_core = minetest.get_modpath("mcl_core")
 
+local modpath = minetest.get_modpath(minetest.get_current_modname())
+
 pala_obsidian.register_custom_obsidian("two_life", {
 	desc = "Two Life Obsidian",
 	longdesc = "Place an obsidian on its break",
@@ -203,7 +205,7 @@ pala_obsidian.register_custom_obsidian("wither", {
 		]]
 		local playerpos = digger:get_pos()
 		local pos2 = {x=playerpos.x-3,y=playerpos.y-1,z=playerpos.z-3}
-		minetest.place_schematic(pos2, pala_obsidian.modpath.."/schematics/pala_obsidian_cage.mts", 0, nil, true)
+		minetest.place_schematic(pos2, modpath.."/schematics/pala_obsidian_cage.mts", 0, nil, true)
 	end,
 })
 

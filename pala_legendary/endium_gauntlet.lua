@@ -61,6 +61,11 @@ tt.register_priority_snippet(function(_, _, itemstack)
 end)
 
 local function place_function(itemstack, player, pointed_thing)
+	local new_stack = mcl_util.call_on_rightclick(itemstack, player, pointed_thing)
+	if new_stack then
+		return new_stack
+	end
+
 	if not player then return itemstack end
 	local playername = player:get_player_name()
 	local stones = pala_legendary.gauntlet.get_stones(itemstack)
