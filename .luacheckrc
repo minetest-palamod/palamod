@@ -47,7 +47,31 @@ read_globals = {
 	"ItemStack",
 	"AreaStore",
 
-	"vector",
+	vector = {
+		fields = {
+			"new",
+			"equals",
+			"length",
+			"normalize",
+			"floor",
+			"round",
+			"apply",
+			"distance",
+			"direction",
+			"angle",
+			"dot",
+			"cross",
+			"add",
+			"subtract",
+			"multiply",
+			"divide",
+			"offset",
+			"sort",
+			"rotate_around_axis",
+			"rotate",
+			"dir_to_rotation",
+		},
+	},
 
 	table = {
 		fields = {
