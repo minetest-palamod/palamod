@@ -1,5 +1,9 @@
 minetest.log("action", "[pala_armor] loading...")
 
+if not minetest.settings:get_bool("3d_player_preview", true) then
+	minetest.log("error", "[pala_armor] disabling 3d player preview is not supported! armors may not render correctly!")
+end
+
 --local S = minetest.get_translator(minetest.get_current_modname())
 local modpath = minetest.get_modpath(minetest.get_current_modname())
 
