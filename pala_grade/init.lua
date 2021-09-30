@@ -19,6 +19,7 @@ local default_grade = minetest.settings:get("pala_grade.default_grade") or "none
 TODO: like mc colored chat handling
 TODO: handle grade with database
 TODO: be sure grade prefixs are mc like
+TODO: https://youtu.be/XGvtr2KsX-E?t=426
 ]]
 
 pala_grade = {}
@@ -58,11 +59,11 @@ pala_grade.grades = {
 }
 
 function pala_grade.get_grade(player)
-	return player:get_meta():get_string("pala_grade.grade")
+	return player:get_meta():get_string("pala_grade:grade")
 end
 
 function pala_grade.can_execute(player, level)
-	local grade = player:get_meta():get_string("pala_grade.grade")
+	local grade = player:get_meta():get_string("pala_grade:grade")
 	if pala_grade.grades[grade] then
 		return pala_grade.grades[grade].rank >= level
 	else
@@ -73,7 +74,7 @@ end
 
 function pala_grade.set_grade(player, grade)
 	if pala_grade.grades[grade] then
-		player:get_meta():set_string("pala_grade.grade", grade)
+		player:get_meta():set_string("pala_grade:grade", grade)
 	else
 		minetest.log("error",
 			"[pala_grade] Failed to set grade to player ["..player:get_player_name().."]: Invalid grade ["..grade.."]")
@@ -86,6 +87,13 @@ end)
 
 if minetest.settings:get_bool("palamod.experimental", false) then
 	dofile(modpath.."/chat.lua")
+
+	if minetest.get_modpath("pala_armor")
+		and minetest.get_modpath("mcl_armor")
+		and minetest.get_modpath("mcl_enchanting") then
+
+		dofile(modpath.."/paladium_skin.lua")
+	end
 end
 
 dofile(modpath.."/commands.lua")

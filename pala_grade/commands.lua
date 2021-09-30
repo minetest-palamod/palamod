@@ -23,7 +23,7 @@ TODO: be sure the command is exactly mc like
 ]]
 minetest.register_chatcommand("set_grade", {
 	params = "<player> <grade>",
-	description = "Allows you to change the grade of a player",
+	description = S("Allows you to change the grade of a player"),
 	privs = {server = true},
 	func = function(name, param)
 		local sparam = param:split(" ")
@@ -45,12 +45,12 @@ minetest.register_chatcommand("set_grade", {
 
 minetest.register_chatcommand("feed", {
 	params = "",
-	description = "Allows you to completely fill your food bar",
+	description = S("Allows you to completely fill your food bar"),
 	privs = {interact = true},
 	func = function(name, param)
 		local player = get_player_by_name(name)
 		if not player then
-			return false, "Player not found"
+			return false, S("Error: Player not found")
 		end
 		if pala_grade.can_execute(player, 2) then
 			mcl_hunger.set_hunger(player, 20)

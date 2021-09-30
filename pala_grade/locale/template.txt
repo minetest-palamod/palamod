@@ -1,5 +1,6 @@
 # textdomain: pala_grade
 You must have the @1 grade to run this command.=
+Error: Player not found=
 You have been feed!=
 Chalenger=
 Hero=
