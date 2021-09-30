@@ -3,3 +3,4 @@
 scr	export-ignore
 *.ods	export-ignore
 *.xcf	export-ignore
+*.blend	export-ignore
