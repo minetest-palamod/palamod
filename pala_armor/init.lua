@@ -50,6 +50,7 @@ mcl_armor.register_set({
 })
 
 --Paladium
+--we specify textures directly to support disabling pala_grade
 mcl_armor.register_set({
 	name = "paladium",
 	description = "Paladium",
@@ -65,6 +66,12 @@ mcl_armor.register_set({
 		torso = 6.5,
 		legs = 5.5,
 		feet = 5,
+	},
+	textures = {
+		head = "pala_armor_helmet_paladium_1.png",
+		torso = "pala_armor_chestplate_paladium_1.png",
+		legs = "pala_armor_leggings_paladium_1.png",
+		feet = "pala_armor_boots_paladium_1.png",
 	},
 	craft_material = "pala_paladium:paladium_ingot",
 })
