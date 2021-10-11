@@ -9,12 +9,6 @@
 
 ![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20mac%20%7C%20android-blue)
 
-[![YouTube](https://img.shields.io/youtube/channel/subscribers/UCK0mMW2SlIb7X5pKi00ZcYw?style=social)](https://www.youtube.com/channel/UCK0mMW2SlIb7X5pKi00ZcYw)
-
-[![Reddit](https://img.shields.io/reddit/subreddit-subscribers/MinetestPalamod?style=social)](https://www.reddit.com/r/MinetestPalamod/)
-
-[![Mastodon](https://img.shields.io/mastodon/follow/106993231703412486?domain=https%3A%2F%2Fmastodon.social&style=social)](https://mastodon.social/web/accounts/106993231703412486)
-
 
 Why this project?
 -----------------
@@ -29,6 +23,13 @@ It is just made for fun, testing and freedom fans.
 
 Informations
 ------------
+
+[![YouTube](https://img.shields.io/youtube/channel/subscribers/UCK0mMW2SlIb7X5pKi00ZcYw?style=social)](https://www.youtube.com/channel/UCK0mMW2SlIb7X5pKi00ZcYw)
+
+[![Reddit](https://img.shields.io/reddit/subreddit-subscribers/MinetestPalamod?style=social)](https://www.reddit.com/r/MinetestPalamod/)
+
+[![Mastodon](https://img.shields.io/mastodon/follow/106993231703412486?domain=https%3A%2F%2Fmastodon.social&style=social)](https://mastodon.social/web/accounts/106993231703412486)
+
 
 This project use the free voxel game engine [Minetest](https://www.minetest.net/) with the [MineClone2](https://git.minetest.land/MineClone2/MineClone2) game.
 
