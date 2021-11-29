@@ -77,14 +77,6 @@ It doesn't include:
 Installing
 ----------
 
-You can just clone the repo in your mods folder and start to play, but if you want to create a server or replicate more exactly the gameplay, you should use some external mods:
+You just need to clone the repo in your mods folder and start to play.
 
-Economy: [minetest-palamod/mc_economy](https://github.com/minetest-palamod/mc_economy)
-
-Faction: [minetest-palamod/mc_faction](https://github.com/minetest-palamod/mc_faction)
-
-Drawers: [minetest-mods/drawers](https://github.com/minetest-mods/drawers)
-
-WorldEdit: [Uberi/Minetest-WorldEdit](https://github.com/Uberi/Minetest-WorldEdit)
-
-Build Limit: [AFCMS/mcl_build_limit](https://github.com/AFCMS/mcl_build_limit)
+You can find a more advanced tutorial on the [wiki](https://github.com/minetest-palamod/palamod/wiki/Installing).
