@@ -30,7 +30,7 @@ minetest.register_tool("pala_sticks:teleport_stick", {
 			end
 		end
 		mcl_throwing.throw("mcl_throwing:ender_pearl",
-			{x=pos.x, y=pos.y+1.5, z=pos.z}, player:get_look_dir(), 22, name)
+			vector.add(pos, vector.new(0, 1.5, 0)), player:get_look_dir(), 22, name)
 	end,
 })
 

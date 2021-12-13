@@ -5,6 +5,7 @@ local modpath = minetest.get_modpath(modname)
 local S = minetest.get_translator(modname)
 local C = minetest.colorize
 
+local vector = vector
 local math = math
 
 --[[
@@ -62,8 +63,8 @@ function pala_legendary.spawn_particle(pos)
 	minetest.add_particlespawner({
 		amount = 300,
         --time = 1,
-        minpos = {x=pos.x-3, y=pos.y-1, z=pos.z-3},
-        maxpos = {x=pos.x+3, y=pos.y+1, z=pos.z+3},
+        minpos = vector.new(pos.x - 3, pos.y - 1, pos.z - 3),
+        maxpos = vector.new(pos.x + 3, pos.y + 1, pos.z - 3),
         --minvel = {x=-0.1, y=-0.1, z=-0.1},
         --maxvel = {x=0.1, y=0.1, z=0.1},
         minexptime = 2,

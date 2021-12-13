@@ -204,7 +204,7 @@ pala_obsidian.register_custom_obsidian("wither", {
 		TODO: Check if digger is Wither to spawn the obsidian cage
 		]]
 		local playerpos = digger:get_pos()
-		local pos2 = {x=playerpos.x-3,y=playerpos.y-1,z=playerpos.z-3}
+		local pos2 = vector.add(playerpos, vector.new(-3, -1, -3))
 		minetest.place_schematic(pos2, modpath.."/schematics/pala_obsidian_cage.mts", 0, nil, true)
 	end,
 })

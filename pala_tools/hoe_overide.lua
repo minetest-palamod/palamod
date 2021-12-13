@@ -1,3 +1,5 @@
+local vector = vector
+
 minetest.register_node("pala_tools:fertilised_dirt", {
 	tiles = {"pala_tools_fertilised_dirt.png", "default_dirt.png^[colorize:#332521:200"},
 	description = ("Fertilised Dirt"),
@@ -43,7 +45,7 @@ if minetest.get_modpath("pala_job") then
 		end
 		local node = minetest.get_node(pos)
 		local name = node.name
-		local above = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
+		local above = minetest.get_node(vector.new(pos.x, pos.y + 1, pos.z))
 		if minetest.get_item_group(name, "cultivatable") == 2 then
 			if above.name == "air" then
 				if level >= 5 then

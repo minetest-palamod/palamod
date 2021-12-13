@@ -15,14 +15,14 @@ TODO: add registration of no pvp chunk
 
 local spawn_chunks = {}
 
-spawn_chunks[pala_server.pos_to_chunk({x=0,y=0,z=0})] = true
+spawn_chunks[pala_server.pos_to_chunk(vector.new(0, 0, 0))] = true
 
 function pala_server.is_nopvp(player)
 	if is_spawn_nopvp then
 		--nd vector.distance(spawn_pos, player:get_pos()) < no_pvp then
 		if spawn_chunks[pala_server.pos_to_chunk(vector.round(player:get_pos()))] then
 			--minetest.chat_send_all(pala_server.pos_to_chunk(vector.round(player:get_pos())))
-			--minetest.chat_send_all(pala_server.pos_to_chunk({x=0,y=0,z=0}))
+			--minetest.chat_send_all(pala_server.pos_to_chunk(vector.new(0, 0, 0)))
 			return true
 		end
 		return false

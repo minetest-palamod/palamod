@@ -1,4 +1,5 @@
 local math = math
+local vector = vector
 
 --chunk handling
 
@@ -18,7 +19,7 @@ else
     function pala_server.pos_to_chunk(pos)
         local dim = dim_to_number(pos_to_dim(pos))
 	    if dim then
-			return pos_tohash({x=dim,y=math.floor(pos.y/16),z=math.floor(pos.z/16)})
+			return pos_tohash(vector.new(dim, math.floor(pos.y/16), math.floor(pos.z/16)))
 	    else
 			return nil
 	    end

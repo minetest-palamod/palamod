@@ -10,13 +10,13 @@ pala_dynamite.accel = 13
 local function throw_grenade(name, player)
 	local dir = player:get_look_dir()
 	local pos = player:get_pos()
-	local obj = minetest.add_entity({x = pos.x + dir.x, y = pos.y + 1.6, z = pos.z + dir.z}, name)
+	local obj = minetest.add_entity(vector.new(pos.x + dir.x, pos.y + 1.6, pos.z + dir.z), name)
 
 	local m = 30
-	obj:set_velocity({x = dir.x * m, y = dir.y * m/1.5, z = dir.z * m})
-	obj:set_acceleration({x = 0, y = -13, z = 0})
+	obj:set_velocity(vector.new(dir.x * m, dir.y * m/1.5, dir.z * m))
+	obj:set_acceleration(vector.new(0, -13, 0))
 
-	return(obj:get_luaentity())
+	return obj:get_luaentity()
 end
 
 function pala_dynamite.register_dynamite(name, def)
@@ -29,7 +29,7 @@ function pala_dynamite.register_dynamite(name, def)
 		sliding = 1,
 		collide_with_objects = true,
 		visual = "mesh",
-		visual_size = {x = 5, y = 5, z = 5},
+		visual_size = vector.new(5, 5, 5),
 		mesh = "pala_dynamite_dynamite.obj",
 		textures = {def.texture},
 		collisionbox = {-0.2, -0.3, -0.2, 0.2, 0.15, 0.2},

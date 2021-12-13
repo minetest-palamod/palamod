@@ -121,7 +121,7 @@ minetest.register_abm({
 	chance = 0.5,
 	action = function(pos, node, active_object_count, active_object_count_wider)
         if active_object_count > 0 then
-            local abovenode = minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z})
+            local abovenode = minetest.get_node(vector.add(pos, vector.new(0, 1, 0)))
             if not minetest.registered_items[abovenode.name] then return end
             -- Don't bother checking item enties if node above is a container (should save some CPU)
             if minetest.registered_items[abovenode.name].groups.container then
