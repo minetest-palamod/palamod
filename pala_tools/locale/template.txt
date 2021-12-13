@@ -36,6 +36,14 @@ Endium Sword=
 Endium Pickaxe=
 Endium Axe=
 
+# enchantments
+
+Humiliation=
+Humiliates your opponent when you kill him.=
+@1 tasted the sword of @2=
+@1 took the sword of @2 in the heart=
+@1 was killed by @2=
+
 # misc
 
 Infernal Knocker=

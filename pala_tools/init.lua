@@ -13,5 +13,6 @@ dofile(modpath.."/infernalknocker.lua")
 dofile(modpath.."/hammer.lua")
 dofile(modpath.."/voidstone.lua")
 dofile(modpath.."/hoe_overide.lua")
+dofile(modpath.."/enchantments.lua")
 
 minetest.log("action", "[pala_tools] loaded succesfully")

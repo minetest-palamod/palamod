@@ -36,6 +36,14 @@ Endium Sword=Epée en Endium
 Endium Pickaxe=Pioche en Endium
 Endium Axe=Hache en Endium
 
+# enchantments
+
+Humiliation=Humiliation
+Humiliates your opponent when you kill him.=Humilie votre adversaire lorsque vous le tuez.
+@1 tasted the sword of @2=@1 a goûté à l’épée de @2
+@1 took the sword of @2 in the heart=@1 s’est pris l’épée de @2 en plein coeur 
+@1 was killed by @2=@1 a été tué par @2
+
 # misc
 
 Infernal Knocker=Infernal Knocker
