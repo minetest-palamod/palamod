@@ -16,6 +16,10 @@ pala_legendary = {}
 pala_legendary.registered_stones = {}
 local stone_list = {}
 
+---
+-- @param name The name of the item
+-- @param def The definition table
+-- @return nil
 function pala_legendary.register_legendary(name, def)
 	local tempname = "pala_legendary:legendary_"..name
 	if not def.func then def.func = function() end end
