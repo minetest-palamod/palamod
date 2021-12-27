@@ -20,7 +20,7 @@ local CLEAR_INTERVAL = tonumber(minetest.settings:get("pala_server.clear_lag_int
 local time = 0
 
 minetest.register_globalstep(function(dtime)
-	time = time + dtime;
+	time = time + dtime
 	if time >= CLEAR_INTERVAL then
 		chat_send_all(msg1)
 		log("info", "[pala_server] Palalag will start in 30s")

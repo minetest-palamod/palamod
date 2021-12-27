@@ -12,6 +12,7 @@ dofile(modpath.."/special_swords.lua")
 dofile(modpath.."/infernalknocker.lua")
 dofile(modpath.."/hammer.lua")
 dofile(modpath.."/voidstone.lua")
+dofile(modpath.."/stonks_stone.lua")
 dofile(modpath.."/hoe_overide.lua")
 dofile(modpath.."/enchantments.lua")
 

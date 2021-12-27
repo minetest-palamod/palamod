@@ -48,3 +48,5 @@ Humiliates your opponent when you kill him.=
 
 Infernal Knocker=
 Voidstone=
+Stonks Stone=
+Collects all the blocks in your inventory that can be sold in the admin shop and sells them directly.=
