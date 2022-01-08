@@ -16,8 +16,6 @@ minetest.register_tool("pala_tools:infernal_knocker", {
 		full_punch_interval = 0.625,
 		max_drop_level=1,
 		groupcaps={
-			--swordy_dig = {times=5, uses=60, maxlevel=0},
-			--swordy_cobweb_dig = {times=1, uses=60, maxlevel=0},
 			swordy = { speed = 5, level = 1, uses = 60 },
 			swordy_cobweb = { speed = 1, level = 1, uses = 60 }
 		},
