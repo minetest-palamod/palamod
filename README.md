@@ -26,9 +26,12 @@ Informations
 
 [![YouTube](https://img.shields.io/youtube/channel/subscribers/UCK0mMW2SlIb7X5pKi00ZcYw?style=social)](https://www.youtube.com/channel/UCK0mMW2SlIb7X5pKi00ZcYw)
 
+[![Discord](https://img.shields.io/discord/816629552897196074?logo=discord&style=social)](https://discord.gg/NjYvGXnTYD)
+
 [![Reddit](https://img.shields.io/reddit/subreddit-subscribers/MinetestPalamod?style=social)](https://www.reddit.com/r/MinetestPalamod/)
 
 [![Mastodon](https://img.shields.io/mastodon/follow/106993231703412486?domain=https%3A%2F%2Fmastodon.social&style=social)](https://mastodon.social/web/accounts/106993231703412486)
+
 
 
 This project use the free voxel game engine [Minetest](https://www.minetest.net/) with the [MineClone2](https://git.minetest.land/MineClone2/MineClone2) game.
