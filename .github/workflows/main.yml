@@ -1,10 +1,10 @@
-name: luacheck
+name: linting
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
   workflow_dispatch:
 
@@ -13,17 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE
       - uses: actions/checkout@v2
-      - name: luacheck
+      - name: Run Luacheck
         uses: nebularg/actions-luacheck@v1.1.0
-        #with:
-          #files: # optional, default is .
-          #path: # optional, default is ${{ github.workspace }}
-          #args: # optional
-          #config: # optional
-          #annotate: # optional, default is none
-      - name: translation
+      - name: Check Translation files
         run: |
           echo "::group::French"
           python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py fr
@@ -37,3 +30,7 @@ jobs:
           echo "::group::Rusian"
           python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py ru
           echo "::endgroup::"
+      - name: Install V8
+        run: sudo apt-get install -y libv8-dev
+      - name: Validate CITATION.cff
+        uses: dieghernan/cff-validator@main
