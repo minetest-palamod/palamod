@@ -30,7 +30,7 @@ jobs:
           echo "::group::Rusian"
           python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py ru
           echo "::endgroup::"
-      - name: Install V8
-        run: sudo apt-get install -y libv8-dev
-      - name: Validate CITATION.cff
-        uses: dieghernan/cff-validator@main
+      #- name: Install V8
+      #  run: sudo apt-get install -y libv8-dev
+      #- name: Validate CITATION.cff
+      #  uses: dieghernan/cff-validator@main
