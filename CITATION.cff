@@ -5,5 +5,5 @@ message: >-
   credit it using these metadata.
 type: software
 authors:
-  - given-names: AFCM
+  - name: AFCM
     email: afcm.contact@gmail.com
