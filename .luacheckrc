@@ -131,4 +131,9 @@ read_globals = {
 	--------------------------------------------
 	-- OPTIONAL DEPENDS
 	"db_manager", "mc_economy", "mc_faction",
+
+	--------------------------------------------
+	-- MINECLONE2 MODS
+	--------------------------------------------
+	"modname_tooltip",
 }

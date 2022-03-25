@@ -2,7 +2,10 @@ minetest.log("action", "[pala_core] loading...")
 
 pala_core = {}
 
+local has_modname_tooltip = minetest.get_modpath("modname_tooltip")
+
 -- Set item namespace to "palamod"
+-- Set mod title to "Palamod"
 local mods = {
 	"pala_armor",
 	"pala_backpack",
@@ -28,9 +31,16 @@ local mods = {
 
 for _,name in ipairs(mods) do
 	mcl_item_id.set_mod_namespace(name, "palamod")
+	if has_modname_tooltip then
+		modname_tooltip.set_mod_title(name, "Palamod")
+	end
 end
 
 minetest.log("action", "[pala_core] successfully set mod namespace to 'palamod'")
+
+if has_modname_tooltip then
+	minetest.log("action", "[pala_core] successfully set mods title to 'Palamod'")
+end
 
 --TEMP FUNCTION
 --MUST BE REMOVED WHEM mcl2 MIGRATE TO FORMSPEC V4
