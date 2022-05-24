@@ -24,7 +24,8 @@ pala_server.homes.grade = {
 --- API
 ---
 
--- [local function] Check attribute
+--Check attribute
+---@param player ObjectRef
 local function init_player(player)
 	local meta = player:get_meta()
 	if meta:get_string("pala_server.home") == "" then
@@ -32,7 +33,7 @@ local function init_player(player)
 	end
 end
 
--- [local function] Count homes
+--Count homes
 local function count_homes(list)
 	local count = 0
 	for _, h in pairs(list) do

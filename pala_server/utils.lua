@@ -9,6 +9,8 @@ else
     local pos_to_dim = mcl_worlds.pos_to_dimension
     local pos_tohash = minetest.hash_node_position
 
+	---@param dim '"overworld"'|'"nether"'|'"end"'
+	---@return integer
     local function dim_to_number(dim)
 	    if dim == "overworld" then return 1
 	    elseif dim == "nether" then return 2
@@ -16,6 +18,9 @@ else
 	    else return nil end
     end
 
+	---Return hashed chunk position.
+	---@param pos Vector
+	---@return integer
     function pala_server.pos_to_chunk(pos)
         local dim = dim_to_number(pos_to_dim(pos))
 	    if dim then

@@ -17,6 +17,8 @@ local spawn_chunks = {}
 
 spawn_chunks[pala_server.pos_to_chunk(vector.new(0, 0, 0))] = true
 
+---@param player ObjectRef
+---@return boolean
 function pala_server.is_nopvp(player)
 	if is_spawn_nopvp then
 		--nd vector.distance(spawn_pos, player:get_pos()) < no_pvp then
