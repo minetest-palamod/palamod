@@ -10,6 +10,7 @@ if minetest.settings:get_bool("pala_trixium.ranking", false) then
 		pala_trixium.IS_ENABLED = true
 		dofile(modpath.."/api.lua")
 		dofile(modpath.."/tmp_commands.lua")
+		dofile(modpath.."/formspec.lua")
 		minetest.log("action", "[pala_trixium] 'db_manager' found")
 	else
 		pala_trixium.IS_ENABLED = false

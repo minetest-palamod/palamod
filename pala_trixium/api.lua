@@ -4,6 +4,7 @@ local pairs = pairs
 
 local sf = string.format
 
+---@type number
 local SAVE_INTERVAL = tonumber(minetest.settings:get("pala_trixium.saving_interval")) or 30
 
 local cached_playerdata = {}
@@ -11,7 +12,7 @@ local cached_playerdata = {}
 local cached_top_rank
 
 --Open database
-db = db_manager.database("pala_trixium:data", db_manager.get_schemat("pala_trixium:sql/ranking.sql"))
+local db = db_manager.database("pala_trixium:data", db_manager.get_schemat("pala_trixium:sql/ranking.sql"))
 
 minetest.register_on_newplayer(function(player)
 	db:exec(sf("INSERT INTO 'ranking' ('name', 'amount') VALUES ('%s', 0);", player:get_player_name()))
@@ -36,9 +37,21 @@ function pala_trixium.get_top_ranking()
 end
 
 local function get_amount_raw(playername)
-	return db:get_rows(sf("SELECT * FROM ranking WHERE name = '%s' LIMIT 1", playername))[1].amount
+	local r = db:get_rows(sf("SELECT * FROM ranking WHERE name = '%s' LIMIT 1", playername))
+	if r[1] and r[1].amount then
+		return r[1].amount
+	else
+		return 0
+	end
 end
 
+minetest.register_on_joinplayer(function(player)
+	local pname = player:get_player_name()
+	cached_playerdata[pname] = get_amount_raw(pname)
+end)
+
+---@param playername string
+---@return integer
 function pala_trixium.get_amount(playername)
 	if cached_playerdata[playername] then
 		return cached_playerdata[playername]
@@ -48,19 +61,27 @@ function pala_trixium.get_amount(playername)
 	end
 end
 
+---@param playername string
+---@param amount integer
 function pala_trixium.set_amount(playername, amount)
 	cached_playerdata[playername] = amount
 end
 
+---@param playername string
+---@param amount integer
 function pala_trixium.add_amount(playername, amount)
 	pala_trixium.set_amount(playername, pala_trixium.get_amount(playername) + amount)
 end
 
-
+---@param playername string
+---@param clear_cache boolean
 function pala_trixium.save_playerdata(playername, clear_cache)
-	db:exec(sf("UPDATE ranking SET amount=%s WHERE name='%s';", cached_playerdata[playername], playername))
-	if clear_cache then
-		cached_playerdata[playername] = nil
+	if cached_playerdata[playername] then
+		print(sf("UPDATE ranking SET amount=%s WHERE name='%s';", cached_playerdata[playername], playername))
+		db:exec(sf("UPDATE ranking SET amount=%s WHERE name='%s';", cached_playerdata[playername], playername))
+		if clear_cache then
+			cached_playerdata[playername] = nil
+		end
 	end
 end
 
@@ -70,13 +91,17 @@ minetest.register_globalstep(function(dtime)
 	if time >= SAVE_INTERVAL then
 		minetest.log("action", "[pala_trixium] saving player data...")
 
+		--print(dump(cached_playerdata))
+
 		--save player data
+		local c = 0
 		for _,player in pairs(minetest.get_connected_players()) do
 			local pname = player:get_player_name()
 			pala_trixium.save_playerdata(pname, false)
+			c = c + 1
 		end
 
-		minetest.log("action", "[pala_trixium] player data saved")
+		minetest.log("action", "[pala_trixium] player data saved ("..c.." cache entries)")
 
 		--update cached ranking
 		cached_top_rank = get_top_ranking_raw()
