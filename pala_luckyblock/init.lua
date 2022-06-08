@@ -456,7 +456,7 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 		end
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		if not oldmetadata.is_open == "true" then
+		if oldmetadata.is_open ~= "true" then
 			minetest.add_item(pos, "pala_luckyblock:luckyblockpaladium")
 		end
 	end,
