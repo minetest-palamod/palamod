@@ -12,9 +12,9 @@ pala_spikes.registered_spikes = {}
 mcl_damage.register_type("spike_floor", {})
 
 mcl_death_messages.messages.spike_floor = {
-    _translator = S,
-    plain = "@1 stood too long on a spike",
-    assist = "@1 stood too long on a spike due to @2",
+	_translator = S,
+	plain = "@1 stood too long on a spike",
+	assist = "@1 stood too long on a spike due to @2",
 }
 
 function pala_spikes.register_spike(name, desc, color, damage, id)
@@ -34,10 +34,10 @@ function pala_spikes.register_spike(name, desc, color, damage, id)
 		groups = {pickaxey=2, building_block=1, pala_spikes=1},
 		on_walk_over = function(loc, nodeiamon, player)
 			-- Hurt players standing on top of this block
-            --[[
-            TODO: damage people at the pointing face only
-            ]]
-            mcl_util.deal_damage(player, damage, {type = "spike_floor"})
+			--[[
+			TODO: damage people at the pointing face only
+			]]
+			mcl_util.deal_damage(player, damage, {type = "spike_floor"})
 		end,
 	})
 end
@@ -120,24 +120,24 @@ minetest.register_abm({
 	interval = 3.0,
 	chance = 0.5,
 	action = function(pos, node, active_object_count, active_object_count_wider)
-        if active_object_count > 0 then
-            local abovenode = minetest.get_node(vector.add(pos, vector.new(0, 1, 0)))
-            if not minetest.registered_items[abovenode.name] then return end
-            -- Don't bother checking item enties if node above is a container (should save some CPU)
-            if minetest.registered_items[abovenode.name].groups.container then
-                return
-            end
-            for _,object in pairs(minetest.get_objects_inside_radius(pos, 2)) do
-                if object:get_luaentity() and object:get_luaentity().name == "__builtin:item" then
-                    local posob = object:get_pos()
-                    local posob_miny = posob.y + object:get_properties().collisionbox[2]
-                    if math.abs(posob.x-pos.x) <= 0.5 and (posob_miny-pos.y < 1.5 and posob.y-pos.y >= 0.3) then
-                        object:get_luaentity().itemstring = ""
-                        object:remove()
-                    end
-                end
-            end
-        end
+		if active_object_count > 0 then
+			local abovenode = minetest.get_node(vector.add(pos, vector.new(0, 1, 0)))
+			if not minetest.registered_items[abovenode.name] then return end
+			-- Don't bother checking item enties if node above is a container (should save some CPU)
+			if minetest.registered_items[abovenode.name].groups.container then
+				return
+			end
+			for _,object in pairs(minetest.get_objects_inside_radius(pos, 2)) do
+				if object:get_luaentity() and object:get_luaentity().name == "__builtin:item" then
+					local posob = object:get_pos()
+					local posob_miny = posob.y + object:get_properties().collisionbox[2]
+					if math.abs(posob.x-pos.x) <= 0.5 and (posob_miny-pos.y < 1.5 and posob.y-pos.y >= 0.3) then
+						object:get_luaentity().itemstring = ""
+						object:remove()
+					end
+				end
+			end
+		end
 	end,
 })
 

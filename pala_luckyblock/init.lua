@@ -9,7 +9,7 @@ local math = math
 local modpath = minetest.get_modpath(minetest.get_current_modname())
 
 local function randomFloat(lower, greater)
-    return lower + math.random()  * (greater - lower);
+	return lower + math.random()  * (greater - lower);
 end
 
 pala_luckyblock = {}

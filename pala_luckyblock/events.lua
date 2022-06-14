@@ -757,7 +757,7 @@ pala_luckyblock.somme = pala_luckyblock.positive_somme + pala_luckyblock.negativ
 --Get all events in a single table
 pala_luckyblock.event_all = {unpack(pala_luckyblock.event_positive)}
 for i = 1,#pala_luckyblock.event_negative do
-    pala_luckyblock.event_all[#pala_luckyblock.event_positive+i] = pala_luckyblock.event_negative[i]
+	pala_luckyblock.event_all[#pala_luckyblock.event_positive+i] = pala_luckyblock.event_negative[i]
 end
 
 minetest.log("action", string.format("[pala_luckyblock] loaded %s positive luckyblock events",
