@@ -8,8 +8,8 @@
 # >=   Indicate an untrannslated entry in translate file (.tr)
 # >>   Missing file: Indicates a missing translate file (.tr)
 
-import os
 import argparse
+import os
 
 parser = argparse.ArgumentParser(
 	description="Check translation file with template.txt for a given language."
