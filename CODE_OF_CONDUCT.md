@@ -1,4 +1,5 @@
 <!-- markdownlint-disable MD034 -->
+<!-- textlint-disable -->
 
 # Contributor Covenant Code of Conduct
 

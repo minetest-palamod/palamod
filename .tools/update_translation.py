@@ -34,7 +34,7 @@ def LoadTranslateFile(filename, direction, ref=None):
 			if ref is not None and parts[1] == "" and parts[1] not in ref :
 				print(">= " + parts[0])
 		else:
-			print (direction + line)
+			print(direction + line)
 
 	return result
 
