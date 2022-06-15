@@ -1,8 +1,7 @@
---TODO: only disable unused check for globals
-
-unused = false
+ignore = {"131"}
 unused_args = false
 allow_defined_top = true
+codes = true
 max_line_length = 125
 
 globals = {
