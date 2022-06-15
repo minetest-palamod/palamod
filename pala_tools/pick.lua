@@ -25,8 +25,8 @@ minetest.register_tool("pala_tools:pick_amethyst", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey = { speed = 8, level = 5, uses = 2999 },
-    },
+		pickaxey = { speed = 8, level = 5, uses = 2999 },
+	},
 })
 
 
@@ -46,8 +46,8 @@ minetest.register_tool("pala_tools:pick_titanium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey = { speed = 9, level = 5, uses = 3999 },
-    },
+		pickaxey = { speed = 9, level = 5, uses = 3999 },
+	},
 })
 
 
@@ -67,8 +67,8 @@ minetest.register_tool("pala_tools:pick_paladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey = { speed = 10, level = 5, uses = 4999 },
-    },
+		pickaxey = { speed = 10, level = 5, uses = 4999 },
+	},
 })
 
 
@@ -88,8 +88,8 @@ minetest.register_tool("pala_tools:pick_gpaladium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey = { speed = 10, level = 5, uses = 4999 },
-    },
+		pickaxey = { speed = 10, level = 5, uses = 4999 },
+	},
 })
 
 
@@ -110,8 +110,8 @@ minetest.register_tool("pala_tools:pick_endium", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey = { speed = 10, level = 5, uses = 4999 },
-    },
+		pickaxey = { speed = 10, level = 5, uses = 4999 },
+	},
 })
 
 --CRAFT
@@ -153,5 +153,5 @@ minetest.register_craft({
 		{"pala_paladium:endium_ingot", "pala_paladium:endium_ingot", "pala_paladium:endium_ingot"},
 		{"", "mcl_core:stick", ""},
 		{"", "mcl_core:stick", ""},
-	}
+	},
 })

@@ -44,5 +44,5 @@ minetest.register_craft({
 		{"pala_paladium:paladium_ingot", "", ""},
 		{"pala_craftitems:orb_knockback", "", ""},
 		{"pala_craftitems:palastick", "", ""},
-	}
+	},
 })

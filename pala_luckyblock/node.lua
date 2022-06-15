@@ -170,7 +170,7 @@ minetest.register_node("pala_luckyblock:faketnt", {
 	groups = { dig_immediate = 3, tnt = 1, enderman_takable=1, flammable=-1},
 	mesecons = tnt_mesecons,
 	on_blast = function(pos)
-	    minetest.add_particle({
+		minetest.add_particle({
 			pos = {x=pos.x,y=pos.y+0.5,z=pos.z},
 			velocity = vector.new(math.random() * 0.2 - 0.1, 1.0 + math.random(), math.random() * 0.2 - 0.1),
 			acceleration = vector.new(0, -0.1, 0),

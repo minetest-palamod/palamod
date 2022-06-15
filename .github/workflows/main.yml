@@ -1,4 +1,5 @@
-name: linting
+---
+name: Linting
 
 on:
   push:
@@ -13,23 +14,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Run Luacheck
-        uses: nebularg/actions-luacheck@v1.1.0
-      - name: Check Translation files
-        run: |
-          echo "::group::French"
-          python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py fr
-          echo "::endgroup::"
-          echo "::group::Deutch"
-          python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py de
-          echo "::endgroup::"
-          echo "::group::Spanish"
-          python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py es
-          echo "::endgroup::"
-          echo "::group::Rusian"
-          python3 ${GITHUB_WORKSPACE}/.tools/update_translation.py ru
-          echo "::endgroup::"
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Lint Code Base
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_JSCPD: false
+          VALIDATE_PYTHON_BLACK: false
+          VALIDATE_SQLFLUFF: false
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINTER_RULES_PATH: /
       #- name: Install V8
       #  run: sudo apt-get install -y libv8-dev
       #- name: Validate CITATION.cff

@@ -115,37 +115,41 @@ minetest.register_craft({
 		{"pala_paladium:amethyst_ingot", "", ""},
 		{"pala_paladium:amethyst_ingot", "", ""},
 		{"mcl_core:stick", "", ""},
-	}
+	},
 })
+
 minetest.register_craft({
 	output = 'pala_tools:sword_titanium',
 	recipe = {
 		{"pala_paladium:titanium_ingot", "", ""},
 		{"pala_paladium:titanium_ingot", "", ""},
 		{"mcl_core:stick", "", ""},
-	}
+	},
 })
+
 minetest.register_craft({
 	output = 'pala_tools:sword_paladium',
 	recipe = {
 		{"pala_paladium:paladium_ingot", "", ""},
 		{"pala_paladium:paladium_ingot", "", ""},
 		{"mcl_core:stick", "", ""},
-	}
+	},
 })
+
 minetest.register_craft({
 	output = 'pala_tools:sword_gpaladium',
 	recipe = {
 		{"pala_paladium:gpaladium_ingot", "", ""},
 		{"pala_paladium:gpaladium_ingot", "", ""},
 		{"mcl_core:stick", "", ""},
-	}
+	},
 })
+
 minetest.register_craft({
 	output = 'pala_tools:sword_endium',
 	recipe = {
 		{"pala_paladium:endium_ingot", "", ""},
 		{"pala_paladium:endium_ingot", "", ""},
 		{"mcl_core:stick", "", ""},
-	}
+	},
 })

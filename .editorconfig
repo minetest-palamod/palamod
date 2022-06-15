@@ -1,4 +1,4 @@
-[*]
+[*.{lua,conf,tr,md}]
 end_of_line = lf
 
 [*.{lua,sql}]

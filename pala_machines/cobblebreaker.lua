@@ -147,9 +147,9 @@ get_active_form(10)
 	meta:set_float("fuel_time", fuel_time)
 	meta:set_float("src_time", src_time)
 	if srclist then
-		 meta:set_string("src_item", srclist[1]:get_name())
+		meta:set_string("src_item", srclist[1]:get_name())
 	else
-		 meta:set_string("src_item", "")
+		meta:set_string("src_item", "")
 	end
 	meta:set_string("formspec", formspec)
 	return result

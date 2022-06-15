@@ -9,7 +9,7 @@ dofile(modpath.."/handglider.lua")
 dofile(modpath.."/onlinedetector.lua")
 
 if minetest.settings:get_bool("palamod.experimental", false) then
-    dofile(modpath.."/unclaimfinder.lua")
+	dofile(modpath.."/unclaimfinder.lua")
 	dofile(modpath.."/chest_explorer.lua")
 end
 
