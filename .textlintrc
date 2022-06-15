@@ -1,4 +1,8 @@
 {
-  "filters": {},
-  "rules": {}
+  "filters": {
+    "comments": true
+  },
+  "rules": {
+    "terminology": true
+  }
 }
