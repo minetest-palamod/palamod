@@ -31,7 +31,7 @@ def LoadTranslateFile(filename, direction, ref=None):
 		if "=" in line:
 			parts = line.split("=")
 			result.add(parts[0])
-			if ref is not None and parts[1] == "" and parts[1] not in ref :
+			if ref is not None and parts[1] == "" and parts[1] not in ref:
 				print(">= " + parts[0])
 		else:
 			print(direction + line)
@@ -62,12 +62,7 @@ for root, directories, files in os.walk(path):
 
 		if template is not None:
 			if language is None:
-				language = (
-					os.path.join(root, os.path.basename(os.path.dirname(root)))
-					+ "."
-					+ code_lang
-					+ ".tr"
-				)
+				language = (os.path.join(root, os.path.basename(os.path.dirname(root))) + "." + code_lang + ".tr")
 
 			if os.path.exists(language) and os.path.isfile(language):
 				print("Compare files %s with %s" % (template, language))
