@@ -10,7 +10,7 @@ local mods = {
 	"pala_armor",
 	"pala_backpack",
 	"pala_craftitems",
-	"pala_decoblocks",
+	"pala_decoblock",
 	"pala_dynamite",
 	"pala_fakewater",
 	"pala_food",
