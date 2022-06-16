@@ -3,6 +3,7 @@
 ![GitHub](https://img.shields.io/github/license/minetest-palamod/palamod)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/minetest-palamod/palamod)
 ![GitHub last release](https://img.shields.io/github/v/tag/minetest-palamod/palamod)
+[![Linting](https://github.com/minetest-palamod/palamod/actions/workflows/main.yml/badge.svg)](https://github.com/minetest-palamod/palamod/actions/workflows/main.yml)
 ![GitHub downloads](https://img.shields.io/github/downloads/minetest-palamod/palamod/total)
 
 [![ContentDB](https://content.minetest.net/packages/AFCM/palamod/shields/title/)](https://content.minetest.net/packages/AFCM/palamod/)
