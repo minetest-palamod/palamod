@@ -12,7 +12,7 @@ local pickaxe_longdesc = S([[
 minetest.register_tool("pala_tools:pick_amethyst", {
 	description = S("Amethyst Pickaxe"),
 	_doc_items_longdesc = pickaxe_longdesc,
-	inventory_image = "pala_tools_paladiumpick.png",
+	inventory_image = "pala_tools_amethystpick.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { tool=1, pickaxe=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
@@ -33,7 +33,7 @@ minetest.register_tool("pala_tools:pick_amethyst", {
 minetest.register_tool("pala_tools:pick_titanium", {
 	description = S("Titanium Pickaxe"),
 	_doc_items_longdesc = pickaxe_longdesc,
-	inventory_image = "pala_tools_paladiumpick.png",
+	inventory_image = "pala_tools_titaniumpick.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { tool=1, pickaxe=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
@@ -75,7 +75,7 @@ minetest.register_tool("pala_tools:pick_paladium", {
 minetest.register_tool("pala_tools:pick_gpaladium", {
 	description = S("Green Paladium Pickaxe"),
 	_doc_items_longdesc = pickaxe_longdesc,
-	inventory_image = "pala_tools_paladiumpick.png",
+	inventory_image = "pala_tools_gpaladiumpick.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { tool=1, pickaxe=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
@@ -97,7 +97,7 @@ minetest.register_tool("pala_tools:pick_gpaladium", {
 minetest.register_tool("pala_tools:pick_endium", {
 	description = S("Endium Pickaxe"),
 	_doc_items_longdesc = pickaxe_longdesc,
-	inventory_image = "pala_tools_paladiumpick.png",
+	inventory_image = "pala_tools_endiumpick.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = { tool=1, pickaxe=1, dig_speed_class=6, enchantability=22},
 	tool_capabilities = {
@@ -123,6 +123,7 @@ minetest.register_craft({
 		{"", "mcl_core:stick", ""},
 	}
 })
+
 minetest.register_craft({
 	output = 'pala_tools:pick_titanium',
 	recipe = {
@@ -131,6 +132,7 @@ minetest.register_craft({
 		{"", "mcl_core:stick", ""},
 	}
 })
+
 minetest.register_craft({
 	output = 'pala_tools:pick_paladium',
 	recipe = {
@@ -139,6 +141,7 @@ minetest.register_craft({
 		{"", "mcl_core:stick", ""},
 	}
 })
+
 minetest.register_craft({
 	output = 'pala_tools:pick_gpaladium',
 	recipe = {
@@ -147,6 +150,7 @@ minetest.register_craft({
 		{"", "mcl_core:stick", ""},
 	}
 })
+
 minetest.register_craft({
 	output = 'pala_tools:pick_endium',
 	recipe = {
