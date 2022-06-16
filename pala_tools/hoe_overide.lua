@@ -18,7 +18,7 @@ minetest.register_node("pala_tools:fertilised_dirt", {
 		fixed = {
 			-- 15/16 of the normal height
 			{-0.5, -0.5, -0.5, 0.5, 0.4375, 0.5},
-		}
+		},
 	},
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)

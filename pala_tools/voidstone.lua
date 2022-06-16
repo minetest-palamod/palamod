@@ -9,6 +9,8 @@ local S = minetest.get_translator(minetest.get_current_modname())
 	label[0.5,12.5;Inventory]
 	list[current_player;main;5.5,0.5;1,1;0]
 ]]
+
+---Voidstone Formspec
 pala_tools.voidstone_form = table.concat({
 	"formspec_version[4]",
 	"size[12,7]",
@@ -48,7 +50,7 @@ minetest.register_craftitem("pala_tools:voidstone", {
 	_doc_items_longdesc = S("Allow you to trash items"), --TODO: paladium desc
 	inventory_image = "pala_tools_voidstone.png",
 	stack_max = 1,
-	groups = {tool=1},
+	groups = {tool = 1},
 	on_use = function(itemstack, user, pointed_thing)
 		if user:is_player() then
 			minetest.show_formspec(user:get_player_name(), "pala_tools:voidstone", pala_tools.voidstone_form)

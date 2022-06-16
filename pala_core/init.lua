@@ -42,8 +42,14 @@ if has_modname_tooltip then
 	minetest.log("action", "[pala_core] successfully set mods title to 'Palamod'")
 end
 
---TEMP FUNCTION
---MUST BE REMOVED WHEM mcl2 MIGRATE TO FORMSPEC V4
+---Return inventory background for formspec V4
+---
+---MUST BE REMOVED WHEM MCL2 MIGRATE TO FORMSPEC V4
+---@param x number
+---@param y number
+---@param w integer
+---@param h integer
+---@return string
 function pala_core.get_itemslot_bg(x, y, w, h)
 	local out = ""
 	for i = 0, w - 1, 1 do
