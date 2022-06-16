@@ -18,7 +18,8 @@ function pala_obsidian.register_custom_obsidian(name, def)
 	local after_dig_node
 	if def.after_dig then
 		function after_dig_node(pos, oldnode, oldmetadata, digger)
-			if digger:get_wielded_item():get_name() == "pala_obsidian:obsidian_pick" then
+			local item_name = digger:get_wielded_item():get_name()
+			if item_name == "pala_obsidian:obsidian_pick" or item_name == "pala_obsidian:obsidian_pick_enchanted" then
 				return
 			else
 				def.after_dig(pos, oldnode, oldmetadata, digger)

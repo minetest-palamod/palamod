@@ -12,7 +12,7 @@ local get_pointed_thing_position = minetest.get_pointed_thing_position
 minetest.register_tool("pala_obsidian:obsidian_pick", {
 	description = S("Obsidian Pickaxe"),
 	_doc_items_longdesc = pickaxe_longdesc,
-	inventory_image = "default_tool_diamondpick.png",
+	inventory_image = "pala_tools_obsidianpick.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = {tool=1, pickaxe=1, dig_speed_class=5, enchantability=10},
 	tool_capabilities = {
