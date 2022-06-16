@@ -1,9 +1,5 @@
 --Voidstone
 
---[[
-TODO: item description and translation
-]]
-
 local S = minetest.get_translator(minetest.get_current_modname())
 
 --[[formspec_version[4]
