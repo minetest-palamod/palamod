@@ -120,7 +120,7 @@ end
 local function find_or_create_entity(pos, node_name, textures, param2, sound_prefix, mesh_prefix)
 	local dir, entity_pos = get_entity_info(pos, param2)
 	return find_entity(entity_pos)
-        or create_entity(pos, node_name, textures, param2, sound_prefix, mesh_prefix, dir, entity_pos)
+		or create_entity(pos, node_name, textures, param2, sound_prefix, mesh_prefix, dir, entity_pos)
 end
 
 local simple_rotate
@@ -132,7 +132,7 @@ if minetest.get_modpath("screwdriver") then
 			local nodedef = minetest.registered_nodes[nodename]
 			local dir = minetest.facedir_to_dir(new_param2)
 			find_or_create_entity(pos, nodename, nodedef._chest_entity_textures, new_param2,
-                false, nodedef._chest_entity_sound, nodedef._chest_entity_mesh, dir):set_yaw(dir)
+				false, nodedef._chest_entity_sound, nodedef._chest_entity_mesh, dir):set_yaw(dir)
 		else
 			return false
 		end
@@ -142,16 +142,16 @@ end
 --[[ List of open chests.
 Key: Player name
 Value:
-    If player is using a chest: { pos = <chest node position> }
-    Otherwise: nil ]]
+	If player is using a chest: { pos = <chest node position> }
+	Otherwise: nil ]]
 local open_chests = {}
 
 -- To be called if a player opened a chest
 local player_chest_open = function(player, pos, node_name, textures, param2, sound, mesh)
 	local name = player:get_player_name()
 	open_chests[name] = {
-        pos = pos, node_name = node_name, textures = textures, param2 = param2, sound = sound, mesh = mesh,
-    }
+		pos = pos, node_name = node_name, textures = textures, param2 = param2, sound = sound, mesh = mesh,
+	}
 	if animate_chests then
 		local dir = minetest.facedir_to_dir(param2)
 		find_or_create_entity(pos, node_name, textures, param2, sound, mesh, "chest", dir):open(name)
@@ -192,7 +192,7 @@ local player_chest_close = function(player)
 	end
 	if animate_chests then
 		find_or_create_entity(open_chest.pos, open_chest.node_name,
-            open_chest.textures, open_chest.param2, open_chest.sound, open_chest.mesh):close(name)
+			open_chest.textures, open_chest.param2, open_chest.sound, open_chest.mesh):close(name)
 	end
 	chest_update_after_close(open_chest.pos)
 
@@ -200,172 +200,172 @@ local player_chest_close = function(player)
 end
 
 local drop_items_chest = function(pos, oldnode, oldmetadata)
-    local meta = minetest.get_meta(pos)
-    local meta2 = meta
-    if oldmetadata then
-        meta:from_table(oldmetadata)
-    end
-    local inv = meta:get_inventory()
-    for i=1,inv:get_size("main") do
-        local stack = inv:get_stack("main", i)
-        if not stack:is_empty() then
-            local p = {x=pos.x+math.random(0, 10)/10-0.5, y=pos.y, z=pos.z+math.random(0, 10)/10-0.5}
-            minetest.add_item(p, stack)
-        end
-    end
-    meta:from_table(meta2:to_table())
+	local meta = minetest.get_meta(pos)
+	local meta2 = meta
+	if oldmetadata then
+		meta:from_table(oldmetadata)
+	end
+	local inv = meta:get_inventory()
+	for i=1,inv:get_size("main") do
+		local stack = inv:get_stack("main", i)
+		if not stack:is_empty() then
+			local p = {x=pos.x+math.random(0, 10)/10-0.5, y=pos.y, z=pos.z+math.random(0, 10)/10-0.5}
+			minetest.add_item(p, stack)
+		end
+	end
+	meta:from_table(meta2:to_table())
 end
 
 local on_chest_blast = function(pos)
-    local node = minetest.get_node(pos)
-    drop_items_chest(pos, node)
-    minetest.remove_node(pos)
+	local node = minetest.get_node(pos)
+	drop_items_chest(pos, node)
+	minetest.remove_node(pos)
 end
 
 local function close_forms(basename, pos)
-    local players = minetest.get_connected_players()
-    for p=1, #players do
-        if vector.distance(players[p]:get_pos(), pos) <= 30 then
-            minetest.close_formspec(players[p]:get_player_name(),
-                "pala_storage:"..basename.."_"..pos.x.."_"..pos.y.."_"..pos.z)
-        end
-    end
+	local players = minetest.get_connected_players()
+	for p=1, #players do
+		if vector.distance(players[p]:get_pos(), pos) <= 30 then
+			minetest.close_formspec(players[p]:get_player_name(),
+				"pala_storage:"..basename.."_"..pos.x.."_"..pos.y.."_"..pos.z)
+		end
+	end
 end
 
 -- This is a helper function to register chests
 function pala_storage.register_chest(basename, def)
-    def.slotnumber = def.slotnumber or 27
-    def.desc = def.desc or S("Chests are containers which provide @1 inventory slots", def.slotnumber)
-    def.textures = def.textures or {
-        entity = {"mcl_chests_normal.png"},
-        inventory = {"default_chest_top.png", "mcl_chests_chest_bottom.png",
+	def.slotnumber = def.slotnumber or 27
+	def.desc = def.desc or S("Chests are containers which provide @1 inventory slots", def.slotnumber)
+	def.textures = def.textures or {
+		entity = {"mcl_chests_normal.png"},
+		inventory = {"default_chest_top.png", "mcl_chests_chest_bottom.png",
 		"mcl_chests_chest_right.png", "mcl_chests_chest_left.png",
 		"mcl_chests_chest_back.png", "default_chest_front.png"},
-    }
+	}
 
-    local small_name = "pala_storage:chest_"..basename.."_small"
+	local small_name = "pala_storage:chest_"..basename.."_small"
 
-    minetest.register_node("pala_storage:chest_"..basename, {
-        description = def.desc,
-        _tt_help = S("To access its inventory, rightclick it. When broken, the items will drop out."),
-        _doc_items_longdesc = def.longdesc,
-        drawtype = "mesh",
-        mesh = "mcl_chests_chest.obj",
-        tiles = def.textures.entity,
-        use_texture_alpha = "opaque",
-        paramtype = "light",
-        paramtype2 = "facedir",
-        stack_max = 64,
-        sounds = mcl_sounds.node_sound_wood_defaults(),
-        groups = {deco_block=1},
-        on_construct = function(pos)
-            local node = minetest.get_node(pos)
-            node.name = small_name
-            minetest.set_node(pos, node)
-        end,
-        after_place_node = function(pos, placer, itemstack, pointed_thing)
-            minetest.get_meta(pos):set_string("name", itemstack:get_meta():get_string("name"))
-        end,
-    })
+	minetest.register_node("pala_storage:chest_"..basename, {
+		description = def.desc,
+		_tt_help = S("To access its inventory, rightclick it. When broken, the items will drop out."),
+		_doc_items_longdesc = def.longdesc,
+		drawtype = "mesh",
+		mesh = "mcl_chests_chest.obj",
+		tiles = def.textures.entity,
+		use_texture_alpha = "opaque",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		stack_max = 64,
+		sounds = mcl_sounds.node_sound_wood_defaults(),
+		groups = {deco_block=1},
+		on_construct = function(pos)
+			local node = minetest.get_node(pos)
+			node.name = small_name
+			minetest.set_node(pos, node)
+		end,
+		after_place_node = function(pos, placer, itemstack, pointed_thing)
+			minetest.get_meta(pos):set_string("name", itemstack:get_meta():get_string("name"))
+		end,
+	})
 
-    minetest.register_node(small_name, {
-        description = def.desc,
-        _tt_help = S("To access its inventory, rightclick it. When broken, the items will drop out."),
-        _doc_items_longdesc = def.longdesc,
-        _doc_items_hidden = true,
-        drawtype = "nodebox",
-        node_box = {
-            type = "fixed",
-            fixed = {-0.4375, -0.5, -0.4375, 0.4375, 0.375, 0.4375},
-        },
-        tiles = {"mcl_chests_blank.png"},
-        use_texture_alpha = "clip",
-        _chest_entity_textures = def.textures.entity,
-        _chest_entity_sound = "default_chest",
-        _chest_entity_mesh = "mcl_chests_chest",
-        _chest_entity_animation_type = "chest",
-        paramtype = "light",
-        paramtype2 = "facedir",
-        stack_max = 64,
-        drop = "pala_storage:chest_"..basename,
-        groups = {handy=1,axey=1, container=2, deco_block=1,
-            material_wood=1,flammable=-1,pala_chest_entity=1, not_in_creative_inventory=1},
-        is_ground_content = false,
-        sounds = mcl_sounds.node_sound_wood_defaults(),
-        on_construct = function(pos)
-            local param2 = minetest.get_node(pos).param2
-            local meta = minetest.get_meta(pos)
-            local inv = meta:get_inventory()
-            inv:set_size("main", def.slotnumber)
-            -- BEGIN OF LISTRING WORKAROUND
-            inv:set_size("input", 1)
-            -- END OF LISTRING WORKAROUND
-            minetest.swap_node(pos, { name = "pala_storage:chest_"..basename.."_small", param2 = param2 })
-            create_entity(pos, small_name, def.textures.entity, param2, "default_chest", "mcl_chests_chest", "chest")
+	minetest.register_node(small_name, {
+		description = def.desc,
+		_tt_help = S("To access its inventory, rightclick it. When broken, the items will drop out."),
+		_doc_items_longdesc = def.longdesc,
+		_doc_items_hidden = true,
+		drawtype = "nodebox",
+		node_box = {
+			type = "fixed",
+			fixed = {-0.4375, -0.5, -0.4375, 0.4375, 0.375, 0.4375},
+		},
+		tiles = {"mcl_chests_blank.png"},
+		use_texture_alpha = "clip",
+		_chest_entity_textures = def.textures.entity,
+		_chest_entity_sound = "default_chest",
+		_chest_entity_mesh = "mcl_chests_chest",
+		_chest_entity_animation_type = "chest",
+		paramtype = "light",
+		paramtype2 = "facedir",
+		stack_max = 64,
+		drop = "pala_storage:chest_"..basename,
+		groups = {handy=1,axey=1, container=2, deco_block=1,
+			material_wood=1,flammable=-1,pala_chest_entity=1, not_in_creative_inventory=1},
+		is_ground_content = false,
+		sounds = mcl_sounds.node_sound_wood_defaults(),
+		on_construct = function(pos)
+			local param2 = minetest.get_node(pos).param2
+			local meta = minetest.get_meta(pos)
+			local inv = meta:get_inventory()
+			inv:set_size("main", def.slotnumber)
+			-- BEGIN OF LISTRING WORKAROUND
+			inv:set_size("input", 1)
+			-- END OF LISTRING WORKAROUND
+			minetest.swap_node(pos, { name = "pala_storage:chest_"..basename.."_small", param2 = param2 })
+			create_entity(pos, small_name, def.textures.entity, param2, "default_chest", "mcl_chests_chest", "chest")
 			--(pos, node_name, textures, param2, sound_prefix, mesh_prefix)
-        end,
-        after_place_node = function(pos, placer, itemstack, pointed_thing)
-            minetest.get_meta(pos):set_string("name", itemstack:get_meta():get_string("name"))
-        end,
-        after_dig_node = drop_items_chest,
-        on_blast = on_chest_blast,
-        allow_metadata_inventory_move = protection_check_move,
-        allow_metadata_inventory_take = protection_check_put_take,
-        allow_metadata_inventory_put = protection_check_put_take,
-        on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-            minetest.log("action", player:get_player_name()..
-                    " moves stuff in chest at "..minetest.pos_to_string(pos))
-        end,
-        on_metadata_inventory_put = function(pos, listname, index, stack, player)
-            minetest.log("action", player:get_player_name()..
-                    " moves stuff to chest at "..minetest.pos_to_string(pos))
-            -- BEGIN OF LISTRING WORKAROUND
-            if listname == "input" then
-                local inv = minetest.get_inventory({type="node", pos=pos})
-                inv:add_item("main", stack)
-            end
-            -- END OF LISTRING WORKAROUND
-        end,
-        on_metadata_inventory_take = function(pos, listname, index, stack, player)
-            minetest.log("action", player:get_player_name()..
-                    " takes stuff from chest at "..minetest.pos_to_string(pos))
-        end,
-        _mcl_blast_resistance = 2.5,
-        _mcl_hardness = 2.5,
-        on_rightclick = function(pos, node, clicker)
-            if minetest.registered_nodes[
-                minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z}).name].groups.opaque == 1 then
-                -- won't open if there is no space from the top
-                return false
-            end
-            local name = minetest.get_meta(pos):get_string("name")
-            if name == "" then
-                name = S("Chest")
-            end
-            local width = def.slotnumber/9
-            minetest.show_formspec(clicker:get_player_name(), "pala_storage:"..basename.."_"..pos.x.."_"..pos.y.."_"..pos.z,
-                table.concat({
-                    "formspec_version[4]",
-                    "size["..(0.25+9*1.25)..","..(1.5+width*1.25).."]",
-                    "label[0.25,0.5;"..F(C(mcl_colors.DARK_GRAY, name)).."]",
+		end,
+		after_place_node = function(pos, placer, itemstack, pointed_thing)
+			minetest.get_meta(pos):set_string("name", itemstack:get_meta():get_string("name"))
+		end,
+		after_dig_node = drop_items_chest,
+		on_blast = on_chest_blast,
+		allow_metadata_inventory_move = protection_check_move,
+		allow_metadata_inventory_take = protection_check_put_take,
+		allow_metadata_inventory_put = protection_check_put_take,
+		on_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
+			minetest.log("action", player:get_player_name()..
+					" moves stuff in chest at "..minetest.pos_to_string(pos))
+		end,
+		on_metadata_inventory_put = function(pos, listname, index, stack, player)
+			minetest.log("action", player:get_player_name()..
+					" moves stuff to chest at "..minetest.pos_to_string(pos))
+			-- BEGIN OF LISTRING WORKAROUND
+			if listname == "input" then
+				local inv = minetest.get_inventory({type="node", pos=pos})
+				inv:add_item("main", stack)
+			end
+			-- END OF LISTRING WORKAROUND
+		end,
+		on_metadata_inventory_take = function(pos, listname, index, stack, player)
+			minetest.log("action", player:get_player_name()..
+					" takes stuff from chest at "..minetest.pos_to_string(pos))
+		end,
+		_mcl_blast_resistance = 2.5,
+		_mcl_hardness = 2.5,
+		on_rightclick = function(pos, node, clicker)
+			if minetest.registered_nodes[
+				minetest.get_node({x = pos.x, y = pos.y + 1, z = pos.z}).name].groups.opaque == 1 then
+				-- won't open if there is no space from the top
+				return false
+			end
+			local name = minetest.get_meta(pos):get_string("name")
+			if name == "" then
+				name = S("Chest")
+			end
+			local width = def.slotnumber/9
+			minetest.show_formspec(clicker:get_player_name(), "pala_storage:"..basename.."_"..pos.x.."_"..pos.y.."_"..pos.z,
+				table.concat({
+					"formspec_version[4]",
+					"size["..(0.25+9*1.25)..","..(1.5+width*1.25).."]",
+					"label[0.25,0.5;"..F(C(mcl_colors.DARK_GRAY, name)).."]",
 					pala_core.get_itemslot_bg(0.25, 1, 9, width),
-                    "list[nodemeta:"..pos.x..","..pos.y..","..pos.z..";main;0.25,1;9,3;]",
-                    --"label[0,4.0;"..F(C(mcl_colors.DARK_GRAY, S("Inventory"))).."]",
-                    --"list[current_player;main;0,4.5;9,3;9]",
-                    --pala_core.get_itemslot_bg(0,4.5,9,3),
-                    --"list[current_player;main;0,7.74;9,1;]",
-                    --pala_core.get_itemslot_bg(0,7.74,9,1),
-                    --"listring[nodemeta:"..pos.x..","..pos.y..","..pos.z..";main]",
-                    --"listring[current_player;main]",
-                }))
-            player_chest_open(clicker, pos, small_name, def.textures.entity, node.param2,
-                false, "default_chest")
-        end,
-        on_destruct = function(pos)
-            close_forms(basename, pos)
-        end,
-        on_rotate = simple_rotate,
-    })
+					"list[nodemeta:"..pos.x..","..pos.y..","..pos.z..";main;0.25,1;9,3;]",
+					--"label[0,4.0;"..F(C(mcl_colors.DARK_GRAY, S("Inventory"))).."]",
+					--"list[current_player;main;0,4.5;9,3;9]",
+					--pala_core.get_itemslot_bg(0,4.5,9,3),
+					--"list[current_player;main;0,7.74;9,1;]",
+					--pala_core.get_itemslot_bg(0,7.74,9,1),
+					--"listring[nodemeta:"..pos.x..","..pos.y..","..pos.z..";main]",
+					--"listring[current_player;main]",
+				}))
+			player_chest_open(clicker, pos, small_name, def.textures.entity, node.param2,
+				false, "default_chest")
+		end,
+		on_destruct = function(pos)
+			close_forms(basename, pos)
+		end,
+		on_rotate = simple_rotate,
+	})
 end
 
 -- Disable chest when it has been closed
@@ -385,7 +385,7 @@ local function select_and_spawn_entity(pos, node)
 	local node_name = node.name
 	local node_def = minetest.registered_nodes[node_name]
 	find_or_create_entity(pos, node_name, node_def._chest_entity_textures,
-        node.param2, node_def._chest_entity_sound, node_def._chest_entity_mesh, node_def._chest_entity_animation_type)
+		node.param2, node_def._chest_entity_sound, node_def._chest_entity_mesh, node_def._chest_entity_animation_type)
 end
 
 minetest.register_lbm({
@@ -397,6 +397,6 @@ minetest.register_lbm({
 })
 
 pala_storage.register_chest("paladium", {
-    desc = S("Diamond Chest"),
-    slotnumber = 108,
+	desc = S("Diamond Chest"),
+	slotnumber = 108,
 })

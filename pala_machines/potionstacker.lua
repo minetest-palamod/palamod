@@ -84,11 +84,11 @@ local function update_slots(meta)
 	local inv = meta:get_inventory()
 	local input = inv:get_stack("input", 1)
 	local output = inv:get_stack("output", 1)
-    if input:get_name() == output:get_name() or output:is_empty() then
-        local count = input:get_count() + output:get_count()
+	if input:get_name() == output:get_name() or output:is_empty() then
+		local count = input:get_count() + output:get_count()
 		inv:set_stack("output", 1, ItemStack({name=input:get_name(), count=count}))
 		inv:set_stack("input", 1, ItemStack())
-    end
+	end
 end
 
 -- Drop input items pos with metadata meta
@@ -122,7 +122,7 @@ local function allow_metadata_inventory_take(pos, listname, index, stack, player
 end
 
 minetest.register_node("pala_machines:potionstacker_off", {
-    description = S("Potion Stacker"),
+	description = S("Potion Stacker"),
 	groups = {pickaxey = 1, deco_block = 1},
 	tiles = {"default_stone.png"},
 	_tt_help = S("Allow you to stack potions"),
@@ -138,10 +138,10 @@ minetest.register_node("pala_machines:potionstacker_off", {
 			return 0
 		elseif listname == "output" then
 			return 0
-        elseif get_group(stack:get_name(), "brewitem") == 1 then
+		elseif get_group(stack:get_name(), "brewitem") == 1 then
 			return stack:get_count()
-        else
-            return 0
+		else
+			return 0
 		end
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
@@ -195,7 +195,7 @@ minetest.register_node("pala_machines:potionstacker_off", {
 })
 
 minetest.register_node("pala_machines:potionstacker_on", {
-    description = S("Potion Stacker"),
+	description = S("Potion Stacker"),
 	groups = {pickaxey = 1, deco_block = 1, not_in_creative_inventory = 1},
 	tiles = {"default_stone.png"},
 	drop = "pala_machines:potionstacker_off",
@@ -212,10 +212,10 @@ minetest.register_node("pala_machines:potionstacker_on", {
 			return 0
 		elseif listname == "output" then
 			return 0
-        elseif get_group(stack:get_name(), "brewitem") == 1 then
+		elseif get_group(stack:get_name(), "brewitem") == 1 then
 			return stack:get_count()
-        else
-            return 0
+		else
+			return 0
 		end
 	end,
 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)

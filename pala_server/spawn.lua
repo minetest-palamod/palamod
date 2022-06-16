@@ -68,7 +68,7 @@ minetest.register_chatcommand("spawn", {
 		if not player then
 			return false, C(mcl_colors.RED, S("Player not found"))
 		end
-        mcl_spawn.spawn(player)
+		mcl_spawn.spawn(player)
 		return true, pala_server.messages.enter_nopvp
 	end,
 })

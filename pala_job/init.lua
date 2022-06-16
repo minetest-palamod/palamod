@@ -243,6 +243,7 @@ end
 function pala_job.get_level(player, job)
 	return player:get_meta():get_int("pala_job_level_"..job)
 end
+
 --DEV-------------------------------------------------------------
 minetest.register_chatcommand("level", {
 	params = "<text>",

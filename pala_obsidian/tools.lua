@@ -24,14 +24,14 @@ minetest.register_tool("pala_obsidian:obsidian_pick", {
 	sound = { breaks = "default_tool_breaks" },
 	_mcl_toollike_wield = true,
 	_mcl_diggroups = {
-        pickaxey_obsidian = {speed = 10, level = 5, uses = 5000},
-    },
+		pickaxey_obsidian = {speed = 10, level = 5, uses = 5000},
+	},
 })
 
 
 minetest.register_tool("pala_obsidian:magical_tool", {
-    description = S("Magical Tool"),
-    inventory_image = "pala_obsidian_magical_tool.png",
+	description = S("Magical Tool"),
+	inventory_image = "pala_obsidian_magical_tool.png",
 	wield_scale = mcl_vars.tool_wield_scale,
 	groups = {tool=1},
 	on_place = function(itemstack, user, pointed_thing)

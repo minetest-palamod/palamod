@@ -9,7 +9,7 @@ local math = math
 local modpath = minetest.get_modpath(minetest.get_current_modname())
 
 local function randomFloat(lower, greater)
-    return lower + math.random()  * (greater - lower);
+	return lower + math.random()  * (greater - lower);
 end
 
 pala_luckyblock = {}
@@ -456,7 +456,7 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 		end
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		if not oldmetadata.is_open == "true" then
+		if oldmetadata.is_open ~= "true" then
 			minetest.add_item(pos, "pala_luckyblock:luckyblockpaladium")
 		end
 	end,

@@ -1,5 +1,7 @@
+ignore = {"131"}
 unused_args = false
 allow_defined_top = true
+codes = true
 max_line_length = 125
 
 globals = {
@@ -27,6 +29,14 @@ globals = {
 			"enchantments",
 		},
 	},
+	
+	--------------------------------------------
+	-- PALAMOD
+	--------------------------------------------
+	-- GLOBALS
+	"pala_backpack", "pala_core", "pala_dynamite", "pala_grade", "pala_job", "pala_legendary",
+	"pala_looting", "pala_luckyblock", "pala_machines", "pala_mapgen", "pala_obsidian",
+	"pala_server", "pala_spikes", "pala_tools",
 }
 
 read_globals = {
