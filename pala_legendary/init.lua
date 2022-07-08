@@ -16,6 +16,15 @@ pala_legendary = {}
 pala_legendary.registered_stones = {}
 local stone_list = {}
 
+---@param name string
+---@param def table
+---{name: string,
+---func: fun(itemstack: ItemStack,
+---player: ObjectRef, pointed_thing: pointed_thing),
+---longdesc: string,
+---inventory_image: string,
+---color: ColorString,
+---tt_help: string}
 function pala_legendary.register_legendary(name, def)
 	local tempname = "pala_legendary:legendary_"..name
 	if not def.func then def.func = function() end end
@@ -32,10 +41,10 @@ function pala_legendary.register_legendary(name, def)
 
 			if not last_use then
 				ok = true
-			elseif os.time()-86400 >= last_use then
+			elseif os.time() - 86400 >= last_use then
 				ok = true
 			else
-				local nbhour = (last_use-(os.time()-86400))/3600
+				local nbhour = (last_use - (os.time() - 86400))/3600
 				minetest.chat_send_player(player:get_player_name(),
 					C(mcl_colors.GRAY, S("You must wait @1 hours before you can use it.", math.floor(nbhour))))
 				ok = false
@@ -59,6 +68,7 @@ function pala_legendary.register_legendary(name, def)
 	table.insert(stone_list, tempname)
 end
 
+---@param pos Vector
 function pala_legendary.spawn_particle(pos)
 	minetest.add_particlespawner({
 		amount = 300,
@@ -79,6 +89,7 @@ function pala_legendary.spawn_particle(pos)
 	})
 end
 
+---@return string[]
 function pala_legendary.get_random_stone()
 	return stone_list[math.random(2, #stone_list)] --exclude legendary stone random
 end
