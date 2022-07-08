@@ -1,6 +1,9 @@
 --Voidstone
 
 local S = minetest.get_translator(minetest.get_current_modname())
+local C = minetest.colorize
+
+local ipairs = ipairs
 
 --[[formspec_version[4]
 	size[12,7]
@@ -57,3 +60,64 @@ minetest.register_craftitem("pala_tools:voidstone", {
 		end
 	end
 })
+
+
+--TODO: Craft
+--TODO: Proper inventory image
+--TODO: Help text
+minetest.register_craftitem("pala_tools:minage_voidstone", {
+	description = S("Minage Voidstone"),
+	_doc_items_longdesc = S("Allow you to trash items"), --TODO: paladium desc
+	inventory_image = "pala_tools_voidstone.png^[brighten",
+	stack_max = 1,
+	groups = {tool = 1},
+})
+
+
+local META_KEY = "pala_tools:voidstone_cobble_count"
+local VOIDSTONE_SLOT = 9
+
+local CHECK_INTERVAL = tonumber(minetest.settings:get("pala_tools.minage_voidstone_interval")) or 2
+local t = 0
+minetest.register_globalstep(function(dtime)
+	t = t + dtime
+	if t > CHECK_INTERVAL then
+		for _,player in ipairs(minetest.get_connected_players()) do
+			local inv = player:get_inventory()
+
+			local vs = inv:get_stack("main", VOIDSTONE_SLOT)
+			if vs:get_name() == "pala_tools:minage_voidstone" then
+				local taken = inv:remove_item("main", ItemStack({name = "mcl_core:cobble", count = 65535}))
+				local c = taken:get_count()
+
+				if c > 0 then
+					local meta = vs:get_meta()
+
+					local ac = meta:get_int(META_KEY)
+					meta:set_int(META_KEY, ac + c)
+
+					tt.reload_itemstack_description(vs)
+
+					inv:set_stack("main", VOIDSTONE_SLOT, vs)
+				end
+			end
+		end
+		t = 0
+	end
+end)
+
+
+tt.register_priority_snippet(function(_, _, itemstack)
+	if not itemstack then
+		return
+	end
+
+	if itemstack:get_name() == "pala_tools:minage_voidstone" then
+		---@type ItemStackMetaRef
+		local meta = itemstack:get_meta()
+		local c = meta:get_int(META_KEY)
+		if c ~= 0 then
+			return C(mcl_colors.DARK_GRAY, S("Cobble: @1", c))
+		end
+	end
+end)
