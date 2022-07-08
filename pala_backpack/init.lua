@@ -77,7 +77,7 @@ local backpack_widths = {
 --You can test with anticheat disabled and the official palamod dragonfire test mod
 --https://github.com/minetest-palamod/palamod-test-dragonfire
 
-if not minetest.settings:get_bool("disable_anticheat", false) then
+if pala_server.anticheat then
 	local cheat_log = "[pala_backpack] Player [%s] tried to interact with backpack inventory without using a backpack!"
 
 	minetest.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)

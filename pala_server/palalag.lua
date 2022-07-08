@@ -16,7 +16,9 @@ local msg_base = CE(mcl_colors.GOLD).."[PalaLag] "
 local msg1 = msg_base..CE(mcl_colors.RED)..S("Entities will be deleted in 30s!")
 local msg2 = msg_base..CE(mcl_colors.RED)..S("Entities have been deleted!")
 local CLEAR_INTERVAL = tonumber(minetest.settings:get("pala_server.clear_lag_interval")) or 300
---CLEAR_INTERVAL = 31
+
+minetest.log("action", "[pala_server] Clearlag enabled ("..CLEAR_INTERVAL.."s)")
+
 local time = 0
 
 minetest.register_globalstep(function(dtime)

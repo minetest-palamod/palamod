@@ -26,6 +26,9 @@ pala_mapgen.generate_trixium (Trixium generation) bool true
 
 [pala_server]
 
+#    Is custom anticheat enabled.
+pala_server.anticheat (Anticheat) bool true
+
 #    Is PvP enabled at spawn.
 pala_server.pvp_spawn (PvP at spawn) bool false
 
@@ -36,7 +39,7 @@ pala_server.pvp_spawn_radius (Disabled PvP radius at spawn) int 30
 pala_server.clear_lag (Clear Lag) bool true
 
 #    Clear lag interval.
-pala_server.clear_lag_interval (Clear Lag interval) int 300
+pala_server.clear_lag_interval (Clear Lag interval) int 300 60
 
 [pala_tools]
 

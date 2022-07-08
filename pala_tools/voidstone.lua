@@ -31,7 +31,7 @@ local callbacks = {
 	end,
 }
 
-if not minetest.settings:get_bool("disable_anticheat", false) then
+if pala_server.anticheat then
 	callbacks.allow_put = function(inv, listname, index, stack, player)
 		if player:get_wielded_item():get_name() == "pala_tools:voidstone" then
 			return stack:get_count()
