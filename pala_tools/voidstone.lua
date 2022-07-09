@@ -96,6 +96,8 @@ minetest.register_craft({
 local META_KEY = "pala_tools:voidstone_cobble_count"
 local VOIDSTONE_SLOT = 9
 
+local REMOVED_ITEMS = {"mcl_core:dirt", "mcl_core:mossycobble", "mcl_core:diorite", "mcl_core:andesite", "mcl_core:granite"}
+
 local CHECK_INTERVAL = tonumber(minetest.settings:get("pala_tools.minage_voidstone_interval")) or 2
 local t = 0
 minetest.register_globalstep(function(dtime)
@@ -106,6 +108,13 @@ minetest.register_globalstep(function(dtime)
 
 			local vs = inv:get_stack("main", VOIDSTONE_SLOT)
 			if vs:get_name() == "pala_tools:minage_voidstone" then
+				-- Trash Items
+
+				for _,n in ipairs(REMOVED_ITEMS) do
+					inv:remove_item("main", ItemStack({name = n, count = 65535}))
+				end
+
+				-- Store cobble count
 				local taken = inv:remove_item("main", ItemStack({name = "mcl_core:cobble", count = 65535}))
 				local c = taken:get_count()
 
