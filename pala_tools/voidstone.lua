@@ -62,7 +62,16 @@ minetest.register_craftitem("pala_tools:voidstone", {
 })
 
 
---TODO: Craft
+minetest.register_craft({
+	output = "pala_tools:voidstone",
+	recipe = {
+		{"", "pala_paladium:amethyst_ingot", ""},
+		{"pala_paladium:amethyst_ingot", "mcl_chests:chest", "pala_paladium:amethyst_ingot"},
+		{"", "pala_paladium:amethyst_ingot", ""},
+	},
+})
+
+
 --TODO: Proper inventory image
 --TODO: Help text
 minetest.register_craftitem("pala_tools:minage_voidstone", {
@@ -71,6 +80,16 @@ minetest.register_craftitem("pala_tools:minage_voidstone", {
 	inventory_image = "pala_tools_voidstone.png^[brighten",
 	stack_max = 1,
 	groups = {tool = 1},
+})
+
+
+minetest.register_craft({
+	output = "pala_tools:minage_voidstone",
+	recipe = {
+		{"", "mcl_throwing:ender_pearl", ""},
+		{"pala_paladium:titanium_ingot", "pala_tools:voidstone", "pala_paladium:titanium_ingot"},
+		{"", "mcl_chests:chest", ""}, --TODO: titanium chest
+	},
 })
 
 
