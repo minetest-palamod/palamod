@@ -15,6 +15,7 @@ end
 pala_luckyblock = {}
 
 dofile(modpath.."/node.lua")
+dofile(modpath.."/sword.lua")
 dofile(modpath.."/mobs.lua")
 dofile(modpath.."/trophy.lua")
 dofile(modpath.."/events.lua")
@@ -357,6 +358,14 @@ function pala_luckyblock.get_random_all()
 		"pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png"), hit
 end
 
+---@param pos Vector
+---@param sender ObjectRef
+---@param event {name: string, func: fun(pos: Vector, sender: ObjectRef), description: string, rarity: integer, texture: string}
+function pala_luckyblock.run_event(pos, sender, event)
+	event.func(pos, sender)
+	pala_luckyblock.luckystat.unlock(sender, event.name)
+end
+
 function pala_luckyblock.get_open_formspec(def, nbimg, texture)
 	local form = table.concat({
 		"formspec_version[4]",
@@ -377,11 +386,14 @@ function pala_luckyblock.get_open_formspec(def, nbimg, texture)
 	return form
 end
 
+---@param nb integer
+---@return string
 function pala_luckyblock.get_random_img(nb)
-	local rnd = math.random(1,nb)
+	local rnd = math.random(1, nb)
 	return pala_luckyblock.event_all[rnd].texture
 end
 
+---@return string
 function pala_luckyblock.get_paladium_form()
 	return table.concat({
 		"formspec_version[4]",
@@ -402,6 +414,7 @@ function pala_luckyblock.get_paladium_form()
 	})
 end
 
+---@return string
 function pala_luckyblock.get_endium_form()
 	return table.concat({
 		"formspec_version[4]",
@@ -428,7 +441,7 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 	tiles = {"pala_paladium_paladium_block.png^pala_luckyblock_luckyblock.png"},
 	is_ground_content = false,
 	stack_max = 64,
-	groups = {pickaxey=4, building_block=1},
+	groups = {pickaxey = 4, building_block = 1, luckyblock = 1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -451,8 +464,7 @@ minetest.register_node("pala_luckyblock:luckyblockpaladium", {
 			local hit = meta:get_int("hit")
 			minetest.set_node(pos, {name="air"})
 			local event = pala_luckyblock.event_all[hit]
-			event.func(pos, sender)
-			pala_luckyblock.luckystat.unlock(sender, event.name)
+			pala_luckyblock.run_event(pos, sender, event)
 		end
 	end,
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
@@ -470,7 +482,7 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
 	tiles = {"pala_paladium_endium_block.png^pala_luckyblock_luckyblock.png"},
 	is_ground_content = false,
 	stack_max = 64,
-	groups = {pickaxey=4, building_block=1},
+	groups = {pickaxey = 4, building_block = 1, luckyblock = 1},
 	sounds = mcl_sounds.node_sound_stone_defaults(),
 	on_construct = function(pos)
 		local meta = minetest.get_meta(pos)
@@ -493,8 +505,7 @@ minetest.register_node("pala_luckyblock:luckyblockendium", {
 			local hit = meta:get_int("hit")
 			minetest.set_node(pos, {name="air"})
 			local event = pala_luckyblock.event_positive[hit]
-			event.func(pos, sender)
-			pala_luckyblock.luckystat.unlock(sender, event.name)
+			pala_luckyblock.run_event(pos, sender, event)
 		end
 	end,
 	_mcl_blast_resistance = 1200,

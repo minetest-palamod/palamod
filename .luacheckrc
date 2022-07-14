@@ -2,7 +2,7 @@ ignore = {"131"}
 unused_args = false
 allow_defined_top = true
 codes = true
-max_line_length = 125
+max_line_length = 130
 
 globals = {
 	minetest = {
