@@ -12,21 +12,14 @@ minetest.register_tool("pala_tools:hammer_amethyst", {
 	},
 })
 
-local steelHammerDigs = {}
 minetest.register_on_dignode(
 	function(pos, oldnode, digger)
-		if digger == nil or digger:get_wielded_item():get_name()  ~= "pala_tools:hammer_amethyst" then
+		if digger == nil or not digger:is_player() or digger:get_wielded_item():get_name()  ~= "pala_tools:hammer_amethyst" then
 			return
 		end
-
-		local playerName = digger:get_player_name()
-		if(playerName == ""  or steelHammerDigs[playerName]) then
-			return
-		end
-		steelHammerDigs[playerName] = true
 
 		local posDiff = pos.y - digger:get_pos().y
-		if(posDiff < 2 and posDiff > 1) then
+		if (posDiff < 2 and posDiff > 1) then
 			if
 				digger:get_look_horizontal() > math.pi / 4 and digger:get_look_horizontal() < 3 * math.pi / 4 or
 				digger:get_look_horizontal() > 5 * math.pi / 4 and digger:get_look_horizontal() < 7 * math.pi / 4
@@ -107,7 +100,6 @@ minetest.register_on_dignode(
 			pos.z = pos.z -1
 			node_dig(pos, get_node(pos), digger)
 		end
-		steelHammerDigs[playerName] = nil
 	end
 )
 
