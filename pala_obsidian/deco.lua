@@ -37,6 +37,7 @@ end
 
 
 if minetest.get_modpath("mcl_doors") then
+	--[[
 	mcl_doors:register_door("pala_obsidian:obsidian_door", {
 		description = ("Protected Obsidian Door"),
 		--_doc_items_longdesc = wood_longdesc,
@@ -49,6 +50,7 @@ if minetest.get_modpath("mcl_doors") then
 		tiles_top = {"pala_obsidian_door_obsidian_upper.png", "pala_obsidian_door_obsidian_side_upper.png"},
 		sounds = mcl_sounds.node_sound_wood_defaults(),
 	})
+	]]
 	mcl_doors:register_trapdoor("pala_obsidian:obsidian_trapdoor", {
 		description = ("Protected Obsidian Trap Door"),
 		--_doc_items_longdesc = wood_longdesc,
