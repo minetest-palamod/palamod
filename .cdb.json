@@ -3,7 +3,7 @@
 	"title": "Palamod",
 	"name": "palamod",
 	"short_description": "Palamod modpack for MineClone2",
-	"dev_state": "WIP",
+	"dev_state": "AS_IS",
 	"tags": ["pvp", "pve", "survival", "multiplayer"],
 	"content_warnings": [],
 	"license": "GPL-3.0-or-later",
