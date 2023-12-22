@@ -9,13 +9,13 @@ minetest.register_node("pala_fakewater:fakewater_source", {
 	waving = 3,
 	tiles = {
 		{
-			name="default_water_source_animated.png",
+			name="mcl_core_water_source_animation.png",
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0},
 		},
 	},
 	special_tiles = {
 		{
-			name="default_water_source_animated.png",
+			name="mcl_core_water_source_animation.png",
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=5.0},
 			backface_culling = false,
 		}
@@ -43,15 +43,15 @@ minetest.register_node("pala_fakewater:fakewater_flowing", {
 	description = S("Flowing Fake Water"),
 	drawtype = "flowingliquid",
 	waving = 3,
-	tiles = {"default_water_flowing_animated.png^[verticalframe:64:0"},
+	tiles = {"mcl_core_water_flow_animation.png^[verticalframe:64:0"},
 	special_tiles = {
 		{
-			image="default_water_flowing_animated.png",
+			image="mcl_core_water_flow_animation.png",
 			backface_culling=false,
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=4.0}
 		},
 		{
-			image="default_water_flowing_animated.png",
+			image="mcl_core_water_flow_animation.png",
 			backface_culling=false,
 			animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=4.0}
 		},
