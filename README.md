@@ -9,7 +9,10 @@
 [![ContentDB](https://content.minetest.net/packages/AFCM/palamod/shields/title/)](https://content.minetest.net/packages/AFCM/palamod/)
 [![ContentDB](https://content.minetest.net/packages/AFCM/palamod/shields/downloads/)](https://content.minetest.net/packages/AFCM/palamod/)
 
-![Platform](https://img.shields.io/badge/platform-linux%20%7C%20windows%20%7C%20mac%20%7C%20android-blue)
+> [!IMPORTANT]
+> While I may fix bugs or compatibility with MineClone2 versions, I am no longer working on this project.
+> 
+> If someone wants to continue the work I did, pleasy reach me on GitHub or Discord.
 
 ## Why this project?
 
