@@ -38,6 +38,8 @@ This modpack is very WIP and breaking changes can be made with no warning. Use a
 
 This project is mostly a personal project, but I will accept pr for translation, bugfix and better textures.
 
+Textures are made by AFCM and are licensed under CC-BY-SA 4.0. Some of them are based on MineClone2 textures that are mostly based on Minecraft PixelPerfection texture pack.
+
 ## Gameplay
 
 ### Features
