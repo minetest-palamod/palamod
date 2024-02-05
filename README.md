@@ -53,6 +53,7 @@ This target include:
 - job system
 - grade system
 - server commands
+- trixium ranking
 
 Additional features:
 

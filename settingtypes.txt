@@ -48,6 +48,15 @@ pala_server.clear_lag_interval (Clear Lag interval) int 300 60
 #    Decrease for smoother gameplay.
 pala_tools.minage_voidstone_interval (Minage Voidstone Interval) int 2 0 10
 
+[pala_trixium]
+
+#    If enabled, activate trixium ranking.
+#    WARNING: you need db_manager mod in order to use this feature!
+pala_trixium.ranking (Trixium ranking) bool false
+
+#    Trixium data saving interval
+pala_trixium.saving_interval (Saving interval) int 600
+
 [advanced]
 
 #    Enable debug features
