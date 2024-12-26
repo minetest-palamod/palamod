@@ -5,7 +5,7 @@ local C = minetest.colorize
 
 pala_paladium = {}
 
-pala_paladium.code = minetest.get_modpath("pala_paladium") .. "/ores"
+local pala_paladium.code = minetest.get_modpath("pala_paladium") .. "/ores"
 
 dofile(pala_paladium.code .. "/paladium/paladium.lua")
 dofile(pala_paladium.code .. "/amethyst/amethyst.lua")
