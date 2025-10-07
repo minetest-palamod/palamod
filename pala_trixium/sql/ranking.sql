@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS "ranking" (
+	"name"	TEXT NOT NULL DEFAULT 'uknown' UNIQUE,
+	"amount"	INTEGER NOT NULL DEFAULT 0 CHECK("amount" >= 0),
+	PRIMARY KEY("name")
+)
